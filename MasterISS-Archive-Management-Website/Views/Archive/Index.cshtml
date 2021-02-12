@@ -1,0 +1,116 @@
+﻿@using MasterISS_Archive_Management_Website.ViewModels
+@model IEnumerable<FileDetailViewModel>
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+
+    .home-page {
+        margin: 5em 0 5em 0;
+        text-align: center;
+    }
+
+    table, td, th {
+        border: 0.1em solid black;
+        padding: 0.5em;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .button-right {
+        position: absolute;
+        right: 0em;
+    }
+
+    .button-left {
+        position: absolute;
+        left: 0em;
+    }
+</style>
+
+
+<div class="container">
+    @using (Html.BeginForm("Index", "Archive", FormMethod.Post))
+    {
+        <div class="home-page">
+
+
+            <div>
+                @* @Html.TextBoxFor(m => m.)*@
+                @Html.TextBox("SubscriptionId")
+            </div>
+
+
+            <div class="home-page">
+                @*@Html.ActionLink("Ara", "Index", "Archive")*@
+                <button type="submit">Search</button>
+            </div>
+        </div>
+    }
+
+    @if (Model != null)
+    {<table class="tr-mr-5">
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.AttachmentType)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.CreationDate)
+
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.MIMEType)
+
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.FileExtention)
+
+                </td>
+                <td colspan="2">
+                </td>
+            </tr>
+
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AttachmentType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreationDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MIMEType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FileExtention)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Download", "Download", "Archive")
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", "Archive")
+                    </td>
+
+                </tr>
+            }
+
+
+        </table>}
+    <div class="button-left">
+        @Html.ActionLink("ZIP", "AllDownload", "Archive")
+    <div/>
+
+    <div class="button-right">
+        @Html.ActionLink("Manage", "Delete", "Archive")
+    </div>
+
+</div>
