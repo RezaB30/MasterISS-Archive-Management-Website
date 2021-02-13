@@ -1,0 +1,25 @@
+﻿.home-page {
+    margin: 5em 0 5em 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+table, td, th {
+    border: 0.1em solid black;
+    padding: 0.5em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.message {
+    text-align: center;
+    font-size: 1.5em;
+    color: red
+}
+
+.right-nav {
+    text-align: right;
+}

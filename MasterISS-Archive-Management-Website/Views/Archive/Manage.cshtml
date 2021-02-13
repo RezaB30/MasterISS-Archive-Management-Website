@@ -1,0 +1,61 @@
+﻿@using MasterISS_Archive_Management_Website.ViewModels
+@model IEnumerable<FileDetailViewModel>
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div>
+        <h1 class="home-page">
+            ARCHIVE NUMBER : @ViewBag.SubscriptionId
+        </h1>
+
+        @if (Model != null)
+        {
+
+            foreach (var item in Model)
+            {
+                <table>
+
+                    <tr class="home-page">
+                        <td colspan="6">
+                            @Html.DisplayFor(modelItem => item.AttachmentType)
+                        </td>
+
+                    </tr>
+                    @foreach (var fileItem in Model)
+                    {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => fileItem.CreationDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => fileItem.MIMEType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => fileItem.FileExtention)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => fileItem.ServerSideName)
+                    </td>
+
+                    <td>
+                        <a href="@Url.Action("Download", "Archive", new { SubscriptionId= ViewBag.SubscriptionId})">Download</a>
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Delete", "Archive",  new { SubscriptionId= ViewBag.SubscriptionId, FileName=item.ServerSideName})">Delete</a>
+                        @*  @Html.ActionLink("Delete", "Delete", "Archive", new { SubscriptionId = item.SubscriptionId })*@
+                    </td>
+                </tr>
+                    }
+
+                </table>
+                <a href="@Url.Action("UploadNewFile", "Archive")">Upload New File</a>
+
+            }
+        }
+    </div>
+</div>
