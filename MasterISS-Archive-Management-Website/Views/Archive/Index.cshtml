@@ -70,14 +70,14 @@
                             @* @Html.ActionLink("Download", "Download", "Archive", new { SubscriptionId = item.SubscriptionId })*@
                         </td>
                         <td>
-                            <a href="@Url.Action("Delete", "Archive",  new { SubscriptionId= ViewBag.SubscriptionId})">Delete</a>
-                            @*  @Html.ActionLink("Delete", "Delete", "Archive", new { SubscriptionId = item.SubscriptionId })*@
+                            @* <a href="@Url.Action("Delete", "Archive",  new { SubscriptionId= ViewBag.SubscriptionId})">Delete</a>*@
+                            @Html.ActionLink("Delete", "Delete", "Archive", new { SubscriptionId = ViewBag.SubscriptionId })
                         </td>
                     </tr>
                 }
 
             </table>
-            <a href="@Url.Action("DownloadAll", "Archive",  new { SubscriptionId= ViewBag.SubscriptionId})">Download All(ZIP)</a>
+            <a href="@Url.Action("DownloadZipFile", "Archive",  new { SubscriptionId= ViewBag.SubscriptionId})">Download All(ZIP)</a>
 
             <a href="@Url.Action("Manage", "Archive",  new { SubscriptionId= ViewBag.SubscriptionId})">Manage</a>
 
@@ -105,5 +105,11 @@
 
         }
     }
+
+
+
+    <a href="computer.png" download="PC.png">
+        Download File
+    </a>
 
 </div>
