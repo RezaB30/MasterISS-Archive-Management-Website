@@ -13,8 +13,6 @@
         </h1>
 
 
-        @*@if (Model != null)
-            {*@
         @for (int i = 0; i < 9; i++)
         {<table>
                 @foreach (var fileItem in Model)
@@ -35,10 +33,7 @@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(model => fileItem.FileExtention)
-                                </td>
-                                @*<td>
-                                    @Html.DisplayFor(model => fileItem.ServerSideName)
-                                </td>*@
+                                </td>                              
                                 <td>
                                     <a href="@Url.Action("Download", "Archive", new { SubscriptionId = ViewBag.SubscriptionId,FileName = fileItem.ServerSideName })">Download</a>
                                 </td>
@@ -48,7 +43,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <a href="@Url.Action("UploadNewFile", "Archive")">Upload New File</a>
+                                    <a href="@Url.Action("UploadNewFile", "Archive",  new { SubscriptionId = ViewBag.SubscriptionId, AttachmentType=fileItem.AttachmentType })">Upload New File</a>
                                 </td>
                             </tr>
 
@@ -56,59 +51,9 @@
                     }
 
                 }
-                @*<tr>
-                        <td>
-                            <a href="@Url.Action("UploadNewFile", "Archive")">Upload New File</a>
-                        </td>
-                    </tr>*@
+             
             </table>
-
         }
-        @*}*@
-        @*@if (Model != null)*@
-        <!--{
-
-        //foreach (var item in Model)
-        {
-            <table>
-
-                <tr class="home-page">
-                    <td colspan="6">-->
-        @*@Html.DisplayFor(modelItem => item.AttachmentType)*@
-        <!--</td>
-
-        </tr>-->
-        @*@foreach (var fileItem in Model)*@
-        <!--{
-        <tr>
-            <td>-->
-        @*@Html.DisplayFor(modelItem => fileItem.CreationDate)*@
-        <!--</td>
-        <td>-->
-        @*@Html.DisplayFor(modelItem => fileItem.MIMEType)*@
-        <!--</td>
-        <td>-->
-        @*@Html.DisplayFor(modelItem => fileItem.FileExtention)*@
-        <!--</td>
-
-        <td>-->
-        @*@Html.DisplayFor(modelItem => fileItem.ServerSideName)*@
-        <!--</td>
-
-        <td>-->
-        @*<a href="@Url.Action("Download", "Archive", new { SubscriptionId= ViewBag.SubscriptionId})">Download</a>*@
-        <!--</td>
-        <td>-->
-        @*<a href="@Url.Action("Delete", "Archive",  new { SubscriptionId= ViewBag.SubscriptionId, FileName=item.ServerSideName})">Delete</a>*@
-        @*  @Html.ActionLink("Delete", "Delete", "Archive", new { SubscriptionId = item.SubscriptionId })*@
-        <!--</td>
-        </tr>
-            }
-
-        </table>-->
-        @*<a href="@Url.Action("UploadNewFile", "Archive")">Upload New File</a>*@
-
-        <!--}
-        }-->
+      
     </div>
 </div>

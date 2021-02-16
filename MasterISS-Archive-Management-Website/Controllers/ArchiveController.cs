@@ -12,8 +12,8 @@ using RezaB.Web.CustomAttributes;
 using System.IO;
 using System.IO.Compression;
 using System.Drawing.Drawing2D;
-using ICSharpCode.SharpZipLib.Zip;
 using System.Text;
+using RadiusR.FileManagement.SpecialFiles;
 
 namespace MasterISS_Archive_Management_Website.Controllers
 {
@@ -21,6 +21,22 @@ namespace MasterISS_Archive_Management_Website.Controllers
     {
         Logger archiveLogger = LogManager.GetLogger("archive");
 
+        public ActionResult UploadNewFile(long SubscriptionId, int AttachmentType)
+        {
+            var archiveFile = new RadiusR.FileManagement.MasterISSFileManager();
+            //archiveFile.SaveClientAttachment(SubscriptionId, Attachment);
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UploadNewFile(long SubscriptionId, FileManagerClientAttachmentWithContent Attachment)
+        {
+            var archiveFile = new RadiusR.FileManagement.MasterISSFileManager();
+            archiveFile.SaveClientAttachment(SubscriptionId, Attachment);
+
+            return RedirectToAction("Manage", "Archive");
+        }
 
         public ActionResult Index()
         {
@@ -48,6 +64,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
             var archiveFile = new RadiusR.FileManagement.MasterISSFileManager();
             var archiveFileList = archiveFile.GetClientAttachmentsList(SubscriptionId);
+            //archiveFile.SaveClientAttachment(SubscriptionId,);
 
             //var archiveFileS = new RadiusR.FileManagement.FileManagerBasicFile();
 
@@ -128,11 +145,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
             Session["subId"] = SubscriptionId;
 
-
             return RedirectToAction("Manage", "Archive");
-
-
-
         }
 
         //[HttpPost]
@@ -266,13 +279,14 @@ namespace MasterISS_Archive_Management_Website.Controllers
                     //var fileName = viewResults.Select(f => new { fileName = f.ServerSideName }).First().ToString();
 
                     var selectedFile = archiveFile.GetClientAttachment(SubscriptionId, FileName);
+                    if (selectedFile.InternalException==null)
+                    {
+                        var datetimeForDownloadFile = DateUtilities.ConvertToDateForDownloadFile(selectedFile.Result.FileDetail.CreationDate);
 
-                    var datetimeForDownloadFile = DateUtilities.ConvertToDateForDownloadFile(selectedFile.Result.FileDetail.CreationDate);
+                        string downloadFileName = SubscriptionId + "." + selectedFile.Result.FileDetail.AttachmentType + "." + datetimeForDownloadFile + "." + selectedFile.Result.FileDetail.FileExtention;
 
-                    string downloadFileName = SubscriptionId + "." + selectedFile.Result.FileDetail.AttachmentType + "." + datetimeForDownloadFile + "." + selectedFile.Result.FileDetail.FileExtention;
-
-
-                    return File(selectedFile.Result.Content, selectedFile.Result.FileDetail.MIMEType, downloadFileName);
+                        return File(selectedFile.Result.Content, selectedFile.Result.FileDetail.MIMEType, downloadFileName);
+                    }
 
                 }
 
@@ -283,78 +297,9 @@ namespace MasterISS_Archive_Management_Website.Controllers
         }
 
 
-        //public ActionResult DownloadZipFile(long SubscriptionId)
-        //{
-        //    var archiveFile = new MasterISSFileManager();
-
-        //    var archiveFileList = archiveFile.GetClientAttachmentsList(SubscriptionId);
-        //    List<FileDetailViewModel> archiveFileLists;
-
-
-        //    var fileException = archiveFileList.InternalException;
-        //    string downloadFileZipName = SubscriptionId + "." + "zip";
-
-        //    if (fileException == null)
-        //    {
-
-        //        using (var memoryStream = new MemoryStream())
-        //        {
-        //            using (var archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
-        //            {
-        //                var viewResults = subscriptionFileList.Select(a => new FileDetailViewModel()
-        ////            {
-        ////                CreationDate = a.CreationDate,
-        ////                FileExtention = a.FileExtention,
-        //                MIMEType = a.MIMEType,
-        //                ServerSideName = a.ServerSideName,
-        //                AttachmentType = (int)a.AttachmentType
-
-        //            });
-
-
-        //            foreach (var item in viewResults)
-        //            {
-        //                Files = archiveFile.GetClientAttachment(SubscriptionId, item.ServerSideName);
-        //            }
-        //foreach (var doc in archiveFileList)
-        //{
-        //    var file = archive.CreateEntry(doc.ServerSideName);
-        //    using (var stream = file.Open())
-        //    {
-        //        stream.Write(Files, 0, subscriptionFileList.Count);
-        //    }
-        //}
-        //                    }
-
-        //                    //return File(memoryStream.ToArray(), "application/zip", downloadFileZipName);
-        //                };
-
-        ////using (ZipFile zip = new ZipFile())
-        ////{
-        //    zip.AlternateEncodingUsage = ZipOption.AsNecessary;
-        //    zip.AddDirectoryByName("Files");
-        //    foreach (FileModel file in files)
-        //    {
-        //        if (file.IsSelected)
-        //        {
-        //            zip.AddFile(file.FilePath, "Files");
-        //        }
-        //    }
-        //    string zipName = String.Format("FilesZip_{0}.zip", DateTime.Now.ToString("yyyy-MMM-dd-HHmmss"));
-        //    using (MemoryStream memoryStream = new MemoryStream())
-        //    {
-        //        zip.Save(memoryStream);
-        //        return File(memoryStream.ToArray(), "application/zip", zipName);
-        //    }
-        //}
-        //    }
-
-        //    return View();
-        //}
 
         public ActionResult DownloadZipFile(long SubscriptionId)
         {
-
             var archiveFile = new MasterISSFileManager();
 
             var archiveFileList = archiveFile.GetClientAttachmentsList(SubscriptionId);
@@ -377,134 +322,44 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
                     });
 
-                    //foreach (var item in viewResults)
-                    //{
-                    //    var Filesk = archiveFile.GetClientAttachment(SubscriptionId, item.ServerSideName);
-                    //}
-
-
-                    //return File(Files,Files. , downloadFileZipName);
-                    //for (int i = 0; i < viewResults.Count(); i++)
-                    //{
-
-
-                    //using (var memoryStream = new MemoryStream())
-                    //{
-                    //    using (var archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
-                    //    {
-                    //        foreach (var doc in subscriptionFileList)
-                    //        {
-                    //            var file = archive.CreateEntry(doc.ServerSideName);
-                    //            using (var stream = file.Open())
-                    //            {
-                    //                stream.Write(, 0, subscriptionFileList.Count());
-                    //            }
-                    //        }
-                    //    }
-
-                    //    return File(memoryStream.ToArray(), "application/zip", downloadFileZipName);
-                    //};
-
-
-                    //using (ZipFile zip = new ZipFile())
-                    //{
-                    //    zip.AlternateEncodingUsage = ZipOption.AsNecessary;
-                    //    zip.AddDirectoryByName("Files");
-                    //    foreach (FileModel file in files)
-                    //    {
-                    //        if (file.IsSelected)
-                    //        {
-                    //            zip.AddFile(file.FilePath, "Files");
-                    //        }
-                    //    }
-                    //    using (MemoryStream memoryStream = new MemoryStream())
-                    //    {
-                    //        zip.Save(memoryStream);
-                    //        return File(memoryStream.ToArray(), "application/zip", zipName);
-                    //    }
-                    //}
-
-
                     string downloadFileZipName = SubscriptionId + "." + "zip";
 
                     var docs = viewResults.ToList();
 
-                    using (var memoryStream = new MemoryStream())
+                    var resultStream = new MemoryStream();
+
+                    using (var zipArchive = new ZipArchive(resultStream, ZipArchiveMode.Create, true))
                     {
-                        using (var archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
+                        foreach (var doc in docs)
                         {
-                            foreach (var doc in docs)
-                            {                                
-                                memoryStream.WriteTo(archiveFile.GetClientAttachment(SubscriptionId, doc.ServerSideName).Result.Content);
+
+                            using (var currentResult = archiveFile.GetClientAttachment(SubscriptionId, doc.ServerSideName))
+                            {
+                                if (currentResult.InternalException == null)
+                                {
+                                    var newZipEntry = zipArchive.CreateEntry(currentResult.Result.FileDetail.ServerSideName, CompressionLevel.Optimal);
+                                    //var newZipEntry = zipArchive.CreateEntry(CreateArchiveAttachmentName(currentResult.Result.FileDetail), CompressionLevel.Optimal);
+
+                                    using (var temp = newZipEntry.Open())
+                                    {
+                                        currentResult.Result.Content.CopyTo(temp);
+                                    }
+                                }
+                                else
+                                {
+                                    return RedirectToAction("Manage", "Archive");
+                                }
                             }
                         }
 
-                        return File(memoryStream.ToArray(), "application/zip", downloadFileZipName);
-                    };
+                    }
+                    resultStream.Seek(0, SeekOrigin.Begin);
 
-
-
+                    return File(resultStream, "application/zip", downloadFileZipName);
                 }
             }
-            return View();
+            return RedirectToAction("Manage", "Archive");
         }
-
-
-
-
-
-        //public ActionResult Downloadall(long SubscriptionId)
-        //{
-        //    var archiveFile = new MasterISSFileManager();
-
-        //    var archiveFileList = archiveFile.GetClientAttachmentsList(SubscriptionId);
-
-        //    var fileException = archiveFileList.InternalException;
-
-        //    if (fileException == null)
-        //    {
-        //        var subscriptionFileList = archiveFileList.Result;
-
-        //        if (subscriptionFileList != null)
-        //        {
-        //            var viewResults = subscriptionFileList.Select(a => new FileDetailViewModel()
-        //            {
-        //                CreationDate = a.CreationDate,
-        //                FileExtention = a.FileExtention,
-        //                MIMEType = a.MIMEType,
-        //                ServerSideName = a.ServerSideName,
-        //                AttachmentType = (int)a.AttachmentType
-
-        //            });
-
-
-
-        //            var docs = subscriptionFileList;
-
-
-        //            using (var memoryStream = new MemoryStream())
-        //            {
-        //                using (var archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
-        //                {
-        //                    foreach (var doc in docs)
-        //                    {
-        //                        var k = archiveFile.GetClientAttachment(SubscriptionId,doc.ServerSideName);
-
-        //                        var file = archive.CreateEntry(doc.ServerSideName);
-        //                        using (var stream = file.Open())
-        //                        {
-        //                            stream.Write(, 0, archiveFileList.Result.Count());
-        //                        }
-        //                    }
-        //                }
-
-        //                return File(memoryStream.ToArray(), "application/zip", "xxxx.zip");
-        //            };
-        //        }
-        //    }
-        //    return View();
-        //}
-
     }
 }
 

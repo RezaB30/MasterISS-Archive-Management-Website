@@ -8,7 +8,6 @@
 
 
 <div class="container">
-    @*  @using (Html.BeginForm("Index", "Archive", FormMethod.Post))*@
     @using (Html.BeginForm())
 
     {
@@ -66,11 +65,9 @@
                             @Html.DisplayFor(modelItem => item.FileExtention)
                         </td>
                         <td>
-                            <a href="@Url.Action("Download", "Archive", new { SubscriptionId= ViewBag.SubscriptionId})">Download</a>
-                            @* @Html.ActionLink("Download", "Download", "Archive", new { SubscriptionId = item.SubscriptionId })*@
+                            <a href="@Url.Action("Download", "Archive", new { SubscriptionId= ViewBag.SubscriptionId,FileName = item.ServerSideName})">Download</a>
                         </td>
                         <td>
-                            @* <a href="@Url.Action("Delete", "Archive",  new { SubscriptionId= ViewBag.SubscriptionId})">Delete</a>*@
                             @Html.ActionLink("Delete", "Delete", "Archive", new { SubscriptionId = ViewBag.SubscriptionId })
                         </td>
                     </tr>
@@ -81,35 +78,8 @@
 
             <a href="@Url.Action("Manage", "Archive",  new { SubscriptionId= ViewBag.SubscriptionId})">Manage</a>
 
-            @*<div class="button-left">
-                    @Html.ActionLink("ZIP", "AllDownload", "Archive")
-                </div>*@
-
-            @*<div class="button-right">
-                    @Html.ActionLink("Manage", "Manage", "Archive")
-                </div>*@
-
-            @*@Url.Action("Manage", "Manage", "Archive")*@
-
-            @*<a href="@Url.Action("Manage", "Archive", new { id=})">Manage</a>*@
-
-            @*using (Html.BeginForm("AllDownload", "Archive", FormMethod.Post))
-                {
-                    <button type="submit">ZIP</button>
-                }*@
-
-            @*using (Html.BeginForm("Manage", "Archive", FormMethod.Post))
-                {
-                    <button type="submit">Manage</button>
-                }*@
-
         }
     }
 
-
-
-    <a href="computer.png" download="PC.png">
-        Download File
-    </a>
 
 </div>
