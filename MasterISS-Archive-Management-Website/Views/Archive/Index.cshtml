@@ -38,12 +38,12 @@
                     <td>
                         @Html.DisplayNameFor(model => model.CreationDate)
                     </td>
-                    <td>
+                    @*<td>
                         @Html.DisplayNameFor(model => model.MIMEType)
                     </td>
                     <td>
                         @Html.DisplayNameFor(model => model.FileExtention)
-                    </td>
+                    </td>*@
                     <td colspan="2">
                     </td>
                 </tr>
@@ -58,12 +58,12 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.CreationDate)
                         </td>
-                        <td>
+                        @*<td>
                             @Html.DisplayFor(modelItem => item.MIMEType)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.FileExtention)
-                        </td>
+                        </td>*@
                         <td>
                             <a href="@Url.Action("Download", "Archive", new { SubscriptionId= ViewBag.SubscriptionId,FileName = item.ServerSideName})">Download</a>
                         </td>

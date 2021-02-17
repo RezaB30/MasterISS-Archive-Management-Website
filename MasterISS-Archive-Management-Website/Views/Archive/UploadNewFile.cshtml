@@ -1,0 +1,128 @@
+﻿@model MasterISS_Archive_Management_Website.ViewModels.UploadFileViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @*<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+                integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.css" rel="stylesheet" type="text/css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js" type="text/javascript"></script>*@
+
+    @*<link href="~/Scripts/dropzone/dropzone.css" rel="stylesheet" />
+        <script src="~/Scripts/dropzone/dropzone.js"></script>*@
+}
+
+<style>
+
+    .drag-area {
+        margin-top: 3em;
+        margin-bottom: 3em;
+        background: #b5b5b5;
+        border: black dashed 0.2em;
+        height: 25em;
+        text-align: center;
+        color: #fff;
+        padding-top: 1em;
+    }
+
+    .active-drop {
+        background: #77bafa !important;
+        border: solid 0.3em blue !important;
+        opacity: .5;
+        color: black !important;
+    }
+
+    /*    #mydropzone {
+                border-radius: 0.5em;
+                border: 0.2em solid #ccc;
+                background-color: #eee;
+                width: 75em;
+                text-align: center;
+                color: #555;
+                margin: 3em;
+                height: 30em;
+            }
+        */
+    /* #dropZone.hover {
+                    border-color: #aaa;
+                    background-color: #ddd;
+                }
+
+                #dropZone.error {
+                    border-color: #f00;
+                    background-color: #faa;
+                }*/
+</style>
+
+
+@*<div id="mydropzone">
+
+    </div>*@
+
+@*<h2>Drag & Drop file upload </h2>
+    <div id="dropArea">
+        Drop your files here
+    </div>
+    <h4>Uploaded files : </h4>
+    <ul class="list-group" id="uploadList">
+    </ul>*@
+
+
+@using (Html.BeginForm("UploadNewFile", "Archive", FormMethod.Post, new
+{ enctype = "multipart/form-data" }))
+{
+    @*<div id="drag-area" class="fallback">
+
+            @Html.TextBoxFor(m => m.File, new { type = "file", @multiple="multiple" })
+
+            @Html.HiddenFor(m => m.SubscriptionId)
+            @Html.HiddenFor(m => m.AttachmentType)
+        </div>
+
+
+        <button type="submit">Save</button>*@
+
+
+
+
+
+    @*<div id="dropzone" class="dropzone dropzone-default dropzone-primary dz-clickable">
+            <div class="dropzone-msg dz-message needsclick">
+                <form enctype="multipart/form-data" style="visibility:hidden" method="post" action="@Url.Action("UploadCustomerFile","Home")" id="contract-form">
+                    <input type="file" style="visibility:hidden" id="customerContract" name="customerContract" multiple />
+                    <input type="file" style="visibility:hidden" id="customerDropFile" name="customerDropFile" multiple />
+                </form>
+
+                <h3 class="dropzone-msg-title" id="file-dialog">@Common.IDCardDropDescription</h3>
+                <span class="dropzone-msg-desc">@Common.IDCardRequiredPhotoDescription</span>
+            </div>
+        </div>*@
+
+
+    <div id="dropzone" class="drag-area ">
+        <div class="dropzone-msg dz-message needsclick">
+            @*<form enctype="multipart/form-data" style="visibility:hidden" method="post" action="@Url.Action("UploadCustomerFile","Home")" id="contract-form">
+                    <input type="file" style="visibility:hidden" id="customerContract" name="customerContract" multiple />
+                    <input type="file" style="visibility:hidden" id="customerDropFile" name="customerDropFile" multiple />
+                </form>*@
+
+            @Html.TextBoxFor(m => m.File, new { type = "file", @multiple = "multiple", @id = "customerDropFile" })
+
+
+            @Html.HiddenFor(m => m.SubscriptionId)
+            @Html.HiddenFor(m => m.AttachmentType)
+
+            <input type="file" style="visibility:hidden" id="customerContract" name="customerContract" multiple />
+            @*<input type="file" style="visibility:hidden" id="customerDropFile" name="customerDropFile" multiple />*@
+
+            <h3 class="dropzone-msg-title" id="file-dialog">Drag And Drop Area</h3>
+            @*<span class="dropzone-msg-desc">@Common.IDCardRequiredPhotoDescription</span>*@
+        </div>
+
+    </div>
+    <button type="submit">Save</button>
+}
+
+
+
+@section script{
+    @Scripts.Render("~/Scripts/UploadFile.js")
+}

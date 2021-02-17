@@ -23,20 +23,56 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
         public ActionResult UploadNewFile(long SubscriptionId, int AttachmentType)
         {
-            var archiveFile = new RadiusR.FileManagement.MasterISSFileManager();
-            //archiveFile.SaveClientAttachment(SubscriptionId, Attachment);
-
             return View();
         }
 
         [HttpPost]
-        public ActionResult UploadNewFile(long SubscriptionId, FileManagerClientAttachmentWithContent Attachment)
-        {
-            var archiveFile = new RadiusR.FileManagement.MasterISSFileManager();
-            archiveFile.SaveClientAttachment(SubscriptionId, Attachment);
+        //public ActionResult UploadNewFile(long SubscriptionId, /*IEnumerable<HttpPostedFileBase> newAttachments*/ HttpPostedFileBase newAttachment ,int AttachmentType)
+        public ActionResult UploadNewFile(UploadFileViewModel uploadFile)
 
-            return RedirectToAction("Manage", "Archive");
+        {
+            //foreach (var file in newAttachments)
+            //{
+            if (Request.Files.Count > 0)
+            {
+                var attachmentType = (ClientAttachmentTypes)uploadFile.AttachmentType;
+
+                //var fileType = file.FileName.Split('.').LastOrDefault();
+                var fileType = uploadFile.File.FileName.Split('.').LastOrDefault();
+
+
+                var fileManager = new MasterISSFileManager();
+                var newFile = new FileManagerClientAttachmentWithContent(uploadFile.File.InputStream, new FileManagerClientAttachment(attachmentType, fileType));
+                var result = fileManager.SaveClientAttachment(uploadFile.SubscriptionId, newFile);
+                if (result.InternalException != null)
+                {
+                    return Content("Hata");
+                }
+
+                //return RedirectToAction("Manage", "Archive");
+                return Json("file uploaded successfully");
+            }
+            else
+            {
+                return View();
+            }
+  
         }
+
+
+        //[HttpPost]
+        //public ActionResult UploadFiles(IEnumerable<HttpPostedFileBase> files)
+        //{
+        //    foreach (var file in files)
+        //    {
+        //        string filePath = Guid.NewGuid() + Path.GetExtension(file.FileName);
+        //        file.SaveAs(Path.Combine(Server.MapPath("~/UploadedFiles"), filePath));
+        //        //Here you can write code for save this information in your database if you want
+        //    }
+        //    return Json("file uploaded successfully");
+        //}
+
+
 
         public ActionResult Index()
         {
@@ -279,7 +315,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
                     //var fileName = viewResults.Select(f => new { fileName = f.ServerSideName }).First().ToString();
 
                     var selectedFile = archiveFile.GetClientAttachment(SubscriptionId, FileName);
-                    if (selectedFile.InternalException==null)
+                    if (selectedFile.InternalException == null)
                     {
                         var datetimeForDownloadFile = DateUtilities.ConvertToDateForDownloadFile(selectedFile.Result.FileDetail.CreationDate);
 
