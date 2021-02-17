@@ -31,32 +31,60 @@ namespace MasterISS_Archive_Management_Website.Controllers
         public ActionResult UploadNewFile(UploadFileViewModel uploadFile)
 
         {
-            //foreach (var file in newAttachments)
-            //{
-            if (Request.Files.Count > 0)
+
+            foreach (var file in uploadFile.Files)
             {
-                var attachmentType = (ClientAttachmentTypes)uploadFile.AttachmentType;
-
-                //var fileType = file.FileName.Split('.').LastOrDefault();
-                var fileType = uploadFile.File.FileName.Split('.').LastOrDefault();
-
-
-                var fileManager = new MasterISSFileManager();
-                var newFile = new FileManagerClientAttachmentWithContent(uploadFile.File.InputStream, new FileManagerClientAttachment(attachmentType, fileType));
-                var result = fileManager.SaveClientAttachment(uploadFile.SubscriptionId, newFile);
-                if (result.InternalException != null)
+                if (Request.Files.Count > 0)
                 {
-                    return Content("Hata");
-                }
+                    var attachmentType = (ClientAttachmentTypes)uploadFile.AttachmentType;
 
-                //return RedirectToAction("Manage", "Archive");
-                return Json("file uploaded successfully");
+                    //var fileType = file.FileName.Split('.').LastOrDefault();
+                    var fileType = file.FileName.Split('.').LastOrDefault();
+
+
+                    var fileManager = new MasterISSFileManager();
+                    var newFile = new FileManagerClientAttachmentWithContent(file.InputStream, new FileManagerClientAttachment(attachmentType, fileType));
+                    var result = fileManager.SaveClientAttachment(uploadFile.SubscriptionId, newFile);
+                    if (result.InternalException != null)
+                    {
+                        return Content("Hata");
+                    }
+
+                    //return RedirectToAction("Manage", "Archive");
+                    //return Json("file uploaded successfully");
+                }
+                else
+                {
+                    return View();
+                }
             }
-            else
-            {
-                return View();
-            }
-  
+            return View();
+            ////foreach (var file in newAttachments)
+            ////{
+            //if (Request.Files.Count > 0)
+            //{
+            //    var attachmentType = (ClientAttachmentTypes)uploadFile.AttachmentType;
+
+            //    //var fileType = file.FileName.Split('.').LastOrDefault();
+            //    var fileType = uploadFile.File.FileName.Split('.').LastOrDefault();
+
+
+            //    var fileManager = new MasterISSFileManager();
+            //    var newFile = new FileManagerClientAttachmentWithContent(uploadFile.File.InputStream, new FileManagerClientAttachment(attachmentType, fileType));
+            //    var result = fileManager.SaveClientAttachment(uploadFile.SubscriptionId, newFile);
+            //    if (result.InternalException != null)
+            //    {
+            //        return Content("Hata");
+            //    }
+
+            //    //return RedirectToAction("Manage", "Archive");
+            //    return Json("file uploaded successfully");
+            //}
+            //else
+            //{
+            //    return View();
+            //}
+
         }
 
 

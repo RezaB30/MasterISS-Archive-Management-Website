@@ -69,59 +69,24 @@
 @using (Html.BeginForm("UploadNewFile", "Archive", FormMethod.Post, new
 { enctype = "multipart/form-data" }))
 {
-    @*<div id="drag-area" class="fallback">
-
-            @Html.TextBoxFor(m => m.File, new { type = "file", @multiple="multiple" })
-
-            @Html.HiddenFor(m => m.SubscriptionId)
-            @Html.HiddenFor(m => m.AttachmentType)
-        </div>
-
-
-        <button type="submit">Save</button>*@
-
-
-
-
-
-    @*<div id="dropzone" class="dropzone dropzone-default dropzone-primary dz-clickable">
-            <div class="dropzone-msg dz-message needsclick">
-                <form enctype="multipart/form-data" style="visibility:hidden" method="post" action="@Url.Action("UploadCustomerFile","Home")" id="contract-form">
-                    <input type="file" style="visibility:hidden" id="customerContract" name="customerContract" multiple />
-                    <input type="file" style="visibility:hidden" id="customerDropFile" name="customerDropFile" multiple />
-                </form>
-
-                <h3 class="dropzone-msg-title" id="file-dialog">@Common.IDCardDropDescription</h3>
-                <span class="dropzone-msg-desc">@Common.IDCardRequiredPhotoDescription</span>
-            </div>
-        </div>*@
-
-
     <div id="dropzone" class="drag-area ">
         <div class="dropzone-msg dz-message needsclick">
-            @*<form enctype="multipart/form-data" style="visibility:hidden" method="post" action="@Url.Action("UploadCustomerFile","Home")" id="contract-form">
-                    <input type="file" style="visibility:hidden" id="customerContract" name="customerContract" multiple />
-                    <input type="file" style="visibility:hidden" id="customerDropFile" name="customerDropFile" multiple />
-                </form>*@
 
-            @Html.TextBoxFor(m => m.File, new { type = "file", @multiple = "multiple", @id = "customerDropFile" })
-
+            @* @Html.TextBoxFor(m => m.File, new { type = "file", @multiple = "multiple", @id = "customerDropFile" })*@
+            @Html.TextBoxFor(m => m.Files, new { type = "file", @multiple = "multiple", @id = "customerDropFile" })
 
             @Html.HiddenFor(m => m.SubscriptionId)
             @Html.HiddenFor(m => m.AttachmentType)
 
             <input type="file" style="visibility:hidden" id="customerContract" name="customerContract" multiple />
-            @*<input type="file" style="visibility:hidden" id="customerDropFile" name="customerDropFile" multiple />*@
 
             <h3 class="dropzone-msg-title" id="file-dialog">Drag And Drop Area</h3>
-            @*<span class="dropzone-msg-desc">@Common.IDCardRequiredPhotoDescription</span>*@
+
         </div>
 
     </div>
     <button type="submit">Save</button>
 }
-
-
 
 @section script{
     @Scripts.Render("~/Scripts/UploadFile.js")

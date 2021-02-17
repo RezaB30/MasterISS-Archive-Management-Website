@@ -13,7 +13,8 @@ dropzone.addEventListener("drop", function (e) {
     var columns = "";
     for (var i = 0; i < files.length; i++) {
         currentFiles.push(files[i]);
-        columns += "<div data-file='" + files[i].name + "' class='col-md-6 col-sm-6 col-xl-3'><img onclick=" + "RemoveFile('" + files[i].name + "');" + " style='width:2em;' src='/Content/img/remove-file.svg' alt='image'>" + files[i].name + "</div>";
+        //columns += "<div data-file='" + files[i].name + "' class='col-md-6 col-sm-6 col-xl-3'><img onclick=" + "RemoveFile('" + files[i].name + "');" + " style='width:2em;' src='/Content/img/remove-file.svg' alt='image'>" + files[i].name + "</div>";
+        columns += "<div data-file='" + files[i].name + "' class='col-md-6 col-sm-6 col-xl-3'><img onclick=" + "RemoveFile('" + files[i].name + "');" + " style='width:2em; margin-top:1em;' src='/Content/img/remove-file.svg' alt='image'>" + "<img style = 'width:3em; margin-top:1em;' src = '/Content/img/file.svg' alt = 'image' >" + files[i].name + "</div>";
     }
     $('#dropzone').append("<div class='row'>" + columns + "</div>");
 });
@@ -34,7 +35,8 @@ $('#customerContract').change(function (e) {
     var columns = "";
     for (var i = 0; i < files.length; i++) {
         currentFiles.push(files[i]);
-        columns += "<div data-file='" + files[i].name + "' class='col-md-6 col-sm-6 col-xl-3'><img onclick=" + "RemoveFile('" + files[i].name + "');" + " style='width:2em;' src='/Content/img/remove-file.svg' alt='image'>" + files[i].name + "</div>";
+        columns += "<div data-file='" + files[i].name + "' class='col-md-6 col-sm-6 col-xl-3'><img onclick=" + "RemoveFile('" + files[i].name + "');" + " style='width:2em; margin-top:1em;' src='/Content/img/remove-file.svg' alt='image'>" + "<img style = 'width:3em; margin-top:1em;' src = '/Content/img/file.svg' alt = 'image' >" + files[i].name + "</div>";
+        //columns += "<div data-file='" + files[i].name + "' class='col-md-6 col-sm-6 col-xl-3'><img onclick=" + "RemoveFile('" + files[i].name + "');" + " style='width:2em;' src='/Content/img/remove-file.svg' alt='image'>" + files[i].name + "</div>";
     }
     $('#dropzone').append("<div class='row'>" + columns + "</div>");
 });
