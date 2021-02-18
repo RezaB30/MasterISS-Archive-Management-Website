@@ -29,77 +29,86 @@ namespace MasterISS_Archive_Management_Website.Controllers
         [HttpPost]
         //public ActionResult UploadNewFile(long SubscriptionId, /*IEnumerable<HttpPostedFileBase> newAttachments*/ HttpPostedFileBase newAttachment ,int AttachmentType)
         public ActionResult UploadNewFile(UploadFileViewModel uploadFile)
-
         {
+            long uploadMaxFileSize = CustomerWebsiteSettings.MaxSupportAttachmentSize;//byte
+
+            var uploadMaxFileCount = Properties.Settings.Default.uploadMaxFileCount;
+
+            var filesSize = 0;
+            var filesCount = 0;
 
             foreach (var file in uploadFile.Files)
             {
-                if (Request.Files.Count > 0)
+                filesSize = filesSize + file.ContentLength;
+                filesCount = filesCount + 1;
+            }
+
+            if (filesSize > uploadMaxFileSize || filesCount > uploadMaxFileCount)
+            {
+                if (filesSize > uploadMaxFileSize)
                 {
-                    var attachmentType = (ClientAttachmentTypes)uploadFile.AttachmentType;
+                    var displayMaxFileSize = RezaB.Data.Formating.RateLimitFormatter.ToTrafficMixedResults(((decimal)uploadMaxFileSize) * 1024, true);
+                 
+                    var displayMaxFileSizemb = $"{displayMaxFileSize.FieldValue} {displayMaxFileSize.RateSuffix}";
 
-                    //var fileType = file.FileName.Split('.').LastOrDefault();
-                    var fileType = file.FileName.Split('.').LastOrDefault();
-
-
-                    var fileManager = new MasterISSFileManager();
-                    var newFile = new FileManagerClientAttachmentWithContent(file.InputStream, new FileManagerClientAttachment(attachmentType, fileType));
-                    var result = fileManager.SaveClientAttachment(uploadFile.SubscriptionId, newFile);
-                    if (result.InternalException != null)
-                    {
-                        return Content("Hata");
-                    }
-
-                    //return RedirectToAction("Manage", "Archive");
-                    //return Json("file uploaded successfully");
+                    ViewBag.FileSizeError = string.Format(Localization.Model.FileSizeError, displayMaxFileSizemb);
                 }
-                else
+                if (filesCount > uploadMaxFileCount)
                 {
+                    ViewBag.FileCountError = string.Format(Localization.Model.FileCountError, uploadMaxFileCount);
                     return View();
                 }
             }
+
+            else
+            {
+                //if (ModelState.IsValid)
+                //{
+                    foreach (var file in uploadFile.Files)
+                    {
+                        if (Request.Files.Count > 0)
+                        {
+                            var attachmentType = (ClientAttachmentTypes)uploadFile.AttachmentType;
+
+                            var fileType = file.FileName.Split('.').LastOrDefault();
+
+                            var fileManager = new MasterISSFileManager();
+                            var newFile = new FileManagerClientAttachmentWithContent(file.InputStream, new FileManagerClientAttachment(attachmentType, fileType));
+                            var result = fileManager.SaveClientAttachment(uploadFile.SubscriptionId, newFile);
+                            if (result.InternalException != null)
+                            {
+                                return Content("Hata");
+                            }
+                            //return RedirectToAction("Manage", "Archive");
+                            //return Json("file uploaded successfully");
+                            if (result.Result == true)
+                            {
+                                //return Json(new { uploadedFiles = result.Result });
+                                if (uploadFile.Files.Count() > 1)
+                                {
+                                    ViewBag.UploadFilesStatus = Localization.Model.UploadFilesStatus;                                    
+                                }
+                                else
+                                {
+                                    ViewBag.UploadFileStatus = Localization.Model.UploadFileStatus;
+                                }
+                                //return View();
+                            }
+                            else
+                            {
+                                ViewBag.UploadStatus = Localization.Model.UploadStatus;
+                            }
+                        }
+                        else
+                        {
+                            return View();
+                        }
+                    }
+                //}
+            }
+
             return View();
-            ////foreach (var file in newAttachments)
-            ////{
-            //if (Request.Files.Count > 0)
-            //{
-            //    var attachmentType = (ClientAttachmentTypes)uploadFile.AttachmentType;
-
-            //    //var fileType = file.FileName.Split('.').LastOrDefault();
-            //    var fileType = uploadFile.File.FileName.Split('.').LastOrDefault();
-
-
-            //    var fileManager = new MasterISSFileManager();
-            //    var newFile = new FileManagerClientAttachmentWithContent(uploadFile.File.InputStream, new FileManagerClientAttachment(attachmentType, fileType));
-            //    var result = fileManager.SaveClientAttachment(uploadFile.SubscriptionId, newFile);
-            //    if (result.InternalException != null)
-            //    {
-            //        return Content("Hata");
-            //    }
-
-            //    //return RedirectToAction("Manage", "Archive");
-            //    return Json("file uploaded successfully");
-            //}
-            //else
-            //{
-            //    return View();
-            //}
-
         }
-
-
-        //[HttpPost]
-        //public ActionResult UploadFiles(IEnumerable<HttpPostedFileBase> files)
-        //{
-        //    foreach (var file in files)
-        //    {
-        //        string filePath = Guid.NewGuid() + Path.GetExtension(file.FileName);
-        //        file.SaveAs(Path.Combine(Server.MapPath("~/UploadedFiles"), filePath));
-        //        //Here you can write code for save this information in your database if you want
-        //    }
-        //    return Json("file uploaded successfully");
-        //}
-
 
 
         public ActionResult Index()
@@ -113,45 +122,28 @@ namespace MasterISS_Archive_Management_Website.Controllers
         [HttpPost]
         public ActionResult Index(long SubscriptionId)
         {
-            string hasArchiveFileMessage = string.Empty;
-
-            // archiveLogger.Error($": {}- : {}");
-
-            //if (ModelState.IsValid)
-            //{
-
-            //using (var db = new RadiusR.DB.RadiusREntities())
-            //{
-            //    var result = db.Subscriptions.Find(SubscriptionId);
-            //}
+            string HasArchiveFileMessage = string.Empty;
 
 
-            var archiveFile = new RadiusR.FileManagement.MasterISSFileManager();
+            using (var db = new RadiusREntities())
+            {
+                var result = db.Subscriptions.Find(SubscriptionId);
+                if (result == null)
+                {
+                    ViewBag.NoSubscriberFound =Localization.Model.NoSubscriberFound;
+                    return View();
+                }
+
+            }
+
+            var archiveFile = new MasterISSFileManager();
             var archiveFileList = archiveFile.GetClientAttachmentsList(SubscriptionId);
-            //archiveFile.SaveClientAttachment(SubscriptionId,);
-
-            //var archiveFileS = new RadiusR.FileManagement.FileManagerBasicFile();
-
 
             var fileException = archiveFileList.InternalException;
-
-            //var message = archiveFileList.InternalException.Message;
-
 
             if (fileException == null)
             {
                 var subscriptionFileList = archiveFileList.Result;
-
-
-                //var per = from s in db.Personels
-                ////         select s;
-                //if (!String.IsNullOrEmpty(SubscriptionNo))
-                //{
-                //    per = per.Where(s => s.Name.Contains(SubscriptionNo));
-                //}
-
-                //return View(per.ToList());
-
 
                 if (subscriptionFileList.Count() != 0)
                 {
@@ -165,51 +157,64 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
                     }).OrderByDescending(d => d.CreationDate);
 
-                    //var file = viewResults.Select(f => new { fileName = f.ServerSideName }).First().ToString();
-
-                    //var t = archiveFile.GetClientAttachment(SubscriptionId, file);
-
-
-                    //var dn = t.InternalException;
-
-                    //if (dn != null)
-                    //{
-
-                    //}
-
-                    //var k = t.Result;
                     ViewBag.SubscriptionId = SubscriptionId;
-
                     return View(viewResults);
                 }
-
-                ViewBag.hasArchiveFileMessage = "Subscriber Has Not File";
-
+                ViewBag.SubscriptionId = SubscriptionId;
+                ViewBag.HasArchiveFileMessage = Localization.Model.HasArchiveFileMessage;
                 return View();
-
-                //}
-                //var k = archiveFile.GetClientAttachment(SubscriptionNo, "k").Result.FileDetail.;
-                //var k = archiveFile.GetClientAttachment.Content.;
-
             }
-
+            ViewBag.SubscriptionId = SubscriptionId;
+            ViewBag.Exception = Localization.Model.Exception;
             return View();
         }
 
-
-
         //[HttpPost]
-        public ActionResult Delete(long SubscriptionId, string FileName)
-        {
-            //long SubscriptionId = 59012;
+        //public ActionResult Delete(string ser)
+        //{ return View(); }
 
+
+        [HttpPost]
+        public ActionResult Delete(long SubscriptionId, string serverSideName /*FileDetailViewModel file*/)
+        {
             var archiveFile = new MasterISSFileManager();
 
-            var removeArchiveFile = archiveFile.RemoveClientAttachment(SubscriptionId, FileName);
+            var removeArchiveFile = archiveFile.RemoveClientAttachment(SubscriptionId,/* file.*/serverSideName);
 
-            Session["subId"] = SubscriptionId;
+            var exception = removeArchiveFile.InternalException;
 
-            return RedirectToAction("Manage", "Archive");
+            var archiveFileList = archiveFile.GetClientAttachmentsList(SubscriptionId);
+
+            var fileException = archiveFileList.InternalException;
+
+            if (fileException == null)
+            {
+                var subscriptionFileList = archiveFileList.Result;
+
+                if (subscriptionFileList.Count() != 0)
+                {
+                    var viewResults = subscriptionFileList.Select(a => new FileDetailViewModel()
+                    {
+                        CreationDate = a.CreationDate,
+                        FileExtention = a.FileExtention,
+                        MIMEType = a.MIMEType,
+                        ServerSideName = a.ServerSideName,
+                        AttachmentType = (int)a.AttachmentType,//sıralama için kullan
+
+                    }).OrderByDescending(d => d.CreationDate);
+
+                    ViewBag.SubscriptionId = SubscriptionId;
+                    return View(viewName: "Index", model: viewResults);
+                }
+                ViewBag.SubscriptionId = SubscriptionId;
+                ViewBag.HasArchiveFileMessage = Localization.Model.HasArchiveFileMessage;
+                //return View();
+                return RedirectToAction("Index", "Archive");
+            }
+            ViewBag.SubscriptionId = SubscriptionId;
+            ViewBag.Exception = Localization.Model.Exception;
+
+            return RedirectToAction("Index", "Archive");
         }
 
         //[HttpPost]
@@ -223,47 +228,6 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
             var archiveFile = new MasterISSFileManager();
 
-            //if( Session["subId"] !=null )
-            //{
-            //    SubscriptionId =(long) Session["subId"];
-            //    var archiveFileList = archiveFile.GetClientAttachmentsList(SubscriptionId);
-
-            //    var fileException = archiveFileList.InternalException;
-
-            //    //var k = new RezaB.Web.CustomAttributes.EnumTypeAttribute();
-
-            //    if (fileException == null)
-            //    {
-            //        var subscriptionFileList = archiveFileList.Result;
-
-            //        if (subscriptionFileList != null)
-            //        {
-            //            var viewResults = subscriptionFileList.Select(a => new FileDetailViewModel()
-            //            {
-            //                CreationDate = a.CreationDate,
-            //                FileExtention = a.FileExtention,
-            //                MIMEType = a.MIMEType,
-            //                ServerSideName = a.ServerSideName,
-            //                AttachmentType = (int)a.AttachmentType
-
-            //                //}).OrderByDescending(d => d.CreationDate).ThenBy(f=>f.AttachmentType);
-            //            });
-            //            //return View(viewResults);
-
-            //            var viewResultLists = viewResults.OrderBy(e => e.AttachmentType).ThenByDescending(d => d.CreationDate);
-            //            //var file = viewResults.Select(f => new { fileName = f.ServerSideName }).First().ToString();
-            //            //var t = archiveFile.GetClientAttachment(SubscriptionId, file);
-            //            //var k = t.Result;
-            //            //return View(k);
-            //            ViewBag.SubscriptionId = SubscriptionId;
-            //            return View(viewResultLists);
-            //        }
-            //        //return View();
-            //    }
-            //}
-
-            //else
-            //{
             var archiveFileList = archiveFile.GetClientAttachmentsList(SubscriptionId);
 
             var fileException = archiveFileList.InternalException;
@@ -287,40 +251,25 @@ namespace MasterISS_Archive_Management_Website.Controllers
                     //return View(viewResults);
 
                     var viewResultLists = viewResults.OrderBy(e => e.AttachmentType).ThenByDescending(d => d.CreationDate);
-                    //var file = viewResults.Select(f => new { fileName = f.ServerSideName }).First().ToString();
-                    //var t = archiveFile.GetClientAttachment(SubscriptionId, file);
-                    //var k = t.Result;
-                    //return View(k);
                     ViewBag.SubscriptionId = SubscriptionId;
                     return View(viewResultLists);
                 }
-                //return View();
+                return View();
             }
+            ViewBag.Exception = Localization.Model.Exception;
             //}
 
-
             //var k = new RezaB.Web.CustomAttributes.EnumTypeAttribute();
-
 
             return View();
         }
 
-        //public ActionResult GetOrdeByArchiveFiles()
-        //{
-        //    return View();
-        //}
 
-
-
-        //[HttpPost]
         public ActionResult Download(long SubscriptionId, string FileName)
         {
             string hasArchiveFileMessage = string.Empty;
-
-
-            var archiveFile = new RadiusR.FileManagement.MasterISSFileManager();
+            var archiveFile = new MasterISSFileManager();
             var archiveFileList = archiveFile.GetClientAttachmentsList(SubscriptionId);
-
 
             var fileException = archiveFileList.InternalException;
 
@@ -351,12 +300,10 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
                         return File(selectedFile.Result.Content, selectedFile.Result.FileDetail.MIMEType, downloadFileName);
                     }
-
                 }
-
                 return View();
             }
-
+            ViewBag.Exception =Localization.Model.Exception;
             return View();
         }
 
@@ -422,7 +369,8 @@ namespace MasterISS_Archive_Management_Website.Controllers
                     return File(resultStream, "application/zip", downloadFileZipName);
                 }
             }
-            return RedirectToAction("Manage", "Archive");
+            ViewBag.Exception = Localization.Model.Exception;
+            return RedirectToAction("Manage", "Archive");//bak buraya
         }
     }
 }

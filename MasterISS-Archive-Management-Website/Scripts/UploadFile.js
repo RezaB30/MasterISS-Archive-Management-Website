@@ -15,6 +15,8 @@ dropzone.addEventListener("drop", function (e) {
         currentFiles.push(files[i]);
         //columns += "<div data-file='" + files[i].name + "' class='col-md-6 col-sm-6 col-xl-3'><img onclick=" + "RemoveFile('" + files[i].name + "');" + " style='width:2em;' src='/Content/img/remove-file.svg' alt='image'>" + files[i].name + "</div>";
         columns += "<div data-file='" + files[i].name + "' class='col-md-6 col-sm-6 col-xl-3'><img onclick=" + "RemoveFile('" + files[i].name + "');" + " style='width:2em; margin-top:1em;' src='/Content/img/remove-file.svg' alt='image'>" + "<img style = 'width:3em; margin-top:1em;' src = '/Content/img/file.svg' alt = 'image' >" + files[i].name + "</div>";
+        //columns += "<div data-file='" + files[i].name + "' class='col-md-6 col-sm-6 col-xl-3'><img onclick=" + "RemoveAllFile('" + files[i].name + "');" + " style='width:2em; margin-top:1em;' src='/Content/img/remove-file.svg' alt='image'>" + "<img style = 'width:3em; margin-top:1em;' src = '/Content/img/file.svg' alt = 'image' >" + files[i].name + "</div>";
+
     }
     $('#dropzone').append("<div class='row'>" + columns + "</div>");
 });
@@ -36,8 +38,9 @@ $('#customerContract').change(function (e) {
     for (var i = 0; i < files.length; i++) {
         currentFiles.push(files[i]);
         columns += "<div data-file='" + files[i].name + "' class='col-md-6 col-sm-6 col-xl-3'><img onclick=" + "RemoveFile('" + files[i].name + "');" + " style='width:2em; margin-top:1em;' src='/Content/img/remove-file.svg' alt='image'>" + "<img style = 'width:3em; margin-top:1em;' src = '/Content/img/file.svg' alt = 'image' >" + files[i].name + "</div>";
-        //columns += "<div data-file='" + files[i].name + "' class='col-md-6 col-sm-6 col-xl-3'><img onclick=" + "RemoveFile('" + files[i].name + "');" + " style='width:2em;' src='/Content/img/remove-file.svg' alt='image'>" + files[i].name + "</div>";
     }
+        //columns += "<div data-file='"  + "' class='col-md-6 col-sm-6 col-xl-3'><img onclick=" + "RemoveAllFile();" + " style='width:5em;' src='/Content/img/remove-file.svg' alt='image'>" "</div>";
+
     $('#dropzone').append("<div class='row'>" + columns + "</div>");
 });
 function UploadFile() {
@@ -45,4 +48,20 @@ function UploadFile() {
         $('#contract-form').append("<input name='selectedFiles' class='d-none' value='" + currentFiles[i].name + "'>");
     }
     $('#contract-form').submit();
+}
+
+function Clear(fileName) {
+    var index = currentFiles.indexOf(fileName);
+    var removed = currentFiles.splice(index, 1);
+    $('div[data-file="' + fileName + '"]').remove();
+}
+
+
+function RemoveAllFile() {
+    for (var i = 0; i < file.columns; i++) {
+        var index = currentFiles.indexOf(fileName);
+        var removed = currentFiles.splice(index, i+1);
+        $('div[data-file="' + fileName + '"]').remove();
+    }
+
 }

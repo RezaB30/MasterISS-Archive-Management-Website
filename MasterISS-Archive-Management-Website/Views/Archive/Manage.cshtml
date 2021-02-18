@@ -12,6 +12,9 @@
             ARCHIVE NUMBER : @ViewBag.SubscriptionId
         </h1>
 
+        @ViewBag.Exception
+
+
 
         @for (int i = 0; i < 9; i++)
         {<table>
@@ -33,7 +36,7 @@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(model => fileItem.FileExtention)
-                                </td>                              
+                                </td>
                                 <td>
                                     <a href="@Url.Action("Download", "Archive", new { SubscriptionId = ViewBag.SubscriptionId,FileName = fileItem.ServerSideName })">Download</a>
                                 </td>
@@ -51,9 +54,9 @@
                     }
 
                 }
-             
+
             </table>
         }
-      
+
     </div>
 </div>

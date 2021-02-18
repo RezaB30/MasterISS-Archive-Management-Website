@@ -11,7 +11,7 @@ using RezaB.Web.Authentication;
 
 namespace MasterISS_Archive_Management_Website.Controllers
 {
-    public class AuthController: Controller
+    public class AuthController : Controller
     {
         public ActionResult Index()
         {
@@ -42,13 +42,23 @@ namespace MasterISS_Archive_Management_Website.Controllers
                     // valid login
                     else
                     {
-
+                        return RedirectToAction("Index", "Archive");
                     }
                 }
-                ModelState.AddModelError("loginFailed", "ASS");
+                else
+                {
+                    ModelState.AddModelError("loginFailed", "ASS");
+                }
             }
-
             return View();
+        }
+
+
+        //[HttpPost]       
+        public ActionResult LogOut()
+        {   var authenticator = Request.GetOwinContext().Authentication;
+            authenticator.SignOut();
+            return RedirectToAction("Login","Auth");
         }
     }
 }

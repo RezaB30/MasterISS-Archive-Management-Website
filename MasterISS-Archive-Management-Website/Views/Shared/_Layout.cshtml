@@ -8,25 +8,69 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+    <div class="topnav">
+        @Html.ActionLink("MASTERISS Archive Management", "Index", "Archive")
+        @*<a href="#news">News</a>
+        <a href="#contact">Contact</a>*@
+        <div class="topnav-right">
+            @*@Html.ActionLink("Language", "Index", "Archive")*@
+
+
+            @*<nav role="navigation">*@
+                <ul>                  
+                    <li>
+                        <a href="#">Two</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Sub-1</a></li>
+                            <li><a href="#">Sub-2</a></li>
+                            <li><a href="#">Sub-3</a></li>
+                        </ul>
+                    </li>                  
                 </ul>
+            @*</nav>*@
+            @*<div class="dropdown">
+            <button class="dropbtn">Dropdown</button>
+            <div class="dropdown-content">
+
+                <a>
+                    @Html.ActionLink("Language", "Index", "Archive")
+                </a>
+                <a>
+                    @Html.ActionLink("Language", "Index", "Archive")
+                </a>
+
             </div>
+        </div>*@
+
+            @Html.ActionLink("Log Out", "LogOut", "Auth")
+
+            @* <a href="#about">About</a>*@
         </div>
     </div>
+    <!--<div class="navbar navbar-inverse navbar-fixed-top">-->
+    @*<div class="container">*@
+    <!--<div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>-->
+    @*@Html.ActionLink("MASTERISS Archive Management", "Index", "Archive", new { area = "" }, new { @class = "navbar-brand" })*@
+    <!--</div>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">-->
+    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
+    <!--<li>-->@*@Html.ActionLink("About", "About", "Home")*@
+    <!--</li>
+    <li class="k">-->
+    @*@Html.ActionLink("Log Out", "LogOut", "Auth")*@
+    <!--</li>
+            </ul>
+        </div>
+    </div>-->
+    @*</div>*@
+
+
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -34,7 +78,7 @@
             @*<p>&copy; @DateTime.Now.Year</p>*@
         </footer>
     </div>
- 
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
 

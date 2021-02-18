@@ -6,80 +6,106 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@*<style>
+    #visible-manage-button {
+        display: none
+    }
+    .hidden-part {
+        display: none
+    }
+</style>*@
+
+@if (ViewBag.SubscriptionId != null)
+{
+    <style>
+        #visible-manage-button {
+            display: block
+        }
+    </style>
+}
 
 <div class="container">
     @using (Html.BeginForm())
-
     {
         <div class="home-page">
             <div>
                 @Html.TextBox("SubscriptionId")
-
             </div>
 
             <div class="home-page">
                 <button type="submit">Search</button>
             </div>
         </div>
-        @*}*@
 
-        <div class="message">
-            @ViewBag.hasArchiveFileMessage
-        </div>
+    }
+    <div class="message">
+        @ViewBag.NoSubscriberFound
+        @ViewBag.HasArchiveFileMessage
+    </div>
 
 
-        if (Model != null)
-        {<table>
+    @if (Model != null)
+    {
+        <table>
+            <tr class="home-page">
+                <td>
+                    @Html.DisplayNameFor(model => model.AttachmentType)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.CreationDate)
+                </td>
+                <td colspan="2">
+                </td>
+            </tr>
 
-                <tr class="home-page">
+            @foreach (var item in Model)
+            {
+                <tr>
                     <td>
-                        @Html.DisplayNameFor(model => model.AttachmentType)
+                        @Html.DisplayFor(modelItem => item.AttachmentType)
                     </td>
                     <td>
-                        @Html.DisplayNameFor(model => model.CreationDate)
-                    </td>
-                    @*<td>
-                        @Html.DisplayNameFor(model => model.MIMEType)
+                        @Html.DisplayFor(modelItem => item.CreationDate)
                     </td>
                     <td>
-                        @Html.DisplayNameFor(model => model.FileExtention)
-                    </td>*@
-                    <td colspan="2">
+                        <a href="@Url.Action("Download", "Archive", new { SubscriptionId = ViewBag.SubscriptionId, FileName = item.ServerSideName })">Download</a>
+                    </td>
+                    <td>
+                         @using (Html.BeginForm("Delete", "Archive", FormMethod.Post, new { @class = "delete-submit" }))
+                        {
+                        <div class="hidden-part">
+                            @Html.TextBox("SubscriptionId")
+
+                            @Html.Hidden("serverSideName", item.ServerSideName)//?-null
+                        </div>                         
+                      
+                            <button type="submit">Delete</button>
+                        }
                     </td>
                 </tr>
 
+            }
 
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.AttachmentType)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CreationDate)
-                        </td>
-                        @*<td>
-                            @Html.DisplayFor(modelItem => item.MIMEType)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.FileExtention)
-                        </td>*@
-                        <td>
-                            <a href="@Url.Action("Download", "Archive", new { SubscriptionId= ViewBag.SubscriptionId,FileName = item.ServerSideName})">Download</a>
-                        </td>
-                        <td>
-                            @Html.ActionLink("Delete", "Delete", "Archive", new { SubscriptionId = ViewBag.SubscriptionId })
-                        </td>
-                    </tr>
-                }
+        </table>
+        <a href="@Url.Action("DownloadZipFile", "Archive",  new { SubscriptionId= ViewBag.SubscriptionId})">Download All(ZIP)</a>
 
-            </table>
-            <a href="@Url.Action("DownloadZipFile", "Archive",  new { SubscriptionId= ViewBag.SubscriptionId})">Download All(ZIP)</a>
-
-            <a href="@Url.Action("Manage", "Archive",  new { SubscriptionId= ViewBag.SubscriptionId})">Manage</a>
-
-        }
     }
 
-
+    <div id="visible-manage-button">
+        <a href="@Url.Action("Manage", "Archive",  new { SubscriptionId= ViewBag.SubscriptionId})">Manage</a>
+    </div>
 </div>
+
+
+@section script{
+
+    <script>
+        $(".delete-submit").submit(function (e) {
+            if (!confirm("Are You Sure?")) {
+                e.preventDefault();
+            }
+        });
+    </script>
+
+}
+

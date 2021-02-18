@@ -8,10 +8,11 @@ namespace MasterISS_Archive_Management_Website
 {
     static class ArcihivingUtilities
     {
-        //public static CreateArchiveAttachmentName(currentResult.Result.FileDetail)
+        //public static string CreateArchiveAttachmentName(string fileDetail)
         //{
         //    var archiveFile = new MasterISSFileManager();
         //    archiveFile.GetClientAttachmentsList();
+        //    return null;
         //}
     }
 }

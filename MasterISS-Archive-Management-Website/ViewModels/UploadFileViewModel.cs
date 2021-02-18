@@ -13,7 +13,8 @@ namespace MasterISS_Archive_Management_Website.ViewModels
     {       
         public long SubscriptionId { get; set; }
         public int AttachmentType { get; set; }
-        public HttpPostedFileBase File { get; set; }
+        //public HttpPostedFileBase File { get; set; }
+        [Required(ErrorMessage="You Must Upload File")]
         public IEnumerable <HttpPostedFileBase> Files { get; set; }
     }
 }

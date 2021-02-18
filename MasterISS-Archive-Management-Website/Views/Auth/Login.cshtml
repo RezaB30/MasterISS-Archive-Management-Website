@@ -1,6 +1,22 @@
-﻿@{
+﻿@model MasterISS_Archive_Management_Website.ViewModels.LoginViewModel
+@{
     Layout = null;
 }
+
+<style>
+
+    .login-content {
+        padding-top:5em;
+        max-width: 10em;
+        margin: auto;
+        background: white;
+     /*   padding:1em;
+        padding-top:2em*/
+    }
+    .login-content>div{
+        margin-top:1em;
+    }
+</style>
 
 <!DOCTYPE html>
 
@@ -10,6 +26,22 @@
     <title>Login</title>
 </head>
 <body>
+    @using (Html.BeginForm("Login", "Auth", FormMethod.Post))
+    {
+        <div class="login-content">
+            <div>
+                @Html.EditorFor(m => m.Username)
+            </div>
+            <div>
+                @Html.EditorFor(m => m.Password)
+            </div>
+            <div>
+                <button type="submit">Login</button>
+            </div>
+        </div>
+    }
+
+
     <div>
         @Html.ValidationMessage("loginFailed")
     </div>
