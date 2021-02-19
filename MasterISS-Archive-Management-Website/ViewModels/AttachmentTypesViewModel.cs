@@ -8,7 +8,7 @@ namespace MasterISS_Archive_Management_Website.ViewModels
     public class AttachmentTypesViewModel
     {
         public int AttachmentTypeEnumNumber { get; set; }
-        //public string AttachmentTypeEnumName { get; set; }
+        public string AttachmentTypeEnumName { get; set; }
 
     }
 }

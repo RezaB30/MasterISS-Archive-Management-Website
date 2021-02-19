@@ -14,6 +14,7 @@ using System.IO.Compression;
 using System.Drawing.Drawing2D;
 using System.Text;
 using RadiusR.FileManagement.SpecialFiles;
+using RezaB.Data.Localization;
 
 namespace MasterISS_Archive_Management_Website.Controllers
 {
@@ -220,9 +221,6 @@ namespace MasterISS_Archive_Management_Website.Controllers
         //[HttpPost]
         public ActionResult Manage(long SubscriptionId)
         {
-
-
-
             string hasArchiveFileMessage = string.Empty;
 
             var archiveFile = new MasterISSFileManager();
@@ -235,15 +233,51 @@ namespace MasterISS_Archive_Management_Website.Controllers
             {
                 var subscriptionFileList = archiveFileList.Result;
 
-                var attachmentTypeList = new List<AttachmentTypesViewModel>();
+                //var attachmentTypeNameList = new List<AttachmentTypesViewModel>();
+                //var attachmentTypeNumberList = new List<AttachmentTypesViewModel>();
 
-                foreach (int attachmentType in Enum.GetValues(typeof(ClientAttachmentTypes)))
-                {
-                    attachmentTypeList.Add(new AttachmentTypesViewModel()
-                    {
-                        AttachmentTypeEnumNumber = attachmentType
-                    });
-                }
+                var attachmentTypesList = new LocalizedList<RadiusR.FileManagement.SpecialFiles.ClientAttachmentTypes, RadiusR.Localization.Lists.ClientAttachmentTypes>();
+                //var at=attachmentTypesList.GetList(culture:null);
+                var attachmentTypeItem = attachmentTypesList.GetList().Select(t=>new AttachmentTypesViewModel()
+                { 
+                    AttachmentTypeEnumName=t.Value,
+                    AttachmentTypeEnumNumber=t.Key
+                });
+
+
+                ////var k = Enum.GetValues(typeof(ClientAttachmentTypes));
+
+                //foreach (var attachmentTypeName in Enum.GetNames(typeof(ClientAttachmentTypes)))
+                //{
+                //    attachmentTypeNameList.Add(new AttachmentTypesViewModel()
+                //    {
+                //        AttachmentTypeEnumName = attachmentTypeName
+                //    });
+                //}
+
+                //foreach (int attachmentTypeNumber in Enum.GetValues(typeof(ClientAttachmentTypes)))
+                //{
+                //    attachmentTypeNumberList.Add(new AttachmentTypesViewModel()
+                //    {
+                //        AttachmentTypeEnumNumber = attachmentTypeNumber
+                //    });
+                //}
+
+                //var typeList = new List<AttachmentTypesViewModel>();
+
+                //typeList = Enum.GetValues(typeof(ClientAttachmentTypes)).Cast<>.Select(t => new AttachmentTypesViewModel
+                //{
+                //    AttachmentTypeEnumNumber =t.AttachmentTypeEnumNumber,
+                //    AttachmentTypeEnumName = t.AttachmentTypeEnumName
+                //});
+                //for (int i = 0; i < Enum.GetValues(typeof(ClientAttachmentTypes)).Length; i++)
+                //{
+                //    attachmentTypeNumberList.Add(new AttachmentTypesViewModel()
+                //    {
+                //        AttachmentTypeEnumNumber = 
+                //    });
+                //}
+
 
                 if (subscriptionFileList != null)
                 {
@@ -265,7 +299,17 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
                     var viewModel = new FileAndAttachmentViewModel
                     {
-                        AttachmentTypeList = attachmentTypeList,
+                        //AttachmentTypeNameList = attachmentTypeNameList,
+                        //AttachmentTypeNumberList = attachmentTypeNumberList,
+                        //AttachmentTypeList= attachmentTypesList.GetList().Cast<AttachmentTypesViewModel>().ToList(),
+
+                        //AttachmentTypeList = attachmentTypesList.GetList().Select(t=>new AttachmentTypesViewModel
+                        //{ AttachmentTypeEnumName=t.Value,
+                        //AttachmentTypeEnumNumber=t.Key
+                        //}),
+                        AttachmentTypeList= attachmentTypeItem.ToList(),
+
+                        //AttachmentTypeList = k,
                         FileDetailList = viewResultLists.ToList()
                     };
                     return View(viewModel);

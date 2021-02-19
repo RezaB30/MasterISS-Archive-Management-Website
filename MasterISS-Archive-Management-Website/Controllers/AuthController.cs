@@ -11,7 +11,7 @@ using RezaB.Web.Authentication;
 
 namespace MasterISS_Archive_Management_Website.Controllers
 {
-    public class AuthController : Controller
+    public class AuthController : BaseController
     {
         public ActionResult Index()
         {

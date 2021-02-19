@@ -29,9 +29,13 @@
     {
         <div class="home-page">
             <div>
-              @*  @Html.TextBox("SubscriptionId",null, new {htmlAttribute=new { @data-inputmask-regex = "[0-90-9- ]*" } })*@
-                @Html.TextBox("SubscriptionId");
-            @*    @Html.EditorFor(,)*@
+                  @*@Html.TextBox("SubscriptionId",null, new {htmlAttribute=new { @data-inputmask-regex = "[0-90-9- ]*" } })*@
+                @Html.TextBox("SubscriptionId")
+      
+                @*<input class="SubscriptionId" type="text" />*@
+              
+
+                @*    @Html.EditorFor(,)*@
             </div>
 
             <div class="home-page">
@@ -100,7 +104,7 @@
 
 @section script{
     <script>
-        $(".inputmask").inputmask({ regex: "[0-90-9- ]*" });
+        $(".SubscriptionId").inputmask({ regex: "[0-90-9- ]*" });
     </script>
 
     <script>
