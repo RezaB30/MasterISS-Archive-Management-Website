@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+
 namespace MasterISS_Archive_Management_Website.Properties {
     
     
@@ -31,5 +33,7 @@ namespace MasterISS_Archive_Management_Website.Properties {
                 return ((int)(this["uploadMaxFileCount"]));
             }
         }
+
+        public TimeSpan CookieExpiration { get; internal set; }
     }
 }

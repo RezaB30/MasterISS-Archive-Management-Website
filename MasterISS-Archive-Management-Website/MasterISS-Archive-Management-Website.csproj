@@ -201,6 +201,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\LanguageLinkHelper.cs" />
     <Compile Include="Localization\Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -212,7 +213,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AttachmentTypesViewModel.cs" />
     <Compile Include="ViewModels\DownloadFileViewModel.cs" />
+    <Compile Include="ViewModels\FileAndAttachmentViewModel.cs" />
     <Compile Include="ViewModels\FileDetailViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\SubscriptionsArchiveFileViewModel.cs" />
@@ -226,6 +229,7 @@
     <Content Include="Content\Custom.css" />
     <Content Include="Content\img\file.svg" />
     <Content Include="Content\img\remove-file.svg" />
+    <Content Include="Content\img\remove-all.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -280,6 +284,7 @@
     <Content Include="Views\Shared\DisplayTemplates\LocalizedList.cshtml" />
     <Content Include="Views\Archive\Manage.cshtml" />
     <Content Include="Views\Archive\UploadNewFile.cshtml" />
+    <Content Include="Views\Shared\_LanguagePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

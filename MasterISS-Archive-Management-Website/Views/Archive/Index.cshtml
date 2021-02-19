@@ -7,13 +7,13 @@
 }
 
 @*<style>
-    #visible-manage-button {
-        display: none
-    }
-    .hidden-part {
-        display: none
-    }
-</style>*@
+        #visible-manage-button {
+            display: none
+        }
+        .hidden-part {
+            display: none
+        }
+    </style>*@
 
 @if (ViewBag.SubscriptionId != null)
 {
@@ -29,7 +29,9 @@
     {
         <div class="home-page">
             <div>
-                @Html.TextBox("SubscriptionId")
+              @*  @Html.TextBox("SubscriptionId",null, new {htmlAttribute=new { @data-inputmask-regex = "[0-90-9- ]*" } })*@
+                @Html.TextBox("SubscriptionId");
+            @*    @Html.EditorFor(,)*@
             </div>
 
             <div class="home-page">
@@ -71,19 +73,18 @@
                         <a href="@Url.Action("Download", "Archive", new { SubscriptionId = ViewBag.SubscriptionId, FileName = item.ServerSideName })">Download</a>
                     </td>
                     <td>
-                         @using (Html.BeginForm("Delete", "Archive", FormMethod.Post, new { @class = "delete-submit" }))
+                        @using (Html.BeginForm("Delete", "Archive", FormMethod.Post, new { @class = "delete-submit" }))
                         {
-                        <div class="hidden-part">
-                            @Html.TextBox("SubscriptionId")
+                            <div class="hidden-part">
+                                @Html.TextBox("SubscriptionId")
 
-                            @Html.Hidden("serverSideName", item.ServerSideName)//?-null
-                        </div>                         
-                      
+                                @Html.Hidden("serverSideName", item.ServerSideName)//?-null
+                            </div>
+
                             <button type="submit">Delete</button>
                         }
                     </td>
                 </tr>
-
             }
 
         </table>
@@ -98,6 +99,9 @@
 
 
 @section script{
+    <script>
+        $(".inputmask").inputmask({ regex: "[0-90-9- ]*" });
+    </script>
 
     <script>
         $(".delete-submit").submit(function (e) {

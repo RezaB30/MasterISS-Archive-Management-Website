@@ -18,6 +18,8 @@ namespace MasterISS_Archive_Management_Website.ViewModels
         public string FileExtention { get; set; }
         public string ServerSideName { get; set; }
 
+
+
         //public long SubscriptionId { get; set; }
 
     }

@@ -117,11 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Clear" xml:space="preserve">
+    <value>Temizle</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Sil</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>İndir</value>
+  </data>
   <data name="Exception" xml:space="preserve">
     <value>Hata</value>
   </data>
   <data name="FileCountError" xml:space="preserve">
     <value>En Fazla {0} Dosya Yükleyebilirsiniz</value>
+  </data>
+  <data name="FileisUploading" xml:space="preserve">
+    <value>Dosya Yükleniyor...</value>
   </data>
   <data name="FileSizeError" xml:space="preserve">
     <value>En Fazla {0} MB Dosya Yükleyebilirsiniz</value>
@@ -129,8 +141,14 @@
   <data name="HasArchiveFileMessage" xml:space="preserve">
     <value>Aboneye Ait Dosya Bulunamadı</value>
   </data>
+  <data name="Manage" xml:space="preserve">
+    <value>Yönet</value>
+  </data>
   <data name="NoSubscriberFound" xml:space="preserve">
     <value>Abone Bulunamadı</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Kaydet</value>
   </data>
   <data name="UploadFilesStatus" xml:space="preserve">
     <value>Dosyalar Yüklendi</value>
@@ -138,7 +156,13 @@
   <data name="UploadFileStatus" xml:space="preserve">
     <value>Dosya Yüklendi</value>
   </data>
+  <data name="UploadNewFile" xml:space="preserve">
+    <value>Yeni Dosya Yükle</value>
+  </data>
   <data name="UploadStatus" xml:space="preserve">
     <value>Dosya Yüklenemedi</value>
+  </data>
+  <data name="ZIP" xml:space="preserve">
+    <value>ZİP</value>
   </data>
 </root>

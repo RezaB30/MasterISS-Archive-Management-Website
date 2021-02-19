@@ -1,45 +1,21 @@
 ﻿@model MasterISS_Archive_Management_Website.ViewModels.UploadFileViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-  
+
     <script src="~/Scripts/jquery-3.4.1.js"></script>
 }
-
-<style>
-
-    /*    #mydropzone {
-                border-radius: 0.5em;
-                border: 0.2em solid #ccc;
-                background-color: #eee;
-                width: 75em;
-                text-align: center;
-                color: #555;
-                margin: 3em;
-                height: 30em;
-            }
-        */
-    /* #dropZone.hover {
-                    border-color: #aaa;
-                    background-color: #ddd;
-                }
-
-                #dropZone.error {
-                    border-color: #f00;
-                    background-color: #faa;
-                }*/
-</style>
-
 
 
 @using (Html.BeginForm("UploadNewFile", "Archive", FormMethod.Post, new
 { enctype = "multipart/form-data", @class = "upload-submit" }))
 {
-<div class="message">
-    
-    @ViewBag.FileSizeError
-    @ViewBag.FileCountError
-    @ViewBag.UploadStatus
-</div>
+    <div class="message">
+
+        @ViewBag.FileSizeError
+        @ViewBag.FileCountError
+        @ViewBag.UploadStatus
+        @ViewBag.UploadFileStatus
+    </div>
     <div id="dropzone" class="drag-area ">
         <div class="dropzone-msg dz-message needsclick">
             @Html.ValidationMessageFor(m => m.Files)
@@ -65,25 +41,31 @@
 
     <div class="uploading-files">
         File Uploading...
+
     </div>
 }
 
 
 @section script{
     @Scripts.Render("~/Scripts/UploadFile.js")
-    
+
     <script>
         $(".upload-button").click(function () {
             $('.upload-button').hide();
             $('.clear-button').hide();
-            $('.upload-files').show();
-        });        
+            $('.uploading-files').show();
+        });
     </script>
+
+    @*<script>
+            $('.clear-button').click(function () {
+                window.location.href = "@Url.Action("UploadNewFile","Archive")";
+            })
+        </script>*@
 
     <script>
         $('.clear-button').click(function () {
-            window.location.href = "@Url.Action("UploadNewFile","Archive")";
+            $('.drag-area').empty();
         })
     </script>
-
 }

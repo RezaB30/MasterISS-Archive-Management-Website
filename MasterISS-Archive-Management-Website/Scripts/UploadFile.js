@@ -15,7 +15,8 @@ dropzone.addEventListener("drop", function (e) {
         currentFiles.push(files[i]);
         //columns += "<div data-file='" + files[i].name + "' class='col-md-6 col-sm-6 col-xl-3'><img onclick=" + "RemoveFile('" + files[i].name + "');" + " style='width:2em;' src='/Content/img/remove-file.svg' alt='image'>" + files[i].name + "</div>";
         columns += "<div data-file='" + files[i].name + "' class='col-md-6 col-sm-6 col-xl-3'><img onclick=" + "RemoveFile('" + files[i].name + "');" + " style='width:2em; margin-top:1em;' src='/Content/img/remove-file.svg' alt='image'>" + "<img style = 'width:3em; margin-top:1em;' src = '/Content/img/file.svg' alt = 'image' >" + files[i].name + "</div>";
-        //columns += "<div data-file='" + files[i].name + "' class='col-md-6 col-sm-6 col-xl-3'><img onclick=" + "RemoveAllFile('" + files[i].name + "');" + " style='width:2em; margin-top:1em;' src='/Content/img/remove-file.svg' alt='image'>" + "<img style = 'width:3em; margin-top:1em;' src = '/Content/img/file.svg' alt = 'image' >" + files[i].name + "</div>";
+        //columns += "<div data-file='" + files[i].name + "' class='col-md-6 col-sm-6 col-xl-3'><img onclick=" + "RemoveAllFile('" + files[i].name + "');" + " style='width:2em; margin-top:1em;' src='/Content/img/remove-all.png' alt='image'>" + "<img style = 'width:3em; margin-top:1em;' src = '/Content/img/file.svg' alt = 'image' >" + files[i].name + "</div>";
+        //columns += "<div data-file='" + files[i].name + "' class='col-md-6 col-sm-6 col-xl-3'><img onclick=" + "RemoveAllFile('" + files[i].name + "');" + " style='width:2em;' src='/Content/img/remove-all.png' alt='image'>" + files[i].name + "</div>";
 
     }
     $('#dropzone').append("<div class='row'>" + columns + "</div>");
@@ -57,11 +58,11 @@ function Clear(fileName) {
 }
 
 
-function RemoveAllFile() {
+function RemoveAllFile(fileName) {
     for (var i = 0; i < file.columns; i++) {
         var index = currentFiles.indexOf(fileName);
         var removed = currentFiles.splice(index, i+1);
-        $('div[data-file="' + fileName + '"]').remove();
+        $('div[data-file="' + fileName + '"]').RemoveAllFile();
     }
 
 }

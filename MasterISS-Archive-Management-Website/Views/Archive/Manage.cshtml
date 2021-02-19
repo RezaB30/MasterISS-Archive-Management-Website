@@ -1,6 +1,10 @@
-﻿@using MasterISS_Archive_Management_Website.ViewModels
-@model IEnumerable<FileDetailViewModel>
+﻿@*@using MasterISS_Archive_Management_Website.ViewModels*@
 
+@model MasterISS_Archive_Management_Website.ViewModels.FileAndAttachmentViewModel
+
+
+@*@model IEnumerable<FileDetailViewModel>*@
+@*@model IEnumerable<FileAndAttachmentViewModel>*@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,18 +18,18 @@
 
         @ViewBag.Exception
 
+        @foreach (var item in Model.AttachmentTypeList)
+        {
+            <table>
+                <tr>
+                    @Html.DisplayFor(model => item.AttachmentTypeEnumNumber)
+                </tr>
 
-
-        @for (int i = 0; i < 9; i++)
-        {<table>
-                @foreach (var fileItem in Model)
+                @if (Model.FileDetailList != null)
                 {
-                    if (fileItem.AttachmentType == i)
+                    foreach (var fileItem in Model.FileDetailList)
                     {
-                        <tr>
-                            @Html.DisplayFor(model => fileItem.AttachmentType)
-                        </tr>
-                        if (Model != null)
+                        if (item.AttachmentTypeEnumNumber == fileItem.AttachmentType)
                         {
                             <tr>
                                 <td>
@@ -41,22 +45,42 @@
                                     <a href="@Url.Action("Download", "Archive", new { SubscriptionId = ViewBag.SubscriptionId,FileName = fileItem.ServerSideName })">Download</a>
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("Delete", "Archive", new { SubscriptionId = ViewBag.SubscriptionId, FileName = fileItem.ServerSideName })">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="@Url.Action("UploadNewFile", "Archive",  new { SubscriptionId = ViewBag.SubscriptionId, AttachmentType=fileItem.AttachmentType })">Upload New File</a>
-                                </td>
-                            </tr>
+                                    @* <a href="@Url.Action("Delete", "Archive", new { SubscriptionId = ViewBag.SubscriptionId, FileName = fileItem.ServerSideName })">Delete</a>*@
+                                    @*   @Html.ActionLink("Delete", "Delete", "Archive", new { SubscriptionId = ViewBag.SubscriptionId, FileName = fileItem.ServerSideName })*@
 
+                                    @using (Html.BeginForm("Delete", "Archive", FormMethod.Post, new { @class = "delete-submit" }))
+                                    {
+                                        <div class="hidden-part">
+                                            @Html.TextBox("SubscriptionId")
+
+                                            @Html.Hidden("serverSideName", fileItem.ServerSideName)
+                                        </div>
+
+                                        <button type="submit">Delete</button>
+                                    }
+                                </td>
+                            </tr>
                         }
                     }
-
                 }
-
+                <tr>
+                    <td>
+                        <a href="@Url.Action("UploadNewFile", "Archive",  new { SubscriptionId = ViewBag.SubscriptionId, AttachmentType=item.AttachmentTypeEnumNumber })">Upload New File</a>
+                    </td>
+                </tr>
             </table>
         }
-
     </div>
 </div>
+
+@section script{
+
+    <script>
+        $(".delete-submit").submit(function (e) {
+            if (!confirm("Are You Sure?")) {
+                e.preventDefault();
+            }
+        });
+    </script>
+
+}
