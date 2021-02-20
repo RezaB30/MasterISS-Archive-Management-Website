@@ -22,14 +22,14 @@ namespace MasterISS_Archive_Management_Website.Controllers
     {
         Logger archiveLogger = LogManager.GetLogger("archive");
 
-        public ActionResult UploadNewFile(long SubscriptionId, int AttachmentType)
+        public ActionResult UploadNewFile(long Id, int AttachmentType)
         {
             return View();
         }
 
         [HttpPost]
-        //public ActionResult UploadNewFile(long SubscriptionId, /*IEnumerable<HttpPostedFileBase> newAttachments*/ HttpPostedFileBase newAttachment ,int AttachmentType)
-        public ActionResult UploadNewFile(UploadFileViewModel uploadFile)
+        //public ActionResult UploadNewFile(long Id, /*IEnumerable<HttpPostedFileBase> newAttachments*/ HttpPostedFileBase newAttachment ,int AttachmentType)
+        public ActionResult UploadNewFile(UploadFileViewModel uploadFile,int AttachmentType)
         {
             long uploadMaxFileSize = CustomerWebsiteSettings.MaxSupportAttachmentSize;//byte
 
@@ -69,13 +69,16 @@ namespace MasterISS_Archive_Management_Website.Controllers
                 {
                     if (Request.Files.Count > 0)
                     {
-                        var attachmentType = (ClientAttachmentTypes)uploadFile.AttachmentType;
+                      
+                        //var attachmentType = (ClientAttachmentTypes)uploadFile.AttachmentType;
+                        var attachmentType = (ClientAttachmentTypes)AttachmentType;
+
 
                         var fileType = file.FileName.Split('.').LastOrDefault();
 
                         var fileManager = new MasterISSFileManager();
                         var newFile = new FileManagerClientAttachmentWithContent(file.InputStream, new FileManagerClientAttachment(attachmentType, fileType));
-                        var result = fileManager.SaveClientAttachment(uploadFile.SubscriptionId, newFile);
+                        var result = fileManager.SaveClientAttachment(uploadFile.Id, newFile);
                         if (result.InternalException != null)
                         {
                             return Content("Hata");
@@ -121,14 +124,14 @@ namespace MasterISS_Archive_Management_Website.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(long SubscriptionId)
+        public ActionResult Index(long Id)
         {
             string HasArchiveFileMessage = string.Empty;
 
 
             using (var db = new RadiusREntities())
             {
-                var result = db.Subscriptions.Find(SubscriptionId);
+                var result = db.Subscriptions.Find(Id);
                 if (result == null)
                 {
                     ViewBag.NoSubscriberFound = Localization.Model.NoSubscriberFound;
@@ -138,7 +141,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
             }
 
             var archiveFile = new MasterISSFileManager();
-            var archiveFileList = archiveFile.GetClientAttachmentsList(SubscriptionId);
+            var archiveFileList = archiveFile.GetClientAttachmentsList(Id);
 
             var fileException = archiveFileList.InternalException;
 
@@ -158,14 +161,14 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
                     }).OrderByDescending(d => d.CreationDate);
 
-                    ViewBag.SubscriptionId = SubscriptionId;
+                    ViewBag.Id = Id;
                     return View(viewResults);
                 }
-                ViewBag.SubscriptionId = SubscriptionId;
+                ViewBag.Id = Id;
                 ViewBag.HasArchiveFileMessage = Localization.Model.HasArchiveFileMessage;
                 return View();
             }
-            ViewBag.SubscriptionId = SubscriptionId;
+            ViewBag.Id = Id;
             ViewBag.Exception = Localization.Model.Exception;
             return View();
         }
@@ -176,15 +179,15 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
 
         [HttpPost]
-        public ActionResult Delete(long SubscriptionId, string serverSideName /*FileDetailViewModel file*/)
+        public ActionResult Delete(long Id, string serverSideName /*FileDetailViewModel file*/)
         {
             var archiveFile = new MasterISSFileManager();
 
-            var removeArchiveFile = archiveFile.RemoveClientAttachment(SubscriptionId,/* file.*/serverSideName);
+            var removeArchiveFile = archiveFile.RemoveClientAttachment(Id,/* file.*/serverSideName);
 
             var exception = removeArchiveFile.InternalException;
 
-            var archiveFileList = archiveFile.GetClientAttachmentsList(SubscriptionId);
+            var archiveFileList = archiveFile.GetClientAttachmentsList(Id);
 
             var fileException = archiveFileList.InternalException;
 
@@ -204,28 +207,28 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
                     }).OrderByDescending(d => d.CreationDate);
 
-                    ViewBag.SubscriptionId = SubscriptionId;
+                    ViewBag.Id = Id;
                     return View(viewName: "Index", model: viewResults);
                 }
-                ViewBag.SubscriptionId = SubscriptionId;
+                ViewBag.Id = Id;
                 ViewBag.HasArchiveFileMessage = Localization.Model.HasArchiveFileMessage;
                 //return View();
                 return RedirectToAction("Index", "Archive");
             }
-            ViewBag.SubscriptionId = SubscriptionId;
+            ViewBag.Id = Id;
             ViewBag.Exception = Localization.Model.Exception;
 
             return RedirectToAction("Index", "Archive");
         }
 
         //[HttpPost]
-        public ActionResult Manage(long SubscriptionId)
+        public ActionResult Manage(long Id)
         {
             string hasArchiveFileMessage = string.Empty;
 
             var archiveFile = new MasterISSFileManager();
 
-            var archiveFileList = archiveFile.GetClientAttachmentsList(SubscriptionId);
+            var archiveFileList = archiveFile.GetClientAttachmentsList(Id);
 
             var fileException = archiveFileList.InternalException;
 
@@ -294,10 +297,12 @@ namespace MasterISS_Archive_Management_Website.Controllers
                     //return View(viewResults);
 
                     var viewResultLists = viewResults.OrderBy(e => e.AttachmentType).ThenByDescending(d => d.CreationDate);
-                    ViewBag.SubscriptionId = SubscriptionId;
+                    ViewBag.Id = Id;
 
 
-                    var viewModel = new FileAndAttachmentViewModel
+                    //var viewModel = new FileAndAttachmentViewModel
+                    var viewModel = new UploadFileViewModel
+
                     {
                         //AttachmentTypeNameList = attachmentTypeNameList,
                         //AttachmentTypeNumberList = attachmentTypeNumberList,
@@ -307,7 +312,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
                         //{ AttachmentTypeEnumName=t.Value,
                         //AttachmentTypeEnumNumber=t.Key
                         //}),
-                        AttachmentTypeList= attachmentTypeItems.ToList(),
+                        AttachmentTypeList = attachmentTypeItems.ToList(),
 
                         //AttachmentTypeList = k,
                         FileDetailList = viewResultLists.ToList()
@@ -327,11 +332,11 @@ namespace MasterISS_Archive_Management_Website.Controllers
         }
 
 
-        public ActionResult Download(long SubscriptionId, string FileName)
+        public ActionResult Download(long Id, string FileName)
         {
             string hasArchiveFileMessage = string.Empty;
             var archiveFile = new MasterISSFileManager();
-            var archiveFileList = archiveFile.GetClientAttachmentsList(SubscriptionId);
+            var archiveFileList = archiveFile.GetClientAttachmentsList(Id);
 
             var fileException = archiveFileList.InternalException;
 
@@ -353,12 +358,12 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
                     //var fileName = viewResults.Select(f => new { fileName = f.ServerSideName }).First().ToString();
 
-                    var selectedFile = archiveFile.GetClientAttachment(SubscriptionId, FileName);
+                    var selectedFile = archiveFile.GetClientAttachment(Id, FileName);
                     if (selectedFile.InternalException == null)
                     {
                         var datetimeForDownloadFile = DateUtilities.ConvertToDateForDownloadFile(selectedFile.Result.FileDetail.CreationDate);
 
-                        string downloadFileName = SubscriptionId + "." + selectedFile.Result.FileDetail.AttachmentType + "." + datetimeForDownloadFile + "." + selectedFile.Result.FileDetail.FileExtention;
+                        string downloadFileName = Id + "." + selectedFile.Result.FileDetail.AttachmentType + "." + datetimeForDownloadFile + "." + selectedFile.Result.FileDetail.FileExtention;
 
                         return File(selectedFile.Result.Content, selectedFile.Result.FileDetail.MIMEType, downloadFileName);
                     }
@@ -371,11 +376,11 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
 
 
-        public ActionResult DownloadZipFile(long SubscriptionId)
+        public ActionResult DownloadZipFile(long Id)
         {
             var archiveFile = new MasterISSFileManager();
 
-            var archiveFileList = archiveFile.GetClientAttachmentsList(SubscriptionId);
+            var archiveFileList = archiveFile.GetClientAttachmentsList(Id);
 
             var fileException = archiveFileList.InternalException;
 
@@ -395,7 +400,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
                     });
 
-                    string downloadFileZipName = SubscriptionId + "." + "zip";
+                    string downloadFileZipName = Id + "." + "zip";
 
                     var docs = viewResults.ToList();
 
@@ -406,7 +411,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
                         foreach (var doc in docs)
                         {
 
-                            using (var currentResult = archiveFile.GetClientAttachment(SubscriptionId, doc.ServerSideName))
+                            using (var currentResult = archiveFile.GetClientAttachment(Id, doc.ServerSideName))
                             {
                                 if (currentResult.InternalException == null)
                                 {

@@ -489,3 +489,11 @@ li > a:only-child:after {
         width: 94%;
     }
 }
+
+
+div.drag-area {
+    /*background-color: lightblue;*/
+    /*  width: 110px;
+        height: 110px;*/
+    overflow: auto;
+}

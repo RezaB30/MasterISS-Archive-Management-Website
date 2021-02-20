@@ -1,18 +1,5 @@
 ﻿@model MasterISS_Archive_Management_Website.ViewModels.UploadFileViewModel
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-
-    <script src="~/Scripts/jquery-3.4.1.js"></script>
-}
-
-<style>
-    div.drag-area {
-        /*background-color: lightblue;*/
-      /*  width: 110px;
-        height: 110px;*/
-        overflow: auto;
-    }
-</style>
+    @using MasterISS_Archive_Management_Website.ViewModels
 
 @using (Html.BeginForm("UploadNewFile", "Archive", FormMethod.Post, new
 { enctype = "multipart/form-data", @class = "upload-submit" }))
@@ -26,14 +13,14 @@
     </div>
     <div id="dropzone" class="drag-area ">
         <div class="dropzone-msg dz-message needsclick">
-            @Html.ValidationMessageFor(m => m.Files)
+            @* @Html.ValidationMessageFor(m => m.Files)*@
             @* @Html.TextBoxFor(m => m.File, new { type = "file", @multiple = "multiple", @id = "customerDropFile" })*@
             <div class="hidden-part">
                 @Html.TextBoxFor(m => m.Files, new { type = "file", @multiple = "multiple", @id = "customerDropFile" })
             </div>
 
-            @Html.HiddenFor(m => m.Id)
-            @Html.HiddenFor(m => m.AttachmentType)
+            @Html.HiddenFor(m => m.SubscriptionId)
+                @Html.HiddenFor(m => m.AttachmentType)
 
             <input type="file" style="visibility:hidden" id="customerContract" name="customerContract" multiple />
             <h3 class="dropzone-msg-title" id="file-dialog">Drag And Drop Area</h3>
@@ -51,29 +38,4 @@
         File Uploading...
 
     </div>
-}
-
-
-@section script{
-    @Scripts.Render("~/Scripts/UploadFile.js")
-
-    <script>
-        $(".upload-button").click(function () {
-            $('.upload-button').hide();
-            $('.clear-button').hide();
-            $('.uploading-files').show();
-        });
-    </script>
-
-    @*<script>
-            $('.clear-button').click(function () {
-                window.location.href = "@Url.Action("UploadNewFile","Archive")";
-            })
-        </script>*@
-
-    <script>
-        $('.clear-button').click(function () {
-            $('.drag-area').empty();
-        })
-    </script>
 }

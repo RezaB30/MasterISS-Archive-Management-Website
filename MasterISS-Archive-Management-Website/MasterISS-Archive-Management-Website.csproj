@@ -287,6 +287,7 @@
     <Content Include="Views\Archive\Manage.cshtml" />
     <Content Include="Views\Archive\UploadNewFile.cshtml" />
     <Content Include="Views\Shared\_LanguagePartial.cshtml" />
+    <Content Include="Views\Shared\_UploadNewFile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -7,8 +7,8 @@ namespace MasterISS_Archive_Management_Website.ViewModels
 {
     public class FileAndAttachmentViewModel
     {
-        public List<FileDetailViewModel> FileDetailList { get; set; }
-        public List<AttachmentTypesViewModel> AttachmentTypeList{ get; set; }
+        //public List<FileDetailViewModel> FileDetailList { get; set; }
+        //public List<AttachmentTypesViewModel> AttachmentTypeList { get; set; }
         //public List<AttachmentTypesViewModel> AttachmentTypeNumberList { get; set; }
 
     }

@@ -1,7 +1,7 @@
 ﻿@*@using MasterISS_Archive_Management_Website.ViewModels*@
 
-@model MasterISS_Archive_Management_Website.ViewModels.FileAndAttachmentViewModel
-
+@model MasterISS_Archive_Management_Website.ViewModels.UploadFileViewModel
+@using MasterISS_Archive_Management_Website.ViewModels
 
 @*@model IEnumerable<FileDetailViewModel>*@
 @*@model IEnumerable<FileAndAttachmentViewModel>*@
@@ -13,7 +13,7 @@
 <div class="container">
     <div>
         <h1 class="home-page">
-            ARCHIVE NUMBER : @ViewBag.SubscriptionId
+            ARCHIVE NUMBER : @ViewBag.Id
         </h1>
 
         @ViewBag.Exception
@@ -42,16 +42,16 @@
                                     @Html.DisplayFor(model => fileItem.FileExtention)
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("Download", "Archive", new { SubscriptionId = ViewBag.SubscriptionId,FileName = fileItem.ServerSideName })">Download</a>
+                                    <a href="@Url.Action("Download", "Archive", new { Id = ViewBag.Id,FileName = fileItem.ServerSideName })">Download</a>
                                 </td>
                                 <td>
-                                    @* <a href="@Url.Action("Delete", "Archive", new { SubscriptionId = ViewBag.SubscriptionId, FileName = fileItem.ServerSideName })">Delete</a>*@
-                                    @*   @Html.ActionLink("Delete", "Delete", "Archive", new { SubscriptionId = ViewBag.SubscriptionId, FileName = fileItem.ServerSideName })*@
+                                    @* <a href="@Url.Action("Delete", "Archive", new { Id = ViewBag.Id, FileName = fileItem.ServerSideName })">Delete</a>*@
+                                    @*   @Html.ActionLink("Delete", "Delete", "Archive", new { Id = ViewBag.Id, FileName = fileItem.ServerSideName })*@
 
                                     @using (Html.BeginForm("Delete", "Archive", FormMethod.Post, new { @class = "delete-submit" }))
                                     {
                                         <div class="hidden-part">
-                                            @Html.TextBox("SubscriptionId")
+                                            @Html.TextBox("Id")
 
                                             @Html.Hidden("serverSideName", fileItem.ServerSideName)
                                         </div>
@@ -64,8 +64,43 @@
                     }
                 }
                 <tr>
-                    <td>
-                        <a href="@Url.Action("UploadNewFile", "Archive",  new { SubscriptionId = ViewBag.SubscriptionId, AttachmentType=item.AttachmentTypeEnumNumber })">Upload New File</a>
+                    <td colspan="5">
+
+                        @using (Html.BeginForm("UploadNewFile", "Archive", FormMethod.Post, new { enctype = "multipart/form-data", @class = "upload-submit" }))
+                        {
+                            <div class="message">
+                                @ViewBag.FileSizeError
+                                @ViewBag.FileCountError
+                                @ViewBag.UploadStatus
+                                @ViewBag.UploadFileStatus
+                            </div>
+                            <div @*id=""*@ class="dropzone drag-area ">
+                        
+                                <div class="dropzone-msg dz-message needsclick">
+                                    @Html.ValidationMessageFor(m => m.Files)
+
+                                    <div class="hidden-part">
+                                        @Html.TextBoxFor(m => m.Files, new { type = "file", @multiple = "multiple", @class = "customerDropFile" })
+                                    </div>
+
+                                    @Html.HiddenFor(m => m.Id)
+                                    @Html.Hidden("AttachmentType", item.AttachmentTypeEnumNumber)
+                                                                        
+                                    @*@Html.HiddenFor(model=>item.AttachmentTypeEnumNumber)*@
+
+                                    <input type="file" style="visibility:hidden" class="customerContract" name="customerContract" multiple />
+
+                                    <h3 class="dropzone-msg-title file-dialog">Drag And Drop Area</h3>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="upload-button">Save</button>
+                            <button type="button" class="clear-button">Clear</button>
+
+                            <div class="uploading-files">
+                                File Uploading...
+                            </div>
+                        }
                     </td>
                 </tr>
             </table>
@@ -74,6 +109,7 @@
 </div>
 
 @section script{
+    @Scripts.Render("~/Scripts/UploadFile.js")
 
     <script>
         $(".delete-submit").submit(function (e) {
@@ -82,5 +118,27 @@
             }
         });
     </script>
+
+
+    <script>
+        $(".upload-button").click(function () {
+            $('.upload-button').hide();
+            $('.clear-button').hide();
+            $('.uploading-files').show();
+        });
+    </script>
+
+    @*<script>
+            $('.clear-button').click(function () {
+                window.location.href = "@Url.Action("UploadNewFile","Archive")";
+            })
+        </script>*@
+
+    <script>
+        $('.clear-button').click(function () {
+            $('.drag-area').empty();
+        })
+    </script>
+
 
 }

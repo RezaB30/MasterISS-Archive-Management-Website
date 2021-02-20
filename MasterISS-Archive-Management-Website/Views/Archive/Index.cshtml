@@ -15,7 +15,7 @@
         }
     </style>*@
 
-@if (ViewBag.SubscriptionId != null)
+@if (ViewBag.Id != null)
 {
     <style>
         #visible-manage-button {
@@ -29,10 +29,10 @@
     {
         <div class="home-page">
             <div>
-                  @*@Html.TextBox("SubscriptionId",null, new {htmlAttribute=new { @data-inputmask-regex = "[0-90-9- ]*" } })*@
-                @Html.TextBox("SubscriptionId")
+                  @*@Html.TextBox("Id",null, new {htmlAttribute=new { @data-inputmask-regex = "[0-90-9- ]*" } })*@
+                @Html.TextBox("Id")
       
-                @*<input class="SubscriptionId" type="text" />*@
+                @*<input class="Id" type="text" />*@
               
 
                 @*    @Html.EditorFor(,)*@
@@ -74,15 +74,15 @@
                         @Html.DisplayFor(modelItem => item.CreationDate)
                     </td>
                     <td>
-                        <a href="@Url.Action("Download", "Archive", new { SubscriptionId = ViewBag.SubscriptionId, FileName = item.ServerSideName })">Download</a>
+                        <a href="@Url.Action("Download", "Archive", new { Id = ViewBag.Id, FileName = item.ServerSideName })">Download</a>
                     </td>
                     <td>
                         @using (Html.BeginForm("Delete", "Archive", FormMethod.Post, new { @class = "delete-submit" }))
                         {
                             <div class="hidden-part">
-                                @Html.TextBox("SubscriptionId")
+                                @Html.TextBox("Id")
 
-                                @Html.Hidden("serverSideName", item.ServerSideName)//?-null
+                                @Html.Hidden("serverSideName", item.ServerSideName)
                             </div>
 
                             <button type="submit">Delete</button>
@@ -92,20 +92,20 @@
             }
 
         </table>
-        <a href="@Url.Action("DownloadZipFile", "Archive",  new { SubscriptionId= ViewBag.SubscriptionId})">Download All(ZIP)</a>
+        <a href="@Url.Action("DownloadZipFile", "Archive",  new { Id= ViewBag.Id})">Download All(ZIP)</a>
 
     }
 
     <div id="visible-manage-button">
-        <a href="@Url.Action("Manage", "Archive",  new { SubscriptionId= ViewBag.SubscriptionId})">Manage</a>
+        <a href="@Url.Action("Manage", "Archive",  new { Id= ViewBag.Id})">Manage</a>
     </div>
 </div>
 
 
 @section script{
-    <script>
-        $(".SubscriptionId").inputmask({ regex: "[0-90-9- ]*" });
-    </script>
+    @*<script>
+        $(".Id").inputmask({ regex: "[0-90-9- ]*" });
+    </script>*@
 
     <script>
         $(".delete-submit").submit(function (e) {
