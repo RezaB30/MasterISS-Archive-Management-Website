@@ -8,68 +8,72 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="topnav">
-        @Html.ActionLink("MASTERISS Archive Management", "Index", "Archive")
-        @*<a href="#news">News</a>
+    <style>
+        /* #nav ul.sub-nav {
+            display: none;
+        }
+
+        #nav ul.visible {
+            display: block;
+        }*/
+
+
+    </style>
+    <!--<div class="topnav">-->
+    @*@Html.ActionLink("MASTERISS Archive Management", "Index", "Archive")*@
+    @*<a href="#news">News</a>
         <a href="#contact">Contact</a>*@
-        <div class="topnav-right">
-            @*@Html.ActionLink("Language", "Index", "Archive")*@
-
-
-            @*<nav role="navigation">*@
-            @*<ul>
-            <li>
-                <a href="#">Two</a>
-                <ul class="dropdown">
-                    <li><a href="#">Sub-1</a></li>
-                    <li><a href="#">Sub-2</a></li>
-                    <li><a href="#">Sub-3</a></li>
-                </ul>
-            </li>
-        </ul>*@
-            @Html.Partial("_LanguagePartial")
-            @*</nav>*@
-            @*<div class="dropdown">
-            <button class="dropbtn">Dropdown</button>
-            <div class="dropdown-content">
-
-                <a>
-                    @Html.ActionLink("Language", "Index", "Archive")
-                </a>
-                <a>
-                    @Html.ActionLink("Language", "Index", "Archive")
-                </a>
-
-            </div>
-        </div>*@
-
-            @Html.ActionLink("Log Out", "LogOut", "Auth")
-
-            @* <a href="#about">About</a>*@
-        </div>
-    </div>
-    <!--<div class="navbar navbar-inverse navbar-fixed-top">-->
-    @*<div class="container">*@
-    <!--<div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>-->
-    @*@Html.ActionLink("MASTERISS Archive Management", "Index", "Archive", new { area = "" }, new { @class = "navbar-brand" })*@
-    <!--</div>
-    <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">-->
-    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
-    <!--<li>-->@*@Html.ActionLink("About", "About", "Home")*@
-    <!--</li>
-    <li class="k">-->
+    <!--<div class="topnav-right">-->
     @*@Html.ActionLink("Log Out", "LogOut", "Auth")*@
-    <!--</li>
+
+    @*@Html.Partial("_LanguagePartial")*@
+
+    <!--<ul id="nav">
+        <li>Home</li>
+        <li class="parent">
+            About
+            <ul class="sub-nav">
+                <li>Johnny</li>
+                <li>Julie</li>
+                <li>Jamie</li>
             </ul>
-        </div>
+        </li>
+        <li>Contact</li>
+    </ul>-->
+    @* <a href="#about">About</a>*@
+    <!--</div>
     </div>-->
-    @*</div>*@
+
+
+
+
+
+    <nav>
+        <div id="logo">MASTERISS Archive Management</div>
+
+        <label for="tog" class="toggle">Menu</label>
+        <input type="checkbox" id="tog" />
+        <ul class="menu">
+            <li><a href="#">Home</a></li>
+            <li>
+                <!-- First Tier Drop Down -->
+                <label for="tog-1" class="toggle">WordPress +</label>
+                @*<a href="#">WordPress</a>*@
+                <a href="#"><img src="~/Content/img/language.png" style="width:2em" alt="HTML tutorial" @*style="width:42px;height:42px;"*@></a>
+                <input type="checkbox" id="tog-1" />
+                <ul>
+                    <li><a href="#">Türkçe</a></li>
+                    <li><a href="#">English</a></li>
+                  
+                </ul>
+
+            </li>     
+            <li><a href="#">Contact</a></li>
+            <li><a href="@Url.Action("LogOut", "Auth")">Log Out</a></li>
+           @* <li><a href="@Url.Action("LogOut", "Auth")"></a></li>*@
+        </ul>
+    </nav>
+
 
 
     <div class="container body-content">

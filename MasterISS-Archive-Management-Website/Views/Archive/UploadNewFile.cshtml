@@ -5,6 +5,14 @@
     <script src="~/Scripts/jquery-3.4.1.js"></script>
 }
 
+<style>
+    div.drag-area {
+        /*background-color: lightblue;*/
+      /*  width: 110px;
+        height: 110px;*/
+        overflow: auto;
+    }
+</style>
 
 @using (Html.BeginForm("UploadNewFile", "Archive", FormMethod.Post, new
 { enctype = "multipart/form-data", @class = "upload-submit" }))

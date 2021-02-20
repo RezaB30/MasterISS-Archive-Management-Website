@@ -1,11 +1,174 @@
-﻿@using MasterISS_Archive_Management_Website.Helpers
+﻿<!--@using MasterISS_Archive_Management_Website.Helpers-->
 
-<div class="language-box">
-    <img class="language-button" @*src="~/Content/Images/Shared/language.svg"*@ title="Language" />
-    <div class="language-dropdown">
-        <ul>
-            <li>@Html.LanguageLink("Türkçe", "tr-tr")</li>
-            <li>@Html.LanguageLink("English", "en-US")</li>
-        </ul>
+@*<div class="language-box">
+        <img class="language-button" src="~/Content/img/language.png" style="width:2em" title="Language" />
+        <div class="language-dropdown">
+            <ul>
+                <li>@Html.LanguageLink("Türkçe", "tr-tr")</li>
+                <li>@Html.LanguageLink("English", "en-US")</li>
+            </ul>
+        </div>
+    </div>*@
+@*<style>
+        body {
+            margin-top: 100px;
+            margin-left: 100px;
+        }
+
+        .dropdown-menu > li {
+            display: inline-block;
+            float: left;
+        }
+
+        .open > ul {
+            display: inline-flex !important;
+        }
+
+        .navbar-nav > li > .dropdown-menu {
+            margin-top: 50px;
+        }
+
+        .menu {
+            position: relative;
+            top: -75px;
+            background-color: transparent;
+            border: 0px;
+        }
+
+
+
+        /* red dot and their relative movement path*/
+
+        #contentContainer {
+            position: relative;
+            left: 100px;
+            width: 500px;
+            height: 5px;
+            border: 1px black solid;
+            overflow: visible;
+            ;
+            background-color: #EEE;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        #thing {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: 50px;
+            top: -10px;
+            z-index: 2;
+            border-radius: 50%;
+            background-color: red;
+            transition: left .5s cubic-bezier(.42,-0.3,.78,1.25), top .5s cubic-bezier(.42,-0.3,.78,1.25);
+        }
+    </style>*@
+
+@*<div class="language-box">
+        <img class="language-button" src="~/Content/img/language.png" style="width:2em" title="Language" />
+        <div class="language-dropdown">
+            <ul>
+                <li>@Html.LanguageLink("Türkçe", "tr-tr")</li>
+                <li>@Html.LanguageLink("English", "en-US")</li>
+            </ul>
+        </div>
+    </div>*@
+
+@*<div id="contentContainer">
+        <div class="navbar menu" role="navigation">
+
+            <div class="navbar-header">
+                <div class="navbar-header"><a class="navbar-brand" href="#">Brand</a></div>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav pull-right">
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div id="thing">
+
+        </div>
+    </div>*@
+
+
+
+<!--<style>
+    .mainmenubtn {
+        background-color: skyblue;
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+        .mainmenubtn:hover {
+            background-color: blue;
+        }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-child {
+        display: none;
+        background-color: skyblue;
+        min-width: 200px;
+    }
+
+        .dropdown-child a {
+            color: blue;
+            padding: 20px;
+            text-decoration: none;
+            display: block;
+        }
+
+    .dropdown:hover .dropdown-child {
+        display: block;
+    }
+</style>
+
+<div class="dropdown">
+    <button class="mainmenubtn">Main Menu</button>
+    <div class="dropdown-child">
+        <a>Sub Menu 1</a>
+        <a>Sub Menu 2</a>
+        <a>Sub Menu 3</a>
+        <a>Sub Menu 4</a>
+        <a>Sub Menu 5</a>
     </div>
-</div>
+
+</div>-->
+
+<script>
+    $(document).ready(function () {
+        $('.parent').click(function () {
+            $('.sub-nav').toggleClass('visible');
+        });
+    });
+</script>

@@ -238,7 +238,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
                 var attachmentTypesList = new LocalizedList<RadiusR.FileManagement.SpecialFiles.ClientAttachmentTypes, RadiusR.Localization.Lists.ClientAttachmentTypes>();
                 //var at=attachmentTypesList.GetList(culture:null);
-                var attachmentTypeItem = attachmentTypesList.GetList().Select(t=>new AttachmentTypesViewModel()
+                var attachmentTypeItems = attachmentTypesList.GetList().Select(t=>new AttachmentTypesViewModel()
                 { 
                     AttachmentTypeEnumName=t.Value,
                     AttachmentTypeEnumNumber=t.Key
@@ -307,7 +307,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
                         //{ AttachmentTypeEnumName=t.Value,
                         //AttachmentTypeEnumNumber=t.Key
                         //}),
-                        AttachmentTypeList= attachmentTypeItem.ToList(),
+                        AttachmentTypeList= attachmentTypeItems.ToList(),
 
                         //AttachmentTypeList = k,
                         FileDetailList = viewResultLists.ToList()

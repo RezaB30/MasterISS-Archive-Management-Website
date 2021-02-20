@@ -228,8 +228,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Custom.css" />
     <Content Include="Content\img\file.svg" />
+    <Content Include="Content\img\lang.jpg" />
     <Content Include="Content\img\remove-file.svg" />
     <Content Include="Content\img\remove-all.png" />
+    <Content Include="Content\img\language.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
