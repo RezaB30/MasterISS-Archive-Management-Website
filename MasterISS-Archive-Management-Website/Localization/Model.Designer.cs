@@ -133,11 +133,29 @@ namespace MasterISS_Archive_Management_Website.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Anasayfa.
+        /// </summary>
+        internal static string HomePage {
+            get {
+                return ResourceManager.GetString("HomePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yönet.
         /// </summary>
         internal static string Manage {
             get {
                 return ResourceManager.GetString("Manage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Master ISS Arşiv Yönetim.
+        /// </summary>
+        internal static string MasterISSArchiveManagement {
+            get {
+                return ResourceManager.GetString("MasterISSArchiveManagement", resourceCulture);
             }
         }
         
@@ -156,6 +174,15 @@ namespace MasterISS_Archive_Management_Website.Localization {
         internal static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Abone Arşiv Dosyası Detayları .
+        /// </summary>
+        internal static string SubscriberArchiveFileDetails {
+            get {
+                return ResourceManager.GetString("SubscriberArchiveFileDetails", resourceCulture);
             }
         }
         

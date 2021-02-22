@@ -141,14 +141,23 @@
   <data name="HasArchiveFileMessage" xml:space="preserve">
     <value>Aboneye Ait Dosya Bulunamadı</value>
   </data>
+  <data name="HomePage" xml:space="preserve">
+    <value>Anasayfa</value>
+  </data>
   <data name="Manage" xml:space="preserve">
     <value>Yönet</value>
+  </data>
+  <data name="MasterISSArchiveManagement" xml:space="preserve">
+    <value>Master ISS Arşiv Yönetim</value>
   </data>
   <data name="NoSubscriberFound" xml:space="preserve">
     <value>Abone Bulunamadı</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Kaydet</value>
+  </data>
+  <data name="SubscriberArchiveFileDetails" xml:space="preserve">
+    <value>{0} Abone Arşiv Dosyası Detayları </value>
   </data>
   <data name="UploadFilesStatus" xml:space="preserve">
     <value>Dosyalar Yüklendi</value>

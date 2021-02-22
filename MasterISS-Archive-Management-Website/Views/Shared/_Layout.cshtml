@@ -1,9 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using MasterISS_Archive_Management_Website.Helpers
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - </title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -54,7 +56,7 @@
         <label for="tog" class="toggle">Menu</label>
         <input type="checkbox" id="tog" />
         <ul class="menu">
-            <li><a href="#">Home</a></li>
+            @*<li><a href="#">Home</a></li>*@
             <li>
                 <!-- First Tier Drop Down -->
                 <label for="tog-1" class="toggle">WordPress +</label>
@@ -62,13 +64,15 @@
                 <a href="#"><img src="~/Content/img/language.png" style="width:2em" alt="HTML tutorial" @*style="width:42px;height:42px;"*@></a>
                 <input type="checkbox" id="tog-1" />
                 <ul>
-                    <li><a href="#">Türkçe</a></li>
-                    <li><a href="#">English</a></li>
-                  
+                    <li>@Html.LanguageLink("Türkçe", "tr-tr")</li>
+                    <li>@Html.LanguageLink("English", "en-US")</li>
+                    @*<li><a href="#">Türkçe</a></li>
+                    <li><a href="#">English</a></li>*@
+
                 </ul>
 
             </li>     
-            <li><a href="#">Contact</a></li>
+            @*<li><a href="#">Contact</a></li>*@
             <li><a href="@Url.Action("LogOut", "Auth")">Log Out</a></li>
            @* <li><a href="@Url.Action("LogOut", "Auth")"></a></li>*@
         </ul>

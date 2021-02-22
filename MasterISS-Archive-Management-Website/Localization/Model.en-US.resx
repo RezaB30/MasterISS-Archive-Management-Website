@@ -141,14 +141,23 @@
   <data name="HasArchiveFileMessage" xml:space="preserve">
     <value>Subscriber Has Not File</value>
   </data>
+  <data name="HomePage" xml:space="preserve">
+    <value>Home Page</value>
+  </data>
   <data name="Manage" xml:space="preserve">
     <value>Manage</value>
+  </data>
+  <data name="MasterISSArchiveManagement" xml:space="preserve">
+    <value>Master ISS Archive Management</value>
   </data>
   <data name="NoSubscriberFound" xml:space="preserve">
     <value>No Subscriber Found</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="SubscriberArchiveFileDetails" xml:space="preserve">
+    <value>{0} Subscriber Archive File Details</value>
   </data>
   <data name="UploadFilesStatus" xml:space="preserve">
     <value>Files Uploaded</value>

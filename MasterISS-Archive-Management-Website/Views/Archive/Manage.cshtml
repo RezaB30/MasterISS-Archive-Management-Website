@@ -35,12 +35,12 @@
                                 <td>
                                     @Html.DisplayFor(model => fileItem.CreationDate)
                                 </td>
-                                <td>
+                                @*<td>
                                     @Html.DisplayFor(model => fileItem.MIMEType)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(model => fileItem.FileExtention)
-                                </td>
+                                </td>*@
                                 <td>
                                     <a href="@Url.Action("Download", "Archive", new { Id = ViewBag.Id,FileName = fileItem.ServerSideName })">Download</a>
                                 </td>
@@ -86,10 +86,9 @@
                                     @Html.HiddenFor(m => m.Id)
                                     @Html.Hidden("AttachmentType", item.AttachmentTypeEnumNumber)
                                                                         
-                                    @*@Html.HiddenFor(model=>item.AttachmentTypeEnumNumber)*@
+                                    @Html.HiddenFor(model=>item.AttachmentTypeEnumNumber)
 
                                     <input type="file" style="visibility:hidden" class="customerContract" name="customerContract" multiple />
-
                                     <h3 class="dropzone-msg-title file-dialog">Drag And Drop Area</h3>
                                 </div>
                             </div>

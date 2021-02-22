@@ -119,6 +119,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
         {
 
             // archiveLogger.Error($": {}- : {}");
+            ViewBag.Title = MasterISS_Archive_Management_Website.Localization.Model.HomePage;
 
             return View();
         }
@@ -162,14 +163,22 @@ namespace MasterISS_Archive_Management_Website.Controllers
                     }).OrderByDescending(d => d.CreationDate);
 
                     ViewBag.Id = Id;
+                   
+                    ViewBag.Title= string.Format(Localization.Model.SubscriberArchiveFileDetails, Id);
+
                     return View(viewResults);
                 }
                 ViewBag.Id = Id;
                 ViewBag.HasArchiveFileMessage = Localization.Model.HasArchiveFileMessage;
+                ViewBag.Title = MasterISS_Archive_Management_Website.Localization.Model.HomePage;
+
+
                 return View();
             }
             ViewBag.Id = Id;
             ViewBag.Exception = Localization.Model.Exception;
+            ViewBag.Title = MasterISS_Archive_Management_Website.Localization.Model.HomePage;
+
             return View();
         }
 
@@ -208,6 +217,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
                     }).OrderByDescending(d => d.CreationDate);
 
                     ViewBag.Id = Id;
+                    ViewBag.Title = string.Format(Localization.Model.SubscriberArchiveFileDetails, Id);
                     return View(viewName: "Index", model: viewResults);
                 }
                 ViewBag.Id = Id;
@@ -245,42 +255,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
                 { 
                     AttachmentTypeEnumName=t.Value,
                     AttachmentTypeEnumNumber=t.Key
-                });
-
-
-                ////var k = Enum.GetValues(typeof(ClientAttachmentTypes));
-
-                //foreach (var attachmentTypeName in Enum.GetNames(typeof(ClientAttachmentTypes)))
-                //{
-                //    attachmentTypeNameList.Add(new AttachmentTypesViewModel()
-                //    {
-                //        AttachmentTypeEnumName = attachmentTypeName
-                //    });
-                //}
-
-                //foreach (int attachmentTypeNumber in Enum.GetValues(typeof(ClientAttachmentTypes)))
-                //{
-                //    attachmentTypeNumberList.Add(new AttachmentTypesViewModel()
-                //    {
-                //        AttachmentTypeEnumNumber = attachmentTypeNumber
-                //    });
-                //}
-
-                //var typeList = new List<AttachmentTypesViewModel>();
-
-                //typeList = Enum.GetValues(typeof(ClientAttachmentTypes)).Cast<>.Select(t => new AttachmentTypesViewModel
-                //{
-                //    AttachmentTypeEnumNumber =t.AttachmentTypeEnumNumber,
-                //    AttachmentTypeEnumName = t.AttachmentTypeEnumName
-                //});
-                //for (int i = 0; i < Enum.GetValues(typeof(ClientAttachmentTypes)).Length; i++)
-                //{
-                //    attachmentTypeNumberList.Add(new AttachmentTypesViewModel()
-                //    {
-                //        AttachmentTypeEnumNumber = 
-                //    });
-                //}
-
+                });               
 
                 if (subscriptionFileList != null)
                 {
@@ -298,25 +273,15 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
                     var viewResultLists = viewResults.OrderBy(e => e.AttachmentType).ThenByDescending(d => d.CreationDate);
                     ViewBag.Id = Id;
-
-
-                    //var viewModel = new FileAndAttachmentViewModel
+             
                     var viewModel = new UploadFileViewModel
-
                     {
-                        //AttachmentTypeNameList = attachmentTypeNameList,
-                        //AttachmentTypeNumberList = attachmentTypeNumberList,
-                        //AttachmentTypeList= attachmentTypesList.GetList().Cast<AttachmentTypesViewModel>().ToList(),
-
-                        //AttachmentTypeList = attachmentTypesList.GetList().Select(t=>new AttachmentTypesViewModel
-                        //{ AttachmentTypeEnumName=t.Value,
-                        //AttachmentTypeEnumNumber=t.Key
-                        //}),
                         AttachmentTypeList = attachmentTypeItems.ToList(),
-
-                        //AttachmentTypeList = k,
                         FileDetailList = viewResultLists.ToList()
                     };
+
+                    ViewBag.Title = string.Format(Localization.Model.SubscriberArchiveFileDetails, Id);
+
                     return View(viewModel);
 
                     //return View(viewResultLists);

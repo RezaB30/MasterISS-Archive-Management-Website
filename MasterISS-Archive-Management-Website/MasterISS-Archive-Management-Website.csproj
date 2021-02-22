@@ -215,10 +215,8 @@
     </Compile>
     <Compile Include="ViewModels\AttachmentTypesViewModel.cs" />
     <Compile Include="ViewModels\DownloadFileViewModel.cs" />
-    <Compile Include="ViewModels\FileAndAttachmentViewModel.cs" />
     <Compile Include="ViewModels\FileDetailViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
-    <Compile Include="ViewModels\SubscriptionsArchiveFileViewModel.cs" />
     <Compile Include="ViewModels\UploadFileViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

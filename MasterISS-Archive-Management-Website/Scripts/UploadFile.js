@@ -10,14 +10,14 @@ $(".dropzone").on("drop", function (e) {
     e.preventDefault();
 
     var files = e.originalEvent.dataTransfer.files;
-    $('.customerDropFile')[0].files = files;
+    $(this).find(".customerDropFile")[0].files = files;
+    //$('.customerDropFile')[0].files = files;
     var columns = "";
     for (var i = 0; i < files.length; i++) {
         currentFiles.push(files[i]);
         columns += "<div data-file='" + files[i].name + "' class='col-md-6 col-sm-6 col-xl-3'><img onclick=" + "RemoveFile('" + files[i].name + "');" + " style='width:2em; margin-top:1em;' src='/Content/img/remove-file.svg' alt='image'>" + "<img style = 'width:3em; margin-top:1em;' src = '/Content/img/file.svg' alt = 'image' >" + files[i].name + "</div>";
-       
     }
-    $('.dropzone').append("<div class='row'>" + columns + "</div>");
+    $(this).append("<div class='row'>" + columns + "</div>");
 });
 function RemoveFile(fileName) {
     var index = currentFiles.indexOf(fileName);
