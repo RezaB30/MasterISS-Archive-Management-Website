@@ -117,14 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ArchiveNumber" xml:space="preserve">
+    <value>ARCHIVE NUMBER :</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Are You Sure?</value>
+  </data>
+  <data name="AttachmentType" xml:space="preserve">
+    <value>Attachment Type</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>Clear</value>
+  </data>
+  <data name="CreationDate" xml:space="preserve">
+    <value>Creation Date</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
   <data name="Download" xml:space="preserve">
     <value>Download</value>
+  </data>
+  <data name="DownloadAll" xml:space="preserve">
+    <value>Download All (ZIP)</value>
+  </data>
+  <data name="DragAndDropArea" xml:space="preserve">
+    <value>Drag And Drop Area</value>
   </data>
   <data name="Exception" xml:space="preserve">
     <value>Exception Error</value>
@@ -138,11 +156,29 @@
   <data name="FileSizeError" xml:space="preserve">
     <value>You Can't Upload More Than {0} Files MB</value>
   </data>
+  <data name="FileUploading" xml:space="preserve">
+    <value>File Uploading...</value>
+  </data>
   <data name="HasArchiveFileMessage" xml:space="preserve">
     <value>Subscriber Has Not File</value>
   </data>
+  <data name="HasNotPermission" xml:space="preserve">
+    <value>You Do Not Have The Required Authorization For Archive Management System.</value>
+  </data>
   <data name="HomePage" xml:space="preserve">
     <value>Home Page</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LoginFailed" xml:space="preserve">
+    <value>User Not Found</value>
+  </data>
+  <data name="LoginPage" xml:space="preserve">
+    <value>Login Page</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Log Out</value>
   </data>
   <data name="Manage" xml:space="preserve">
     <value>Manage</value>
@@ -153,8 +189,14 @@
   <data name="NoSubscriberFound" xml:space="preserve">
     <value>No Subscriber Found</value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
   </data>
   <data name="SubscriberArchiveFileDetails" xml:space="preserve">
     <value>{0} Subscriber Archive File Details</value>
@@ -170,6 +212,9 @@
   </data>
   <data name="UploadStatus" xml:space="preserve">
     <value>File Didn't Upload</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Username</value>
   </data>
   <data name="ZIP" xml:space="preserve">
     <value>ZIP</value>

@@ -13,8 +13,15 @@
 <div class="container">
     <div>
         <h1 class="home-page">
-            ARCHIVE NUMBER : @ViewBag.Id
+           @MasterISS_Archive_Management_Website.Localization.Model.ArchiveNumber  @ViewBag.Id
         </h1>
+
+        <div class="message">
+            @ViewBag.FileSizeError
+            @ViewBag.FileCountError
+            @ViewBag.UploadStatus
+            @ViewBag.UploadFileStatus
+        </div>
 
         @ViewBag.Exception
 
@@ -36,13 +43,13 @@
                                     @Html.DisplayFor(model => fileItem.CreationDate)
                                 </td>
                                 @*<td>
-                                    @Html.DisplayFor(model => fileItem.MIMEType)
-                                </td>
+                                        @Html.DisplayFor(model => fileItem.MIMEType)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => fileItem.FileExtention)
+                                    </td>*@
                                 <td>
-                                    @Html.DisplayFor(model => fileItem.FileExtention)
-                                </td>*@
-                                <td>
-                                    <a href="@Url.Action("Download", "Archive", new { Id = ViewBag.Id,FileName = fileItem.ServerSideName })">Download</a>
+                                    <a href="@Url.Action("Download", "Archive", new { Id = ViewBag.Id,FileName = fileItem.ServerSideName })">@MasterISS_Archive_Management_Website.Localization.Model.Download</a>
                                 </td>
                                 <td>
                                     @* <a href="@Url.Action("Delete", "Archive", new { Id = ViewBag.Id, FileName = fileItem.ServerSideName })">Delete</a>*@
@@ -56,7 +63,7 @@
                                             @Html.Hidden("serverSideName", fileItem.ServerSideName)
                                         </div>
 
-                                        <button type="submit">Delete</button>
+                                        <button type="submit">@MasterISS_Archive_Management_Website.Localization.Model.Delete</button>
                                     }
                                 </td>
                             </tr>
@@ -66,16 +73,11 @@
                 <tr>
                     <td colspan="5">
 
-                        @using (Html.BeginForm("UploadNewFile", "Archive", FormMethod.Post, new { enctype = "multipart/form-data", @class = "upload-submit" }))
+                        @using (Html.BeginForm("Manage", "Archive", FormMethod.Post, new { enctype = "multipart/form-data", @class = "upload-submit" }))
                         {
-                            <div class="message">
-                                @ViewBag.FileSizeError
-                                @ViewBag.FileCountError
-                                @ViewBag.UploadStatus
-                                @ViewBag.UploadFileStatus
-                            </div>
+
                             <div @*id=""*@ class="dropzone drag-area ">
-                        
+
                                 <div class="dropzone-msg dz-message needsclick">
                                     @Html.ValidationMessageFor(m => m.Files)
 
@@ -85,19 +87,19 @@
 
                                     @Html.HiddenFor(m => m.Id)
                                     @Html.Hidden("AttachmentType", item.AttachmentTypeEnumNumber)
-                                                                        
-                                    @Html.HiddenFor(model=>item.AttachmentTypeEnumNumber)
+
+                                    @Html.HiddenFor(model => item.AttachmentTypeEnumNumber)
 
                                     <input type="file" style="visibility:hidden" class="customerContract" name="customerContract" multiple />
-                                    <h3 class="dropzone-msg-title file-dialog">Drag And Drop Area</h3>
+                                    <h3 class="dropzone-msg-title file-dialog"></h3>
                                 </div>
                             </div>
 
-                            <button type="submit" class="upload-button">Save</button>
-                            <button type="button" class="clear-button">Clear</button>
+                            <button type="submit" class="upload-button">@MasterISS_Archive_Management_Website.Localization.Model.Save</button>
+                            <button type="button" class="clear-button">@MasterISS_Archive_Management_Website.Localization.Model.Clear</button>
 
                             <div class="uploading-files">
-                                File Uploading...
+                                @MasterISS_Archive_Management_Website.Localization.Model.FileisUploading
                             </div>
                         }
                     </td>
@@ -138,6 +140,5 @@
             $('.drag-area').empty();
         })
     </script>
-
 
 }

@@ -26,6 +26,7 @@
     <title>Login</title>
 </head>
 <body>
+    @ViewBag.HasNotPermission
     @using (Html.BeginForm("Login", "Auth", FormMethod.Post))
     {
         <div class="login-content">
@@ -36,7 +37,7 @@
                 @Html.EditorFor(m => m.Password)
             </div>
             <div>
-                <button type="submit">Login</button>
+                <button type="submit">@MasterISS_Archive_Management_Website.Localization.Model.Login</button>
             </div>
         </div>
     }

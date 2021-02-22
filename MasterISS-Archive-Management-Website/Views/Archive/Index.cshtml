@@ -39,7 +39,7 @@
             </div>
 
             <div class="home-page">
-                <button type="submit">Search</button>
+                <button type="submit">@MasterISS_Archive_Management_Website.Localization.Model.Search</button>
             </div>
         </div>
 
@@ -74,7 +74,7 @@
                         @Html.DisplayFor(modelItem => item.CreationDate)
                     </td>
                     <td>
-                        <a href="@Url.Action("Download", "Archive", new { Id = ViewBag.Id, FileName = item.ServerSideName })">Download</a>
+                        <a href="@Url.Action("Download", "Archive", new { Id = ViewBag.Id, FileName = item.ServerSideName })">@MasterISS_Archive_Management_Website.Localization.Model.Download</a>
                     </td>
                     <td>
                         @using (Html.BeginForm("Delete", "Archive", FormMethod.Post, new { @class = "delete-submit" }))
@@ -85,19 +85,19 @@
                                 @Html.Hidden("serverSideName", item.ServerSideName)
                             </div>
 
-                            <button type="submit">Delete</button>
+                            <button type="submit">@MasterISS_Archive_Management_Website.Localization.Model.Delete</button>
                         }
                     </td>
                 </tr>
             }
 
         </table>
-        <a href="@Url.Action("DownloadZipFile", "Archive",  new { Id= ViewBag.Id})">Download All(ZIP)</a>
+        <a href="@Url.Action("DownloadZipFile", "Archive",  new { Id= ViewBag.Id})">@MasterISS_Archive_Management_Website.Localization.Model.DownloadAll</a>
 
     }
 
     <div id="visible-manage-button">
-        <a href="@Url.Action("Manage", "Archive",  new { Id= ViewBag.Id})">Manage</a>
+        <a href="@Url.Action("Manage", "Archive",  new { Id= ViewBag.Id})">@MasterISS_Archive_Management_Website.Localization.Model.Manage</a>
     </div>
 </div>
 

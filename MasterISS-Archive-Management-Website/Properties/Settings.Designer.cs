@@ -8,8 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-
 namespace MasterISS_Archive_Management_Website.Properties {
     
     
@@ -33,7 +31,14 @@ namespace MasterISS_Archive_Management_Website.Properties {
                 return ((int)(this["uploadMaxFileCount"]));
             }
         }
-
-        public TimeSpan CookieExpiration { get; internal set; }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:30:00")]
+        public global::System.TimeSpan CookieExpiration {
+            get {
+                return ((global::System.TimeSpan)(this["CookieExpiration"]));
+            }
+        }
     }
 }

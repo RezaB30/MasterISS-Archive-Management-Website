@@ -5,5 +5,8 @@
     <Setting Name="uploadMaxFileCount" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">25</Value>
     </Setting>
+    <Setting Name="CookieExpiration" Type="System.TimeSpan" Scope="Application">
+      <Value Profile="(Default)">00:30:00</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

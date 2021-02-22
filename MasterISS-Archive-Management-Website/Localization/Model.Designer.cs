@@ -22,7 +22,7 @@ namespace MasterISS_Archive_Management_Website.Localization {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Model {
+    public class Model {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace MasterISS_Archive_Management_Website.Localization {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MasterISS_Archive_Management_Website.Localization.Model", typeof(Model).Assembly);
@@ -51,7 +51,7 @@ namespace MasterISS_Archive_Management_Website.Localization {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,18 +61,54 @@ namespace MasterISS_Archive_Management_Website.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ARŞİV NUMARASI :.
+        /// </summary>
+        public static string ArchiveNumber {
+            get {
+                return ResourceManager.GetString("ArchiveNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Emin Misiniz?.
+        /// </summary>
+        public static string AreYouSure {
+            get {
+                return ResourceManager.GetString("AreYouSure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dosya Türü.
+        /// </summary>
+        public static string AttachmentType {
+            get {
+                return ResourceManager.GetString("AttachmentType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Temizle.
         /// </summary>
-        internal static string Clear {
+        public static string Clear {
             get {
                 return ResourceManager.GetString("Clear", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Oluşturulma Tarihi.
+        /// </summary>
+        public static string CreationDate {
+            get {
+                return ResourceManager.GetString("CreationDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sil.
         /// </summary>
-        internal static string Delete {
+        public static string Delete {
             get {
                 return ResourceManager.GetString("Delete", resourceCulture);
             }
@@ -81,16 +117,34 @@ namespace MasterISS_Archive_Management_Website.Localization {
         /// <summary>
         ///   Looks up a localized string similar to İndir.
         /// </summary>
-        internal static string Download {
+        public static string Download {
             get {
                 return ResourceManager.GetString("Download", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tüm Dosyaları İndir (ZİP).
+        /// </summary>
+        public static string DownloadAll {
+            get {
+                return ResourceManager.GetString("DownloadAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dosya Sürükleme Alanı.
+        /// </summary>
+        public static string DragAndDropArea {
+            get {
+                return ResourceManager.GetString("DragAndDropArea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hata.
         /// </summary>
-        internal static string Exception {
+        public static string Exception {
             get {
                 return ResourceManager.GetString("Exception", resourceCulture);
             }
@@ -99,7 +153,7 @@ namespace MasterISS_Archive_Management_Website.Localization {
         /// <summary>
         ///   Looks up a localized string similar to En Fazla {0} Dosya Yükleyebilirsiniz.
         /// </summary>
-        internal static string FileCountError {
+        public static string FileCountError {
             get {
                 return ResourceManager.GetString("FileCountError", resourceCulture);
             }
@@ -108,7 +162,7 @@ namespace MasterISS_Archive_Management_Website.Localization {
         /// <summary>
         ///   Looks up a localized string similar to Dosya Yükleniyor....
         /// </summary>
-        internal static string FileisUploading {
+        public static string FileisUploading {
             get {
                 return ResourceManager.GetString("FileisUploading", resourceCulture);
             }
@@ -117,43 +171,97 @@ namespace MasterISS_Archive_Management_Website.Localization {
         /// <summary>
         ///   Looks up a localized string similar to En Fazla {0} MB Dosya Yükleyebilirsiniz.
         /// </summary>
-        internal static string FileSizeError {
+        public static string FileSizeError {
             get {
                 return ResourceManager.GetString("FileSizeError", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dosya Yükleniyor....
+        /// </summary>
+        public static string FileUploading {
+            get {
+                return ResourceManager.GetString("FileUploading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Aboneye Ait Dosya Bulunamadı.
         /// </summary>
-        internal static string HasArchiveFileMessage {
+        public static string HasArchiveFileMessage {
             get {
                 return ResourceManager.GetString("HasArchiveFileMessage", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arşiv Yönetim Sistemi İçin Gerekli Yetkiye Sahip Değilsiniz..
+        /// </summary>
+        public static string HasNotPermission {
+            get {
+                return ResourceManager.GetString("HasNotPermission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Anasayfa.
         /// </summary>
-        internal static string HomePage {
+        public static string HomePage {
             get {
                 return ResourceManager.GetString("HomePage", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Giriş.
+        /// </summary>
+        public static string Login {
+            get {
+                return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kullanıcı Bulunamadı..
+        /// </summary>
+        public static string LoginFailed {
+            get {
+                return ResourceManager.GetString("LoginFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Giriş Sayfası.
+        /// </summary>
+        public static string LoginPage {
+            get {
+                return ResourceManager.GetString("LoginPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Çıkış.
+        /// </summary>
+        public static string LogOut {
+            get {
+                return ResourceManager.GetString("LogOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yönet.
         /// </summary>
-        internal static string Manage {
+        public static string Manage {
             get {
                 return ResourceManager.GetString("Manage", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Master ISS Arşiv Yönetim.
+        ///   Looks up a localized string similar to Master ISS Arşiv Yönetim Sistemi.
         /// </summary>
-        internal static string MasterISSArchiveManagement {
+        public static string MasterISSArchiveManagement {
             get {
                 return ResourceManager.GetString("MasterISSArchiveManagement", resourceCulture);
             }
@@ -162,25 +270,43 @@ namespace MasterISS_Archive_Management_Website.Localization {
         /// <summary>
         ///   Looks up a localized string similar to Abone Bulunamadı.
         /// </summary>
-        internal static string NoSubscriberFound {
+        public static string NoSubscriberFound {
             get {
                 return ResourceManager.GetString("NoSubscriberFound", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Şifre.
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kaydet.
         /// </summary>
-        internal static string Save {
+        public static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ara.
+        /// </summary>
+        public static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} Abone Arşiv Dosyası Detayları .
         /// </summary>
-        internal static string SubscriberArchiveFileDetails {
+        public static string SubscriberArchiveFileDetails {
             get {
                 return ResourceManager.GetString("SubscriberArchiveFileDetails", resourceCulture);
             }
@@ -189,7 +315,7 @@ namespace MasterISS_Archive_Management_Website.Localization {
         /// <summary>
         ///   Looks up a localized string similar to Dosyalar Yüklendi.
         /// </summary>
-        internal static string UploadFilesStatus {
+        public static string UploadFilesStatus {
             get {
                 return ResourceManager.GetString("UploadFilesStatus", resourceCulture);
             }
@@ -198,7 +324,7 @@ namespace MasterISS_Archive_Management_Website.Localization {
         /// <summary>
         ///   Looks up a localized string similar to Dosya Yüklendi.
         /// </summary>
-        internal static string UploadFileStatus {
+        public static string UploadFileStatus {
             get {
                 return ResourceManager.GetString("UploadFileStatus", resourceCulture);
             }
@@ -207,7 +333,7 @@ namespace MasterISS_Archive_Management_Website.Localization {
         /// <summary>
         ///   Looks up a localized string similar to Yeni Dosya Yükle.
         /// </summary>
-        internal static string UploadNewFile {
+        public static string UploadNewFile {
             get {
                 return ResourceManager.GetString("UploadNewFile", resourceCulture);
             }
@@ -216,16 +342,25 @@ namespace MasterISS_Archive_Management_Website.Localization {
         /// <summary>
         ///   Looks up a localized string similar to Dosya Yüklenemedi.
         /// </summary>
-        internal static string UploadStatus {
+        public static string UploadStatus {
             get {
                 return ResourceManager.GetString("UploadStatus", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kullanıcı Adı.
+        /// </summary>
+        public static string Username {
+            get {
+                return ResourceManager.GetString("Username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ZİP.
         /// </summary>
-        internal static string ZIP {
+        public static string ZIP {
             get {
                 return ResourceManager.GetString("ZIP", resourceCulture);
             }

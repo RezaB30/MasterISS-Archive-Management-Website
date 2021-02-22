@@ -27,18 +27,18 @@ namespace MasterISS_Archive_Management_Website
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                 name: "Culture",
-                 url: "{lang}/{controller}/Language/{culture}/{sender}",
-                 constraints: new { lang = @"(\w{2})|(\w{2}-\w{2})" },
-                 defaults: new
-                 {
-                     controller = "Archive",
-                     action = "Language",
-                     lang = "tr-tr",
-                     culture = "tr-tr",
-                     sender = "Index"
-                 });
+            //routes.MapRoute(
+            //     name: "Culture",
+            //     url: "{lang}/{controller}/Language/{culture}/{sender}",
+            //     constraints: new { lang = @"(\w{2})|(\w{2}-\w{2})" },
+            //     defaults: new
+            //     {
+            //         controller = "Archive",
+            //         action = "Index",
+            //         lang = "tr-tr",
+            //         culture = "tr-tr",
+            //         sender = "Index"
+            //     });
 
             routes.MapRoute(
                 name: "Default",

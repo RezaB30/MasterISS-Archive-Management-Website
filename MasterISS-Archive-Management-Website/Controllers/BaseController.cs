@@ -15,7 +15,8 @@ namespace MasterISS_Archive_Management_Website.Controllers
 {
     public class BaseController: Controller
     {
-        protected static Logger logger = LogManager.GetLogger("main");
+        Logger baseLogger = LogManager.GetLogger("base");
+
 
         //protected override void OnException(ExceptionContext filterContext)
         //{
@@ -120,11 +121,11 @@ namespace MasterISS_Archive_Management_Website.Controllers
                 if (filterContext.Exception is System.Data.Entity.Validation.DbEntityValidationException)
                 {
                     var entityException = filterContext.Exception as System.Data.Entity.Validation.DbEntityValidationException;
-                    logger.Error(filterContext.Exception, string.Join(Environment.NewLine, entityException.EntityValidationErrors.SelectMany(e => e.ValidationErrors.Select(se => se.PropertyName + "->" + se.ErrorMessage))));
+                    baseLogger.Error(filterContext.Exception, string.Join(Environment.NewLine, entityException.EntityValidationErrors.SelectMany(e => e.ValidationErrors.Select(se => se.PropertyName + "->" + se.ErrorMessage))));
                 }
                 else
                 {
-                    logger.Error(filterContext.Exception);
+                    baseLogger.Error(filterContext.Exception);
                 }
             }
             //var error = ErrorHandler.GetMessage(filterContext.Exception, Request.IsLocal);
@@ -144,7 +145,10 @@ namespace MasterISS_Archive_Management_Website.Controllers
             Dictionary<string, object> responseParams = new Dictionary<string, object>();
             Request.QueryString.CopyTo(responseParams);
             responseParams.Add("lang", culture);
-
+            if (sender!="Index")
+            {
+                sender = "Index";
+            }
             return RedirectToAction(sender, new RouteValueDictionary(responseParams));
         }
 

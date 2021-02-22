@@ -11,6 +11,7 @@ using RezaB.Web.Authentication;
 
 namespace MasterISS_Archive_Management_Website.Controllers
 {
+    [AllowAnonymous]
     public class AuthController : BaseController
     {
         public ActionResult Index()
@@ -35,8 +36,9 @@ namespace MasterISS_Archive_Management_Website.Controllers
                 if (isSignedIn)
                 {
                     // invalid permissions
-                    if (!owinContext.Authentication.User.HasPermission("Archive Access"))
+                    if (!owinContext.Authentication.AuthenticationResponseGrant.Principal.HasPermission("Archive Access"))
                     {
+                        ViewBag.HasNotPermission = MasterISS_Archive_Management_Website.Localization.Model.HasNotPermission;
                         authenticator.SignOut(owinContext);
                     }
                     // valid login
@@ -47,7 +49,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("loginFailed", "ASS");
+                    ModelState.AddModelError("loginFailed",MasterISS_Archive_Management_Website.Localization.Model.LoginFailed );
                 }
             }
             return View();

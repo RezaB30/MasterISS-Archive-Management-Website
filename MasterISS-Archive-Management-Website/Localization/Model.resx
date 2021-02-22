@@ -117,14 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ArchiveNumber" xml:space="preserve">
+    <value>ARŞİV NUMARASI :</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Emin Misiniz?</value>
+  </data>
+  <data name="AttachmentType" xml:space="preserve">
+    <value>Dosya Türü</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>Temizle</value>
+  </data>
+  <data name="CreationDate" xml:space="preserve">
+    <value>Oluşturulma Tarihi</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Sil</value>
   </data>
   <data name="Download" xml:space="preserve">
     <value>İndir</value>
+  </data>
+  <data name="DownloadAll" xml:space="preserve">
+    <value>Tüm Dosyaları İndir (ZİP)</value>
+  </data>
+  <data name="DragAndDropArea" xml:space="preserve">
+    <value>Dosya Sürükleme Alanı</value>
   </data>
   <data name="Exception" xml:space="preserve">
     <value>Hata</value>
@@ -138,23 +156,47 @@
   <data name="FileSizeError" xml:space="preserve">
     <value>En Fazla {0} MB Dosya Yükleyebilirsiniz</value>
   </data>
+  <data name="FileUploading" xml:space="preserve">
+    <value>Dosya Yükleniyor...</value>
+  </data>
   <data name="HasArchiveFileMessage" xml:space="preserve">
     <value>Aboneye Ait Dosya Bulunamadı</value>
   </data>
+  <data name="HasNotPermission" xml:space="preserve">
+    <value>Arşiv Yönetim Sistemi İçin Gerekli Yetkiye Sahip Değilsiniz.</value>
+  </data>
   <data name="HomePage" xml:space="preserve">
     <value>Anasayfa</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Giriş</value>
+  </data>
+  <data name="LoginFailed" xml:space="preserve">
+    <value>Kullanıcı Bulunamadı.</value>
+  </data>
+  <data name="LoginPage" xml:space="preserve">
+    <value>Giriş Sayfası</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Çıkış</value>
   </data>
   <data name="Manage" xml:space="preserve">
     <value>Yönet</value>
   </data>
   <data name="MasterISSArchiveManagement" xml:space="preserve">
-    <value>Master ISS Arşiv Yönetim</value>
+    <value>Master ISS Arşiv Yönetim Sistemi</value>
   </data>
   <data name="NoSubscriberFound" xml:space="preserve">
     <value>Abone Bulunamadı</value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>Şifre</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Kaydet</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Ara</value>
   </data>
   <data name="SubscriberArchiveFileDetails" xml:space="preserve">
     <value>{0} Abone Arşiv Dosyası Detayları </value>
@@ -170,6 +212,9 @@
   </data>
   <data name="UploadStatus" xml:space="preserve">
     <value>Dosya Yüklenemedi</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Kullanıcı Adı</value>
   </data>
   <data name="ZIP" xml:space="preserve">
     <value>ZİP</value>

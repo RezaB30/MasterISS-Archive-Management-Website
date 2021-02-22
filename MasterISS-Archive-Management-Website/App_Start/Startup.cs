@@ -64,11 +64,11 @@ namespace MasterISS_Archive_Management_Website.App_Start
                 LoginPath = new PathString(url.Action("Login", "Auth")),
                 //Set the Provider
                 Provider = provider,
-                CookieName = "RadiusR",
+                CookieName = "MasterISS Archive",
                 ExpireTimeSpan = Properties.Settings.Default.CookieExpiration,
                 CookieSecure = CookieSecureOption.SameAsRequest,
-                CookieSameSite = Microsoft.Owin.SameSiteMode.None,
-                CookieHttpOnly = true
+                //CookieSameSite = Microsoft.Owin.SameSiteMode.None,
+                //CookieHttpOnly = true
             });
         }
         //public partial class Startup
