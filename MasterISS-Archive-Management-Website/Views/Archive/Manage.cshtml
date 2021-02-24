@@ -1,6 +1,4 @@
-﻿@*@using MasterISS_Archive_Management_Website.ViewModels*@
-
-@model MasterISS_Archive_Management_Website.ViewModels.UploadFileViewModel
+﻿@model MasterISS_Archive_Management_Website.ViewModels.UploadFileViewModel
 @using MasterISS_Archive_Management_Website.ViewModels
 
 @*@model IEnumerable<FileDetailViewModel>*@
@@ -13,7 +11,7 @@
 <div class="container">
     <div>
         <h1 class="home-page">
-           @MasterISS_Archive_Management_Website.Localization.Model.ArchiveNumber  @ViewBag.Id
+            @MasterISS_Archive_Management_Website.Localization.Model.ArchiveNumber  @ViewBag.Id
         </h1>
 
         <div class="message">
@@ -73,27 +71,15 @@
                 <tr>
                     <td colspan="5">
 
-                        @using (Html.BeginForm("Manage", "Archive", FormMethod.Post, new { enctype = "multipart/form-data", @class = "upload-submit" }))
+                        @using (Html.BeginForm("Manage", "Archive", new { id = ViewContext.RouteData.Values["id"] }, FormMethod.Post, new { enctype = "multipart/form-data", @class = "upload-submit" }))
                         {
 
-                            <div @*id=""*@ class="dropzone drag-area ">
+                            @Html.Hidden("AttachmentType", item.AttachmentTypeEnumNumber)
+                            <input class="file-input-name" type="hidden" value="@Html.NameFor(m=>m.Files)"/>
 
-                                <div class="dropzone-msg dz-message needsclick">
-                                    @Html.ValidationMessageFor(m => m.Files)
+                            <div class="drop-zone drag-area "></div>
 
-                                    <div class="hidden-part">
-                                        @Html.TextBoxFor(m => m.Files, new { type = "file", @multiple = "multiple", @class = "customerDropFile" })
-                                    </div>
-
-                                    @Html.HiddenFor(m => m.Id)
-                                    @Html.Hidden("AttachmentType", item.AttachmentTypeEnumNumber)
-
-                                    @Html.HiddenFor(model => item.AttachmentTypeEnumNumber)
-
-                                    <input type="file" style="visibility:hidden" class="customerContract" name="customerContract" multiple />
-                                    <h3 class="dropzone-msg-title file-dialog"></h3>
-                                </div>
-                            </div>
+                            <div class="file-input-container" style="display: none;"></div>
 
                             <button type="submit" class="upload-button">@MasterISS_Archive_Management_Website.Localization.Model.Save</button>
                             <button type="button" class="clear-button">@MasterISS_Archive_Management_Website.Localization.Model.Clear</button>
@@ -110,8 +96,11 @@
 </div>
 
 @section script{
-    @Scripts.Render("~/Scripts/UploadFile.js")
+    @Scripts.Render("~/Scripts/Up-file.js")
 
+    <script>
+        SetupFileUploadAreas();
+    </script>
     <script>
         $(".delete-submit").submit(function (e) {
             if (!confirm("Are You Sure?")) {
@@ -121,12 +110,25 @@
     </script>
 
 
+
+
     <script>
-        $(".upload-button").click(function () {
+        var d = [];
+        $(".upload-button").submit(function (i, file, response, time) {
             $('.upload-button').hide();
             $('.clear-button').hide();
             $('.uploading-files').show();
+            d.push(file);
+            customerDropFile.push(file);
         });
+
+        ////$(".dropzone").on('dragleave', function (i, file, response, time) {
+        //$(".dropzone").on('dragleave', function (i, file, response, time) {
+
+        //    //$('.uploadList').append('<li class="list-group-item">' + file.name + '</li>');
+        //    d.push(file);
+        //    customerDropFile.push(file);
+        //});
     </script>
 
     @*<script>
@@ -142,3 +144,4 @@
     </script>
 
 }
+

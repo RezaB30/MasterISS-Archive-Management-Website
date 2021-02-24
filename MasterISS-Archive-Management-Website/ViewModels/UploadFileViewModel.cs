@@ -11,7 +11,6 @@ namespace MasterISS_Archive_Management_Website.ViewModels
 {
     public class UploadFileViewModel
     {       
-        public long Id { get; set; }
         public int AttachmentType { get; set; }
         //public HttpPostedFileBase File { get; set; }
         [Required(ErrorMessage="You Must Upload File")]

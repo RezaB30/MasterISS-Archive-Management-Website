@@ -497,3 +497,17 @@ div.drag-area {
         height: 110px;*/
     overflow: auto;
 }
+
+
+
+
+#drop-area {
+    margin-top: 3em;
+    margin-bottom: 3em;
+    background: #b5b5b5;
+    border: black dashed 0.2em;
+    height: 25em;
+    /*text-align: center;*/
+    color: #fff;
+    padding-top: 1em;
+}
