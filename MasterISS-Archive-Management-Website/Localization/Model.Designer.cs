@@ -61,6 +61,15 @@ namespace MasterISS_Archive_Management_Website.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arşive Numarası Gerekli.
+        /// </summary>
+        public static string ArchiveNoIsRequired {
+            get {
+                return ResourceManager.GetString("ArchiveNoIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ARŞİV NUMARASI :.
         /// </summary>
         public static string ArchiveNumber {
@@ -75,6 +84,15 @@ namespace MasterISS_Archive_Management_Website.Localization {
         public static string AreYouSure {
             get {
                 return ResourceManager.GetString("AreYouSure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sistemsel Bir Hata Oluştu.
+        /// </summary>
+        public static string ASystemErrorHasOccurred {
+            get {
+                return ResourceManager.GetString("ASystemErrorHasOccurred", resourceCulture);
             }
         }
         

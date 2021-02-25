@@ -13,7 +13,7 @@
 <div class="container">
     <div>
         <h1 class="home-page">
-            @MasterISS_Archive_Management_Website.Localization.Model.ArchiveNumber  @ViewBag.Id
+            @MasterISS_Archive_Management_Website.Localization.Model.ArchiveNumber  @ViewBag.id
         </h1>
 
         <div class="message">
@@ -43,14 +43,14 @@
                                     @Html.DisplayFor(model => fileItem.CreationDate)
                                 </td>                               
                                 <td>
-                                    <a href="@Url.Action("Download", "Archive", new { Id = ViewBag.Id,FileName = fileItem.ServerSideName })">@MasterISS_Archive_Management_Website.Localization.Model.Download</a>
+                                    <a href="@Url.Action("Download", "Archive", new { id = ViewBag.id,FileName = fileItem.ServerSideName })">@MasterISS_Archive_Management_Website.Localization.Model.Download</a>
                                 </td>
                                 <td>
 
                                     @using (Html.BeginForm("Delete", "Archive", FormMethod.Post, new { @class = "delete-submit" }))
                                     {
                                         <div class="hidden-part">
-                                            @Html.TextBox("Id")
+                                            @Html.TextBox("id")
 
                                             @Html.Hidden("serverSideName", fileItem.ServerSideName)
                                         </div>

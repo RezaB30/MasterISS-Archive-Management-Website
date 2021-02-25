@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ArchiveNoIsRequired" xml:space="preserve">
+    <value>Archive No Is Required</value>
+  </data>
   <data name="ArchiveNumber" xml:space="preserve">
     <value>ARCHIVE NUMBER :</value>
   </data>
   <data name="AreYouSure" xml:space="preserve">
     <value>Are You Sure?</value>
+  </data>
+  <data name="ASystemErrorHasOccurred" xml:space="preserve">
+    <value>A System Error Has Occurred</value>
   </data>
   <data name="AttachmentType" xml:space="preserve">
     <value>Attachment Type</value>

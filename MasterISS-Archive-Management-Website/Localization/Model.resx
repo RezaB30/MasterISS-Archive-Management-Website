@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ArchiveNoIsRequired" xml:space="preserve">
+    <value>Arşive Numarası Gerekli</value>
+  </data>
   <data name="ArchiveNumber" xml:space="preserve">
     <value>ARŞİV NUMARASI :</value>
   </data>
   <data name="AreYouSure" xml:space="preserve">
     <value>Emin Misiniz?</value>
+  </data>
+  <data name="ASystemErrorHasOccurred" xml:space="preserve">
+    <value>Sistemsel Bir Hata Oluştu</value>
   </data>
   <data name="AttachmentType" xml:space="preserve">
     <value>Dosya Türü</value>

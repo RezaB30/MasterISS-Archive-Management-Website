@@ -229,6 +229,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Custom.css" />
+    <Content Include="Content\img\error.png" />
     <Content Include="Content\img\file.svg" />
     <Content Include="Content\img\lang.jpg" />
     <Content Include="Content\img\remove-file.svg" />
@@ -284,6 +285,8 @@
     <Content Include="Views\Shared\_LanguagePartial.cshtml" />
     <Content Include="Views\Shared\_UploadNewFile.cshtml" />
     <Content Include="Views\Archive\ManageTest.cshtml" />
+    <Content Include="Views\Archive\Error.cshtml" />
+    <Content Include="Views\Archive\ErrorPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

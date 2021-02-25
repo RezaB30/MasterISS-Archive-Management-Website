@@ -15,7 +15,7 @@
         }
     </style>*@
 
-@if (ViewBag.Id != null)
+@if (ViewBag.id != null)
 {
     <style>
         #visible-manage-button {
@@ -44,11 +44,15 @@
         </div>
 
     }
-    <div class="message">
-        @ViewBag.NoSubscriberFound
-        @ViewBag.HasArchiveFileMessage
-    </div>
+<div class="message">
+    @ViewBag.NoSubscriberFound
+    @ViewBag.HasArchiveFileMessage
+    @ViewBag.IdValidationMessage
+</div>
+    <button></button>
+    @Html.ActionLink("Error", "ErrorPage","Archive")
 
+   <a href="@Url.Action("ErrorPage", "Archive")">error</a> 
 
     @if (Model != null)
     {
@@ -74,9 +78,22 @@
                         @Html.DisplayFor(modelItem => item.CreationDate)
                     </td>
                     <td>
-                        <a href="@Url.Action("Download", "Archive", new { id = ViewBag.Id, FileName = item.ServerSideName })">@MasterISS_Archive_Management_Website.Localization.Model.Download</a>
+                        <a href="@Url.Action("Download", "Archive", new { id = ViewBag.id, FileName = item.ServerSideName })">@MasterISS_Archive_Management_Website.Localization.Model.Download</a>
                     </td>
                     <td>
+                        @*@using (Html.BeginForm("Delete", "Archive", FormMethod.Post, new { @class = "delete-submit" }))
+                        {
+                            <div class="hidden-part">
+                                @Html.TextBox("id")
+
+                                @Html.Hidden("serverSideName", item.ServerSideName)
+                            </div>
+
+                            <button type="submit">@MasterISS_Archive_Management_Website.Localization.Model.Delete</button>
+                        }*@
+
+
+
                         @using (Html.BeginForm("Delete", "Archive", FormMethod.Post, new { @class = "delete-submit" }))
                         {
                             <div class="hidden-part">
@@ -92,12 +109,12 @@
             }
 
         </table>
-        <a href="@Url.Action("DownloadZipFile", "Archive",  new { id= ViewBag.Id})">@MasterISS_Archive_Management_Website.Localization.Model.DownloadAll</a>
+        <a href="@Url.Action("DownloadZipFile", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.DownloadAll</a>
 
     }
 
     <div id="visible-manage-button">
-        <a href="@Url.Action("Manage", "Archive",  new { id= ViewBag.Id})">@MasterISS_Archive_Management_Website.Localization.Model.Manage</a>
+        <a href="@Url.Action("Manage", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.Manage</a>
     </div>
 </div>
 
@@ -114,6 +131,7 @@
             }
         });
     </script>
+
 
 }
 
