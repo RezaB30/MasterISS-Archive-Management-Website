@@ -145,10 +145,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
             Dictionary<string, object> responseParams = new Dictionary<string, object>();
             Request.QueryString.CopyTo(responseParams);
             responseParams.Add("lang", culture);
-            if (sender!="Index")
-            {
-                sender = "Index";
-            }
+          
             return RedirectToAction(sender, new RouteValueDictionary(responseParams));
         }
 

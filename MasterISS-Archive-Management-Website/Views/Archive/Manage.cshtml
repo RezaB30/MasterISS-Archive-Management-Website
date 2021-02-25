@@ -109,7 +109,7 @@
         });
     </script>
 
-    <script>
+    @*<script>
         var d = [];
         $(".upload-button").submit(function (i, file, response, time) {
             $('.upload-button').hide();
@@ -126,7 +126,7 @@
         //    d.push(file);
         //    customerDropFile.push(file);
         //});
-    </script>
+    </script>*@
 
 
     <script>
@@ -141,6 +141,17 @@
 
             $('.drag-area').empty();
           
+        })
+    </script>
+
+    <script>
+        $('.upload-button').click(function () {
+            $(".upload-button").hide();
+            $(".clear-button").hide();
+
+            $(".uploading-files").show();
+
+
         })
     </script>
 

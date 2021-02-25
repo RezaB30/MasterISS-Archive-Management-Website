@@ -173,74 +173,133 @@ namespace MasterISS_Archive_Management_Website.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(long? id)
         {
 
             // archiveLogger.Error($": {}- : {}");
             ViewBag.Title = MasterISS_Archive_Management_Website.Localization.Model.HomePage;
 
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Index(long Id)
-        {
-            string HasArchiveFileMessage = string.Empty;
-
-
-            using (var db = new RadiusREntities())
+            if (id.HasValue)
             {
-                var result = db.Subscriptions.Find(Id);
-                if (result == null)
+                string HasArchiveFileMessage = string.Empty;
+
+
+                using (var db = new RadiusREntities())
                 {
-                    ViewBag.NoSubscriberFound = Localization.Model.NoSubscriberFound;
+                    var result = db.Subscriptions.Find(id);
+                    if (result == null)
+                    {
+                        ViewBag.NoSubscriberFound = Localization.Model.NoSubscriberFound;
+                        return View();
+                    }
+
+                }
+
+                var archiveFile = new MasterISSFileManager();
+                var archiveFileList = archiveFile.GetClientAttachmentsList(id.Value);
+
+                var fileException = archiveFileList.InternalException;
+
+                if (fileException == null)
+                {
+                    var subscriptionFileList = archiveFileList.Result;
+
+                    if (subscriptionFileList.Count() != 0)
+                    {
+                        var viewResults = subscriptionFileList.Select(a => new FileDetailViewModel()
+                        {
+                            CreationDate = a.CreationDate,
+                            FileExtention = a.FileExtention,
+                            MIMEType = a.MIMEType,
+                            ServerSideName = a.ServerSideName,
+                            AttachmentType = (int)a.AttachmentType,//sıralama için kullan
+
+                        }).OrderByDescending(d => d.CreationDate);
+
+                        ViewBag.Id = id;
+
+                        ViewBag.Title = string.Format(Localization.Model.SubscriberArchiveFileDetails, id);
+
+                        return View(viewResults);
+                    }
+                    ViewBag.Id = id;
+                    ViewBag.HasArchiveFileMessage = Localization.Model.HasArchiveFileMessage;
+                    ViewBag.Title = MasterISS_Archive_Management_Website.Localization.Model.HomePage;
+
+
                     return View();
                 }
-
-            }
-
-            var archiveFile = new MasterISSFileManager();
-            var archiveFileList = archiveFile.GetClientAttachmentsList(Id);
-
-            var fileException = archiveFileList.InternalException;
-
-            if (fileException == null)
-            {
-                var subscriptionFileList = archiveFileList.Result;
-
-                if (subscriptionFileList.Count() != 0)
-                {
-                    var viewResults = subscriptionFileList.Select(a => new FileDetailViewModel()
-                    {
-                        CreationDate = a.CreationDate,
-                        FileExtention = a.FileExtention,
-                        MIMEType = a.MIMEType,
-                        ServerSideName = a.ServerSideName,
-                        AttachmentType = (int)a.AttachmentType,//sıralama için kullan
-
-                    }).OrderByDescending(d => d.CreationDate);
-
-                    ViewBag.Id = Id;
-
-                    ViewBag.Title = string.Format(Localization.Model.SubscriberArchiveFileDetails, Id);
-
-                    return View(viewResults);
-                }
-                ViewBag.Id = Id;
-                ViewBag.HasArchiveFileMessage = Localization.Model.HasArchiveFileMessage;
+                ViewBag.Id = id;
+                ViewBag.Exception = Localization.Model.Exception;
                 ViewBag.Title = MasterISS_Archive_Management_Website.Localization.Model.HomePage;
 
+                archiveLogger.Error($":SubscriberId :{id} - {fileException.Message}");
 
                 return View();
             }
-            ViewBag.Id = Id;
-            ViewBag.Exception = Localization.Model.Exception;
-            ViewBag.Title = MasterISS_Archive_Management_Website.Localization.Model.HomePage;
-
-            archiveLogger.Error($":SubscriberId :{Id} - {fileException.Message}");
 
             return View();
         }
+
+        //[HttpPost]
+        //public ActionResult Index(long Id)
+        //{
+        //    string HasArchiveFileMessage = string.Empty;
+
+
+        //    using (var db = new RadiusREntities())
+        //    {
+        //        var result = db.Subscriptions.Find(Id);
+        //        if (result == null)
+        //        {
+        //            ViewBag.NoSubscriberFound = Localization.Model.NoSubscriberFound;
+        //            return View();
+        //        }
+
+        //    }
+
+        //    var archiveFile = new MasterISSFileManager();
+        //    var archiveFileList = archiveFile.GetClientAttachmentsList(Id);
+
+        //    var fileException = archiveFileList.InternalException;
+
+        //    if (fileException == null)
+        //    {
+        //        var subscriptionFileList = archiveFileList.Result;
+
+        //        if (subscriptionFileList.Count() != 0)
+        //        {
+        //            var viewResults = subscriptionFileList.Select(a => new FileDetailViewModel()
+        //            {
+        //                CreationDate = a.CreationDate,
+        //                FileExtention = a.FileExtention,
+        //                MIMEType = a.MIMEType,
+        //                ServerSideName = a.ServerSideName,
+        //                AttachmentType = (int)a.AttachmentType,//sıralama için kullan
+
+        //            }).OrderByDescending(d => d.CreationDate);
+
+        //            ViewBag.Id = Id;
+
+        //            ViewBag.Title = string.Format(Localization.Model.SubscriberArchiveFileDetails, Id);
+
+        //            return View(viewResults);
+        //        }
+        //        ViewBag.Id = Id;
+        //        ViewBag.HasArchiveFileMessage = Localization.Model.HasArchiveFileMessage;
+        //        ViewBag.Title = MasterISS_Archive_Management_Website.Localization.Model.HomePage;
+
+
+        //        return View();
+        //    }
+        //    ViewBag.Id = Id;
+        //    ViewBag.Exception = Localization.Model.Exception;
+        //    ViewBag.Title = MasterISS_Archive_Management_Website.Localization.Model.HomePage;
+
+        //    archiveLogger.Error($":SubscriberId :{Id} - {fileException.Message}");
+
+        //    return View();
+        //}
 
         //[HttpPost]
         //public ActionResult Delete(string ser)
