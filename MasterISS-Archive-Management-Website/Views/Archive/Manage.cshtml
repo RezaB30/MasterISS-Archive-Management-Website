@@ -109,9 +109,6 @@
         });
     </script>
 
-
-
-
     <script>
         var d = [];
         $(".upload-button").submit(function (i, file, response, time) {
@@ -131,15 +128,19 @@
         //});
     </script>
 
-    @*<script>
-            $('.clear-button').click(function () {
-                window.location.href = "@Url.Action("UploadNewFile","Archive")";
-            })
-        </script>*@
 
     <script>
         $('.clear-button').click(function () {
+        
+            var button = $(this);
+            var uploadForm = button.closest('.upload-submit');
+            var uploadFormInputName = uploadForm.find('.file-input-container');
+            var uploadFormInputFiles = uploadFormInputName.find('input[type="file"]');
+            //uploadFormInputName.removeAttr('name');
+            uploadFormInputFiles.removeAttr('name');
+
             $('.drag-area').empty();
+          
         })
     </script>
 

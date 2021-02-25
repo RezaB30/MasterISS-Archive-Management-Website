@@ -15,9 +15,14 @@
         dropZone.on('drop', (e) => {
             e.preventDefault();
             var draggedFiles = e.originalEvent.dataTransfer.files;
-            fileInputContainer.append('<input type="file" name="' + fileListName + '"/>');
+            fileInputContainer.append('<input type="file" class="fileClass" name="' + fileListName + '"/>');
             var createdInput = fileInputContainer.find('input[type=file]').last();
             createdInput[0].files = draggedFiles;
+
+            //dropZone.append = "<div alt='image'><img style = 'width:3em; margin-top:1em;' src = '/Content/img/file.svg' alt = 'image' ></div>";
+            //dropZone.append = "<div style = 'width:3em; margin-top:1em;' src = '/Content/img/file.svg' alt = 'image'></div>";
+            dropZone.append("<div data-file='" + draggedFiles[0].name + "' class='fileIcon' ><img  style = 'width: 3em; margin-top: 1em;' src='/Content/img/file.svg'><label>" + draggedFiles[0].name+"</label></div>");
+
         });
     });
 }
