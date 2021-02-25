@@ -1,11 +1,13 @@
 ﻿@model MasterISS_Archive_Management_Website.ViewModels.UploadFileViewModel
 @using MasterISS_Archive_Management_Website.ViewModels
 
-@*@model IEnumerable<FileDetailViewModel>*@
-@*@model IEnumerable<FileAndAttachmentViewModel>*@
-
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    <style>
+        .file-area {
+            display: none
+        }
+    </style>
 }
 
 <div class="container">
@@ -39,19 +41,11 @@
                             <tr>
                                 <td>
                                     @Html.DisplayFor(model => fileItem.CreationDate)
-                                </td>
-                                @*<td>
-                                        @Html.DisplayFor(model => fileItem.MIMEType)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(model => fileItem.FileExtention)
-                                    </td>*@
+                                </td>                               
                                 <td>
                                     <a href="@Url.Action("Download", "Archive", new { Id = ViewBag.Id,FileName = fileItem.ServerSideName })">@MasterISS_Archive_Management_Website.Localization.Model.Download</a>
                                 </td>
                                 <td>
-                                    @* <a href="@Url.Action("Delete", "Archive", new { Id = ViewBag.Id, FileName = fileItem.ServerSideName })">Delete</a>*@
-                                    @*   @Html.ActionLink("Delete", "Delete", "Archive", new { Id = ViewBag.Id, FileName = fileItem.ServerSideName })*@
 
                                     @using (Html.BeginForm("Delete", "Archive", FormMethod.Post, new { @class = "delete-submit" }))
                                     {
@@ -73,20 +67,22 @@
 
                         @using (Html.BeginForm("Manage", "Archive", new { id = ViewContext.RouteData.Values["id"] }, FormMethod.Post, new { enctype = "multipart/form-data", @class = "upload-submit" }))
                         {
+                            <div class="file-area">
+                                @Html.Hidden("AttachmentType", item.AttachmentTypeEnumNumber)
+                                <input class="file-input-name" type="hidden" value="@Html.NameFor(m=>m.Files)" />
 
-                            @Html.Hidden("AttachmentType", item.AttachmentTypeEnumNumber)
-                            <input class="file-input-name" type="hidden" value="@Html.NameFor(m=>m.Files)"/>
+                                <div class="drop-zone drag-area "></div>
 
-                            <div class="drop-zone drag-area "></div>
+                                <div class="file-input-container" style="display: none;"></div>
 
-                            <div class="file-input-container" style="display: none;"></div>
+                                <button type="submit" class="upload-button">@MasterISS_Archive_Management_Website.Localization.Model.Save</button>
+                                <button type="button" class="clear-button">@MasterISS_Archive_Management_Website.Localization.Model.Clear</button>
 
-                            <button type="submit" class="upload-button">@MasterISS_Archive_Management_Website.Localization.Model.Save</button>
-                            <button type="button" class="clear-button">@MasterISS_Archive_Management_Website.Localization.Model.Clear</button>
-
-                            <div class="uploading-files">
-                                @MasterISS_Archive_Management_Website.Localization.Model.FileisUploading
+                                <div class="uploading-files">
+                                    @MasterISS_Archive_Management_Website.Localization.Model.FileisUploading
+                                </div>
                             </div>
+                            <button class="area-for-upload-button" type="button">Dosya Yükle</button>
                         }
                     </td>
                 </tr>
@@ -94,7 +90,6 @@
         }
     </div>
 </div>
-
 @section script{
     @Scripts.Render("~/Scripts/Up-file.js")
 
@@ -108,30 +103,9 @@
             }
         });
     </script>
-
-    @*<script>
-        var d = [];
-        $(".upload-button").submit(function (i, file, response, time) {
-            $('.upload-button').hide();
-            $('.clear-button').hide();
-            $('.uploading-files').show();
-            d.push(file);
-            customerDropFile.push(file);
-        });
-
-        ////$(".dropzone").on('dragleave', function (i, file, response, time) {
-        //$(".dropzone").on('dragleave', function (i, file, response, time) {
-
-        //    //$('.uploadList').append('<li class="list-group-item">' + file.name + '</li>');
-        //    d.push(file);
-        //    customerDropFile.push(file);
-        //});
-    </script>*@
-
-
     <script>
         $('.clear-button').click(function () {
-        
+
             var button = $(this);
             var uploadForm = button.closest('.upload-submit');
             var uploadFormInputName = uploadForm.find('.file-input-container');
@@ -140,10 +114,9 @@
             uploadFormInputFiles.removeAttr('name');
 
             $('.drag-area').empty();
-          
+
         })
     </script>
-
     <script>
         $('.upload-button').click(function () {
             $(".upload-button").hide();
@@ -151,6 +124,24 @@
 
             $(".uploading-files").show();
 
+
+        })
+    </script>
+    <script>
+        $('button.area-for-upload-button').click(function () {
+            var uploadAreaButton = $(this);
+            var uploadForm = uploadAreaButton.closest(".upload-submit");
+            var uploadFileArea = uploadForm.find(".file-area");
+
+            var fileAreaButton = uploadForm.find(".area-for-upload-button");
+
+            if ($(".file-area").is(":visible")) {
+                $(".file-area").hide();
+            }
+            $(".area-for-upload-button").show();
+
+            fileAreaButton.hide();
+            uploadFileArea.show();
 
         })
     </script>
