@@ -141,6 +141,9 @@
   <data name="Delete" xml:space="preserve">
     <value>Sil</value>
   </data>
+  <data name="Details" xml:space="preserve">
+    <value>Detaylar</value>
+  </data>
   <data name="Download" xml:space="preserve">
     <value>İndir</value>
   </data>
@@ -204,8 +207,14 @@
   <data name="Search" xml:space="preserve">
     <value>Ara</value>
   </data>
-  <data name="SubscriberArchiveFileDetails" xml:space="preserve">
-    <value>{0} Abone Arşiv Dosyası Detayları </value>
+  <data name="SubscriberArchiveFileDetailsAndUploadFile" xml:space="preserve">
+    <value>{0} - Abone Arşiv Dosyası Detayları ve Dosya Yükleme</value>
+  </data>
+  <data name="SubscriberArchiveFiles" xml:space="preserve">
+    <value>Abone Arşiv Dosyaları</value>
+  </data>
+  <data name="UploadFile" xml:space="preserve">
+    <value>Dosya Yükle</value>
   </data>
   <data name="UploadFilesStatus" xml:space="preserve">
     <value>Dosyalar Yüklendi</value>

@@ -3,13 +3,14 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    <style>
-        .file-area {
-            display: none
-        }
-    </style>
-}
+    ViewBag.Title =  string.Format(MasterISS_Archive_Management_Website.Localization.Model.SubscriberArchiveFileDetailsAndUploadFile, ViewBag.id);
 
+}
+<style>
+    .file-area {
+        display: none
+    }
+</style>
 <div class="container">
     <div>
         <h1 class="home-page">
@@ -41,9 +42,9 @@
                             <tr>
                                 <td>
                                     @Html.DisplayFor(model => fileItem.CreationDate)
-                                </td>                               
+                                </td>
                                 <td>
-                                    <a href="@Url.Action("Download", "Archive", new { id = ViewBag.id,FileName = fileItem.ServerSideName })">@MasterISS_Archive_Management_Website.Localization.Model.Download</a>
+                                    <a href="@Url.Action("Download", "Archive", new { id = ViewBag.d,FileName = fileItem.ServerSideName })">@MasterISS_Archive_Management_Website.Localization.Model.Download</a>
                                 </td>
                                 <td>
 
@@ -82,7 +83,7 @@
                                     @MasterISS_Archive_Management_Website.Localization.Model.FileisUploading
                                 </div>
                             </div>
-                            <button class="area-for-upload-button" type="button">Dosya Yükle</button>
+                            <button class="area-for-upload-button" type="button">@MasterISS_Archive_Management_Website.Localization.Model.u</button>
                         }
                     </td>
                 </tr>

@@ -133,6 +133,15 @@ namespace MasterISS_Archive_Management_Website.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Detaylar.
+        /// </summary>
+        public static string Details {
+            get {
+                return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to İndir.
         /// </summary>
         public static string Download {
@@ -322,11 +331,29 @@ namespace MasterISS_Archive_Management_Website.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} Abone Arşiv Dosyası Detayları .
+        ///   Looks up a localized string similar to {0} - Abone Arşiv Dosyası Detayları ve Dosya Yükleme.
         /// </summary>
-        public static string SubscriberArchiveFileDetails {
+        public static string SubscriberArchiveFileDetailsAndUploadFile {
             get {
-                return ResourceManager.GetString("SubscriberArchiveFileDetails", resourceCulture);
+                return ResourceManager.GetString("SubscriberArchiveFileDetailsAndUploadFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Abone Arşiv Dosyaları.
+        /// </summary>
+        public static string SubscriberArchiveFiles {
+            get {
+                return ResourceManager.GetString("SubscriberArchiveFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dosya Yükle.
+        /// </summary>
+        public static string UploadFile {
+            get {
+                return ResourceManager.GetString("UploadFile", resourceCulture);
             }
         }
         

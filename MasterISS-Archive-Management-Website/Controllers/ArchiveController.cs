@@ -74,12 +74,14 @@ namespace MasterISS_Archive_Management_Website.Controllers
                 FileDetailList = viewResultLists.ToList()
             };
 
-            ViewBag.Title = string.Format(Localization.Model.SubscriberArchiveFileDetails, id);
-
+            //ViewBag.Title = string.Format(Localization.Model.SubscriberArchiveFileDetails, id);
+            ViewBag.id = id;
 
             long uploadMaxFileSize = CustomerWebsiteSettings.MaxSupportAttachmentSize;//byte
+            //long uploadMaxFileSize = 200;//byte
 
             var uploadMaxFileCount = Properties.Settings.Default.uploadMaxFileCount;
+            //var uploadMaxFileCount = 3;
 
             var filesSize = 0;
             var filesCount = 0;
@@ -159,7 +161,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
         public ActionResult Index(long? id)
         {
             // archiveLogger.Error($": {}- : {}");
-            ViewBag.Title = MasterISS_Archive_Management_Website.Localization.Model.HomePage;
+            //ViewBag.Title = MasterISS_Archive_Management_Website.Localization.Model.HomePage;
 
             if (id.HasValue)
             {
@@ -198,20 +200,20 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
                         ViewBag.id = id;
 
-                        ViewBag.Title = string.Format(Localization.Model.SubscriberArchiveFileDetails, id);
+                        //ViewBag.Title = string.Format(Localization.Model.SubscriberArchiveFileDetails, id);
 
                         return View(viewResults);
                     }
                     ViewBag.id = id;
                     ViewBag.HasArchiveFileMessage = Localization.Model.HasArchiveFileMessage;
-                    ViewBag.Title = MasterISS_Archive_Management_Website.Localization.Model.HomePage;
+                    //ViewBag.Title = MasterISS_Archive_Management_Website.Localization.Model.HomePage;
 
 
                     return View();
                 }
                 ViewBag.id = id;
                 ViewBag.Exception = Localization.Model.Exception;
-                ViewBag.Title = MasterISS_Archive_Management_Website.Localization.Model.HomePage;
+                //ViewBag.Title = MasterISS_Archive_Management_Website.Localization.Model.HomePage;
 
                 archiveLogger.Error($":SubscriberId :{id} - {fileException.Message}");
 
@@ -321,7 +323,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
                     }).OrderByDescending(d => d.CreationDate);
 
                     ViewBag.id = id;
-                    ViewBag.Title = string.Format(Localization.Model.SubscriberArchiveFileDetails, id);
+                    //ViewBag.Title = string.Format(Localization.Model.SubscriberArchiveFileDetails, id);
                     //return View(viewName: "Index", model: viewResults);
                     return RedirectToAction("Index", "Archive", new { id = id });
                 }
@@ -384,7 +386,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
                         FileDetailList = viewResultLists.ToList()
                     };
 
-                    ViewBag.Title = string.Format(Localization.Model.SubscriberArchiveFileDetails, id);
+                    //ViewBag.Title = string.Format(Localization.Model.SubscriberArchiveFileDetails, id);
 
                     return View(viewModel);
 

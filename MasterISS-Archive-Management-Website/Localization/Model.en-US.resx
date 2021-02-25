@@ -141,6 +141,9 @@
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
   <data name="Download" xml:space="preserve">
     <value>Download</value>
   </data>
@@ -204,8 +207,14 @@
   <data name="Search" xml:space="preserve">
     <value>Search</value>
   </data>
-  <data name="SubscriberArchiveFileDetails" xml:space="preserve">
-    <value>{0} Subscriber Archive File Details</value>
+  <data name="SubscriberArchiveFileDetailsAndUploadFile" xml:space="preserve">
+    <value>{0} - Subscriber Archive File Details And Upload File</value>
+  </data>
+  <data name="SubscriberArchiveFiles" xml:space="preserve">
+    <value>Subscriber Archive Files</value>
+  </data>
+  <data name="UploadFile" xml:space="preserve">
+    <value>Upload File</value>
   </data>
   <data name="UploadFilesStatus" xml:space="preserve">
     <value>Files Uploaded</value>

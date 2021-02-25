@@ -4,6 +4,15 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    if (ViewBag.id == null)
+    {
+        ViewBag.Title = MasterISS_Archive_Management_Website.Localization.Model.HomePage;
+    }
+    else
+    {
+        ViewBag.Title = ViewBag.id + " - " + MasterISS_Archive_Management_Website.Localization.Model.SubscriberArchiveFiles;
+
+    }
 }
 
 @*<style>
@@ -25,15 +34,15 @@
 }
 
 <div class="container">
-    @using (Html.BeginForm(null,null,FormMethod.Get))
+    @using (Html.BeginForm(null, null, FormMethod.Get))
     {
         <div class="home-page">
             <div>
-                  @*@Html.TextBox("Id",null, new {htmlAttribute=new { @data-inputmask-regex = "[0-90-9- ]*" } })*@
+                @*@Html.TextBox("Id",null, new {htmlAttribute=new { @data-inputmask-regex = "[0-90-9- ]*" } })*@
                 @Html.TextBox("id")
-      
+
                 @*<input class="Id" type="text" />*@
-              
+
 
                 @*    @Html.EditorFor(,)*@
             </div>
@@ -44,15 +53,12 @@
         </div>
 
     }
-<div class="message">
-    @ViewBag.NoSubscriberFound
-    @ViewBag.HasArchiveFileMessage
-    @ViewBag.IdValidationMessage
-</div>
-    <button></button>
-    @Html.ActionLink("Error", "ErrorPage","Archive")
+    <div class="message">
+        @ViewBag.NoSubscriberFound
+        @ViewBag.HasArchiveFileMessage
+        @ViewBag.IdValidationMessage
+    </div>
 
-   <a href="@Url.Action("ErrorPage", "Archive")">error</a> 
 
     @if (Model != null)
     {
@@ -82,15 +88,15 @@
                     </td>
                     <td>
                         @*@using (Html.BeginForm("Delete", "Archive", FormMethod.Post, new { @class = "delete-submit" }))
-                        {
-                            <div class="hidden-part">
-                                @Html.TextBox("id")
+                            {
+                                <div class="hidden-part">
+                                    @Html.TextBox("id")
 
-                                @Html.Hidden("serverSideName", item.ServerSideName)
-                            </div>
+                                    @Html.Hidden("serverSideName", item.ServerSideName)
+                                </div>
 
-                            <button type="submit">@MasterISS_Archive_Management_Website.Localization.Model.Delete</button>
-                        }*@
+                                <button type="submit">@MasterISS_Archive_Management_Website.Localization.Model.Delete</button>
+                            }*@
 
 
 
@@ -121,8 +127,8 @@
 
 @section script{
     @*<script>
-        $(".Id").inputmask({ regex: "[0-90-9- ]*" });
-    </script>*@
+            $(".Id").inputmask({ regex: "[0-90-9- ]*" });
+        </script>*@
 
     <script>
         $(".delete-submit").submit(function (e) {
