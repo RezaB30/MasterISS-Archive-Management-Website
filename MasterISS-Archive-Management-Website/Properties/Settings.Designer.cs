@@ -13,7 +13,7 @@ namespace MasterISS_Archive_Management_Website.Properties {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+    public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
         
@@ -38,6 +38,15 @@ namespace MasterISS_Archive_Management_Website.Properties {
         public global::System.TimeSpan CookieExpiration {
             get {
                 return ((global::System.TimeSpan)(this["CookieExpiration"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://masteriss.netspeed.com.tr/tr-tr/Client/Details")]
+        public string MasterISSWebSiteUrl {
+            get {
+                return ((string)(this["MasterISSWebSiteUrl"]));
             }
         }
     }

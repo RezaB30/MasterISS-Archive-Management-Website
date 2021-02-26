@@ -249,7 +249,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -281,10 +281,8 @@
     <Content Include="Views\Archive\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\LocalizedList.cshtml" />
     <Content Include="Views\Archive\Manage.cshtml" />
-    <Content Include="Views\Archive\UploadNewFile.cshtml" />
     <Content Include="Views\Shared\_LanguagePartial.cshtml" />
     <Content Include="Views\Shared\_UploadNewFile.cshtml" />
-    <Content Include="Views\Archive\ManageTest.cshtml" />
     <Content Include="Views\Archive\Error.cshtml" />
     <Content Include="Views\Archive\ErrorPage.cshtml" />
   </ItemGroup>

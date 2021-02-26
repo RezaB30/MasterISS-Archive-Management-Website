@@ -17,70 +17,6 @@ namespace MasterISS_Archive_Management_Website.Controllers
     {
         Logger baseLogger = LogManager.GetLogger("base");
 
-
-        //protected override void OnException(ExceptionContext filterContext)
-        //{
-        //    var message = string.Empty;
-
-        //    filterContext.Result = new ViewResult
-        //    {
-        //        //ViewName = "~/Views/Home/Error.cshtml",
-        //    };
-        //    filterContext.ExceptionHandled = true;
-        //    logger.Error(filterContext.Exception);
-
-        //}
-
-
-        //protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
-        //{
-        //    //Localization in Base controller:
-
-        //    string lang = CookieTools.getCulture(Request.Cookies);
-
-        //    var routeData = RouteData.Values;
-        //    var routeCulture = routeData.Where(r => r.Key == "lang").FirstOrDefault();
-        //    if (string.IsNullOrEmpty((string)routeCulture.Value))
-        //    {
-        //        routeData.Remove("lang");
-        //        routeData.Add("lang", lang);
-
-        //        Thread.CurrentThread.CurrentUICulture =
-        //        Thread.CurrentThread.CurrentCulture =
-        //        CultureInfo.GetCultureInfo(lang);
-
-        //        Response.RedirectToRoute(routeData);
-        //    }
-        //    else
-        //    {
-        //        lang = (string)RouteData.Values["lang"];
-
-        //        Thread.CurrentThread.CurrentUICulture =
-        //            Thread.CurrentThread.CurrentCulture =
-        //            CultureInfo.GetCultureInfo(lang);
-        //    }
-
-        //    var version = Assembly.GetExecutingAssembly().GetName().Version;
-        //    ViewBag.Version = version.ToString(3);
-        //    return base.BeginExecuteCore(callback, state);
-        //}
-
-
-
-        //[AllowAnonymous]
-        //[HttpGet, ActionName("Language")]
-        //public virtual ActionResult Language(string culture, string sender)
-        //{
-        //    CookieTools.SetCultureInfo(Response.Cookies, culture);
-
-        //    Dictionary<string, object> responseParams = new Dictionary<string, object>();
-        //    Request.QueryString.CopyTo(responseParams);
-        //    responseParams.Add("lang", culture);
-
-        //    return RedirectToAction(sender, new RouteValueDictionary(responseParams));
-        //}
-
-
         protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
         {
             //Localization in Base controller:
@@ -127,13 +63,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
                 {
                     baseLogger.Error(filterContext.Exception);
                 }
-            }
-            //var error = ErrorHandler.GetMessage(filterContext.Exception, Request.IsLocal);
-            //filterContext.ExceptionHandled = true;
-            ////filterContext.HttpContext.Response.Clear();
-            //filterContext.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-            ////filterContext.HttpContext.Response.TrySkipIisCustomErrors = true;
-            //filterContext.Result = Error(error.Message, error.Details);
+            }          
         }
 
         [AllowAnonymous]

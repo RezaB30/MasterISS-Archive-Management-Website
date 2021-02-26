@@ -39,7 +39,6 @@ namespace MasterISS_Archive_Management_Website.Controllers
                     if (!owinContext.Authentication.AuthenticationResponseGrant.Principal.HasPermission("Archive Access"))
                     {
                         ViewBag.HasNotPermission = MasterISS_Archive_Management_Website.Localization.Model.HasNotPermission;
-                        //ViewBag.Username = owinContext.Authentication.AuthenticationResponseGrant.Identity.Name;
                         authenticator.SignOut(owinContext);
                     }
                     // valid login

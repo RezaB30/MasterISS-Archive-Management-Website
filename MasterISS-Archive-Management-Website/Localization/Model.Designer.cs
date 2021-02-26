@@ -304,6 +304,15 @@ namespace MasterISS_Archive_Management_Website.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dosya Eklemeden Yükleme Yapamazsınız..
+        /// </summary>
+        public static string NullFilesErrorMessage {
+            get {
+                return ResourceManager.GetString("NullFilesErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Şifre.
         /// </summary>
         public static string Password {
@@ -331,6 +340,15 @@ namespace MasterISS_Archive_Management_Website.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string String1 {
+            get {
+                return ResourceManager.GetString("String1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} - Abone Arşiv Dosyası Detayları ve Dosya Yükleme.
         /// </summary>
         public static string SubscriberArchiveFileDetailsAndUploadFile {
@@ -345,6 +363,15 @@ namespace MasterISS_Archive_Management_Website.Localization {
         public static string SubscriberArchiveFiles {
             get {
                 return ResourceManager.GetString("SubscriberArchiveFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Abone Numarası.
+        /// </summary>
+        public static string SubscriberNo {
+            get {
+                return ResourceManager.GetString("SubscriberNo", resourceCulture);
             }
         }
         

@@ -16,16 +16,11 @@ namespace MasterISS_Archive_Management_Website.ViewModels
         public int AttachmentType { get; set; }
         public string MIMEType { get; set; }
 
-        //[Display(ResourceType = typeof(Localization.Model), Name = "CreationDate")]
         [Display(Name = "CreationDate", ResourceType = typeof(Localization.Model))]
         public DateTime CreationDate { get; set; }
         public string MD5 { get; set; }
         public string FileExtention { get; set; }
         public string ServerSideName { get; set; }
-
-
-
-        //public long SubscriptionId { get; set; }
 
     }
 }

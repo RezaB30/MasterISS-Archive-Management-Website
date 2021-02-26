@@ -198,6 +198,9 @@
   <data name="NoSubscriberFound" xml:space="preserve">
     <value>No Subscriber Found</value>
   </data>
+  <data name="NullFilesErrorMessage" xml:space="preserve">
+    <value>You Can't Upload Without Attaching Files.</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
@@ -212,6 +215,9 @@
   </data>
   <data name="SubscriberArchiveFiles" xml:space="preserve">
     <value>Subscriber Archive Files</value>
+  </data>
+  <data name="SubscriberNo" xml:space="preserve">
+    <value>Subscriber No</value>
   </data>
   <data name="UploadFile" xml:space="preserve">
     <value>Upload File</value>

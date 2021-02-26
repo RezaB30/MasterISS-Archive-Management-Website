@@ -198,6 +198,9 @@
   <data name="NoSubscriberFound" xml:space="preserve">
     <value>Abone Bulunamadı</value>
   </data>
+  <data name="NullFilesErrorMessage" xml:space="preserve">
+    <value>Dosya Eklemeden Yükleme Yapamazsınız.</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Şifre</value>
   </data>
@@ -207,11 +210,17 @@
   <data name="Search" xml:space="preserve">
     <value>Ara</value>
   </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
   <data name="SubscriberArchiveFileDetailsAndUploadFile" xml:space="preserve">
     <value>{0} - Abone Arşiv Dosyası Detayları ve Dosya Yükleme</value>
   </data>
   <data name="SubscriberArchiveFiles" xml:space="preserve">
     <value>Abone Arşiv Dosyaları</value>
+  </data>
+  <data name="SubscriberNo" xml:space="preserve">
+    <value>Abone Numarası</value>
   </data>
   <data name="UploadFile" xml:space="preserve">
     <value>Dosya Yükle</value>

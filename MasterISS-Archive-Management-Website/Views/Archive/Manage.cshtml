@@ -22,6 +22,7 @@
             @ViewBag.FileCountError
             @ViewBag.UploadStatus
             @ViewBag.UploadFileStatus
+            @ViewBag.NullFilesErrorMessage
         </div>
 
         @ViewBag.Exception
@@ -30,7 +31,10 @@
         {
             <table>
                 <tr>
-                    @Html.DisplayFor(model => item.AttachmentTypeEnumName)
+                    <div class="manage-page">
+                        @Html.DisplayFor(model => item.AttachmentTypeEnumName)
+
+                    </div>
                 </tr>
 
                 @if (Model.FileDetailList != null)
