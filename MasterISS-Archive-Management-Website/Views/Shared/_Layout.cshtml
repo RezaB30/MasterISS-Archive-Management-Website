@@ -51,8 +51,8 @@
 
 
     <nav>
-        <div id="logo">           
-            @Html.ActionLink(MasterISS_Archive_Management_Website.Localization.Model.MasterISSArchiveManagement, "Index","Archive")
+        <div id="logo">
+            @Html.ActionLink(MasterISS_Archive_Management_Website.Localization.Model.MasterISSArchiveManagement, "Index", "Archive")
         </div>
 
         <label for="tog" class="toggle">Menu</label>
@@ -75,6 +75,7 @@
 
             </li>
             @*<li><a href="#">Contact</a></li>*@
+            <li><a class="font-shape">@User.Identity.Name</a></li>
             <li><a href="@Url.Action("LogOut", "Auth")">@MasterISS_Archive_Management_Website.Localization.Model.LogOut</a></li>
             @* <li><a href="@Url.Action("LogOut", "Auth")"></a></li>*@
         </ul>

@@ -83,7 +83,7 @@
                                     @MasterISS_Archive_Management_Website.Localization.Model.FileisUploading
                                 </div>
                             </div>
-                            <button class="area-for-upload-button" type="button">@MasterISS_Archive_Management_Website.Localization.Model.u</button>
+                            <button class="area-for-upload-button" type="button">@MasterISS_Archive_Management_Website.Localization.Model.UploadFile</button>
                         }
                     </td>
                 </tr>
@@ -111,7 +111,6 @@
             var uploadForm = button.closest('.upload-submit');
             var uploadFormInputName = uploadForm.find('.file-input-container');
             var uploadFormInputFiles = uploadFormInputName.find('input[type="file"]');
-            //uploadFormInputName.removeAttr('name');
             uploadFormInputFiles.removeAttr('name');
 
             $('.drag-area').empty();
@@ -122,10 +121,7 @@
         $('.upload-button').click(function () {
             $(".upload-button").hide();
             $(".clear-button").hide();
-
             $(".uploading-files").show();
-
-
         })
     </script>
     <script>

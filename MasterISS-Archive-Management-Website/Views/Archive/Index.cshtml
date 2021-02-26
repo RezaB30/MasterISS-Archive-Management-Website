@@ -3,6 +3,7 @@
 
 
 @{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     Layout = "~/Views/Shared/_Layout.cshtml";
     if (ViewBag.id == null)
     {
@@ -11,7 +12,6 @@
     else
     {
         ViewBag.Title = ViewBag.id + " - " + MasterISS_Archive_Management_Website.Localization.Model.SubscriberArchiveFiles;
-
     }
 }
 
@@ -38,13 +38,7 @@
     {
         <div class="home-page">
             <div>
-                @*@Html.TextBox("Id",null, new {htmlAttribute=new { @data-inputmask-regex = "[0-90-9- ]*" } })*@
                 @Html.TextBox("id")
-
-                @*<input class="Id" type="text" />*@
-
-
-                @*    @Html.EditorFor(,)*@
             </div>
 
             <div class="home-page">
@@ -87,19 +81,6 @@
                         <a href="@Url.Action("Download", "Archive", new { id = ViewBag.id, FileName = item.ServerSideName })">@MasterISS_Archive_Management_Website.Localization.Model.Download</a>
                     </td>
                     <td>
-                        @*@using (Html.BeginForm("Delete", "Archive", FormMethod.Post, new { @class = "delete-submit" }))
-                            {
-                                <div class="hidden-part">
-                                    @Html.TextBox("id")
-
-                                    @Html.Hidden("serverSideName", item.ServerSideName)
-                                </div>
-
-                                <button type="submit">@MasterISS_Archive_Management_Website.Localization.Model.Delete</button>
-                            }*@
-
-
-
                         @using (Html.BeginForm("Delete", "Archive", FormMethod.Post, new { @class = "delete-submit" }))
                         {
                             <div class="hidden-part">
@@ -126,9 +107,6 @@
 
 
 @section script{
-    @*<script>
-            $(".Id").inputmask({ regex: "[0-90-9- ]*" });
-        </script>*@
 
     <script>
         $(".delete-submit").submit(function (e) {
@@ -137,7 +115,15 @@
             }
         });
     </script>
+    <script>
+        $("#id").on("input", function () {
+            var id = $(this);
+            var idVal = id.val();
+            var reg = /^\d+$/;
 
+            reg.test(idVal) ? this.value : this.value = this.value.slice(0, -1)
+        })
+    </script>
 
 }
 
