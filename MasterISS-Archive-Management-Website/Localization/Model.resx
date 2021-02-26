@@ -204,6 +204,9 @@
   <data name="Password" xml:space="preserve">
     <value>Şifre</value>
   </data>
+  <data name="PasswordRequired" xml:space="preserve">
+    <value>Şifrenizi Adınızı Giriniz</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Kaydet</value>
   </data>
@@ -239,6 +242,9 @@
   </data>
   <data name="Username" xml:space="preserve">
     <value>Kullanıcı Adı</value>
+  </data>
+  <data name="UsernameRequired" xml:space="preserve">
+    <value>Kullanıcı Adınızı Giriniz</value>
   </data>
   <data name="ZIP" xml:space="preserve">
     <value>ZİP</value>

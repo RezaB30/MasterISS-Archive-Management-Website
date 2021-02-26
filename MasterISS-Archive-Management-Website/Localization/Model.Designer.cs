@@ -322,6 +322,15 @@ namespace MasterISS_Archive_Management_Website.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Şifrenizi Adınızı Giriniz.
+        /// </summary>
+        public static string PasswordRequired {
+            get {
+                return ResourceManager.GetString("PasswordRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kaydet.
         /// </summary>
         public static string Save {
@@ -426,6 +435,15 @@ namespace MasterISS_Archive_Management_Website.Localization {
         public static string Username {
             get {
                 return ResourceManager.GetString("Username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kullanıcı Adınızı Giriniz.
+        /// </summary>
+        public static string UsernameRequired {
+            get {
+                return ResourceManager.GetString("UsernameRequired", resourceCulture);
             }
         }
         

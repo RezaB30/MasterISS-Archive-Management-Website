@@ -283,8 +283,8 @@
     <Content Include="Views\Archive\Manage.cshtml" />
     <Content Include="Views\Shared\_LanguagePartial.cshtml" />
     <Content Include="Views\Shared\_UploadNewFile.cshtml" />
-    <Content Include="Views\Archive\Error.cshtml" />
     <Content Include="Views\Archive\ErrorPage.cshtml" />
+    <Content Include="Settings.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

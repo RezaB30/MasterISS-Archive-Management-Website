@@ -43,7 +43,7 @@ namespace MasterISS_Archive_Management_Website.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://masteriss.netspeed.com.tr/tr-tr/Client/Details")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://10.184.3.63/tr-tr/Client/Details")]
         public string MasterISSWebSiteUrl {
             get {
                 return ((string)(this["MasterISSWebSiteUrl"]));

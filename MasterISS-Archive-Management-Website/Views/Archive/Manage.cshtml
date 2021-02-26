@@ -3,7 +3,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title =  string.Format(MasterISS_Archive_Management_Website.Localization.Model.SubscriberArchiveFileDetailsAndUploadFile, ViewBag.id);
+    ViewBag.Title = string.Format(MasterISS_Archive_Management_Website.Localization.Model.SubscriberArchiveFileDetailsAndUploadFile, ViewBag.id);
 
 }
 <style>
@@ -18,11 +18,11 @@
         </h1>
 
         <div class="message">
-            @ViewBag.FileSizeError
-            @ViewBag.FileCountError
-            @ViewBag.UploadStatus
-            @ViewBag.UploadFileStatus
-            @ViewBag.NullFilesErrorMessage
+            @TempData["FileSizeError"]
+            @TempData["FileCountError"]
+            @TempData["UploadStatus"]
+            @TempData["UploadFileStatus"]
+            @TempData["NullFilesErrorMessage"]
         </div>
 
         @ViewBag.Exception
@@ -48,7 +48,7 @@
                                     @Html.DisplayFor(model => fileItem.CreationDate)
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("Download", "Archive", new { id = ViewBag.d,FileName = fileItem.ServerSideName })">@MasterISS_Archive_Management_Website.Localization.Model.Download</a>
+                                    <a href="@Url.Action("Download", "Archive", new { id = ViewBag.id,FileName = fileItem.ServerSideName })">@MasterISS_Archive_Management_Website.Localization.Model.Download</a>
                                 </td>
                                 <td>
 
@@ -74,6 +74,7 @@
                         {
                             <div class="file-area">
                                 @Html.Hidden("AttachmentType", item.AttachmentTypeEnumNumber)
+
                                 <input class="file-input-name" type="hidden" value="@Html.NameFor(m=>m.Files)" />
 
                                 <div class="drop-zone drag-area "></div>
