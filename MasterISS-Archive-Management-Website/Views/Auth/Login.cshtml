@@ -45,8 +45,12 @@
         </div>
         <div>
             @Html.PasswordFor(m => m.Password)
-            <input type="checkbox" class="showPass" />
-            @MasterISS_Archive_Management_Website.Localization.Model.ShowMyPassword
+
+            @*<a class="showPass" >
+                <img src="~/Content/img/file.svg">
+            </a>*@
+            @*<input type="checkbox" class="showPass" />*@
+           @* @MasterISS_Archive_Management_Website.Localization.Model.ShowMyPassword*@
 
         </div>
         @Html.ValidationMessageFor(m => m.Password)
@@ -68,14 +72,24 @@
     <script >
         $(function () {
 
-            $(".showPass").change(function () {
-                var checked = $(this).is(":checked");
-                if (checked) {
-                    $("#Password").attr("type", "text");
-                } else {
-                    $("#Password").attr("type", "Password");
-                }
-            });
-        });
+        //    $(".showPass").change(function () {
+        //        var checked = $(this).is(":checked");
+        //        if (checked) {
+        //            $("#Password").attr("type", "text");
+        //        } else {
+        //            $("#Password").attr("type", "Password");
+        //        }
+        //    });
+        //});
+
+        //    $(".showPass").click(function () {
+        //        //var checked = $(this).is(":checked");
+        //        //if (checked) {
+        //            $("#Password").attr("type", "text");
+        //        //} else {
+        //        //    $("#Password").attr("type", "Password");
+        //        //}
+        //    });
+        //});
     </script>
 }
