@@ -27,7 +27,7 @@
 @if (ViewBag.id != null)
 {
     <style>
-        #visible-manage-button {
+        .visible-manage-button {
             display: block
         }
     </style>
@@ -130,33 +130,41 @@
         </table>
 
         <div class="home-page">
-            <a href="@Url.Action("DownloadZipFile", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.DownloadAll</a>
-            <div id="visible-manage-button home-page">
-                <a href="@Url.Action("Manage", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.Manage</a>
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <a href="@Url.Action("DownloadZipFile", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.DownloadAll</a>
+                </div>
+
+                <div class="col-lg-6 col-md-6">
+                    <div class="visible-manage-button ">
+                        <a href="@Url.Action("Manage", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.Manage</a>
+                    </div>
+                </div>
+
             </div>
         </div>
     }
 </div>
 
 
-    @section script{
+@section script{
 
-        <script>
-            $(".delete-submit").submit(function (e) {
-                if (!confirm("Are You Sure?")) {
-                    e.preventDefault();
-                }
-            });
-        </script>
-        <script>
-            $("#id").on("input", function () {
-                var id = $(this);
-                var idVal = id.val();
-                var reg = /^\d+$/;
+    <script>
+        $(".delete-submit").submit(function (e) {
+            if (!confirm("Are You Sure?")) {
+                e.preventDefault();
+            }
+        });
+    </script>
+    <script>
+        $("#id").on("input", function () {
+            var id = $(this);
+            var idVal = id.val();
+            var reg = /^\d+$/;
 
-                reg.test(idVal) ? this.value : this.value = this.value.slice(0, -1)
-            })
-        </script>
+            reg.test(idVal) ? this.value : this.value = this.value.slice(0, -1)
+        })
+    </script>
 
-    }
+}
 

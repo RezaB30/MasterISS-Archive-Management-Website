@@ -246,7 +246,7 @@ li > a:only-child:after {
 
 /*@media all and (max-width : 768px) {
 */
-@media all and (max-width : 48em) {
+/*@media all and (max-width : 48em) {
     #logo {
         display: block;
         padding: 0;
@@ -268,9 +268,9 @@ li > a:only-child:after {
         display: block;
         background-color: #254441;
         padding: 0.87em 1.25em;
-        color: #FFF;
+        color: #FFF;*/
         /*font-size: 17px;*/
-        font-size: 1em;
+        /*font-size: 1em;
         text-decoration: none;
         border: none;
     }
@@ -305,48 +305,48 @@ li > a:only-child:after {
     nav ul li ul li .toggle,
     nav ul ul a,
     nav ul ul ul a {
-        padding: 0.87em 1.25em;
+        padding: 0.87em 1.25em;*/
         /*padding: 14px 20px;*/
-        color: #FFF;
-        padding: 0.87em 1.25em;
+        /*color: #FFF;
+        padding: 0.87em 1.25em;*/
         /* font-size: 17px;*/
-        font-size: 1em;
+        /*font-size: 1em;
     }
 
 
     nav ul li ul li .toggle,
     nav ul ul a {
         background-color: #212121;
-    }
+    }*/
 
     /* Hide Dropdowns by Default */
-    nav ul ul {
+    /*nav ul ul {
         float: none;
         position: static;
-        color: #ffffff;
+        color: #ffffff;*/
         /* has to be the same number as the "line-height" of "nav a" */
-    }
+    /*}*/
 
         /* Hide menus on hover */
-        nav ul ul li:hover > ul,
+        /*nav ul ul li:hover > ul,
         nav ul li:hover > ul {
             display: none;
-        }
+        }*/
 
         /* Fisrt Tier Dropdown */
-        nav ul ul li {
+        /*nav ul ul li {
             display: block;
             width: 100%;
         }
 
         nav ul ul ul li {
-            position: static;
+            position: static;*/
             /* has to be the same number as the "width" of "nav ul ul li" */
-        }
-}
+        /*}
+}*/
 
 /*@media all and (max-width : 330px) {*/
-@media all and (max-width : 20.6em) {
+/*@media all and (max-width : 20.6em) {
 
     nav ul li {
         display: block;
@@ -354,12 +354,12 @@ li > a:only-child:after {
     }
 }
 
-div.drag-area {
+div.drag-area {*/
     /*background-color: lightblue;*/
     /*  width: 110px;
         height: 110px;*/
-    overflow: auto;
-}
+    /*overflow: auto;
+}*/
 
 #drop-area {
     margin-top: 3em;

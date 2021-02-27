@@ -235,6 +235,7 @@
     <Content Include="Content\img\remove-file.svg" />
     <Content Include="Content\img\remove-all.png" />
     <Content Include="Content\img\language.png" />
+    <Content Include="favicon-old.ico" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
