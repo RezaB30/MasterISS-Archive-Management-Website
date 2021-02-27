@@ -205,7 +205,7 @@
     <value>Şifre</value>
   </data>
   <data name="PasswordRequired" xml:space="preserve">
-    <value>Şifrenizi Adınızı Giriniz</value>
+    <value>Şifrenizi Giriniz</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Kaydet</value>
@@ -213,8 +213,8 @@
   <data name="Search" xml:space="preserve">
     <value>Ara</value>
   </data>
-  <data name="String1" xml:space="preserve">
-    <value />
+  <data name="ShowMyPassword" xml:space="preserve">
+    <value>Şifremi Göster</value>
   </data>
   <data name="SubscriberArchiveFileDetailsAndUploadFile" xml:space="preserve">
     <value>{0} - Abone Arşiv Dosyası Detayları ve Dosya Yükleme</value>

@@ -213,6 +213,9 @@
   <data name="Search" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="ShowMyPassword" xml:space="preserve">
+    <value>Show my Password</value>
+  </data>
   <data name="SubscriberArchiveFileDetailsAndUploadFile" xml:space="preserve">
     <value>{0} - Subscriber Archive File Details And Upload File</value>
   </data>

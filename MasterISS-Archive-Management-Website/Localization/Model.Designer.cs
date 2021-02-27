@@ -322,7 +322,7 @@ namespace MasterISS_Archive_Management_Website.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Şifrenizi Adınızı Giriniz.
+        ///   Looks up a localized string similar to Şifrenizi Giriniz.
         /// </summary>
         public static string PasswordRequired {
             get {
@@ -349,11 +349,11 @@ namespace MasterISS_Archive_Management_Website.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Şifremi Göster.
         /// </summary>
-        public static string String1 {
+        public static string ShowMyPassword {
             get {
-                return ResourceManager.GetString("String1", resourceCulture);
+                return ResourceManager.GetString("ShowMyPassword", resourceCulture);
             }
         }
         

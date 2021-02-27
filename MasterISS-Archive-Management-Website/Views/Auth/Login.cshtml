@@ -1,52 +1,81 @@
 ﻿@model MasterISS_Archive_Management_Website.ViewModels.LoginViewModel
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 }
-
 <style>
 
     .login-content {
-        padding-top:5em;
+        padding-top: 5em;
         max-width: 10em;
         margin: auto;
-        background: white;
-     /*   padding:1em;
+        /*background: white;*/
+        text-align: center
+        /*   padding:1em;
         padding-top:2em*/
     }
-    .login-content>div{
-        margin-top:1em;
-    }
+
+        .login-content > div {
+            margin-top: 1em;
+        }
 </style>
 
-<!DOCTYPE html>
+@*<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
-</head>
-<body>
-    @ViewBag.HasNotPermission
-    @using (Html.BeginForm("Login", "Auth", FormMethod.Post))
-    {
-        <div class="login-content">
-            <div>
-                @Html.EditorFor(m => m.Username)
-            </div>
-            @Html.ValidationMessageFor(m=>m.Username)
-            <div>
-                @Html.EditorFor(m => m.Password)
-            </div>
-            @Html.ValidationMessageFor(m=>m.Password)
-            <div>
-                <button type="submit">@MasterISS_Archive_Management_Website.Localization.Model.Login</button>
-            </div>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Login</title>
+    </head>
+    <body>*@
+@ViewBag.HasNotPermission
+@using (Html.BeginForm("Login", "Auth", FormMethod.Post))
+{
+    <div class="login-content">
+        <div>
+            @Html.DisplayNameFor(m => m.Username)
         </div>
-    }
+        <div>
+            @Html.EditorFor(m => m.Username)
+        </div>
+        @Html.ValidationMessageFor(m => m.Username)
 
+        <div>
+            @Html.DisplayNameFor(m => m.Password)
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.Password)
+            <input type="checkbox" class="showPass" />
+            @MasterISS_Archive_Management_Website.Localization.Model.ShowMyPassword
 
-    <div>
-        @Html.ValidationMessage("loginFailed")
+        </div>
+        @Html.ValidationMessageFor(m => m.Password)
+        <div>
+            <button type="submit">@MasterISS_Archive_Management_Website.Localization.Model.Login</button>
+        </div>
     </div>
-</body>
-</html>
+}
+
+
+<div>
+    @Html.ValidationMessage("loginFailed")
+</div>
+@*</body>
+    </html>*@
+
+
+@section script{
+    <script >
+        $(function () {
+
+            $(".showPass").change(function () {
+                var checked = $(this).is(":checked");
+                if (checked) {
+                    $("#Password").attr("type", "text");
+                } else {
+                    $("#Password").attr("type", "Password");
+                }
+            });
+        });
+    </script>
+}
