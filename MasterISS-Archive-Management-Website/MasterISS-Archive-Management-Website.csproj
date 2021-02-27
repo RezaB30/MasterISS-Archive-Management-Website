@@ -229,12 +229,22 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Custom.css" />
+    <Content Include="Content\images\box1.svg" />
+    <Content Include="Content\images\box2.svg" />
+    <Content Include="Content\images\box3.svg" />
+    <Content Include="Content\images\delete.svg" />
+    <Content Include="Content\images\download.svg" />
+    <Content Include="Content\images\english.svg" />
+    <Content Include="Content\images\logo.svg" />
+    <Content Include="Content\images\noise100px.png" />
+    <Content Include="Content\images\turkish.svg" />
     <Content Include="Content\img\error.png" />
     <Content Include="Content\img\file.svg" />
     <Content Include="Content\img\lang.jpg" />
     <Content Include="Content\img\remove-file.svg" />
     <Content Include="Content\img\remove-all.png" />
     <Content Include="Content\img\language.png" />
+    <Content Include="Content\styles.css" />
     <Content Include="favicon-old.ico" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -254,6 +264,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\javascript.js" />
     <Content Include="Scripts\jquery.filedrop.js" />
     <Content Include="Scripts\Up-file.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -283,6 +294,7 @@
     <Content Include="Views\Archive\Manage.cshtml" />
     <Content Include="Views\Archive\ErrorPage.cshtml" />
     <Content Include="Settings.config" />
+    <Content Include="Views\Archive\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

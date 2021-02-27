@@ -23,6 +23,10 @@ namespace MasterISS_Archive_Management_Website.Controllers
     {
         Logger archiveLogger = LogManager.GetLogger("archive");
 
+        public ActionResult Test()
+        {
+            return View();
+        }
         public ActionResult UploadNewFile(long Id, int AttachmentType)
         {
             return View();

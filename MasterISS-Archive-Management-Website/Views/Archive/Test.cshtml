@@ -1,0 +1,192 @@
+﻿@using MasterISS_Archive_Management_Website.ViewModels
+@model IEnumerable<FileDetailViewModel>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>MasterISS Archive Management</title>
+</head>
+<body>
+    <!-- Header - the logo, language and exit buttons & the top yellow line -->
+    <header>
+        <a href="#"><img class="logo" src="./images/logo.svg" alt="logo" /></a>
+        <nav>
+            <ul class="nav__links">
+                <!-- safe zone for the language dropdown -->
+                <div class="safezone"></div>
+                <li>
+                    <a href="#">
+                        Language
+                        <!-- language dropdown menu -->
+                        <div class="dropper"></div>
+                    </a>
+                </li>
+                <li><a href="#">Exit</a></li>
+            </ul>
+            <div class="language-dropdown">
+                <ul>
+                    <li>
+                        <a href="#">TR</a>
+                    </li>
+                    <li>
+                        <a href="#">EN</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Banner - the grey box under the header, includes 6 box files, search bar and the buldge of search bar  -->
+    <div class="banner">
+        <!-- box files side by side -->
+        <ul class="boxes">
+            <li class="box1"><img src="./images/box1.svg" alt="" /></li>
+            <li class="box2"><img src="./images/box2.svg" alt="" /></li>
+            <li class="box3"><img src="./images/box3.svg" alt="" /></li>
+            <li class="box4"><img src="./images/box1.svg" alt="" /></li>
+            <li class="box5"><img src="./images/box2.svg" alt="" /></li>
+            <li class="box6"><img src="./images/box3.svg" alt="" /></li>
+        </ul>
+        <!-- search bar & search button -->
+        <div class="search">
+
+
+
+            @using (Html.BeginForm(null, null, FormMethod.Get))
+            {
+                <div class="home-page">
+                    <div>
+                        @Html.TextBox("id")
+                    </div>
+
+                    <div class="home-page">
+                        <button class="magnify" type="submit">@MasterISS_Archive_Management_Website.Localization.Model.Search</button>
+                    </div>
+                </div>
+
+            }
+
+            @*<form action="" method="" id="">
+                    <input class="inputsearch"
+                           type="text"
+                           name="name"
+                           placeholder="Archive number"
+                           maxlength="12" />
+                    <button class="magnify" type="submit"></button>
+                </form>*@
+        </div>
+        <!-- the buldge of search bar -->
+        <div class="curve"></div>
+    </div>
+    <!-- Subscriber number bar and its link -->
+
+    <a href="  " target="_blank">
+        @ViewBag.SubscriberNo
+    </a>
+
+    <div class="subscribernum">
+        <p>
+            @MasterISS_Archive_Management_Website.Localization.Model.SubscriberNo:
+        </p>
+        <a href="@MasterISS_Archive_Management_Website.Properties.Settings.Default.MasterISSWebSiteUrl/@ViewBag.id">@ViewBag.SubscriberNo</a>
+    </div>
+    <!-- main table -->
+
+    @if (Model != null)
+    {
+        <div class="tablediv">
+            <table class="maintable">
+                <!-- main table head texts -->
+                <thead>
+                    <tr>
+                        <th> @Html.DisplayNameFor(model => model.AttachmentType)</th>
+                        <th> @Html.DisplayNameFor(model => model.CreationDate)</th>
+                        <th>Download</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- written as a sample -->
+                    <tr>
+                        <td>kimlik</td>
+                        <td>18.01.2021 13:23:23</td>
+                        <td>
+                            <a href="#" class="downloadbutton"></a>
+                        </td>
+                        <td class="deletebutton">
+                            <a href="#" class="deletebutton"></a>
+                        </td>
+                    </tr>
+
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AttachmentType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreationDate)
+                            </td>
+                            <td>
+                                <a class="downloadbutton" href="@Url.Action("Download", "Archive", new { id = ViewBag.id, FileName = item.ServerSideName })">@MasterISS_Archive_Management_Website.Localization.Model.Download</a>
+                            </td>
+                            <td>
+                                @using (Html.BeginForm("Delete", "Archive", FormMethod.Post, new { @class = "delete-submit" }))
+                                {
+                                    <div class="hidden-part">
+                                        @Html.TextBox("id")
+
+                                        @Html.Hidden("serverSideName", item.ServerSideName)
+                                    </div>
+
+                                    <button class="deletebutton" type="submit">@MasterISS_Archive_Management_Website.Localization.Model.Delete</button>
+                                }
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    }
+    <!-- two buttons under the main table -->
+<div class="tablebuttons">
+    <button class="button1">
+        <a href="@Url.Action("DownloadZipFile", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.DownloadAll</a>
+    </button>
+
+
+
+
+    <div class="visible-manage-button button1">
+        <a href="@Url.Action("Manage", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.Manage</a>
+    </div>
+
+       
+</div>
+    <!-- footer, version number -->
+    <footer>
+        <p>version 2.0</p>
+    </footer>
+    <!-- Delete pop up and its background -->
+    <div class="deletepop">
+        <div class="popup">
+            <p>are you sure?</p>
+            <p>you are about to delete this item permanentley</p>
+            <ul>
+                <li><a href="#">Cancel</a></li>
+                <li><a href="#">Delete</a></li>
+            </ul>
+        </div>
+        <div class="backgrey"></div>
+    </div>
+    <!-- background gradient and noise overlay -->
+    <div class="gradient"></div>
+    <div class="noise"></div>
+</body>
+<script src="./javascript.js"></script>
+</html>

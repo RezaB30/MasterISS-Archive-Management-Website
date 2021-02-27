@@ -2,6 +2,14 @@
 
 <!DOCTYPE html>
 <html>
+
+@*<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>MasterISS Archive Management</title>
+</head>*@
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,53 +18,18 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <style>
-        /* #nav ul.sub-nav {
-            display: none;
-        }
-
-        #nav ul.visible {
-            display: block;
-        }*/
-
-    </style>
-    <!--<div class="topnav">-->
-    @*@Html.ActionLink("MASTERISS Archive Management", "Index", "Archive")*@
-    @*<a href="#news">News</a>
-        <a href="#contact">Contact</a>*@
-    <!--<div class="topnav-right">-->
-    @*@Html.ActionLink("Log Out", "LogOut", "Auth")*@
-
-    @*@Html.Partial("_LanguagePartial")*@
-
-    <!--<ul id="nav">
-        <li>Home</li>
-        <li class="parent">
-            About
-            <ul class="sub-nav">
-                <li>Johnny</li>
-                <li>Julie</li>
-                <li>Jamie</li>
-            </ul>
-        </li>
-        <li>Contact</li>
-    </ul>-->
-    @* <a href="#about">About</a>*@
-    <!--</div>
-    </div>-->
 
 
-
-    @if (ViewBag.LoginPage!=null)
+    @if (ViewBag.LoginPage != null)
     {
         <style>
             .login-page {
-                display:none
+                display: none
             }
         </style>
     }
 
-    <nav>
+    @*<nav>
         <div id="logo">
             @Html.ActionLink(MasterISS_Archive_Management_Website.Localization.Model.MasterISSArchiveManagement, "Index", "Archive")
         </div>
@@ -64,38 +37,65 @@
         <label for="tog" class="toggle">Menu</label>
         <input type="checkbox" id="tog" />
         <ul class="menu">
-            @*<li><a href="#">Home</a></li>*@
             <li>
-                <!-- First Tier Drop Down -->
                 <label for="tog-1" class="toggle">WordPress +</label>
-                @*<a href="#">WordPress</a>*@
                 <a href="#"><img src="~/Content/img/language.png" style="width:2em" alt="HTML tutorial"></a>
                 <input type="checkbox" id="tog-1" />
                 <ul>
                     <li>@Html.LanguageLink("Türkçe", "tr-tr")</li>
                     <li>@Html.LanguageLink("English", "en-US")</li>
-                    @*<li><a href="#">Türkçe</a></li>
-                        <li><a href="#">English</a></li>*@
 
                 </ul>
 
             </li>
-            @*<li><a href="#">Contact</a></li>*@
             <li><a class="font-shape">@User.Identity.Name</a></li>
             <li class="login-page"><a href="@Url.Action("LogOut", "Auth")">@MasterISS_Archive_Management_Website.Localization.Model.LogOut</a></li>
-            @* <li><a href="@Url.Action("LogOut", "Auth")"></a></li>*@
         </ul>
-    </nav>
+    </nav>*@
 
 
 
-    <div class="container body-content">
+
+    <header>
+        <a href=""><img class="logo" src="~/Content/images/logo.svg" alt="logo" /></a>
+        <nav>
+            <ul class="nav__links">
+                <!-- safe zone for the language dropdown -->
+                <div class="safezone"></div>
+                <li>
+                    <a href="#">
+                        Language
+                        <!-- language dropdown menu -->
+                        <div class="dropper"></div>
+                    </a>
+                </li>
+                <li><a href="@Url.Action("LogOut", "Auth")">@MasterISS_Archive_Management_Website.Localization.Model.LogOut</a></li>
+            </ul>
+            <div class="language-dropdown">
+                <ul>
+                    <li>
+                       @* <a href="#">TR</a>*@
+
+                       <a href="@Html.LanguageLink("Türkçe", "tr-tr")"></a> 
+                    </li>
+                    <li>
+                        @*<a href="#">EN</a>*@
+                        @Html.LanguageLink("English", "en-US")
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+
+
+    @*<div class="container body-content">*@
         @RenderBody()
         @*<hr />*@
         <footer>
-            @*<p>&copy; @DateTime.Now.Year</p>*@
         </footer>
-    </div>
+    @*</div>*@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
