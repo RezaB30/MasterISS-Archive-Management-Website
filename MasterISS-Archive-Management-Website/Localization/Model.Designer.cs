@@ -376,7 +376,7 @@ namespace MasterISS_Archive_Management_Website.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Abone Numarası.
+        ///   Looks up a localized string similar to ABONE NUMARASI.
         /// </summary>
         public static string SubscriberNo {
             get {

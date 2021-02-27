@@ -17,6 +17,7 @@ table, td, th {
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom:8em
 }
 
 /*.manage-page {
@@ -402,7 +403,8 @@ img.error-icon {
 }
 
 .error-page {
-    margin-top: 5em
+    margin-top: 5em;
+    text-align:center
 }
 
 .error-letter {

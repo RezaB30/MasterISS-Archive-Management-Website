@@ -210,7 +210,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
 
         [HttpPost]
-        public ActionResult Delete(long id, string serverSideName /*FileDetailViewModel file*/)
+        public ActionResult Delete(long id, string serverSideName)
         {
             var archiveFile = new MasterISSFileManager();
 
@@ -226,28 +226,28 @@ namespace MasterISS_Archive_Management_Website.Controllers
             {
                 var subscriptionFileList = archiveFileList.Result;
 
-                if (subscriptionFileList.Count() != 0)
-                {
-                    var viewResults = subscriptionFileList.Select(a => new FileDetailViewModel()
-                    {
-                        CreationDate = a.CreationDate,
-                        FileExtention = a.FileExtention,
-                        MIMEType = a.MIMEType,
-                        ServerSideName = a.ServerSideName,
-                        AttachmentType = (int)a.AttachmentType,
+                //if (subscriptionFileList.Count() != 0)
+                //{
+                //    var viewResults = subscriptionFileList.Select(a => new FileDetailViewModel()
+                //    {
+                //        CreationDate = a.CreationDate,
+                //        FileExtention = a.FileExtention,
+                //        MIMEType = a.MIMEType,
+                //        ServerSideName = a.ServerSideName,
+                //        AttachmentType = (int)a.AttachmentType,
 
-                    }).OrderByDescending(d => d.CreationDate);
+                //    }).OrderByDescending(d => d.CreationDate);
 
-                    ViewBag.id = id;
+                    //ViewBag.id = id;
 
                     return RedirectToAction("Index", "Archive", new { id = id });
-                }
-                ViewBag.id = id;
-                ViewBag.HasArchiveFileMessage = Localization.Model.HasArchiveFileMessage;
-                return RedirectToAction("Index", "Archive");
+                //}
+                //ViewBag.id = id;
+                //ViewBag.HasArchiveFileMessage = Localization.Model.HasArchiveFileMessage;
+                //return RedirectToAction("Index", "Archive");
             }
-            ViewBag.id = id;
-            ViewBag.Exception = Localization.Model.Exception;
+            //ViewBag.id = id;
+            //ViewBag.Exception = Localization.Model.Exception;
             archiveLogger.Error($":SubscriberId :{id} - {fileException.Message}");
 
             return RedirectToAction("ErrorPage", "Archive");
@@ -267,7 +267,6 @@ namespace MasterISS_Archive_Management_Website.Controllers
             if (fileException == null)
             {
                 var subscriptionFileList = archiveFileList.Result;
-
 
                 var attachmentTypesList = new LocalizedList<RadiusR.FileManagement.SpecialFiles.ClientAttachmentTypes, RadiusR.Localization.Lists.ClientAttachmentTypes>();
                 var attachmentTypeItems = attachmentTypesList.GetList().Select(t => new AttachmentTypesViewModel()

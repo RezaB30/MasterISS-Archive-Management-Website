@@ -13,7 +13,7 @@ using System.Web.Routing;
 
 namespace MasterISS_Archive_Management_Website.Controllers
 {
-    public class BaseController: Controller
+    public class BaseController : Controller
     {
         Logger baseLogger = LogManager.GetLogger("base");
 
@@ -63,7 +63,14 @@ namespace MasterISS_Archive_Management_Website.Controllers
                 {
                     baseLogger.Error(filterContext.Exception);
                 }
-            }          
+            }
+
+
+            //filterContext.Result = new ViewResult
+            //{
+            //    ViewName = "~/Views/Archive/ErrorPage.cshtml",
+            //};
+            //filterContext.ExceptionHandled = true;
         }
 
         [AllowAnonymous]
@@ -75,7 +82,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
             Dictionary<string, object> responseParams = new Dictionary<string, object>();
             Request.QueryString.CopyTo(responseParams);
             responseParams.Add("lang", culture);
-          
+
             return RedirectToAction(sender, new RouteValueDictionary(responseParams));
         }
 

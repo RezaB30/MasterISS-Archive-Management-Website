@@ -62,21 +62,30 @@
         @ViewBag.IdValidationMessage
     </div>
 
-    <div class="subscriber-no subscriber-no-font">
-        <div class="row">
-            <div class="center-block">
-                <div class="col-lg-3 col-md-3">
-                    @MasterISS_Archive_Management_Website.Localization.Model.SubscriberNo:
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <a href=" @MasterISS_Archive_Management_Website.Properties.Settings.Default.MasterISSWebSiteUrl/@ViewBag.id " target="_blank">
-                        @ViewBag.SubscriberNo
-                    </a>
+    @*<div class="subscriber-no subscriber-no-font">
+            <div class="row">
+                <div class="center-block">
+                    <div class="col-lg-3 col-md-3">
+                        @MasterISS_Archive_Management_Website.Localization.Model.SubscriberNo:
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <a href=" @MasterISS_Archive_Management_Website.Properties.Settings.Default.MasterISSWebSiteUrl/@ViewBag.id " target="_blank">
+                            @ViewBag.SubscriberNo
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </div>*@
 
+    <div class="subscriber-no">
+        <h1 class="home-page">
+            @MasterISS_Archive_Management_Website.Localization.Model.SubscriberNo:
+            @*@MasterISS_Archive_Management_Website.Localization.Model.ArchiveNumber  @ViewBag.id*@
+            <a href=" @MasterISS_Archive_Management_Website.Properties.Settings.Default.MasterISSWebSiteUrl/@ViewBag.id " target="_blank">
+                @ViewBag.SubscriberNo
+            </a>
+        </h1>
+    </div>
 
     @if (Model != null)
     {
@@ -118,36 +127,36 @@
                     </td>
                 </tr>
             }
-
         </table>
-        <a href="@Url.Action("DownloadZipFile", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.DownloadAll</a>
 
+        <div class="home-page">
+            <a href="@Url.Action("DownloadZipFile", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.DownloadAll</a>
+            <div id="visible-manage-button home-page">
+                <a href="@Url.Action("Manage", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.Manage</a>
+            </div>
+        </div>
     }
-
-    <div id="visible-manage-button">
-        <a href="@Url.Action("Manage", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.Manage</a>
-    </div>
 </div>
 
 
-@section script{
+    @section script{
 
-    <script>
-        $(".delete-submit").submit(function (e) {
-            if (!confirm("Are You Sure?")) {
-                e.preventDefault();
-            }
-        });
-    </script>
-    <script>
-        $("#id").on("input", function () {
-            var id = $(this);
-            var idVal = id.val();
-            var reg = /^\d+$/;
+        <script>
+            $(".delete-submit").submit(function (e) {
+                if (!confirm("Are You Sure?")) {
+                    e.preventDefault();
+                }
+            });
+        </script>
+        <script>
+            $("#id").on("input", function () {
+                var id = $(this);
+                var idVal = id.val();
+                var reg = /^\d+$/;
 
-            reg.test(idVal) ? this.value : this.value = this.value.slice(0, -1)
-        })
-    </script>
+                reg.test(idVal) ? this.value : this.value = this.value.slice(0, -1)
+            })
+        </script>
 
-}
+    }
 

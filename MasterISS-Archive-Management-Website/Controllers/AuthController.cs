@@ -21,6 +21,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
         public ActionResult Login()
         {
+            ViewBag.LoginPage = "LoginPage";
             return View();
         }
 
@@ -50,8 +51,10 @@ namespace MasterISS_Archive_Management_Website.Controllers
                 else
                 {
                     ModelState.AddModelError("loginFailed",MasterISS_Archive_Management_Website.Localization.Model.LoginFailed );
+                    ViewBag.LoginPage = "LoginPage";
                 }
             }
+            ViewBag.LoginPage = "LoginPage";
             return View();
         }
 
