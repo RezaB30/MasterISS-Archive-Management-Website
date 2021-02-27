@@ -255,7 +255,6 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery.filedrop.js" />
     <Content Include="Scripts\Up-file.js" />
-    <Content Include="Scripts\UploadFile.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -281,8 +280,6 @@
     <Content Include="Views\Archive\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\LocalizedList.cshtml" />
     <Content Include="Views\Archive\Manage.cshtml" />
-    <Content Include="Views\Shared\_LanguagePartial.cshtml" />
-    <Content Include="Views\Shared\_UploadNewFile.cshtml" />
     <Content Include="Views\Archive\ErrorPage.cshtml" />
     <Content Include="Settings.config" />
   </ItemGroup>
