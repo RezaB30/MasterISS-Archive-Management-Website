@@ -79,8 +79,8 @@
             {
                 @*<div class="home-page">
                     <div>*@
-                @*@Html.TextBox("id" ,null,new {htmlAttribute=new {@class="search" } })*@
-                @Html.TextBox("id")
+                @Html.TextBox("id", null, new { @class = "inputsearch" })
+                @*@Html.TextBox("id")*@
 
                 @*<input class="inputsearch"
                     type="text"
@@ -88,25 +88,11 @@
                     placeholder="Archive number"
                     maxlength="12" />*@
 
-                @*</div>
-
-                    <div class="home-page">*@
                 <button class="magnify" type="submit">@*@MasterISS_Archive_Management_Website.Localization.Model.Search*@</button>
-                @*</div>
-                    </div>*@
+
 
             }
 
-
-
-            @*<form action="" method="" id="">
-                    <input class="inputsearch"
-                           type="text"
-                           name="name"
-                           placeholder="Archive number"
-                           maxlength="12" />
-                    <button class="magnify" type="submit"></button>
-                </form>*@
         </div>
         <!-- the buldge of search bar -->
         <div class="curve"></div>
@@ -149,7 +135,7 @@
                                 @Html.DisplayFor(modelItem => item.CreationDate)
                             </td>
                             <td>
-                                <a class="downloadbutton c" href="@Url.Action("Download", "Archive", new { id = ViewBag.id, FileName = item.ServerSideName })">@*@MasterISS_Archive_Management_Website.Localization.Model.Download*@</a>
+                                <a class="downloadbutton style" href="@Url.Action("Download", "Archive", new { id = ViewBag.id, FileName = item.ServerSideName })">@*@MasterISS_Archive_Management_Website.Localization.Model.Download*@</a>
                             </td>
                             <td class="deletebutton">
                                 @using (Html.BeginForm("Delete", "Archive", FormMethod.Post, new { @class = "delete-submit deletebutton" }))
@@ -195,16 +181,16 @@
         </footer>*@
     @*Delete pop up and its background*@
     @*<div class="deletepop">
-            <div class="popup">
-                <p>are you sure?</p>
-                <p>you are about to delete this item permanentley</p>
-                <ul>
-                    <li><a class="pop-cancel" href="#">Cancel</a></li>
-                    <li><a class="pop-delete" href="#">Delete</a></li>
-                </ul>
-            </div>
-            <div class="backgrey"></div>
-        </div>*@
+        <div class="popup">
+            <p>are you sure?</p>
+            <p>you are about to delete this item permanentley</p>
+            <ul>
+                <li><a class="pop-cancel" href="#">Cancel</a></li>
+                <li><a class="pop-delete" href="#">Delete</a></li>
+            </ul>
+        </div>
+        <div class="backgrey"></div>
+    </div>*@
     @*background gradient and noise overlay*@
     <div class="gradient"></div>
     <div class="noise"></div>
@@ -292,7 +278,7 @@
 
     <script>
         $(".delete-submit").submit(function (e) {
-          
+
             var submitButton = $(this);
             var pageBegin = submitButton.closest("div.page-container");
             var deletePop = pageBegin.find("div.deletepop");

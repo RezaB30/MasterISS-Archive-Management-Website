@@ -67,34 +67,35 @@
     <header>
         <a href=""><img class="logo" src="~/Content/images/logo.svg" alt="logo" /></a>
         <nav>
-
-            <ul class="nav__links">
-                <!-- safe zone for the language dropdown -->
-                <div class="safezone"></div>
-                <li>
-                    <a class="username"> @User.Identity.Name </a>
-                </li>
-                <li>
-                    <a class="language-hover" href="#">
-                        Language
-                        <!-- language dropdown menu -->
-                        <div class="dropper"></div>
-                    </a>
-                </li>
-                <li><a href="@Url.Action("LogOut", "Auth")">@MasterISS_Archive_Management_Website.Localization.Model.LogOut</a></li>
-            </ul>
-            <div class="language-dropdown">
-                <ul>
+            <div class="nav-drop">
+                <ul class="nav__links">
+                    <!-- safe zone for the language dropdown -->
+                    <div class="safezone"></div>
                     <li>
-                        @* <a href="#">TR</a>*@
-
-                        <a href="@Html.LanguageLink("Türkçe", "tr-tr")"></a>
+                        <a class="username"> @User.Identity.Name </a>
                     </li>
                     <li>
-                        @*<a href="#">EN</a>*@
-                        @Html.LanguageLink("English", "en-US")
+                        <a class="language-hover" href="#">
+                            Language
+                            <!-- language dropdown menu -->
+                            <div class="dropper"></div>
+                        </a>
                     </li>
+                    <li><a href="@Url.Action("LogOut", "Auth")">@MasterISS_Archive_Management_Website.Localization.Model.LogOut</a></li>
                 </ul>
+                <div class="language-dropdown">
+                    <ul class="first">
+                        <li>
+                            @* <a href="#">TR</a>*@
+
+                            <a href="@Html.LanguageLink("Türkçe", "tr-tr")"></a>
+                        </li>
+                        <li>
+                            @*<a href="#">EN</a>*@
+                            @Html.LanguageLink("English", "en-US")
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
@@ -118,7 +119,14 @@
             $(".language-hover").hover(function () {
                 $(".safezone").show();
                 $(".dropper").show();
-            })
+
+                var languageHover = $(this);
+                var navDrop = languageHover.closest("div.nav-drop");
+                var languageDropdown = navDrop.find("ul.first");
+                languageDropdown.removeClass("dropback");
+                languageDropdown.addClass("dropfirst");
+                //k.addClass("dropfirst");
+            });
         </script>
     }
 

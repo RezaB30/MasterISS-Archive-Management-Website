@@ -110,10 +110,11 @@ header {
   animation-delay: var(--trans-time);
 }
 .upload-button {
-  opacity: 0;
-  margin-left: 145px;
-  animation: but-transparent var(--trans-time) ease 1 forwards;
-  animation-delay: var(--trans-time);
+    opacity: 0;
+    /*margin-left: 145px;*/
+    margin-left: 21em;
+    animation: but-transparent var(--trans-time) ease 1 forwards;
+    animation-delay: var(--trans-time);
 }
 
 @keyframes but-transparent {
