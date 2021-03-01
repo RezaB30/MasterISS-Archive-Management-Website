@@ -1,0 +1,204 @@
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--backgraddark-color);
+}
+
+.sticky {
+  position: fixed;
+  top: -30px;
+  width: 100%;
+  /* padding-top: 0px; */
+  animation: sticker calc(0.5 * var(--trans-time)) linear 1 forwards;
+}
+@keyframes sticker {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.7;
+  }
+}
+.archive-number {
+  position: sticky;
+  width: 400px;
+  left: calc(50% - 200px);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  /* padding-left: 31.5%;
+    padding-right: 31.5%; */
+  padding-top: 50px;
+  margin-bottom: -25px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--white-color);
+  z-index: 150;
+  text-shadow: 0 0px 10px black;
+}
+.archive-number span:last-of-type {
+  padding-left: 30px;
+  letter-spacing: 0px;
+  font-weight: 500;
+}
+
+.maintable {
+  box-shadow: 0px 0px 10px var(--banblack-color), 0px 0px 50px -25px black;
+  width: 65em;
+  border-collapse: collapse;
+  border-spacing: 0;
+  justify-content: center;
+}
+
+.tablediv {
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+}
+
+.maintable thead tr th:nth-child(1) {
+  width: 70%;
+  text-align: left;
+  padding-left: 20px;
+}
+.maintable thead tr th:nth-child(2) {
+  width: auto;
+  text-align: right;
+  padding-right: 20px;
+}
+.maintable thead tr th:nth-child(3) {
+    width: 10%;
+    text-align: right;
+    /*padding-right: 20px;*/
+    padding-right: 6em;
+}
+
+.maintable tbody tr td:nth-child(1) {
+  text-align: left;
+  padding-left: 20px;
+}
+.maintable tbody tr td:nth-child(2) {
+    /*text-align: center;*/
+    /*padding-right: 20px;*/
+    padding-right: 5em
+}
+.maintable tbody tr td:nth-child(3) {
+  text-align: center;
+  padding-right: 20px;
+}
+
+.maintable tbody tr:last-child {
+  border-bottom: 1px solid var(--main-color);
+  border-top: 1px solid var(--main-color);
+  background-color: #ffffff81;
+  box-shadow: 0px 25px 15px -30px black inset, 0px -25px 15px -30px black inset;
+  height: 50px;
+}
+
+.area-for-upload-button {
+  margin-left: 24em;
+}
+
+.clear-button {
+  margin-left: 10px;
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: but-transparent var(--trans-time) ease 1 forwards;
+  animation-delay: var(--trans-time);
+}
+.upload-button {
+  opacity: 0;
+  margin-left: 145px;
+  animation: but-transparent var(--trans-time) ease 1 forwards;
+  animation-delay: var(--trans-time);
+}
+
+@keyframes but-transparent {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.button .file-area {
+  display: none;
+}
+.uploading-files {
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  /* margin-bottom: 25px; */
+  text-align: left;
+  /* margin-left: 147px; */
+  left: 147px;
+  bottom: 16px;
+  padding-top: 22px;
+  width: 163px;
+  animation: upload-opac var(--trans-time) ease 1 forwards,
+    yukle-anim calc(2 * var(--trans-time)) ease-in infinite;
+}
+@keyframes upload-opac {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@keyframes yukle-anim {
+  0% {
+    color: inherit;
+  }
+  50% {
+    color: var(--cancel-color);
+  }
+}
+.uploading-files::before {
+  position: absolute;
+  content: '';
+  height: 5px;
+  width: 5px;
+  right: 0px;
+  top: 0px;
+  transform: translateY(22px);
+  background-color: var(--main-color);
+  animation: load-anim calc(0.5 * var(--trans-time)) linear infinite;
+}
+.uploading-files::after {
+  position: absolute;
+  content: '';
+  height: 5px;
+  width: 5px;
+  right: 0px;
+  top: 0px;
+  /* opacity: 0.5; */
+  transform: translateY(22px);
+  background-color: var(--dark-color);
+  animation: load-anim calc(0.5 * var(--trans-time)) linear infinite reverse;
+  /* animation-delay: 300ms; */
+}
+@keyframes load-anim {
+  0% {
+    right: 0px;
+    top: 0px;
+  }
+  25% {
+    right: 10px;
+    top: 0px;
+  }
+  50% {
+    right: 10px;
+    top: 10px;
+  }
+  75% {
+    right: 0px;
+    top: 10px;
+  }
+}

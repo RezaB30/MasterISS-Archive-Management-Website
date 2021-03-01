@@ -18,6 +18,15 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    <style>
+        .username {
+            color: white !important;
+        }
+
+            .username:hover {
+                display: none !important;
+            }
+    </style>
 
 
     @if (ViewBag.LoginPage != null)
@@ -30,40 +39,43 @@
     }
 
     @*<nav>
-        <div id="logo">
-            @Html.ActionLink(MasterISS_Archive_Management_Website.Localization.Model.MasterISSArchiveManagement, "Index", "Archive")
-        </div>
+            <div id="logo">
+                @Html.ActionLink(MasterISS_Archive_Management_Website.Localization.Model.MasterISSArchiveManagement, "Index", "Archive")
+            </div>
 
-        <label for="tog" class="toggle">Menu</label>
-        <input type="checkbox" id="tog" />
-        <ul class="menu">
-            <li>
-                <label for="tog-1" class="toggle">WordPress +</label>
-                <a href="#"><img src="~/Content/img/language.png" style="width:2em" alt="HTML tutorial"></a>
-                <input type="checkbox" id="tog-1" />
-                <ul>
-                    <li>@Html.LanguageLink("Türkçe", "tr-tr")</li>
-                    <li>@Html.LanguageLink("English", "en-US")</li>
+            <label for="tog" class="toggle">Menu</label>
+            <input type="checkbox" id="tog" />
+            <ul class="menu">
+                <li>
+                    <label for="tog-1" class="toggle">WordPress +</label>
+                    <a href="#"><img src="~/Content/img/language.png" style="width:2em" alt="HTML tutorial"></a>
+                    <input type="checkbox" id="tog-1" />
+                    <ul>
+                        <li>@Html.LanguageLink("Türkçe", "tr-tr")</li>
+                        <li>@Html.LanguageLink("English", "en-US")</li>
 
-                </ul>
+                    </ul>
 
-            </li>
-            <li><a class="font-shape">@User.Identity.Name</a></li>
-            <li class="login-page"><a href="@Url.Action("LogOut", "Auth")">@MasterISS_Archive_Management_Website.Localization.Model.LogOut</a></li>
-        </ul>
-    </nav>*@
-
+                </li>
+                <li><a class="font-shape">@User.Identity.Name</a></li>
+                <li class="login-page"><a href="@Url.Action("LogOut", "Auth")">@MasterISS_Archive_Management_Website.Localization.Model.LogOut</a></li>
+            </ul>
+        </nav>*@
 
 
 
     <header>
         <a href=""><img class="logo" src="~/Content/images/logo.svg" alt="logo" /></a>
         <nav>
+
             <ul class="nav__links">
                 <!-- safe zone for the language dropdown -->
                 <div class="safezone"></div>
                 <li>
-                    <a href="#">
+                    <a class="username"> @User.Identity.Name </a>
+                </li>
+                <li>
+                    <a class="language-hover" href="#">
                         Language
                         <!-- language dropdown menu -->
                         <div class="dropper"></div>
@@ -74,9 +86,9 @@
             <div class="language-dropdown">
                 <ul>
                     <li>
-                       @* <a href="#">TR</a>*@
+                        @* <a href="#">TR</a>*@
 
-                       <a href="@Html.LanguageLink("Türkçe", "tr-tr")"></a> 
+                        <a href="@Html.LanguageLink("Türkçe", "tr-tr")"></a>
                     </li>
                     <li>
                         @*<a href="#">EN</a>*@
@@ -87,20 +99,27 @@
         </nav>
     </header>
 
-
+    <div class="gradient"></div>
+    <div class="noise"></div>
 
 
     @*<div class="container body-content">*@
-        @RenderBody()
-        @*<hr />*@
-        <footer>
-        </footer>
+    @RenderBody()
+    @*<hr />*@
+    <footer>
+    </footer>
     @*</div>*@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
 
     @section script{
+        <script>
+            $(".language-hover").hover(function () {
+                $(".safezone").show();
+                $(".dropper").show();
+            })
+        </script>
     }
 
     @RenderSection("script", required: false)

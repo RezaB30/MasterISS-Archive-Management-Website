@@ -47,7 +47,7 @@ html {
   top: 0;
   min-height: 100vh;
   min-width: 100%;
-  background-image: url(../images/noise100px.png);
+  background-image: url(images/noise100px.png);
   background-repeat: repeat;
   mix-blend-mode: soft-light;
   opacity: 0.3;
@@ -334,18 +334,20 @@ header {
   border-radius: 32px;
 }
 /* left curved line for the buldge using ::before and border */
-.curve::before {
-  position: absolute;
-  content: '';
-  margin-left: -60.3px;
-  margin-top: 8px;
-  border-radius: 100px;
-  border: 12px solid var(--banblack-color);
-  clip-path: polygon(0% 0%, 50% 0%, 80% 0%, 50% 50%);
-  rotate: 45deg;
-  height: 50px;
-  width: 50px;
-}
+    .curve::before {
+        position: absolute;
+        content: '';
+        /*margin-left: -60.3px;*/
+        /*margin-left: -60.3px;*/
+        margin-left: -2.5em;
+        margin-top: 0.4em;
+        border-radius: 100px;
+        border: 12px solid var(--banblack-color);
+        clip-path: polygon(0% 0%, 50% 0%, 80% 0%, 50% 50%);
+        rotate: 45deg;
+        height: 50px;
+        width: 50px;
+    }
 /* right curved line for the buldge using ::after and border */
 .curve::after {
   position: absolute;
@@ -448,16 +450,20 @@ header {
   }
 }
 .tablediv {
-  margin-top: 28px;
-  display: none;
-  justify-content: center;
+    margin-top: 28px;
+    /*display: none;*/
+    display: flex;
+    justify-content: center;
 }
 .subscribernum {
-  display: none;
-  margin-top: 70px;
-  /* display: flex; */
-  justify-content: center;
-  /* padding: 0 385px 0 0; */
+    /*display: none;*/
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    /* padding: 0 385px 0 0; */
+
+
+    margin-right: 19em;
 }
 .subscribernum p {
   display: inline-flex;
@@ -542,7 +548,7 @@ header {
 .maintable {
   box-shadow: 0px 0px 100px -80px white, 0px 0px 10px var(--banblack-color),
     0px 0px 200px -100px black;
-  width: 650px;
+  width: 65em;
   border-collapse: collapse;
   border-spacing: 0;
   justify-content: center;
@@ -559,17 +565,20 @@ header {
   color: #f1f1f1;
 }
 .maintable thead tr th:nth-child(1) {
-  transform: translateX(-28px);
+  transform: translateX(3em);
 }
-.maintable thead tr th:nth-child(2) {
-  transform: translateX(-47px);
-}
-.maintable thead tr th:nth-child(3) {
-  transform: translateX(-13px);
-}
-.maintable thead tr th:nth-child(4) {
-  transform: translateX(-6px);
-}
+    .maintable thead tr th:nth-child(2) {
+        transform: translateX(0.7em);
+        /*transform: translateX(-13.3em);*/
+    }
+    .maintable thead tr th:nth-child(3) {
+        /*transform: translateX(-13px);*/
+        transform: translateX(3em);
+    }
+    .maintable thead tr th:nth-child(4) {
+        /*transform: translateX(-6px);*/
+        transform: translateX(2em);
+    }
 .maintable tbody tr {
   height: 36px;
   background-color: #b2b2b2;
@@ -587,11 +596,15 @@ header {
   border-bottom: 1px solid var(--main-color);
 }
 .maintable tbody td:nth-child(1) {
-  transform: translateX(20px);
+  transform: translateX(3em);
 }
 .maintable tbody td:nth-child(2) {
   transform: translateX(12px);
 }
+
+    .maintable tbody td a.style {
+        margin: 0 1em 0 0;
+    }
 /* .maintable tbody td:nth-child(3) img {
   transform: translateX(44px);
   width: 18px;
@@ -607,7 +620,7 @@ a.downloadbutton {
   transform: translateX(44px);
 }
 a.downloadbutton {
-  background-image: url('./images/download.svg');
+  background-image: url('images/download.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -616,7 +629,7 @@ a.downloadbutton {
   display: inline-block;
 }
 a.deletebutton {
-  background-image: url('./images/delete.svg');
+  background-image: url('images/delete.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -705,13 +718,15 @@ a.downloadbutton:hover {
   transition: all var(--sec-time) ease;
 }
 .tablebuttons {
-  opacity: 0;
-  padding-top: 10px;
-  position: relative;
-  display: none;
-  justify-content: center;
-  z-index: 2;
-  padding-left: 437px;
+    opacity: 0;
+    padding-top: 10px;
+    position: relative;
+    /*display: none;*/
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+    /*padding-left: 437px;*/
+    padding-left: 45.1em;
 }
 .tablebuttons button:first-child {
   margin-left: auto;
@@ -727,15 +742,17 @@ a.downloadbutton:hover {
 }
 
 .popup {
-  position: inherit;
-  background-color: var(--white2-color);
-  width: 400px;
-  height: 145px;
-  justify-content: center;
-  left: calc(50vw - 200px);
-  top: calc(50vh - 72.5px);
-  box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.5);
-  transition: all var(--sec-time) ease;
+    position: inherit;
+    background-color: var(--white2-color);
+    /* width: 400px;
+  height: 145px;*/
+    width: 33em;
+    height: 13em;
+    justify-content: center;
+    left: calc(50vw - 200px);
+    top: calc(50vh - 72.5px);
+    box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.5);
+    transition: all var(--sec-time) ease;
 }
 .popupanim {
   display: show;
@@ -969,6 +986,7 @@ footer {
   justify-content: center;
   position: sticky;
   top: 100%;
+  margin-top:10em
 }
 footer p {
   position: relative;
@@ -989,4 +1007,8 @@ footer p:after {
   background-color: var(--main-color);
   width: 90px;
   height: 1px;
+}
+
+.hidden-part{
+    display:none
 }

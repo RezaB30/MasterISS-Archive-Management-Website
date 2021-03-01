@@ -245,6 +245,8 @@
     <Content Include="Content\img\remove-all.png" />
     <Content Include="Content\img\language.png" />
     <Content Include="Content\styles.css" />
+    <Content Include="Content\stylesmain.css" />
+    <Content Include="Content\stylesmanage.css" />
     <Content Include="favicon-old.ico" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -265,7 +267,11 @@
     </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\javascript.js" />
+    <Content Include="Scripts\javascriptmain.js" />
+    <Content Include="Scripts\javascriptmanage.js" />
+    <Content Include="Scripts\jquery-3.js" />
     <Content Include="Scripts\jquery.filedrop.js" />
+    <Content Include="Scripts\modernizr-2.js" />
     <Content Include="Scripts\Up-file.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
