@@ -2,23 +2,36 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    ViewBag.Title= MasterISS_Archive_Management_Website.Localization.Model.Login;
+    ViewBag.Title = MasterISS_Archive_Management_Website.Localization.Model.Login;
 }
 <style>
 
     .login-content {
         padding-top: 5em;
-        max-width: 10em;
+        max-width: 15em;
         margin: auto;
         /*background: white;*/
-        text-align: center
+        text-align: center;
         /*   padding:1em;
         padding-top:2em*/
+        color: var(--main-color);
+        font-weight: 800;
+        font-size: 1em
     }
 
         .login-content > div {
             margin-top: 1em;
         }
+
+        .password{
+            margin-top:2em
+        }
+
+    .search {
+        color: black;
+        font-weight: 600;
+        font-size: 0.7em
+    }
 </style>
 
 @*<!DOCTYPE html>
@@ -30,67 +43,115 @@
     </head>
     <body>*@
 @ViewBag.HasNotPermission
-@using (Html.BeginForm("Login", "Auth", FormMethod.Post))
-{
+@*@using (Html.BeginForm("Login", "Auth", FormMethod.Post))*@
+<!--{
     <div class="login-content">
+        <div>-->
+            @*@Html.DisplayNameFor(m => m.Username)*@
+        <!--</div>
+        <div>-->
+            @*@Html.EditorFor(m => m.Username)*@
+        <!--</div>-->
+        @*@Html.ValidationMessageFor(m => m.Username)*@
+
+        <!--<div>-->
+            @*@Html.DisplayNameFor(m => m.Password)*@
+        <!--</div>
+        <div>-->
+            @*@Html.PasswordFor(m => m.Password)*@
+
+            @*<a class="showPass" >
+                    <img src="~/Content/img/file.svg">
+                </a>*@
+            @*<input type="checkbox" class="showPass" />*@
+            @* @MasterISS_Archive_Management_Website.Localization.Model.ShowMyPassword*@
+
+        <!--</div>-->
+        @*@Html.ValidationMessageFor(m => m.Password)*@
+        <!--<div>
+            <button type="submit">-->@*@MasterISS_Archive_Management_Website.Localization.Model.Login*@<!--</button>
+        </div>
+    </div>-->
+
+
+<div class="login-content">
+
+    @using (Html.BeginForm("Login", "Auth", FormMethod.Post))
+    {
         <div>
             @Html.DisplayNameFor(m => m.Username)
         </div>
-        <div>
-            @Html.EditorFor(m => m.Username)
+        <div class="search">
+            <div>
+                @*@Html.EditorFor(m => m.Username, new { @class = "inputsearch" })*@
+                @Html.EditorFor(m => m.Username, new { htmlAttributes = new { @class = "inputsearch" } })
+            </div>
         </div>
         @Html.ValidationMessageFor(m => m.Username)
 
         <div>
             @Html.DisplayNameFor(m => m.Password)
         </div>
-        <div>
-            @Html.PasswordFor(m => m.Password)
+        <div class="search">
+            <div>
+                @Html.PasswordFor(m => m.Password, new { @class = "inputsearch" })
 
-            @*<a class="showPass" >
-                <img src="~/Content/img/file.svg">
-            </a>*@
-            @*<input type="checkbox" class="showPass" />*@
-           @* @MasterISS_Archive_Management_Website.Localization.Model.ShowMyPassword*@
+                @*<a class="showPass" >
+                        <img src="~/Content/img/file.svg">
+                    </a>*@
+                @*<input type="checkbox" class="showPass" />*@
+                @* @MasterISS_Archive_Management_Website.Localization.Model.ShowMyPassword*@
 
+            </div>
         </div>
         @Html.ValidationMessageFor(m => m.Password)
         <div>
-            <button type="submit">@MasterISS_Archive_Management_Website.Localization.Model.Login</button>
+            <button class="button1 password" type="submit">@MasterISS_Archive_Management_Website.Localization.Model.Login</button>
         </div>
+
+
+        @*@Html.TextBox("id", null, new { @class = "inputsearch" })*@
+
+
+
+    }
     </div>
-}
+
+    @*</div>*@
+    <!-- the buldge of search bar -->
+    @*<div class="curve"></div>*@
+    }
 
 
-<div>
-    @Html.ValidationMessage("loginFailed")
-</div>
-@*</body>
-    </html>*@
+    <div>
+        @Html.ValidationMessage("loginFailed")
+    </div>
+    @*</body>
+        </html>*@
 
 
-@*@section script{
-    <script >
-        $(function () {
+    @*@section script{
+            <script >
+                $(function () {
 
-        //    $(".showPass").change(function () {
-        //        var checked = $(this).is(":checked");
-        //        if (checked) {
-        //            $("#Password").attr("type", "text");
-        //        } else {
-        //            $("#Password").attr("type", "Password");
-        //        }
-        //    });
-        //});
+                //    $(".showPass").change(function () {
+                //        var checked = $(this).is(":checked");
+                //        if (checked) {
+                //            $("#Password").attr("type", "text");
+                //        } else {
+                //            $("#Password").attr("type", "Password");
+                //        }
+                //    });
+                //});
 
-        //    $(".showPass").click(function () {
-        //        //var checked = $(this).is(":checked");
-        //        //if (checked) {
-        //            $("#Password").attr("type", "text");
-        //        //} else {
-        //        //    $("#Password").attr("type", "Password");
-        //        //}
-        //    });
-        //});
-    </script>
-}*@
+                //    $(".showPass").click(function () {
+                //        //var checked = $(this).is(":checked");
+                //        //if (checked) {
+                //            $("#Password").attr("type", "text");
+                //        //} else {
+                //        //    $("#Password").attr("type", "Password");
+                //        //}
+                //    });
+                //});
+            </script>
+        }*@
