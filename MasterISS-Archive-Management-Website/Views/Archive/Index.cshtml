@@ -5,14 +5,16 @@
     @*<script src="~/Scripts/javascript.js"></script>*@
     @*<script src="~/Scripts/javascriptmain.js"></script>*@
 
-    ViewBag.Title = "";
-    var boxClass = string.Empty;
-    var bannerClass = string.Empty;
-    if (ViewContext.RouteData.Values["id"] != null)
-    {
-        boxClass = "upbox boxgradient";
-        bannerClass = "upbanner";
-    }
+ViewBag.Title = "";
+var boxClass = string.Empty;
+var bannerClass = string.Empty;
+//if (ViewContext.RouteData.Values["id"] != null)
+//if (ViewContext.RouteData.Values["@ViewBag.id"] != "")
+if (ViewBag.id != null)
+{
+    boxClass = "upbox boxgradient";
+    bannerClass = "upbanner";
+}
 }
 <style>
     .hidden-part {
@@ -26,6 +28,7 @@
     .deletepop {
         display: none
     }
+
     .inputsearch-textbox {
         display: inline-block;
         position: absolute;
@@ -42,7 +45,6 @@
         font-size: 1.7em;
         outline: 0;
     }
-
 </style>
 
 @if (ViewBag.id != null)
@@ -63,135 +65,137 @@
 }
 
 <div class="page-container">
-<div class="banner @bannerClass">
-    <!-- box files side by side -->
-    <ul class="boxes @boxClass">
-        <li class="box1"><img src="~/Content/images/box1.svg" alt="" /></li>
-        <li class="box2"><img src="~/Content/images/box2.svg" alt="" /></li>
-        <li class="box3"><img src="~/Content/images/box3.svg" alt="" /></li>
-        <li class="box4"><img src="~/Content/images/box1.svg" alt="" /></li>
-        <li class="box5"><img src="~/Content/images/box2.svg" alt="" /></li>
-        <li class="box6"><img src="~/Content/images/box3.svg" alt="" /></li>
-    </ul>
-    <!-- search bar & search button -->
-    <div class="search" >
+    <div class="banner @bannerClass">
+        <!-- box files side by side -->
+        <ul class="boxes @boxClass">
+            <li class="box1"><img src="~/Content/images/box1.svg" alt="" /></li>
+            <li class="box2"><img src="~/Content/images/box2.svg" alt="" /></li>
+            <li class="box3"><img src="~/Content/images/box3.svg" alt="" /></li>
+            <li class="box4"><img src="~/Content/images/box1.svg" alt="" /></li>
+            <li class="box5"><img src="~/Content/images/box2.svg" alt="" /></li>
+            <li class="box6"><img src="~/Content/images/box3.svg" alt="" /></li>
+        </ul>
+        <!-- search bar & search button -->
+        <div class="search">
 
-        @using (Html.BeginForm(null, null, FormMethod.Get))
-        {
-            @Html.TextBox("id", null, new { @class = "inputsearch-textbox" })
+            @using (Html.BeginForm(null, null, FormMethod.Get))
+            {
+                @Html.TextBox("id", null, new { @class = "inputsearch-textbox" })
 
-            <button class="magnify" type="submit">@*@MasterISS_Archive_Management_Website.Localization.Model.Search*@</button>
-        }
+                <button class="magnify" type="submit">@*@MasterISS_Archive_Management_Website.Localization.Model.Search*@</button>
+            }
+
+        </div>
+        <!-- the buldge of search bar -->
+        <div class="curve"></div>
+    </div>
+    <!-- Subscriber number bar and its link -->
+    @*<a href="  " target="_blank">
+            @ViewBag.SubscriberNo
+        </a>*@
+    <div style="color:white">
+        @ViewBag.NoSubscriberFound
 
     </div>
-    <!-- the buldge of search bar -->
-    <div class="curve"></div>
-</div>
-<!-- Subscriber number bar and its link -->
-@*<a href="  " target="_blank">
-        @ViewBag.SubscriberNo
-    </a>*@
-<div style="color:white">
-    @ViewBag.NoSubscriberFound
+    @if (Model != null)
+    {
+        @*<div class="subscribernum subscriberfader">*@
+        <div class="subscribernum">
+            <p>
+                @ViewBag.NoSubscriberFound
+                @MasterISS_Archive_Management_Website.Localization.Model.SubscriberNo@*:@ViewBag.SubscriberNo*@
+            </p>
+            <a target="_blank" href="@MasterISS_Archive_Management_Website.Properties.Settings.Default.MasterISSWebSiteUrl/@ViewBag.id">@ViewBag.SubscriberNo </a>
+        </div>
+        //main table
 
-</div>
-@if (Model != null)
-{
-    @*<div class="subscribernum subscriberfader">*@
-    <div class="subscribernum">
-        <p>
-            @ViewBag.NoSubscriberFound
-            @MasterISS_Archive_Management_Website.Localization.Model.SubscriberNo@*:@ViewBag.SubscriberNo*@
-        </p>
-        <a target="_blank" href="@MasterISS_Archive_Management_Website.Properties.Settings.Default.MasterISSWebSiteUrl/@ViewBag.id">@ViewBag.SubscriberNo </a>
-    </div>
-    //main table
-
-    @*<div class="tablediv fadertable">*@
-    <div class="tablediv">
-        <table class="maintable">
-            @*main table head texts*@
-            <thead>
-                <tr>
-                    <th> @Html.DisplayNameFor(model => model.AttachmentType)</th>
-                    <th> @Html.DisplayNameFor(model => model.CreationDate)</th>
-                    <th>@MasterISS_Archive_Management_Website.Localization.Model.Download</th>
-                    <th>@MasterISS_Archive_Management_Website.Localization.Model.Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                @foreach (var item in Model)
-                {
+        @*<div class="tablediv fadertable">*@
+        <div class="tablediv">
+            <table class="maintable">
+                @*main table head texts*@
+                <thead>
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.AttachmentType)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CreationDate)
-                        </td>
-                        <td>
-                            <a class="downloadbutton style" href="@Url.Action("Download", "Archive", new { id = ViewBag.id, FileName = item.ServerSideName })">@*@MasterISS_Archive_Management_Website.Localization.Model.Download*@</a>
-                        </td>
-                        <td class="deletebutton">
-                            @using (Html.BeginForm("Delete", "Archive", FormMethod.Post, new { @class = "delete-submit deletebutton" }))
-                            {
-                                <div class="hidden-part">
-                                    @Html.TextBox("id")
-
-                                    @Html.Hidden("serverSideName", item.ServerSideName)
-                                </div>
-
-                                <div class="deletepop">
-                                    <div class="popup">
-                                        <p>are you sure?</p>
-                                        <p>you are about to delete this item permanentley</p>
-                                        <ul>
-                                            <li><a class="pop-cancel" href="#">Cancel</a></li>
-                                            <li><a class="pop-delete" href="#">Delete</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="backgrey"></div>
-                                </div>
-
-                                <a class="deletebutton style delete-button-submit">
-                                    @* <a href="#" id="submit_link" class="button submit-button">Log In</a>*@
-                                    <!--<button type="submit">-->
-                                    @*@MasterISS_Archive_Management_Website.Localization.Model.Delete*@
-                                    <!--</button>-->
-                                </a>
-                            }
-                        </td>
+                        <th> @Html.DisplayNameFor(model => model.AttachmentType)</th>
+                        <th> @Html.DisplayNameFor(model => model.CreationDate)</th>
+                        <th>@MasterISS_Archive_Management_Website.Localization.Model.Download</th>
+                        <th>@MasterISS_Archive_Management_Website.Localization.Model.Delete</th>
                     </tr>
-                }
+                </thead>
+                <tbody>
 
-            </tbody>
-        </table>
-    </div>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AttachmentType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreationDate)
+                            </td>
+                            <td>
+                                <a class="downloadbutton style" href="@Url.Action("Download", "Archive", new { id = ViewBag.id, FileName = item.ServerSideName })">@*@MasterISS_Archive_Management_Website.Localization.Model.Download*@</a>
+                            </td>
+                            <td class="deletebutton">
+                                @using (Html.BeginForm("Delete", "Archive", FormMethod.Post, new { @class = "delete-submit deletebutton" }))
+                                {
+                                    <div class="hidden-part">
+                                        @Html.TextBox("id")
 
-    @*<div class="tablebuttons">
-            <button class="button1"><a href="#">Download All</a></button>
-            <button class="button1"><a href="#">Manage</a></button>
-        </div>*@
+                                        @Html.Hidden("serverSideName", item.ServerSideName)
+                                    </div>
 
-    <div class="tablebuttons fadertable">
-        @* <div class="tablebuttons fadertable">*@
-        <button class="button1">
-            <a href="@Url.Action("DownloadZipFile", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.DownloadAll</a>
-        </button>
+                                    <div class="deletepop">
+                                        <div class="popup">
+                                            <p>are you sure?</p>
+                                            <p>you are about to delete this item permanentley</p>
+                                            <ul>
+                                                <li><a class="pop-cancel" href="#">Cancel</a></li>
+                                                <li><a class="pop-delete" href="#">Delete</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="backgrey"></div>
+                                    </div>
 
-        <button class="visible-manage-button button1">
-            <a href="@Url.Action("Manage", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.Manage</a>
-        </button>
-    </div>
-}
+                                    <a class="deletebutton style delete-button-submit">
+                                        @* <a href="#" id="submit_link" class="button submit-button">Log In</a>*@
+                                        <!--<button type="submit">-->
+                                        @*@MasterISS_Archive_Management_Website.Localization.Model.Delete*@
+                                        <!--</button>-->
+                                    </a>
+                                }
+                            </td>
+                        </tr>
+                    }
 
-<div class="gradient"></div>
-<div class="noise"></div>
+                </tbody>
+            </table>
+        </div>
+
+        @*<div class="tablebuttons">
+                <button class="button1"><a href="#">Download All</a></button>
+                <button class="button1"><a href="#">Manage</a></button>
+            </div>*@
+
+        <div class="tablebuttons fadertable">
+            @* <div class="tablebuttons fadertable">*@
+            <button class="button1">
+                <a href="@Url.Action("DownloadZipFile", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.DownloadAll</a>
+            </button>
+
+            <button class="visible-manage-button button1">
+                <a href="@Url.Action("Manage", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.Manage</a>
+            </button>
+        </div>
+    }
+
+    <div class="gradient"></div>
+    <div class="noise"></div>
 
 </div>
 
 @section script{
+
+    @Scripts.Render("~/Scripts/javascript.js");
 
     <script>
         $("#id").on("input", function () {
@@ -201,7 +205,40 @@
             reg.test(idVal) ? this.value : this.value = this.value.slice(0, -1)
         });
     </script>
+    @*<script>
+        const languageBut = $('.nav__links a');
+        const languageDropDown = $('.language-dropdown ul');
+        const dropHelper = $('.dropper');
+        const safeZone = $('.safezone');
 
+
+        function dropLan() {
+            languageDropDown.addClass('dropfirst');
+            languageDropDown.removeClass('dropback');
+            safeZone.style.display = 'inline';
+            dropHelper.style.display = 'inline';
+            languageDropDown.style.display = 'flex';
+        }
+        function hideLan() {
+            safeZone.style.display = 'none';
+            dropHelper.style.display = 'none';
+            languageDropDown.removeClass('dropfirst');
+            languageDropDown.addClass('dropback');
+            languageDropDown.style.display = 'flex';
+        }
+
+        languageBut.on('mouseover', dropLan);
+        safeZone.on('mouseover', hideLan);
+
+    </script>*@
+    @*<script>
+        Set();
+
+        $(".language-dropdown").mouseout(function () {
+            var k = $(this);
+            k.hide();
+        });
+    </script>*@
 
     <script>
         $(".delete-button-submit").click(function () {
@@ -238,6 +275,7 @@
             form.submit();
         });
     </script>
+
 
 }
 
