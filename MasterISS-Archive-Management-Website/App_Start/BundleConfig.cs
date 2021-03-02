@@ -10,7 +10,8 @@ namespace MasterISS_Archive_Management_Website
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"
-                       /* "~/Scripts/javascript.js"*/));
+                        //"~/Scripts/javascript.js"
+                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -18,8 +19,9 @@ namespace MasterISS_Archive_Management_Website
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"
-                        /*"~/Scripts/javascript.js"*/));
+                        "~/Scripts/modernizr-*",
+                        "~/Scripts/javascript.js"
+                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"
@@ -30,8 +32,10 @@ namespace MasterISS_Archive_Management_Website
                       "~/Content/site.css",
                       "~/Content/Custom.css",
                        "~/Content/styles.css",
-                       "~/Content/stylesmain.css"
-                       /*"~/Content/stylesmanage.css"*/));
+                       "~/Content/stylesmain.css",
+                        "~/Content/bootstrap-theme.css"
+                       //"~/Content/stylesmanage.css"
+                       ));
         }
     }
 }

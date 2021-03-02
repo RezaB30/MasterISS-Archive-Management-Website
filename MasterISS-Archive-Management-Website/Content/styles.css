@@ -455,6 +455,7 @@ header {
     display: flex;
     justify-content: center;
 }
+
 .subscribernum {
     /*display: none;*/
     margin-top: 70px;
@@ -1012,6 +1013,32 @@ footer p:after {
 .hidden-part{
     display:none
 }
-.delete-pop-click{
-    display:none
+
+
+/**********************************************/
+
+
+.archive-number {
+    position: sticky;
+    width: 400px;
+    left: calc(50% - 200px);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    /* padding-left: 31.5%;
+    padding-right: 31.5%; */
+    padding-top: 50px;
+    margin-bottom: -25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--white-color);
+    z-index: 150;
+    text-shadow: 0 0px 10px black;
 }
+
+    .archive-number span:last-of-type {
+        padding-left: 30px;
+        letter-spacing: 0px;
+        font-weight: 500;
+    }

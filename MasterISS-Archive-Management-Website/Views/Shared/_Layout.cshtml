@@ -4,11 +4,11 @@
 <html>
 
 @*<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
-    <title>MasterISS Archive Management</title>
-</head>*@
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles.css" />
+        <title>MasterISS Archive Management</title>
+    </head>*@
 
 <head>
     <meta charset="utf-8" />
@@ -70,66 +70,76 @@
             <div class="nav-drop">
                 <ul class="nav__links">
                     <!-- safe zone for the language dropdown -->
-                    <!--<div class="safezone"></div>-->
-                    @*<li>
-                            <a class="username"> @User.Identity.Name </a>
-                        </li>*@
-                    <!--<li>
+    <!--<div class="safezone"></div>-->
+    @*<li>
+            <a class="username"> @User.Identity.Name </a>
+        </li>*@
+    <!--<li>
+        <a class="language-hover" href="#">
+            Language-->
+    <!-- language dropdown menu -->
+    <!--<div class="dropper"></div>
+        </a>
+    </li>
+    <li><a href="@*@Url.Action("LogOut", "Auth")"*@>-->
+    <!--@*@MasterISS_Archive_Management_Website.Localization.Model.LogOut*@--><!--</a>-->
+    <!--</li>
+    </ul>
+    <div class="language-dropdown">
+        <ul class="k">
+            <li>-->
+    @* <a href="#">TR</a>*@
+
+    @*<a href="@Html.LanguageLink("TR", "tr-tr")"></a>*@
+    <!--</li>
+    <li>-->
+    @*<a href="#">EN</a>*@
+    @*@Html.LanguageLink("EN", "en-US")*@
+    @*</li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>-->*@
+
+
+
+    <header>
+        <a href=""><img class="logo" src="~/Content/images/logo.svg" alt="logo" /></a>
+        <nav>
+            <div class="nav-drop">
+                <ul class="nav__links">
+                    <!-- safe zone for the language dropdown -->
+                    <div class="safezone"></div>
+                    <li>
                         <a class="language-hover" href="#">
-                            Language-->
+                            Language
                             <!-- language dropdown menu -->
-                            <!--<div class="dropper"></div>
+                            <div class="dropper"></div>
                         </a>
                     </li>
-                    <li><a href="@*@Url.Action("LogOut", "Auth")"*@>--><!--@*@MasterISS_Archive_Management_Website.Localization.Model.LogOut*@--><!--</a>--><!--</li>
+                    <li>
+                        <a class="username"> @User.Identity.Name </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action(" LogOut", "Auth" )">
+                            @MasterISS_Archive_Management_Website.Localization.Model.LogOut
+                        </a>
+                    </li>
+
                 </ul>
                 <div class="language-dropdown">
-                    <ul class="k">
-                        <li>-->
-                            @* <a href="#">TR</a>*@
-
-                            @*<a href="@Html.LanguageLink("TR", "tr-tr")"></a>*@
-                        <!--</li>
-                        <li>-->
-                            @*<a href="#">EN</a>*@
-                            @*@Html.LanguageLink("EN", "en-US")*@
-                        @*</li>
+                    <ul class="lang-drop">
+                        <li>
+                            @Html.LanguageLink("TR", "tr-tr")
+                        </li>
+                        <li>
+                            @Html.LanguageLink("EN", "en-US")
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
-    </header>-->*@
-
-
-
-    <header>    
-    <a href=""><img class="logo" src="~/Content/images/logo.svg" alt="logo" /></a>
-    <nav>
-        <div class="nav-drop">
-            <ul class="nav__links">
-                <!-- safe zone for the language dropdown -->
-                <div class="safezone"></div>
-                <li>
-                    <a class="language-hover" href="#">
-                        Language
-                        <!-- language dropdown menu -->
-                        <div class="dropper"></div>
-                    </a>
-                </li>
-                <li><a href="#">Exit</a></li>
-            </ul>
-            <div class="language-dropdown">
-                <ul class="k">
-                    <li>
-                       @Html.LanguageLink("TR", "tr-tr")
-                    </li>
-                    <li>
-                        @Html.LanguageLink("EN", "en-US")
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
     </header>
 
     <div class="gradient"></div>
@@ -138,7 +148,7 @@
 
     @*<div class="container body-content">*@
     @RenderBody()
-    @Html.Partial("_DeletePop")
+    @*@Html.Partial("_DeletePop")*@
     @*<hr />*@
     <footer>
     </footer>
@@ -146,6 +156,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+
 
     @section script{
         @*<script>
@@ -162,17 +173,78 @@
                 });
             </script>*@
 
-        <script>
 
-            $(".delete-pop-button").click(function () {
-                //var button = $(this);
-                //var container = button.closest("div.page-container");
-                //var pop = container.find("div.delete-pop-click");
-                $(".delete-pop-click").show();
 
-            });
-        </script>
+        @*<script>
+
+                $(".delete-pop-button").click(function () {
+                    //var button = $(this);
+                    //var container = button.closest("div.page-container");
+                    //var pop = container.find("div.delete-pop-click");
+                    $(".delete-pop-click").show();
+
+                });
+            </script>*@
     }
+    @*<script>
+        $(".language-hover").mouseover(function () {
+            $(".safezone").show();
+            $(".dropper").show();
+
+            var languageHover = $(this);
+            var navDrop = languageHover.closest("div.nav-drop");
+            var languageDropdown = navDrop.find("ul.lang-drop");
+            languageDropdown.removeClass("lang-drop");
+            languageDropdown.addClass("dropfirst");
+            //k.addClass("dropfirst");
+        });
+
+        $(".language-hover").mouseout(function () {
+            $(".safezone").hide();
+            $(".dropper").hide();
+
+            var languageHover = $(this);
+            var navDrop = languageHover.closest("div.nav-drop");
+            var languageDropdown = navDrop.find("ul.dropfirst");
+            languageDropdown.removeClass("dropfirst");
+            languageDropdown.addClass("lang-drop");
+            //k.addClass("dropfirst");
+        });
+    </script>*@
+
+    @*<script>
+        $(".language-hover").mousemove(function (event) {
+            //var msg = "Handler for .mousemove() called at ";
+            ////msg += event.pageX + ", " + event.pageY;
+            //var k = 20px;
+            //var c=20px
+            var languageHover = $(this);
+            var navDrop = languageHover.closest("div.nav-drop");
+            if (0 < event.pageX < 50 && 0 < event.pageY < 50 ) {
+                $(".safezone").show();
+                $(".dropper").show();
+
+                //var languageHover = $(this);
+                //var navDrop = languageHover.closest("div.nav-drop");
+                var languageDropdown = navDrop.find("ul.lang-drop");
+                languageDropdown.removeClass("lang-drop");
+                languageDropdown.addClass("dropfirst");
+            }
+            else {
+                $(".safezone").hide();
+                $(".dropper").hide();
+
+                //var languageHover = $(this);
+                //var navDrop = languageHover.closest("div.nav-drop");
+                var languageDropdown = navDrop.find("ul.dropfirst");
+                languageDropdown.removeClass("dropfirst");
+                languageDropdown.addClass("lang-drop");
+            }
+            //$("#log").append("<div>" + msg + "</div>");
+        });
+    </script>*@
+
+
 
     @RenderSection("script", required: false)
 </body>

@@ -11,6 +11,14 @@
     .file-area {
         display: none
     }
+    .deletepop {
+        display: none
+    }
+    /*
+    .message-pop {
+        display: none
+    }*/
+
 </style>
 <div class="page-container">
 
@@ -76,6 +84,7 @@
                                         <a class="downloadbutton" href="@Url.Action("Download", "Archive", new { id = ViewBag.id, FileName = fileItem.ServerSideName })">@*@MasterISS_Archive_Management_Website.Localization.Model.Download*@</a>
                                     </td>
 
+
                                     <td class="deletebutton">
                                         @using (Html.BeginForm("Delete", "Archive", FormMethod.Post, new { @class = "delete-submit deletebutton" }))
                                         {
@@ -84,13 +93,43 @@
 
                                                 @Html.Hidden("serverSideName", fileItem.ServerSideName)
                                             </div>
-                                            <a class="deletebutton style">
-                                                <button type="submit" class="delete-pop-button">
-                                                    @*@MasterISS_Archive_Management_Website.Localization.Model.Delete*@
-                                                </button>
+
+                                            <div class="deletepop">
+                                                <div class="popup">
+                                                    <p>are you sure?</p>
+                                                    <p>you are about to delete this item permanentley</p>
+                                                    <ul>
+                                                        <li><a class="pop-cancel" href="#">Cancel</a></li>
+                                                        <li><a class="pop-delete" href="#">Delete</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="backgrey"></div>
+                                            </div>
+
+                                            <a class="deletebutton style delete-button-submit">
+                                                @* <a href="#" id="submit_link" class="button submit-button">Log In</a>*@
+                                                <!--<button type="submit">-->
+                                                @*@MasterISS_Archive_Management_Website.Localization.Model.Delete*@
+                                                <!--</button>-->
                                             </a>
                                         }
                                     </td>
+
+                                    <!--<td class="deletebutton">-->
+                                    @*@using (Html.BeginForm("Delete", "Archive", FormMethod.Post, new { @class = "delete-submit deletebutton" }))*@
+                                    <!--{
+                                        <div class="hidden-part">-->
+                                    @*@Html.TextBox("id")*@
+
+                                    @*@Html.Hidden("serverSideName", fileItem.ServerSideName)*@
+                                    <!--</div>
+                                    <a class="deletebutton style">
+                                        <button type="submit" class="delete-pop-button">-->
+                                    @*@MasterISS_Archive_Management_Website.Localization.Model.Delete*@
+                                    <!--</button>
+                                            </a>
+                                        }
+                                    </td>-->
                                 </tr>
                             }
                         }
@@ -142,6 +181,34 @@
 
         </style>
     </div>
+    @*@if (TempData["UploadFileStatus"] != null || TempData["FileSizeError"] != null || TempData["UploadStatus"] != null)
+    {
+        <style>
+            .delete-pop {
+                display: block
+            }
+        </style>
+    }*@
+
+
+    @*<div class="delete-pop">
+        <div class="popup">
+            <p>
+                @TempData["FileSizeError"]
+                @TempData["FileCountError"]
+                @TempData["UploadStatus"]
+                @TempData["UploadFileStatus"]
+                @TempData["NullFilesErrorMessage"]
+            </p>
+            <p>you are about to delete this item permanentley</p>
+            <ul>
+                <li><a href="#">Cancel</a></li>
+                <li><a href="#">Delete</a></li>
+            </ul>
+        </div>
+        <div class="backgrey"></div>
+    </div>*@
+
 
 </div>
 <footer>
@@ -175,17 +242,29 @@
 
 
 @section script{
-    @Scripts.Render("~/Scripts/Up-file.js")
-    <script>
-        SetupFileUploadAreas();
-    </script>
-    <script>
+    @Scripts.Render("~/Scripts/Up-file.js");
+    @*@Scripts.Render("~/Scripts/javascript.js");*@
+
+    @Scripts.Render("~/Scripts/javascriptmanage.js");
+
+    @*< script src = "./javascript/javascript.js" ></ script >
+        < script src = "./javascript/javascriptmanage.js" ></ script >
+        < script src = "./javascript/jquery-3.js" ></ script >
+        < script src = "./javascript/bootstrap.js" ></ script >
+        < script src = "./javascript/Up-file.js" ></ script >
+
+        < script >*@
+
+
+    <script>SetupFileUploadAreas();</script>
+    @*</script>*@
+    @*<script>
         $('.delete-submit').submit(function (e) {
             if (!confirm('Are You Sure?')) {
                 e.preventDefault();
             }
         });
-    </script>
+    </script>*@
     <script>
         $('.clear-button').click(function () {
             var button = $(this);
@@ -225,38 +304,61 @@
             uploadFileArea.show();
         });
     </script>
+
     <script>
-        $(".delete-submit").submit(function (e) {
-
-            var submitButton = $(this);
-            var pageBegin = submitButton.closest("div.page-container");
-            var uploadPop = pageBegin.find("div.upload-popup");
-            var popUp = uploadPop.find("div.popup");
-            popUp.addClass("popupanim");
-
-            var backGrey = deletePop.find("div.backgrey");
-            backGrey.addClass("backgreyanim");
-            backGrey.show();
-
-            //  if (!confirm("Are You Sure?")) {
-            //    e.preventDefault();
-            //}
+        $(".delete-button-submit").click(function () {
+            var button = $(this);        
+            var form = button.closest("form.delete-submit");
+            var deletepop = form.find(".deletepop");
+            deletepop.show();
         });
     </script>
 
     <script>
-        $(".language-hover").hover(function () {
-            $(".safezone").show();
-            $(".dropper").show();
-
-            var languageHover = $(this);
-            var navDrop = languageHover.closest("div.nav-drop");
-            var languageDropdown = navDrop.find("ul.k");
-            languageDropdown.removeClass("k");
-            languageDropdown.addClass("dropfirst");
-            //k.addClass("dropfirst");
+        $(".pop-cancel").click(function () {
+            var button = $(this);          
+            var deletepop = button.closest("div.deletepop")
+            deletepop.hide();
         });
     </script>
+
+
+    <script>
+        $(".pop-delete").click(function () {
+            var button = $(this);
+            var form = button.closest("form.delete-submit");
+            form.submit();
+        });
+    </script>
+
+
+
+
+
+    @*<script>
+            $(".delete-submit").submit(function (e) {
+
+                var submitButton = $(this);
+                var pageBegin = submitButton.closest("div.page-container");
+                var uploadPop = pageBegin.find("div.upload-popup");
+                var popUp = uploadPop.find("div.popup");
+                popUp.addClass("popupanim");
+
+                var backGrey = deletePop.find("div.backgrey");
+                backGrey.addClass("backgreyanim");
+                backGrey.show();
+
+                //  if (!confirm("Are You Sure?")) {
+                //    e.preventDefault();
+                //}
+            });
+        </script>*@
+
+    @*<script>
+            popDowner();
+            popUpper()
+        </script>*@
+
 
     @*<script>
                 window.onload = function () {
@@ -276,13 +378,4 @@
                 };
         </script>*@
 }
-@*<div class="gradient"></div>
-    <div class="noise"></div>*@
-@*<script src="./javascript/javascript.js"></script>
-    <script src="./javascript/javascriptmanage.js"></script>
-    <script src="./javascript/jquery-3.js"></script>
-    <script src="./javascript/bootstrap.js"></script>
-    <script src="./javascript/Up-file.js"></script>*@
-
-
 
