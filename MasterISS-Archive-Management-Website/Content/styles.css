@@ -359,8 +359,8 @@ header {
 
 /* buldge under the search box and its elements */
 .curve {
-    height: 64px;
-    width: 260px;
+    height: 52px;
+    width: 257px;
     margin-top: -52px;
     background-color: var(--banblack-color);
     border-radius: 32px;

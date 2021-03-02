@@ -26,6 +26,23 @@
     .deletepop {
         display: none
     }
+    .inputsearch-textbox {
+        display: inline-block;
+        position: absolute;
+        background-color: transparent;
+        padding-left: 20px;
+        width: 185px;
+        border: none;
+        /* top: 9px;*/
+        top: 0.1em;
+        color: var(--banblack-color);
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 300;
+        /* font-size: 18px;*/
+        font-size: 1.7em;
+        outline: 0;
+    }
+
 </style>
 
 @if (ViewBag.id != null)
@@ -57,16 +74,13 @@
         <li class="box6"><img src="~/Content/images/box3.svg" alt="" /></li>
     </ul>
     <!-- search bar & search button -->
-    <div class="search">
-
+    <div class="search" >
 
         @using (Html.BeginForm(null, null, FormMethod.Get))
         {
-            @Html.TextBox("id", null, new { @class = "inputsearch" })
+            @Html.TextBox("id", null, new { @class = "inputsearch-textbox" })
 
             <button class="magnify" type="submit">@*@MasterISS_Archive_Management_Website.Localization.Model.Search*@</button>
-
-
         }
 
     </div>
@@ -160,7 +174,7 @@
             <button class="button1"><a href="#">Manage</a></button>
         </div>*@
 
-    <div class="tablebuttons ">
+    <div class="tablebuttons fadertable">
         @* <div class="tablebuttons fadertable">*@
         <button class="button1">
             <a href="@Url.Action("DownloadZipFile", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.DownloadAll</a>
