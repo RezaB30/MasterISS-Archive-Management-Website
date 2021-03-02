@@ -54,12 +54,20 @@
 @if (ViewBag.id != null)
 {
     <style>
-
         .visible-manage-button {
             display: block
         }
     </style>
 }
+@if (ViewBag.SubscriberNo != null)
+{
+    <style>
+        .visible-manage-button {
+            display: block
+        }
+    </style>
+}
+
 <div class="page-container">
     <div class="banner">
         <!-- box files side by side -->
@@ -101,6 +109,10 @@
     @*<a href="  " target="_blank">
             @ViewBag.SubscriberNo
         </a>*@
+    <div style="color:white">
+        @ViewBag.NoSubscriberFound
+
+    </div>
     @if (Model != null)
     {
         <div class="subscribernum subscriberfader">
@@ -145,10 +157,11 @@
 
                                         @Html.Hidden("serverSideName", item.ServerSideName)
                                     </div>
-                                    <a class="deletebutton style">
-                                        <button type="submit">
-                                            @*@MasterISS_Archive_Management_Website.Localization.Model.Delete*@
-                                        </button>
+                                    <a class="deletebutton style delete-button-submit">
+                                        @* <a href="#" id="submit_link" class="button submit-button">Log In</a>*@
+                                        <!--<button type="submit">-->
+                                        @*@MasterISS_Archive_Management_Website.Localization.Model.Delete*@
+                                        <!--</button>-->
                                     </a>
                                 }
                             </td>
@@ -181,16 +194,30 @@
         </footer>*@
     @*Delete pop up and its background*@
     @*<div class="deletepop">
-        <div class="popup">
-            <p>are you sure?</p>
-            <p>you are about to delete this item permanentley</p>
-            <ul>
-                <li><a class="pop-cancel" href="#">Cancel</a></li>
-                <li><a class="pop-delete" href="#">Delete</a></li>
-            </ul>
-        </div>
-        <div class="backgrey"></div>
-    </div>*@
+            <div class="popup">
+                <p>are you sure?</p>
+                <p>you are about to delete this item permanentley</p>
+                <ul>
+                    <li><a class="pop-cancel" href="#">Cancel</a></li>
+                    <li><a class="pop-delete" href="#">Delete</a></li>
+                </ul>
+            </div>
+            <div class="backgrey"></div>
+        </div>*@
+
+    @*<div class="delete-pop-click">
+            <div class="deletepop">
+                <div class="popup">
+                    <p>are you sure?</p>
+                    <p>you are about to delete this item permanentley</p>
+                    <ul>
+                        <li><a class="pop-cancel" href="#">Cancel</a></li>
+                        <li><a class="pop-delete" href="#">Delete</a></li>
+                    </ul>
+                </div>
+                <div class="backgrey"></div>
+            </div>
+        </div>*@
     @*background gradient and noise overlay*@
     <div class="gradient"></div>
     <div class="noise"></div>
@@ -294,9 +321,18 @@
             //}
         });
     </script>
-
     <script>
+        $(".language-hover").hover(function () {
+            $(".safezone").show();
+            $(".dropper").show();
 
+            var languageHover = $(this);
+            var navDrop = languageHover.closest("div.nav-drop");
+            var languageDropdown = navDrop.find("ul.k");
+            languageDropdown.removeClass("k");
+            languageDropdown.addClass("dropfirst");
+            //k.addClass("dropfirst");
+        });
     </script>
 
 }

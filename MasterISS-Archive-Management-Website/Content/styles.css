@@ -602,9 +602,9 @@ header {
   transform: translateX(12px);
 }
 
-   /* .maintable tbody td a.style {
+    .maintable tbody td a.style {
         margin: 0 1em 0 0;
-    }*/
+    }
 /* .maintable tbody td:nth-child(3) img {
   transform: translateX(44px);
   width: 18px;
@@ -1010,5 +1010,8 @@ footer p:after {
 }
 
 .hidden-part{
+    display:none
+}
+.delete-pop-click{
     display:none
 }

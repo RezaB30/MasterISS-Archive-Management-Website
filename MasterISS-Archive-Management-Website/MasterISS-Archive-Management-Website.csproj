@@ -301,6 +301,7 @@
     <Content Include="Views\Archive\ErrorPage.cshtml" />
     <Content Include="Settings.config" />
     <Content Include="Views\Archive\Test.cshtml" />
+    <Content Include="Views\Shared\_DeletePop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -64,40 +64,72 @@
 
 
 
-    <header>
+    <!--<header>
         <a href=""><img class="logo" src="~/Content/images/logo.svg" alt="logo" /></a>
         <nav>
             <div class="nav-drop">
                 <ul class="nav__links">
                     <!-- safe zone for the language dropdown -->
-                    <div class="safezone"></div>
-                    <li>
-                        <a class="username"> @User.Identity.Name </a>
-                    </li>
-                    <li>
+                    <!--<div class="safezone"></div>-->
+                    @*<li>
+                            <a class="username"> @User.Identity.Name </a>
+                        </li>*@
+                    <!--<li>
                         <a class="language-hover" href="#">
-                            Language
+                            Language-->
                             <!-- language dropdown menu -->
-                            <div class="dropper"></div>
+                            <!--<div class="dropper"></div>
                         </a>
                     </li>
-                    <li><a href="@Url.Action("LogOut", "Auth")">@MasterISS_Archive_Management_Website.Localization.Model.LogOut</a></li>
+                    <li><a href="@*@Url.Action("LogOut", "Auth")"*@>--><!--@*@MasterISS_Archive_Management_Website.Localization.Model.LogOut*@--><!--</a>--><!--</li>
                 </ul>
                 <div class="language-dropdown">
-                    <ul class="first">
-                        <li>
+                    <ul class="k">
+                        <li>-->
                             @* <a href="#">TR</a>*@
 
-                            <a href="@Html.LanguageLink("Türkçe", "tr-tr")"></a>
-                        </li>
-                        <li>
+                            @*<a href="@Html.LanguageLink("TR", "tr-tr")"></a>*@
+                        <!--</li>
+                        <li>-->
                             @*<a href="#">EN</a>*@
-                            @Html.LanguageLink("English", "en-US")
-                        </li>
+                            @*@Html.LanguageLink("EN", "en-US")*@
+                        @*</li>
                     </ul>
                 </div>
             </div>
         </nav>
+    </header>-->*@
+
+
+
+    <header>    
+    <a href=""><img class="logo" src="~/Content/images/logo.svg" alt="logo" /></a>
+    <nav>
+        <div class="nav-drop">
+            <ul class="nav__links">
+                <!-- safe zone for the language dropdown -->
+                <div class="safezone"></div>
+                <li>
+                    <a class="language-hover" href="#">
+                        Language
+                        <!-- language dropdown menu -->
+                        <div class="dropper"></div>
+                    </a>
+                </li>
+                <li><a href="#">Exit</a></li>
+            </ul>
+            <div class="language-dropdown">
+                <ul class="k">
+                    <li>
+                       @Html.LanguageLink("TR", "tr-tr")
+                    </li>
+                    <li>
+                        @Html.LanguageLink("EN", "en-US")
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     </header>
 
     <div class="gradient"></div>
@@ -106,6 +138,7 @@
 
     @*<div class="container body-content">*@
     @RenderBody()
+    @Html.Partial("_DeletePop")
     @*<hr />*@
     <footer>
     </footer>
@@ -115,17 +148,28 @@
     @Scripts.Render("~/bundles/bootstrap")
 
     @section script{
-        <script>
-            $(".language-hover").hover(function () {
-                $(".safezone").show();
-                $(".dropper").show();
+        @*<script>
+                $(".language-hover").hover(function () {
+                    $(".safezone").show();
+                    $(".dropper").show();
 
-                var languageHover = $(this);
-                var navDrop = languageHover.closest("div.nav-drop");
-                var languageDropdown = navDrop.find("ul.first");
-                languageDropdown.removeClass("dropback");
-                languageDropdown.addClass("dropfirst");
-                //k.addClass("dropfirst");
+                    var languageHover = $(this);
+                    var navDrop = languageHover.closest("div.nav-drop");
+                    var languageDropdown = navDrop.find("ul.k");
+                    languageDropdown.removeClass("k");
+                    languageDropdown.addClass("dropfirst");
+                    //k.addClass("dropfirst");
+                });
+            </script>*@
+
+        <script>
+
+            $(".delete-pop-button").click(function () {
+                //var button = $(this);
+                //var container = button.closest("div.page-container");
+                //var pop = container.find("div.delete-pop-click");
+                $(".delete-pop-click").show();
+
             });
         </script>
     }

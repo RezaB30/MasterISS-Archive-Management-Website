@@ -16,24 +16,24 @@
 
 
 
-    <div class="message">
-        @TempData["FileSizeError"]
-        @TempData["FileCountError"]
-        @TempData["UploadStatus"]
-        @TempData["UploadFileStatus"]
-        @TempData["NullFilesErrorMessage"]
-    </div>
+    @*<div class="message">
+            @TempData["FileSizeError"]
+            @TempData["FileCountError"]
+            @TempData["UploadStatus"]
+            @TempData["UploadFileStatus"]
+            @TempData["NullFilesErrorMessage"]
+        </div>*@
 
     <div class="archive-number" id="archiveNum">
-        <span>Archive Number</span>
-        <span>59110</span>
+        <span> @MasterISS_Archive_Management_Website.Localization.Model.ArchiveNumber  @ViewBag.id</span>
+        @*<span>59110</span>*@
     </div>
 
 
     <div>
-        <h1 class="home-page">
-            @MasterISS_Archive_Management_Website.Localization.Model.ArchiveNumber  @ViewBag.id
-        </h1>
+        @*<h1 class="home-page">
+                @MasterISS_Archive_Management_Website.Localization.Model.ArchiveNumber  @ViewBag.id
+            </h1>*@
 
         <div class="message">
             @TempData["FileSizeError"]
@@ -85,7 +85,7 @@
                                                 @Html.Hidden("serverSideName", fileItem.ServerSideName)
                                             </div>
                                             <a class="deletebutton style">
-                                                <button type="submit">
+                                                <button type="submit" class="delete-pop-button">
                                                     @*@MasterISS_Archive_Management_Website.Localization.Model.Delete*@
                                                 </button>
                                             </a>
@@ -148,7 +148,7 @@
     <p>version 2.0</p>
 </footer>
 <!-- Delete pop up and its background -->
-@*<div class="deletepop">
+<!--<div class="deletepop">
         <div class="popup">
             <p>are you sure?</p>
             <p>you are about to delete this item permanentley</p>
@@ -158,8 +158,19 @@
             </ul>
         </div>
         <div class="backgrey"></div>
-    </div>*@
+    </div>
 
+<div class="upload-popup">
+    <div class="popup">
+        <p>Upload is succed</p>-->
+@*<p>you are about to delete this item permanentley</p>*@
+<!--<ul>-->
+@*<li><a href="#">Cancel</a></li>*@
+<!--<li><a href="#">Okey</a></li>
+        </ul>
+    </div>
+    <div class="backgrey"></div>
+</div>-->
 <!-- background gradient and noise overlay -->
 
 
@@ -219,8 +230,8 @@
 
             var submitButton = $(this);
             var pageBegin = submitButton.closest("div.page-container");
-            var deletePop = pageBegin.find("div.deletepop");
-            var popUp = deletePop.find("div.popup");
+            var uploadPop = pageBegin.find("div.upload-popup");
+            var popUp = uploadPop.find("div.popup");
             popUp.addClass("popupanim");
 
             var backGrey = deletePop.find("div.backgrey");
@@ -232,6 +243,38 @@
             //}
         });
     </script>
+
+    <script>
+        $(".language-hover").hover(function () {
+            $(".safezone").show();
+            $(".dropper").show();
+
+            var languageHover = $(this);
+            var navDrop = languageHover.closest("div.nav-drop");
+            var languageDropdown = navDrop.find("ul.k");
+            languageDropdown.removeClass("k");
+            languageDropdown.addClass("dropfirst");
+            //k.addClass("dropfirst");
+        });
+    </script>
+
+    @*<script>
+                window.onload = function () {
+                if ("@TempData["UploadFileStatus"]" != "") {
+
+                    //var submitButton = $(this);
+                    var pageBegin = $("div.page-container");
+                    var uploadPop = pageBegin.find("div.upload-popup");
+                    var popUp = uploadPop.find("div.popup");
+                    popUp.addClass("popupanim");
+
+                    var backGrey = deletePop.find("div.backgrey");
+                    backGrey.addClass("backgreyanim");
+                    backGrey.show();
+
+                }
+                };
+        </script>*@
 }
 @*<div class="gradient"></div>
     <div class="noise"></div>*@
