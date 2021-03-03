@@ -1,11 +1,29 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";  
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = MasterISS_Archive_Management_Website.Localization.Model.ErrorPage;
 }
 
+<style>
+    .error-letter {
+        color: white;
+        font-size: 3em;
+        margin-left: 2em;
+        margin-top: 0.7em;
+    }
+
+    .error-icon{
+        width:10em
+    }
+
+    .error-page {
+       margin-left: 28em;
+       margin-top:7em;
+    }
+</style>
 
 <div class="error-page">
     <div class="row">
-        <div class="col-lg-4 col-md-4">
+        <div class="col-lg-4 col-md-4 error-icon">
             <img class="error-icon" src="~/Content/img/error.png" />
         </div>
 

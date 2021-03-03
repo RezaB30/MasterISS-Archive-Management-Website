@@ -9,35 +9,35 @@ function Set() {
     const tableContent = $('.tablediv');
     const tableButtons = $('.tablebuttons');
 
-    const languageBut = $('.nav__links a');
-    const languageDropDown = $('.language-dropdown ul');
-    const dropHelper = $('.dropper');
-    const safeZone = $('.safezone');
+    //const languageBut = $('.nav__links a');
+    //const languageDropDown = $('.language-dropdown ul');
+    //const dropHelper = $('.dropper');
+    //const safeZone = $('.safezone');
 
 
-    function dropLan() {
-        languageDropDown.addClass('dropfirst');
-        languageDropDown.removeClass('dropback');
-        safeZone.css("display", "inline");
-        //safeZone.style.display = 'inline';
-        dropHelper.css("display", "inline");
-        //dropHelper.style.display = 'inline';
-        //languageDropDown.style.display = 'flex';
-        languageDropDown.css("display", "flex");
+    //function dropLan() {
+    //    languageDropDown.addClass('dropfirst');
+    //    languageDropDown.removeClass('dropback');
+    //    safeZone.css("display", "inline");
+    //    //safeZone.style.display = 'inline';
+    //    dropHelper.css("display", "inline");
+    //    //dropHelper.style.display = 'inline';
+    //    //languageDropDown.style.display = 'flex';
+    //    languageDropDown.css("display", "flex");
 
-    }
-    function hideLan() {
-        safeZone.css("display", "none");
-        dropHelper.css("display", "none");
-        languageDropDown.removeClass('dropfirst');
-        languageDropDown.addClass('dropback');
-        languageDropDown.css("display", "flex");
-    }
+    //}
+    //function hideLan() {
+    //    safeZone.css("display", "none");
+    //    dropHelper.css("display", "none");
+    //    languageDropDown.removeClass('dropfirst');
+    //    languageDropDown.addClass('dropback');
+    //    languageDropDown.css("display", "flex");
+    //}
 
-    languageBut.on('mouseover', dropLan);
-    safeZone.on('mouseover', hideLan);
-    //const deleteBack = document.querySelector('.backgrey');
-    //const deletepopup = document.querySelector('.popup');
+    //languageBut.on('mouseover', dropLan);
+    //safeZone.on('mouseover', hideLan);
+    ////const deleteBack = document.querySelector('.backgrey');
+    ////const deletepopup = document.querySelector('.popup');
 
     const deleteBack = $('.backgrey');
     const deletepopup = $('.popup');
@@ -52,30 +52,30 @@ function Set() {
     //deleteBack.style.display = 'none';
     deletepopup.css("display", "none");
 
-    //deletepopup.style.display = 'none';
+   // //deletepopup.style.display = 'none';
 
-    //function dropLan() {
-    //    languageDropDown.classList.add('dropfirst');
-    //    languageDropDown.classList.remove('dropback');
-    //    safeZone.style.display = 'inline';
-    //    dropHelper.style.display = 'inline';
-    //    languageDropDown.style.display = 'flex';
-    //}
-    //function hideLan() {
-    //    safeZone.style.display = 'none';
-    //    dropHelper.style.display = 'none';
-    //    languageDropDown.classList.remove('dropfirst');
-    //    languageDropDown.classList.add('dropback');
-    //    languageDropDown.style.display = 'flex';
-    //}
+   // //function dropLan() {
+   // //    languageDropDown.classList.add('dropfirst');
+   // //    languageDropDown.classList.remove('dropback');
+   // //    safeZone.style.display = 'inline';
+   // //    dropHelper.style.display = 'inline';
+   // //    languageDropDown.style.display = 'flex';
+   // //}
+   // //function hideLan() {
+   // //    safeZone.style.display = 'none';
+   // //    dropHelper.style.display = 'none';
+   // //    languageDropDown.classList.remove('dropfirst');
+   // //    languageDropDown.classList.add('dropback');
+   // //    languageDropDown.style.display = 'flex';
+   // //}
 
-    //languageBut.addEventListener('mouseover', dropLan);
-   //safeZone.addEventListener('mouseover', hideLan);
+   // //languageBut.addEventListener('mouseover', dropLan);
+   ////safeZone.addEventListener('mouseover', hideLan);
 
    
 
-    languageBut.on('mouseover', dropLan);
-    safeZone.on('mouseover', hideLan);
+   // languageBut.on('mouseover', dropLan);
+   // safeZone.on('mouseover', hideLan);
 
 
     function popUpper() {

@@ -156,6 +156,9 @@
   <data name="DragAndDropArea" xml:space="preserve">
     <value>Drag And Drop Area</value>
   </data>
+  <data name="ErrorPage" xml:space="preserve">
+    <value>Error Page</value>
+  </data>
   <data name="Exception" xml:space="preserve">
     <value>Exception Error</value>
   </data>

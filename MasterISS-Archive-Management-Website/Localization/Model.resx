@@ -156,6 +156,9 @@
   <data name="DragAndDropArea" xml:space="preserve">
     <value>Dosya Sürükleme Alanı</value>
   </data>
+  <data name="ErrorPage" xml:space="preserve">
+    <value>Hata Sayfası</value>
+  </data>
   <data name="Exception" xml:space="preserve">
     <value>Hata</value>
   </data>

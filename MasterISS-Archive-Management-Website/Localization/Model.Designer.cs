@@ -178,6 +178,15 @@ namespace MasterISS_Archive_Management_Website.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hata Sayfası.
+        /// </summary>
+        public static string ErrorPage {
+            get {
+                return ResourceManager.GetString("ErrorPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hata.
         /// </summary>
         public static string Exception {

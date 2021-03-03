@@ -136,7 +136,8 @@ header {
 .language-dropdown {
     position: absolute;
     transform: translateX(20px);
-    margin-top: 25px;
+    /*  margin-top: 25px;*/
+    /*margin-top: 0.5em;*/
     z-index: 15;
 }
 
@@ -250,11 +251,17 @@ header {
 .nav__links {
     list-style: none;
 }
-
+/**/
     .nav__links li {
         display: inline-block;
         padding: 0px 20px;
     }
+
+
+  /*  .nav__links li .li-style {
+        display: inline-block;
+        padding: 0px 20px;
+    }*/
 /* grey banner box in the middle */
 
 .banner {
@@ -815,8 +822,10 @@ a.downloadbutton {
     }
 
 .deletepop {
-    position: fixed;
+     position: fixed;
     z-index: 100;
+   /* z-index: 0;
+    position: relative;*/
 }
 
 .popup {
@@ -831,6 +840,7 @@ a.downloadbutton {
     top: calc(50vh - 72.5px);
     box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.5);
     transition: all var(--sec-time) ease;
+    z-index:200
 }
 
 .popupanim {
@@ -1160,3 +1170,4 @@ footer {
     margin-top:2em;
     text-align:center
 }
+

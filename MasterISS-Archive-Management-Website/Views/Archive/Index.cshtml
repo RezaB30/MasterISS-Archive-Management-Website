@@ -5,7 +5,14 @@
     @*<script src="~/Scripts/javascript.js"></script>*@
     @*<script src="~/Scripts/javascriptmain.js"></script>*@
 
-    ViewBag.Title = "";
+    if (ViewBag.id == null)
+    {
+        ViewBag.Title = MasterISS_Archive_Management_Website.Localization.Model.HomePage;
+    }
+    else
+    {
+        ViewBag.Title = ViewBag.id + " - " + MasterISS_Archive_Management_Website.Localization.Model.SubscriberArchiveFiles;
+    }
     var boxClass = string.Empty;
     var bannerClass = string.Empty;
     //if (ViewContext.RouteData.Values["id"] != null)
@@ -97,13 +104,17 @@
         @ViewBag.NoSubscriberFound
 
     </div>
-    <div class="subscribernum">
-        <p>
-            @ViewBag.NoSubscriberFound
-            @MasterISS_Archive_Management_Website.Localization.Model.SubscriberNo@*:@ViewBag.SubscriberNo*@
-        </p>
-        <a target="_blank" href="@MasterISS_Archive_Management_Website.Properties.Settings.Default.MasterISSWebSiteUrl/@ViewBag.id">@ViewBag.SubscriberNo </a>
-    </div>
+    @if (ViewBag.SubscriberNo != null)
+    {
+        <div class="subscribernum">
+            <p>
+                @*@ViewBag.NoSubscriberFound*@
+                @MasterISS_Archive_Management_Website.Localization.Model.SubscriberNo@*:@ViewBag.SubscriberNo*@
+            </p>
+            <a target="_blank" href="@MasterISS_Archive_Management_Website.Properties.Settings.Default.MasterISSWebSiteUrl/@ViewBag.id">@ViewBag.SubscriberNo </a>
+        </div>
+    }
+
     @if (Model != null)
     {
         @*<div class="subscribernum subscriberfader">*@
@@ -232,10 +243,12 @@
 @section script{
 
     @Scripts.Render("~/Scripts/javascript.js");
+    @*@Scripts.Render("~/Scripts/Language.js");
 
-    @*<script>
-            Set();
-        </script>*@
+
+        <script>
+            SetLanguage();
+            </script>*@
     <script>
         $("#id").on("input", function () {
             var id = $(this);

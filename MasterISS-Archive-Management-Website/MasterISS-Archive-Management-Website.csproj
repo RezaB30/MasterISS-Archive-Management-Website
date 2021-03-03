@@ -272,6 +272,7 @@
     <Content Include="Scripts\javascriptmanage.js" />
     <Content Include="Scripts\jquery-3.js" />
     <Content Include="Scripts\jquery.filedrop.js" />
+    <Content Include="Scripts\Language.js" />
     <Content Include="Scripts\modernizr-2.js" />
     <Content Include="Scripts\Up-file.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

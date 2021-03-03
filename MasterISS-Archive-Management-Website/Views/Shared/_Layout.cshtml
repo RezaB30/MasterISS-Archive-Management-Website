@@ -105,24 +105,27 @@
 
 
     <header>
-        <a href=""><img class="logo" src="~/Content/images/logo.svg" alt="logo" /></a>
+        <a href="@Url.Action("Index","Archive")"><img class="logo" src="~/Content/images/logo.svg" alt="logo" /></a><div class="username"> @User.Identity.Name </div>
         <nav>
+            
             <div class="nav-drop">
                 <ul class="nav__links">
                     <!-- safe zone for the language dropdown -->
                     <div class="safezone"></div>
-                    <li>
-                        <a class="language-hover" href="#">
+                    <li @*class="li-style"*@>
+                        <a id="language-drop" class="language-hover" href="#">
                             Language
                             <!-- language dropdown menu -->
                             <div class="dropper"></div>
                         </a>
                     </li>
-                    <li>
-                        <a class="username"> @User.Identity.Name </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("LogOut", "Auth" )">
+                    @*<li>
+                        
+
+                    </li>*@
+
+                    <li @*class="li-style"*@>
+                        <a class="not-hover" href="@Url.Action("LogOut", "Auth" )">
                             @MasterISS_Archive_Management_Website.Localization.Model.LogOut
                         </a>
                     </li>
@@ -138,6 +141,9 @@
                         </li>
                     </ul>
                 </div>
+                @*<li>*@
+                  
+                @*</li>*@
             </div>
         </nav>
     </header>
@@ -160,6 +166,26 @@
 
     @section script{
     }
+
+    @Scripts.Render("~/Scripts/Language.js");
+
+
+    <script>
+        SetLanguage();
+    </script>
+    @*<script>
+        $(".not-hover").mouseover(function () {
+            $(".language-dropdown").hide();
+        });
+
+        $(".not-hover").mouseout(function () {
+            $(".language-dropdown").css("display", "block");
+        });
+       
+        //$(".language-hover").hover(function () {
+        //    $(".language-dropdown").show();
+        //});*@
+    </script>
     @*<script>
             $(".language-hover").hover(function () {
                 $(".safezone").show();
@@ -246,8 +272,8 @@
         </script>*@
 
     @*<script>
-        Set();
-    </script>*@
+            Set();
+        </script>*@
 
     @RenderSection("script", required: false)
 </body>
