@@ -639,22 +639,26 @@ header {
         }
 
         .maintable thead tr th:nth-child(1) {
-            transform: translateX(3em);
+            /*transform: translateX(3em);*/
+            padding: 0 10px;
         }
 
         .maintable thead tr th:nth-child(2) {
-            transform: translateX(0.7em);
+            /*transform: translateX(0.7em);*/
+            text-align: center;
             /*transform: translateX(-13.3em);*/
         }
 
         .maintable thead tr th:nth-child(3) {
+            /*transform: translateX(3em);*/
+            text-align: center;
             /*transform: translateX(-13px);*/
-            transform: translateX(3em);
         }
 
         .maintable thead tr th:nth-child(4) {
+            /*transform: translateX(2em);*/
+            text-align: center;
             /*transform: translateX(-6px);*/
-            transform: translateX(2em);
         }
 
     .maintable tbody tr {
@@ -667,6 +671,7 @@ header {
         font-weight: 400;
         font-size: 14px;
         color: var(--dark-color);
+        padding: 0 10px;
     }
 
     .maintable tbody tr:nth-child(even) {
@@ -678,30 +683,29 @@ header {
     }
 
     .maintable tbody td:nth-child(1) {
-        transform: translateX(3em);
+        /*transform: translateX(3em);*/
     }
 
     .maintable tbody td:nth-child(2) {
-        transform: translateX(12px);
+        /*transform: translateX(12px);*/
+        text-align: center;
     }
 
     .maintable tbody td a.style {
-        margin: 0 1em 0 0;
+        /*margin: 0 1em 0 0;*/
     }
-/* .maintable tbody td:nth-child(3) img {
-  transform: translateX(44px);
-  width: 18px;
-} */
-/* .maintable tbody td:nth-child(4) img {
-  transform: translateX(30px);
-  width: 13px;
-} */
+    .maintable tbody td:nth-child(3) /*img*/ {
+        text-align: center;
+    }
+    .maintable tbody td:nth-child(4) /*img*/ {
+        text-align: center;
+    } 
 a.deletebutton {
-    transform: translateX(27px);
+    /*transform: translateX(27px);*/
 }
 
 a.downloadbutton {
-    transform: translateX(44px);
+    /*transform: translateX(44px);*/
 }
 
 a.downloadbutton {
@@ -752,7 +756,7 @@ a.downloadbutton {
     transform: scale(1);
     transition: var(--sec-time) ease;
 
-    margin-right: 2.3em;
+    /*margin-right: 2.3em;*/
 }
 
     .button1::before {
@@ -1187,4 +1191,17 @@ footer {
 
 .li-style {
     margin-left: -1.6em;
+}
+
+.file-area {
+    display: none;
+    padding: 10px;
+}
+
+.deletepop {
+    display: none
+}
+
+.center-buttons {
+    text-align: center
 }

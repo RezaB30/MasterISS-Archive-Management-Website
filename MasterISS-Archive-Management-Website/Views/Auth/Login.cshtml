@@ -35,44 +35,8 @@
     }
 </style>
 
-@*<!DOCTYPE html>
 
-    <html>
-    <head>
-        <meta name="viewport" content="width=device-width" />
-        <title>Login</title>
-    </head>
-    <body>*@
 @ViewBag.HasNotPermission
-@*@using (Html.BeginForm("Login", "Auth", FormMethod.Post))*@
-<!--{
-    <div class="login-content">
-        <div>-->
-            @*@Html.DisplayNameFor(m => m.Username)*@
-        <!--</div>
-        <div>-->
-            @*@Html.EditorFor(m => m.Username)*@
-        <!--</div>-->
-        @*@Html.ValidationMessageFor(m => m.Username)*@
-
-        <!--<div>-->
-            @*@Html.DisplayNameFor(m => m.Password)*@
-        <!--</div>
-        <div>-->
-            @*@Html.PasswordFor(m => m.Password)*@
-
-            @*<a class="showPass" >
-                    <img src="~/Content/img/file.svg">
-                </a>*@
-            @*<input type="checkbox" class="showPass" />*@
-            @* @MasterISS_Archive_Management_Website.Localization.Model.ShowMyPassword*@
-
-        <!--</div>-->
-        @*@Html.ValidationMessageFor(m => m.Password)*@
-        <!--<div>
-            <button type="submit">-->@*@MasterISS_Archive_Management_Website.Localization.Model.Login*@<!--</button>
-        </div>
-    </div>-->
 
 
 <div class="login-content">
@@ -84,7 +48,6 @@
         </div>
         <div class="search">
             <div>
-                @*@Html.EditorFor(m => m.Username, new { @class = "inputsearch" })*@
                 @Html.EditorFor(m => m.Username, new { htmlAttributes = new { @class = "inputsearch" } })
             </div>
         </div>
@@ -96,13 +59,6 @@
         <div class="search">
             <div>
                 @Html.PasswordFor(m => m.Password, new { @class = "inputsearch" })
-
-                @*<a class="showPass" >
-                        <img src="~/Content/img/file.svg">
-                    </a>*@
-                @*<input type="checkbox" class="showPass" />*@
-                @* @MasterISS_Archive_Management_Website.Localization.Model.ShowMyPassword*@
-
             </div>
         </div>
         @Html.ValidationMessageFor(m => m.Password)
@@ -110,49 +66,12 @@
             <button class="button1 password" type="submit">@MasterISS_Archive_Management_Website.Localization.Model.Login</button>
         </div>
 
-
-        @*@Html.TextBox("id", null, new { @class = "inputsearch" })*@
-
-
-
     }
     </div>
-
-    @*</div>*@
-    <!-- the buldge of search bar -->
-    @*<div class="curve"></div>*@
-    }
+    
 
 
     <div>
         @Html.ValidationMessage("loginFailed")
     </div>
-    @*</body>
-        </html>*@
-
-
-    @*@section script{
-            <script >
-                $(function () {
-
-                //    $(".showPass").change(function () {
-                //        var checked = $(this).is(":checked");
-                //        if (checked) {
-                //            $("#Password").attr("type", "text");
-                //        } else {
-                //            $("#Password").attr("type", "Password");
-                //        }
-                //    });
-                //});
-
-                //    $(".showPass").click(function () {
-                //        //var checked = $(this).is(":checked");
-                //        //if (checked) {
-                //            $("#Password").attr("type", "text");
-                //        //} else {
-                //        //    $("#Password").attr("type", "Password");
-                //        //}
-                //    });
-                //});
-            </script>
-        }*@
+   

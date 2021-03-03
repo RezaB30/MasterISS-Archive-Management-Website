@@ -60,36 +60,41 @@ header {
 }
 
 .maintable thead tr th:nth-child(1) {
-  width: 70%;
-  text-align: left;
-  padding-left: 20px;
+    width: 70%;
+    /*text-align: left;*/
+    /*padding-left: 20px;*/
+    padding: 0 10px;
 }
 .maintable thead tr th:nth-child(2) {
-    width: auto;
-    text-align: right;
+    /*width: auto;
+    text-align: right;*/
     /*padding-right: 20px;*/
-    padding-right: 7.5em;
+    /*padding-right: 7.5em;*/
+    text-align: center;
 }
 .maintable thead tr th:nth-child(3) {
-    width: 10%;
-    text-align: right;
+    /*width: 10%;
+    text-align: right;*/
     /*padding-right: 20px;*/
     /*padding-right: 6em;*/
-    padding-right: 5em;
+    /*padding-right: 5em;*/
+    text-align: center;
 }
 
 .maintable tbody tr td:nth-child(1) {
-  text-align: left;
-  padding-left: 20px;
+    /*  text-align: left;
+  padding-left: 20px;*/
+    padding: 0 10px;
 }
 .maintable tbody tr td:nth-child(2) {
     /*text-align: center;*/
     /*padding-right: 20px;*/
-    padding-right: 5em
+    /*padding-right: 5em*/
+    text-align: center;
 }
 .maintable tbody tr td:nth-child(3) {
   text-align: center;
-  padding-right: 20px;
+  /*padding-right: 20px;*/
 }
 
 .maintable tbody tr:last-child {
@@ -101,7 +106,7 @@ header {
 }
 
 .area-for-upload-button {
-  margin-left: 24em;
+  /*margin-left: 24em;*/
 }
 
 .clear-button {
@@ -114,7 +119,7 @@ header {
 .upload-button {
     opacity: 0;
     /*margin-left: 145px;*/
-    margin-left: 21em;
+    /*margin-left: 21em;*/
     animation: but-transparent var(--trans-time) ease 1 forwards;
     animation-delay: var(--trans-time);
 }

@@ -8,44 +8,28 @@
     <link rel="stylesheet" href="~/Content/stylesmain.css" />
 }
 
-<style>
+@*<style>
     .file-area {
-        display: none
+        display: none;
+        padding: 10px;
     }
 
     .deletepop {
         display: none
     }
-    /*
-    .message-pop {
-        display: none
-    }*/
-
-</style>
+    
+    .center-buttons{
+        text-align:center
+    }
+</style>*@
 <div class="page-container">
 
 
-
-    @*<div class="message">
-            @TempData["FileSizeError"]
-            @TempData["FileCountError"]
-            @TempData["UploadStatus"]
-            @TempData["UploadFileStatus"]
-            @TempData["NullFilesErrorMessage"]
-        </div>*@
-
     <div class="archive-number" id="archiveNum">
         <span> @MasterISS_Archive_Management_Website.Localization.Model.ArchiveNumber  @ViewBag.id</span>
-        @*<span>59110</span>*@
     </div>
 
-
     <div>
-        @*<h1 class="home-page">
-                @MasterISS_Archive_Management_Website.Localization.Model.ArchiveNumber  @ViewBag.id
-            </h1>*@
-
-
 
         @ViewBag.Exception
 
@@ -69,9 +53,6 @@
                         {
                             if (item.AttachmentTypeEnumNumber == fileItem.AttachmentType)
                             {
-
-                                @*<tbody>*@
-                                <!-- written as a sample -->
                                 <tr>
                                     <td>
                                         @Html.DisplayFor(model => fileItem.CreationDate)
@@ -103,29 +84,11 @@
                                             </div>
 
                                             <a class="deletebutton style delete-button-submit">
-                                                @* <a href="#" id="submit_link" class="button submit-button">Log In</a>*@
-                                                <!--<button type="submit">-->
-                                                @*@MasterISS_Archive_Management_Website.Localization.Model.Delete*@
-                                                <!--</button>-->
+                                              
                                             </a>
                                         }
                                     </td>
 
-                                    <!--<td class="deletebutton">-->
-                                    @*@using (Html.BeginForm("Delete", "Archive", FormMethod.Post, new { @class = "delete-submit deletebutton" }))*@
-                                    <!--{
-                                        <div class="hidden-part">-->
-                                    @*@Html.TextBox("id")*@
-
-                                    @*@Html.Hidden("serverSideName", fileItem.ServerSideName)*@
-                                    <!--</div>
-                                    <a class="deletebutton style">
-                                        <button type="submit" class="delete-pop-button">-->
-                                    @*@MasterISS_Archive_Management_Website.Localization.Model.Delete*@
-                                    <!--</button>
-                                            </a>
-                                        }
-                                    </td>-->
                                 </tr>
                             }
                         }
@@ -144,38 +107,29 @@
 
                                     <div class="file-input-container" style="display: none;"></div>
 
-                                    <button type="submit" class="upload-button button1">@MasterISS_Archive_Management_Website.Localization.Model.Save</button>
-                                    <button type="button" class="clear-button button1">@MasterISS_Archive_Management_Website.Localization.Model.Clear</button>
+                                    <div class="center-buttons">
+                                        <button type="submit" class="upload-button button1">@MasterISS_Archive_Management_Website.Localization.Model.Save</button>
+                                        <button type="button" class="clear-button button1">@MasterISS_Archive_Management_Website.Localization.Model.Clear</button>
 
+                                    </div>
+                                  
                                     <div class="uploading-files">
                                         @MasterISS_Archive_Management_Website.Localization.Model.FileisUploading
                                     </div>
                                 </div>
-                                <button class="area-for-upload-button button1" type="button">@MasterISS_Archive_Management_Website.Localization.Model.UploadFile</button>
-                            }
+                                <div class="center-buttons">
+                                    <button class="area-for-upload-button button1" type="button">@MasterISS_Archive_Management_Website.Localization.Model.UploadFile</button>
+                                </div>}
                         </td>
                     </tr>
-                    @*</tbody>*@
                 </table>
                 }
-
             </div>
         }
-
-
     </div>
 
     <div class="container body-content">
-        <style>
-            .file-area {
-                display: none;
-            }
-            /*  .button-center{
-                text-align:center
-            }*/
-
-
-        </style>
+        
     </div>
     @if (TempData["UploadFileStatus"] != null || TempData["FileSizeError"] != null || TempData["UploadStatus"] != null || TempData["FileCountError"] != null || TempData["NullFilesErrorMessage"] != null)
     {
@@ -199,7 +153,6 @@
 
 
             <ul>
-                @*<li><a href="#">Cancel</a></li>*@
                 <li style="margin-left: 5em;"><a class="ok" href="#">@MasterISS_Archive_Management_Website.Localization.Model.Okey</a></li>
 
             </ul>
@@ -212,46 +165,12 @@
 <footer>
     <p>version 2.0</p>
 </footer>
-<!-- Delete pop up and its background -->
-<!--<div class="deletepop">
-        <div class="popup">
-            <p>are you sure?</p>
-            <p>you are about to delete this item permanentley</p>
-            <ul>
-                <li><a href="#">Cancel</a></li>
-                <li><a href="#">Delete</a></li>
-            </ul>
-        </div>
-        <div class="backgrey"></div>
-    </div>
-
-<div class="upload-popup">
-    <div class="popup">
-        <p>Upload is succed</p>-->
-@*<p>you are about to delete this item permanentley</p>*@
-<!--<ul>-->
-@*<li><a href="#">Cancel</a></li>*@
-<!--<li><a href="#">Okey</a></li>
-        </ul>
-    </div>
-    <div class="backgrey"></div>
-</div>-->
-<!-- background gradient and noise overlay -->
 
 
 @section script{
     @Scripts.Render("~/Scripts/Up-file.js");
-    @*@Scripts.Render("~/Scripts/javascript.js");*@
 
     @Scripts.Render("~/Scripts/javascriptmanage.js");
-
-    @*< script src = "./javascript/javascript.js" ></ script >
-        < script src = "./javascript/javascriptmanage.js" ></ script >
-        < script src = "./javascript/jquery-3.js" ></ script >
-        < script src = "./javascript/bootstrap.js" ></ script >
-        < script src = "./javascript/Up-file.js" ></ script >
-
-        < script >*@
 
 
     <script>SetupFileUploadAreas();</script>
@@ -336,50 +255,8 @@
             popup.hide();
         })
     </script>
+    }
 
 
 
-    @*<script>
-            $(".delete-submit").submit(function (e) {
-
-                var submitButton = $(this);
-                var pageBegin = submitButton.closest("div.page-container");
-                var uploadPop = pageBegin.find("div.upload-popup");
-                var popUp = uploadPop.find("div.popup");
-                popUp.addClass("popupanim");
-
-                var backGrey = deletePop.find("div.backgrey");
-                backGrey.addClass("backgreyanim");
-                backGrey.show();
-
-                //  if (!confirm("Are You Sure?")) {
-                //    e.preventDefault();
-                //}
-            });
-        </script>*@
-
-    @*<script>
-            popDowner();
-            popUpper()
-        </script>*@
-
-
-    @*<script>
-                window.onload = function () {
-                if ("@TempData["UploadFileStatus"]" != "") {
-
-                    //var submitButton = $(this);
-                    var pageBegin = $("div.page-container");
-                    var uploadPop = pageBegin.find("div.upload-popup");
-                    var popUp = uploadPop.find("div.popup");
-                    popUp.addClass("popupanim");
-
-                    var backGrey = deletePop.find("div.backgrey");
-                    backGrey.addClass("backgreyanim");
-                    backGrey.show();
-
-                }
-                };
-        </script>*@
-}
 
