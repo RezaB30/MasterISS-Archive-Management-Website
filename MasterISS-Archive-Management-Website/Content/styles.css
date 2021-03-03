@@ -138,6 +138,7 @@ header {
     transform: translateX(20px);
     /*  margin-top: 25px;*/
     /*margin-top: 0.5em;*/
+    margin-top:1em;
     z-index: 15;
 }
 
@@ -263,6 +264,7 @@ header {
         padding: 0px 20px;
     }*/
 /* grey banner box in the middle */
+
 
 .banner {
     display: grid;
@@ -429,6 +431,11 @@ header {
     /* font-size: 18px;*/
     font-size: 1.7em;
     outline: 0;
+
+
+
+
+
 }
 /*  */
 .magnify {
@@ -742,6 +749,8 @@ a.downloadbutton {
     outline: 0;
     transform: scale(1);
     transition: var(--sec-time) ease;
+
+    margin-right: 2.3em;
 }
 
     .button1::before {
@@ -809,7 +818,10 @@ a.downloadbutton {
     justify-content: center;
     z-index: 2;
     /*padding-left: 437px;*/
-    padding-left: 45.1em;
+    /*padding-left: 45.1em;*/
+    /*padding-left: 42.7em;*/
+
+    padding-left: 44.6em;
 }
 
     .tablebuttons button:first-child {
@@ -1171,3 +1183,6 @@ footer {
     text-align:center
 }
 
+.li-style {
+    margin-left: -1.6em;
+}

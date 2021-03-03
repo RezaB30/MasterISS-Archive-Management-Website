@@ -52,6 +52,10 @@
         font-size: 1.7em;
         outline: 0;
     }
+
+   /* .manage-button-style {
+        margin-right: 106em
+    }*/
 </style>
 
 @if (ViewBag.id != null)
@@ -87,7 +91,7 @@
 
             @using (Html.BeginForm(null, null, FormMethod.Get))
             {
-                @Html.TextBox("id", null, new { @class = "inputsearch-textbox" })
+                @Html.TextBox("id", null, new { @class = "inputsearch-textbox" ,@autocomplete="off"})
 
                 <button class="magnify" type="submit">@*@MasterISS_Archive_Management_Website.Localization.Model.Search*@</button>
             }
@@ -160,7 +164,6 @@
                                         <div class="popup">
 
                                             <h4 class="font-style">@MasterISS_Archive_Management_Website.Localization.Model.AreYouSure</h4>
-                                            @*<p>you are about to delete this item permanentley</p>*@
                                             <ul>
                                                 <li><a class="pop-cancel" href="#">@MasterISS_Archive_Management_Website.Localization.Model.Cancel</a></li>
                                                 <li><a class="pop-delete" href="#">@MasterISS_Archive_Management_Website.Localization.Model.Delete</a></li>
@@ -170,10 +173,7 @@
                                     </div>
 
                                     <a class="deletebutton style delete-button-submit">
-                                        @* <a href="#" id="submit_link" class="button submit-button">Log In</a>*@
-                                        <!--<button type="submit">-->
-                                        @*@MasterISS_Archive_Management_Website.Localization.Model.Delete*@
-                                        <!--</button>-->
+
                                     </a>
                                 }
                             </td>
@@ -183,28 +183,19 @@
                 </tbody>
             </table>
         </div>
-
-        @*<div class="tablebuttons">
-                <button class="button1"><a href="#">Download All</a></button>
-                <button class="button1"><a href="#">Manage</a></button>
-            </div>*@
-
-        <div class="tablebuttons fadertable">
-            @* <div class="tablebuttons fadertable">*@
-            <button class="button1">
-                <a href="@Url.Action("DownloadZipFile", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.DownloadAll</a>
-            </button>
-
-            @*<button class="visible-manage-button button1">
-                    <a href="@Url.Action("Manage", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.Manage</a>
-                </button>*@
-        </div>
     }
 
     @if (ViewBag.SubscriberNo != null)
     {
 
         <div class="tablebuttons fadertable">
+            @if (ViewBag.HasFileList != null)
+            {
+                <button class="button1">
+                    <a href="@Url.Action("DownloadZipFile", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.DownloadAll</a>
+                </button>
+            }
+
             <button class="visible-manage-button button1">
                 <a href="@Url.Action("Manage", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.Manage</a>
             </button>

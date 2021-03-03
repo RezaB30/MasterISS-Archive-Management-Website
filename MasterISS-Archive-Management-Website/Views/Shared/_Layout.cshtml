@@ -21,6 +21,7 @@
     <style>
         .username {
             color: white !important;
+            font-size: 1.2em;
         }
 
             .username:hover {
@@ -38,76 +39,10 @@
         </style>
     }
 
-    @*<nav>
-            <div id="logo">
-                @Html.ActionLink(MasterISS_Archive_Management_Website.Localization.Model.MasterISSArchiveManagement, "Index", "Archive")
-            </div>
-
-            <label for="tog" class="toggle">Menu</label>
-            <input type="checkbox" id="tog" />
-            <ul class="menu">
-                <li>
-                    <label for="tog-1" class="toggle">WordPress +</label>
-                    <a href="#"><img src="~/Content/img/language.png" style="width:2em" alt="HTML tutorial"></a>
-                    <input type="checkbox" id="tog-1" />
-                    <ul>
-                        <li>@Html.LanguageLink("Türkçe", "tr-tr")</li>
-                        <li>@Html.LanguageLink("English", "en-US")</li>
-
-                    </ul>
-
-                </li>
-                <li><a class="font-shape">@User.Identity.Name</a></li>
-                <li class="login-page"><a href="@Url.Action("LogOut", "Auth")">@MasterISS_Archive_Management_Website.Localization.Model.LogOut</a></li>
-            </ul>
-        </nav>*@
-
-
-
-    <!--<header>
-        <a href=""><img class="logo" src="~/Content/images/logo.svg" alt="logo" /></a>
-        <nav>
-            <div class="nav-drop">
-                <ul class="nav__links">
-                    <!-- safe zone for the language dropdown -->
-    <!--<div class="safezone"></div>-->
-    @*<li>
-            <a class="username"> @User.Identity.Name </a>
-        </li>*@
-    <!--<li>
-        <a class="language-hover" href="#">
-            Language-->
-    <!-- language dropdown menu -->
-    <!--<div class="dropper"></div>
-        </a>
-    </li>
-    <li><a href="@*@Url.Action("LogOut", "Auth")"*@>-->
-    <!--@*@MasterISS_Archive_Management_Website.Localization.Model.LogOut*@--><!--</a>-->
-    <!--</li>
-    </ul>
-    <div class="language-dropdown">
-        <ul class="k">
-            <li>-->
-    @* <a href="#">TR</a>*@
-
-    @*<a href="@Html.LanguageLink("TR", "tr-tr")"></a>*@
-    <!--</li>
-    <li>-->
-    @*<a href="#">EN</a>*@
-    @*@Html.LanguageLink("EN", "en-US")*@
-    @*</li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>-->*@
-
-
-
     <header>
-        <a href="@Url.Action("Index","Archive")"><img class="logo" src="~/Content/images/logo.svg" alt="logo" /></a><div class="username"> @User.Identity.Name </div>
+        <a href="@Url.Action("Index","Archive")"><img class="logo" src="~/Content/images/logo.svg" alt="logo" /></a>
         <nav>
-            
+
             <div class="nav-drop">
                 <ul class="nav__links">
                     <!-- safe zone for the language dropdown -->
@@ -119,16 +54,19 @@
                             <div class="dropper"></div>
                         </a>
                     </li>
-                    @*<li>
-                        
-
-                    </li>*@
-
-                    <li @*class="li-style"*@>
-                        <a class="not-hover" href="@Url.Action("LogOut", "Auth" )">
-                            @MasterISS_Archive_Management_Website.Localization.Model.LogOut
-                        </a>
+                    <li class="li-style"></li>
+                    <li>
+                        <div class="username"> @User.Identity.Name </div>
                     </li>
+                    <li class="li-style"></li>
+
+                        <li @*class="li-style"*@>
+                            <a class="not-hover" href="@Url.Action("LogOut", "Auth" )">
+                                @MasterISS_Archive_Management_Website.Localization.Model.LogOut
+                            </a>
+                        </li>
+                  
+
 
                 </ul>
                 <div class="language-dropdown">
@@ -141,9 +79,6 @@
                         </li>
                     </ul>
                 </div>
-                @*<li>*@
-                  
-                @*</li>*@
             </div>
         </nav>
     </header>
@@ -181,7 +116,7 @@
         $(".not-hover").mouseout(function () {
             $(".language-dropdown").css("display", "block");
         });
-       
+
         //$(".language-hover").hover(function () {
         //    $(".language-dropdown").show();
         //});*@
