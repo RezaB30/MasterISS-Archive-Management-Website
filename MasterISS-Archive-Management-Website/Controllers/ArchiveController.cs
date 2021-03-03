@@ -242,8 +242,8 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
                 //    }).OrderByDescending(d => d.CreationDate);
 
-                    //ViewBag.id = id;
-
+                //ViewBag.id = id;
+                TempData["FileDeleted"]=MasterISS_Archive_Management_Website.Localization.Model.FileDeleted;
                     return RedirectToAction("Index", "Archive", new { id = id });
                 //}
                 //ViewBag.id = id;

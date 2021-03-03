@@ -106,6 +106,15 @@ namespace MasterISS_Archive_Management_Website.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to İptal.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Temizle.
         /// </summary>
         public static string Clear {
@@ -183,6 +192,15 @@ namespace MasterISS_Archive_Management_Website.Localization {
         public static string FileCountError {
             get {
                 return ResourceManager.GetString("FileCountError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dosya Silindi..
+        /// </summary>
+        public static string FileDeleted {
+            get {
+                return ResourceManager.GetString("FileDeleted", resourceCulture);
             }
         }
         
@@ -309,6 +327,15 @@ namespace MasterISS_Archive_Management_Website.Localization {
         public static string NullFilesErrorMessage {
             get {
                 return ResourceManager.GetString("NullFilesErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tamam.
+        /// </summary>
+        public static string Okey {
+            get {
+                return ResourceManager.GetString("Okey", resourceCulture);
             }
         }
         

@@ -5,12 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = string.Format(MasterISS_Archive_Management_Website.Localization.Model.SubscriberArchiveFileDetailsAndUploadFile, ViewBag.id);
     <link rel="stylesheet" href="~/Content/stylesmanage.css" />
+    <link rel="stylesheet" href="~/Content/stylesmain.css" />
 }
 
 <style>
     .file-area {
         display: none
     }
+
     .deletepop {
         display: none
     }
@@ -43,7 +45,7 @@
                 @MasterISS_Archive_Management_Website.Localization.Model.ArchiveNumber  @ViewBag.id
             </h1>*@
 
- 
+
 
         @ViewBag.Exception
 
@@ -90,11 +92,11 @@
 
                                             <div class="deletepop">
                                                 <div class="popup">
-                                                    <p>are you sure?</p>
-                                                    <p>you are about to delete this item permanentley</p>
+                                                    <h4 class="font-style">@MasterISS_Archive_Management_Website.Localization.Model.AreYouSure</h4>
+
                                                     <ul>
-                                                        <li><a class="pop-cancel" href="#">Cancel</a></li>
-                                                        <li><a class="pop-delete" href="#">Delete</a></li>
+                                                        <li><a class="pop-cancel" href="#">@MasterISS_Archive_Management_Website.Localization.Model.Cancel</a></li>
+                                                        <li><a class="pop-delete" href="#">@MasterISS_Archive_Management_Website.Localization.Model.Delete</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="backgrey"></div>
@@ -187,19 +189,19 @@
 
     <div class="deletepop upload-message">
         <div class="popup">
-            <p></p>
-            <p>               
-                    @TempData["FileSizeError"]
-                    @TempData["FileCountError"]
-                    @TempData["UploadStatus"]
-                    @TempData["UploadFileStatus"]
-                    @TempData["NullFilesErrorMessage"]
-              
-            </p>
-           
+            <h4 class="font-style">
+                @TempData["FileSizeError"]
+                @TempData["FileCountError"]
+                @TempData["UploadStatus"]
+                @TempData["UploadFileStatus"]
+                @TempData["NullFilesErrorMessage"]
+            </h4>
+
+
             <ul>
                 @*<li><a href="#">Cancel</a></li>*@
-                <li style="margin-left: 5em;"><a class="ok" href="#">Tamam</a></li>
+                <li style="margin-left: 5em;"><a class="ok" href="#">@MasterISS_Archive_Management_Website.Localization.Model.Okey</a></li>
+
             </ul>
         </div>
         <div class="backgrey"></div>
@@ -255,12 +257,12 @@
     <script>SetupFileUploadAreas();</script>
     @*</script>*@
     @*<script>
-        $('.delete-submit').submit(function (e) {
-            if (!confirm('Are You Sure?')) {
-                e.preventDefault();
-            }
-        });
-    </script>*@
+            $('.delete-submit').submit(function (e) {
+                if (!confirm('Are You Sure?')) {
+                    e.preventDefault();
+                }
+            });
+        </script>*@
     <script>
         $('.clear-button').click(function () {
             var button = $(this);
@@ -303,7 +305,7 @@
 
     <script>
         $(".delete-button-submit").click(function () {
-            var button = $(this);        
+            var button = $(this);
             var form = button.closest("form.delete-submit");
             var deletepop = form.find(".deletepop");
             deletepop.show();
@@ -312,7 +314,7 @@
 
     <script>
         $(".pop-cancel").click(function () {
-            var button = $(this);          
+            var button = $(this);
             var deletepop = button.closest("div.deletepop")
             deletepop.hide();
         });

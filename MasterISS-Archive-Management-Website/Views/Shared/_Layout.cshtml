@@ -159,93 +159,95 @@
 
 
     @section script{
-        }
-        @*<script>
-                $(".language-hover").hover(function () {
-                    $(".safezone").show();
-                    $(".dropper").show();
-
-                    var languageHover = $(this);
-                    var navDrop = languageHover.closest("div.nav-drop");
-                    var languageDropdown = navDrop.find("ul.k");
-                    languageDropdown.removeClass("k");
-                    languageDropdown.addClass("dropfirst");
-                    //k.addClass("dropfirst");
-                });
-            </script>*@
-
-
-
-        @*<script>
-
-                $(".delete-pop-button").click(function () {
-                    //var button = $(this);
-                    //var container = button.closest("div.page-container");
-                    //var pop = container.find("div.delete-pop-click");
-                    $(".delete-pop-click").show();
-
-                });
-            </script>*@
     }
     @*<script>
-        $(".language-hover").mouseover(function () {
-            $(".safezone").show();
-            $(".dropper").show();
-
-            var languageHover = $(this);
-            var navDrop = languageHover.closest("div.nav-drop");
-            var languageDropdown = navDrop.find("ul.lang-drop");
-            languageDropdown.removeClass("lang-drop");
-            languageDropdown.addClass("dropfirst");
-            //k.addClass("dropfirst");
-        });
-
-        $(".language-hover").mouseout(function () {
-            $(".safezone").hide();
-            $(".dropper").hide();
-
-            var languageHover = $(this);
-            var navDrop = languageHover.closest("div.nav-drop");
-            var languageDropdown = navDrop.find("ul.dropfirst");
-            languageDropdown.removeClass("dropfirst");
-            languageDropdown.addClass("lang-drop");
-            //k.addClass("dropfirst");
-        });
-    </script>*@
-
-    @*<script>
-        $(".language-hover").mousemove(function (event) {
-            //var msg = "Handler for .mousemove() called at ";
-            ////msg += event.pageX + ", " + event.pageY;
-            //var k = 20px;
-            //var c=20px
-            var languageHover = $(this);
-            var navDrop = languageHover.closest("div.nav-drop");
-            if (0 < event.pageX < 50 && 0 < event.pageY < 50 ) {
+            $(".language-hover").hover(function () {
                 $(".safezone").show();
                 $(".dropper").show();
 
-                //var languageHover = $(this);
-                //var navDrop = languageHover.closest("div.nav-drop");
+                var languageHover = $(this);
+                var navDrop = languageHover.closest("div.nav-drop");
+                var languageDropdown = navDrop.find("ul.k");
+                languageDropdown.removeClass("k");
+                languageDropdown.addClass("dropfirst");
+                //k.addClass("dropfirst");
+            });
+        </script>*@
+
+
+
+    @*<script>
+
+            $(".delete-pop-button").click(function () {
+                //var button = $(this);
+                //var container = button.closest("div.page-container");
+                //var pop = container.find("div.delete-pop-click");
+                $(".delete-pop-click").show();
+
+            });
+        </script>*@
+
+    @*<script>
+            $(".language-hover").mouseover(function () {
+                $(".safezone").show();
+                $(".dropper").show();
+
+                var languageHover = $(this);
+                var navDrop = languageHover.closest("div.nav-drop");
                 var languageDropdown = navDrop.find("ul.lang-drop");
                 languageDropdown.removeClass("lang-drop");
                 languageDropdown.addClass("dropfirst");
-            }
-            else {
+                //k.addClass("dropfirst");
+            });
+
+            $(".language-hover").mouseout(function () {
                 $(".safezone").hide();
                 $(".dropper").hide();
 
-                //var languageHover = $(this);
-                //var navDrop = languageHover.closest("div.nav-drop");
+                var languageHover = $(this);
+                var navDrop = languageHover.closest("div.nav-drop");
                 var languageDropdown = navDrop.find("ul.dropfirst");
                 languageDropdown.removeClass("dropfirst");
                 languageDropdown.addClass("lang-drop");
-            }
-            //$("#log").append("<div>" + msg + "</div>");
-        });
+                //k.addClass("dropfirst");
+            });
+        </script>*@
+
+    @*<script>
+            $(".language-hover").mousemove(function (event) {
+                //var msg = "Handler for .mousemove() called at ";
+                ////msg += event.pageX + ", " + event.pageY;
+                //var k = 20px;
+                //var c=20px
+                var languageHover = $(this);
+                var navDrop = languageHover.closest("div.nav-drop");
+                if (0 < event.pageX < 50 && 0 < event.pageY < 50 ) {
+                    $(".safezone").show();
+                    $(".dropper").show();
+
+                    //var languageHover = $(this);
+                    //var navDrop = languageHover.closest("div.nav-drop");
+                    var languageDropdown = navDrop.find("ul.lang-drop");
+                    languageDropdown.removeClass("lang-drop");
+                    languageDropdown.addClass("dropfirst");
+                }
+                else {
+                    $(".safezone").hide();
+                    $(".dropper").hide();
+
+                    //var languageHover = $(this);
+                    //var navDrop = languageHover.closest("div.nav-drop");
+                    var languageDropdown = navDrop.find("ul.dropfirst");
+                    languageDropdown.removeClass("dropfirst");
+                    languageDropdown.addClass("lang-drop");
+                }
+                //$("#log").append("<div>" + msg + "</div>");
+            });
+        </script>*@
+
+    @*<script>
+        Set();
     </script>*@
-
-
 
     @RenderSection("script", required: false)
 </body>

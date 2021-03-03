@@ -235,6 +235,7 @@
     <Content Include="Content\images\delete.svg" />
     <Content Include="Content\images\download.svg" />
     <Content Include="Content\images\english.svg" />
+    <Content Include="Content\img\file-icon.png" />
     <Content Include="Content\images\logo.svg" />
     <Content Include="Content\images\noise100px.png" />
     <Content Include="Content\images\turkish.svg" />

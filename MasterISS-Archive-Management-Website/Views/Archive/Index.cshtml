@@ -5,16 +5,16 @@
     @*<script src="~/Scripts/javascript.js"></script>*@
     @*<script src="~/Scripts/javascriptmain.js"></script>*@
 
-ViewBag.Title = "";
-var boxClass = string.Empty;
-var bannerClass = string.Empty;
-//if (ViewContext.RouteData.Values["id"] != null)
-//if (ViewContext.RouteData.Values["@ViewBag.id"] != "")
-if (ViewBag.id != null)
-{
-    boxClass = "upbox boxgradient";
-    bannerClass = "upbanner";
-}
+    ViewBag.Title = "";
+    var boxClass = string.Empty;
+    var bannerClass = string.Empty;
+    //if (ViewContext.RouteData.Values["id"] != null)
+    //if (ViewContext.RouteData.Values["@ViewBag.id"] != "")
+    if (ViewBag.id != null)
+    {
+        boxClass = "upbox boxgradient";
+        bannerClass = "upbanner";
+    }
 }
 <style>
     .hidden-part {
@@ -93,20 +93,21 @@ if (ViewBag.id != null)
     @*<a href="  " target="_blank">
             @ViewBag.SubscriberNo
         </a>*@
-    <div style="color:white">
+    <div style="color:white; text-align:center; font-size:2em; font-weight:500; margin-top:3em">
         @ViewBag.NoSubscriberFound
 
+    </div>
+    <div class="subscribernum">
+        <p>
+            @ViewBag.NoSubscriberFound
+            @MasterISS_Archive_Management_Website.Localization.Model.SubscriberNo@*:@ViewBag.SubscriberNo*@
+        </p>
+        <a target="_blank" href="@MasterISS_Archive_Management_Website.Properties.Settings.Default.MasterISSWebSiteUrl/@ViewBag.id">@ViewBag.SubscriberNo </a>
     </div>
     @if (Model != null)
     {
         @*<div class="subscribernum subscriberfader">*@
-        <div class="subscribernum">
-            <p>
-                @ViewBag.NoSubscriberFound
-                @MasterISS_Archive_Management_Website.Localization.Model.SubscriberNo@*:@ViewBag.SubscriberNo*@
-            </p>
-            <a target="_blank" href="@MasterISS_Archive_Management_Website.Properties.Settings.Default.MasterISSWebSiteUrl/@ViewBag.id">@ViewBag.SubscriberNo </a>
-        </div>
+
         //main table
 
         @*<div class="tablediv fadertable">*@
@@ -146,11 +147,12 @@ if (ViewBag.id != null)
 
                                     <div class="deletepop">
                                         <div class="popup">
-                                            <p>are you sure?</p>
-                                            <p>you are about to delete this item permanentley</p>
+
+                                            <h4 class="font-style">@MasterISS_Archive_Management_Website.Localization.Model.AreYouSure</h4>
+                                            @*<p>you are about to delete this item permanentley</p>*@
                                             <ul>
-                                                <li><a class="pop-cancel" href="#">Cancel</a></li>
-                                                <li><a class="pop-delete" href="#">Delete</a></li>
+                                                <li><a class="pop-cancel" href="#">@MasterISS_Archive_Management_Website.Localization.Model.Cancel</a></li>
+                                                <li><a class="pop-delete" href="#">@MasterISS_Archive_Management_Website.Localization.Model.Delete</a></li>
                                             </ul>
                                         </div>
                                         <div class="backgrey"></div>
@@ -182,11 +184,45 @@ if (ViewBag.id != null)
                 <a href="@Url.Action("DownloadZipFile", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.DownloadAll</a>
             </button>
 
+            @*<button class="visible-manage-button button1">
+                    <a href="@Url.Action("Manage", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.Manage</a>
+                </button>*@
+        </div>
+    }
+
+    @if (ViewBag.SubscriberNo != null)
+    {
+
+        <div class="tablebuttons fadertable">
             <button class="visible-manage-button button1">
                 <a href="@Url.Action("Manage", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.Manage</a>
             </button>
         </div>
     }
+
+    @if (TempData["FileDeleted"] != null || TempData["FileSizeError"] != null || TempData["UploadStatus"] != null || TempData["FileCountError"] != null || TempData["NullFilesErrorMessage"] != null)
+    {
+        <style>
+            .deletepop.upload-message {
+                display: block
+            }
+        </style>
+    }
+
+
+    <div class="deletepop upload-message">
+        <div class="popup">
+            <h4 class="font-style">
+                @TempData["FileDeleted"]
+            </h4>
+
+            <ul>
+                @*<li><a href="#">Cancel</a></li>*@
+                <li style="margin-left: 5em;"><a class="ok" href="#">@MasterISS_Archive_Management_Website.Localization.Model.Okey</a></li>
+            </ul>
+        </div>
+        <div class="backgrey"></div>
+    </div>
 
     <div class="gradient"></div>
     <div class="noise"></div>
@@ -197,6 +233,9 @@ if (ViewBag.id != null)
 
     @Scripts.Render("~/Scripts/javascript.js");
 
+    @*<script>
+            Set();
+        </script>*@
     <script>
         $("#id").on("input", function () {
             var id = $(this);
@@ -206,45 +245,43 @@ if (ViewBag.id != null)
         });
     </script>
     @*<script>
-        const languageBut = $('.nav__links a');
-        const languageDropDown = $('.language-dropdown ul');
-        const dropHelper = $('.dropper');
-        const safeZone = $('.safezone');
+            const languageBut = $('.nav__links a');
+            const languageDropDown = $('.language-dropdown ul');
+            const dropHelper = $('.dropper');
+            const safeZone = $('.safezone');
 
 
-        function dropLan() {
-            languageDropDown.addClass('dropfirst');
-            languageDropDown.removeClass('dropback');
-            safeZone.style.display = 'inline';
-            dropHelper.style.display = 'inline';
-            languageDropDown.style.display = 'flex';
-        }
-        function hideLan() {
-            safeZone.style.display = 'none';
-            dropHelper.style.display = 'none';
-            languageDropDown.removeClass('dropfirst');
-            languageDropDown.addClass('dropback');
-            languageDropDown.style.display = 'flex';
-        }
+            function dropLan() {
+                languageDropDown.addClass('dropfirst');
+                languageDropDown.removeClass('dropback');
+                safeZone.style.display = 'inline';
+                dropHelper.style.display = 'inline';
+                languageDropDown.style.display = 'flex';
+            }
+            function hideLan() {
+                safeZone.style.display = 'none';
+                dropHelper.style.display = 'none';
+                languageDropDown.removeClass('dropfirst');
+                languageDropDown.addClass('dropback');
+                languageDropDown.style.display = 'flex';
+            }
 
-        languageBut.on('mouseover', dropLan);
-        safeZone.on('mouseover', hideLan);
+            languageBut.on('mouseover', dropLan);
+            safeZone.on('mouseover', hideLan);
 
-    </script>*@
+        </script>*@
     @*<script>
-        Set();
+            Set();
 
-        $(".language-dropdown").mouseout(function () {
-            var k = $(this);
-            k.hide();
-        });
-    </script>*@
+            $(".language-dropdown").mouseout(function () {
+                var k = $(this);
+                k.hide();
+            });
+        </script>*@
 
     <script>
         $(".delete-button-submit").click(function () {
             var button = $(this);
-            //var pageContainer = button.closest("div.page-container");
-            //var deletepop = pageContainer.find("div.deletepop");
             var form = button.closest("form.delete-submit");
             var deletepop = form.find(".deletepop");
             deletepop.show();
@@ -254,9 +291,6 @@ if (ViewBag.id != null)
     <script>
         $(".pop-cancel").click(function () {
             var button = $(this);
-            //var pageContainer = button.closest("div.page-container");
-            //var deletepop = pageContainer.find("div.deletepop");
-            //var form = button.closest("form.delete-submit");
             var deletepop = button.closest("div.deletepop")
             deletepop.hide();
         });
@@ -266,15 +300,45 @@ if (ViewBag.id != null)
     <script>
         $(".pop-delete").click(function () {
             var button = $(this);
-
-            //var pageContainer = button.closest("div.page-container");
-            //var deletepop = pageContainer.find("div.deletepop");
             var form = button.closest("form.delete-submit");
-            //var deletepop = button.closest("div.deletepop")
-            //deletepop.hide();
             form.submit();
         });
     </script>
+
+    <script>
+        $(".ok").click(function () {
+            var button = $(this);
+            var popup = button.closest("div.deletepop.upload-message");
+            popup.hide();
+        })
+    </script>
+
+
+    @*<script>
+            $(".delete-button-submit").click(function () {
+                var button = $(this);
+                var form = button.closest("form.delete-submit");
+                var deletepop = form.find(".deletepop");
+                deletepop.show();
+            });
+        </script>
+
+        <script>
+            $(".pop-cancel").click(function () {
+                var button = $(this);
+                var deletepop = button.closest("div.deletepop")
+                deletepop.hide();
+            });
+        </script>
+
+
+        <script>
+            $(".pop-delete").click(function () {
+                var button = $(this);
+                var form = button.closest("form.delete-submit");
+                form.submit();
+            });
+        </script>*@
 
 
 }

@@ -31,9 +31,9 @@
 }
 .maintable thead tr th:nth-child(3) {
   width: auto;
-  text-align: right;*/
-  /* padding-right: 20px; */
-/*}
+  text-align: right;
+   padding-right: 20px; 
+}
 .maintable thead tr th:nth-child(4) {
   width: auto;
   text-align: right;
@@ -53,4 +53,5 @@ a.deletebutton {
 
 .maintable tbody:last-child {
   border-bottom: 1px solid var(--main-color);
-}*/
+}
+*/

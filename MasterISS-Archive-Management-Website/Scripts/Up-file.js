@@ -22,7 +22,7 @@
             //dropZone.append = "<div alt='image'><img style = 'width:3em; margin-top:1em;' src = '/Content/img/file.svg' alt = 'image' ></div>";
             //dropZone.append = "<div style = 'width:3em; margin-top:1em;' src = '/Content/img/file.svg' alt = 'image'></div>";
             for (var i = 0; i < draggedFiles.length; i++) {
-                dropZone.append("<div data-file='" + draggedFiles[i].name + "' class='fileIcon' ><img  style = 'width: 3em; margin-top: 1em;' src='/Content/img/file.svg'><label>" + draggedFiles[i].name + "</label></div>");
+                dropZone.append("<div data-file='" + draggedFiles[i].name + "' class='fileIcon' ><img  style = 'width: 3em; margin-top: 0em; margin-left: 1.5em;' src='/Content/img/file-icon.png'><label style ='margin-left:1em; font-weight:500'>" + draggedFiles[i].name + "</label></div>");
 
             }
 

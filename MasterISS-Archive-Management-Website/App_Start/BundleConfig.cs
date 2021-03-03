@@ -32,7 +32,7 @@ namespace MasterISS_Archive_Management_Website
                       "~/Content/site.css",
                       "~/Content/Custom.css",
                        "~/Content/styles.css",
-                       "~/Content/stylesmain.css",
+                       //"~/Content/stylesmain.css",
                         "~/Content/bootstrap-theme.css"
                        //"~/Content/stylesmanage.css"
                        ));
