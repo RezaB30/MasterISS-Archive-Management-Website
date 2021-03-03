@@ -44,13 +44,14 @@
         width: 185px;
         border: none;
         /* top: 9px;*/
-        top: 0.1em;
+        top: 0.25em;
         color: var(--banblack-color);
         font-family: 'Montserrat', sans-serif;
         font-weight: 300;
         /* font-size: 18px;*/
-        font-size: 1.7em;
+        font-size: 1.3em;
         outline: 0;
+        
     }
 
    /* .manage-button-style {
@@ -91,7 +92,7 @@
 
             @using (Html.BeginForm(null, null, FormMethod.Get))
             {
-                @Html.TextBox("id", null, new { @class = "inputsearch-textbox" ,@autocomplete="off"})
+                @Html.TextBox("id", null, new { @class = "inputsearch-textbox " ,@autocomplete="off", @placeholder=MasterISS_Archive_Management_Website.Localization.Model.ArchiveNumber})
 
                 <button class="magnify" type="submit">@*@MasterISS_Archive_Management_Website.Localization.Model.Search*@</button>
             }
@@ -233,7 +234,7 @@
 
 @section script{
 
-    @Scripts.Render("~/Scripts/javascript.js");
+    @*@Scripts.Render("~/Scripts/javascript.js");*@
     @*@Scripts.Render("~/Scripts/Language.js");
 
 

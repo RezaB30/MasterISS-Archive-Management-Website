@@ -27,11 +27,4 @@
 
     languageBut.on('mouseover', dropLan);
     safeZone.on('mouseover', hideLan);
-
-    //deletepopup.style.display = 'none';
-
-    languageBut.on('mouseover', dropLan);
-    safeZone.on('mouseover', hideLan);
-
-
 }

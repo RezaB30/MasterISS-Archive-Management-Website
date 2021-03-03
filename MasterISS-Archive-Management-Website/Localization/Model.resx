@@ -121,7 +121,7 @@
     <value>Arşive Numarası Gerekli</value>
   </data>
   <data name="ArchiveNumber" xml:space="preserve">
-    <value>ARŞİV NUMARASI :</value>
+    <value>ARŞİV NUMARASI</value>
   </data>
   <data name="AreYouSure" xml:space="preserve">
     <value>Emin Misiniz?</value>
@@ -185,6 +185,9 @@
   </data>
   <data name="HomePage" xml:space="preserve">
     <value>Anasayfa</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Dil Seçimi</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Giriş</value>

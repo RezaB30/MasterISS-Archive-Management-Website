@@ -129,7 +129,7 @@ header {
     top: 0px;
     left: 0px;
     width: 86px;
-    height: 40px;
+    height: 42px;
     z-index: 50;
 }
 
@@ -821,7 +821,7 @@ a.downloadbutton {
     /*padding-left: 45.1em;*/
     /*padding-left: 42.7em;*/
 
-    padding-left: 44.6em;
+    padding-left: 43em;
 }
 
     .tablebuttons button:first-child {

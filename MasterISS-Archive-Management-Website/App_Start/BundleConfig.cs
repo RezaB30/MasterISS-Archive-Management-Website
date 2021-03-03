@@ -20,7 +20,8 @@ namespace MasterISS_Archive_Management_Website
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*",
-                        "~/Scripts/javascript.js"
+                        "~/Scripts/javascript.js",
+                        "~/Scripts/Language.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(

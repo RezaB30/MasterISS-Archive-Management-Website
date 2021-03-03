@@ -70,7 +70,7 @@ namespace MasterISS_Archive_Management_Website.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ARŞİV NUMARASI :.
+        ///   Looks up a localized string similar to ARŞİV NUMARASI.
         /// </summary>
         public static string ArchiveNumber {
             get {
@@ -264,6 +264,15 @@ namespace MasterISS_Archive_Management_Website.Localization {
         public static string HomePage {
             get {
                 return ResourceManager.GetString("HomePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dil Seçimi.
+        /// </summary>
+        public static string Language {
+            get {
+                return ResourceManager.GetString("Language", resourceCulture);
             }
         }
         

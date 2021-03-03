@@ -121,7 +121,7 @@
     <value>Archive No Is Required</value>
   </data>
   <data name="ArchiveNumber" xml:space="preserve">
-    <value>ARCHIVE NUMBER :</value>
+    <value>ARCHIVE NUMBER </value>
   </data>
   <data name="AreYouSure" xml:space="preserve">
     <value>Are You Sure?</value>
@@ -185,6 +185,9 @@
   </data>
   <data name="HomePage" xml:space="preserve">
     <value>Home Page</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>

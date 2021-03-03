@@ -22,11 +22,10 @@
         .username {
             color: white !important;
             font-size: 1.2em;
+            margin-left: 46em;
+            margin-top: -0.5em;
         }
-
-            .username:hover {
-                display: none !important;
-            }
+           
     </style>
 
 
@@ -39,49 +38,51 @@
         </style>
     }
 
-    <header>
-        <a href="@Url.Action("Index","Archive")"><img class="logo" src="~/Content/images/logo.svg" alt="logo" /></a>
-        <nav>
+<header>
 
-            <div class="nav-drop">
-                <ul class="nav__links">
-                    <!-- safe zone for the language dropdown -->
-                    <div class="safezone"></div>
+
+    <a href="@Url.Action("Index","Archive")"><img class="logo" src="~/Content/images/logo.svg" alt="logo" /></a>
+    <div class="username"> @User.Identity.Name </div>
+    <nav>
+        @*<li>
+            </li>*@
+
+        <div class="nav-drop">
+            <ul class="nav__links">
+                <!-- safe zone for the language dropdown -->
+                <div class="safezone"></div>
+                <li @*class="li-style"*@>
+                    <a id="language-drop" class="language-hover" href="#">
+                        @MasterISS_Archive_Management_Website.Localization.Model.Language
+                        <!-- language dropdown menu -->
+                        <div class="dropper"></div>
+                    </a>
+                </li>
+                <li class="li-style"></li>
+
+                <li class="li-style"></li>
+                @if (User.Identity.Name != "")
+                {
                     <li @*class="li-style"*@>
-                        <a id="language-drop" class="language-hover" href="#">
-                            Language
-                            <!-- language dropdown menu -->
-                            <div class="dropper"></div>
+                        <a class="not-hover" href="@Url.Action("LogOut", "Auth" )">
+                            @MasterISS_Archive_Management_Website.Localization.Model.LogOut
                         </a>
                     </li>
-                    <li class="li-style"></li>
+                }
+            </ul>
+            <div class="language-dropdown">
+                <ul class="lang-drop">
                     <li>
-                        <div class="username"> @User.Identity.Name </div>
+                        @Html.LanguageLink("TR", "tr-tr")
                     </li>
-                    <li class="li-style"></li>
-
-                        <li @*class="li-style"*@>
-                            <a class="not-hover" href="@Url.Action("LogOut", "Auth" )">
-                                @MasterISS_Archive_Management_Website.Localization.Model.LogOut
-                            </a>
-                        </li>
-                  
-
-
+                    <li>
+                        @Html.LanguageLink("EN", "en-US")
+                    </li>
                 </ul>
-                <div class="language-dropdown">
-                    <ul class="lang-drop">
-                        <li>
-                            @Html.LanguageLink("TR", "tr-tr")
-                        </li>
-                        <li>
-                            @Html.LanguageLink("EN", "en-US")
-                        </li>
-                    </ul>
-                </div>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+</header>
 
     <div class="gradient"></div>
     <div class="noise"></div>
@@ -102,7 +103,7 @@
     @section script{
     }
 
-    @Scripts.Render("~/Scripts/Language.js");
+    @*@Scripts.Render("~/Scripts/Language.js");*@
 
 
     <script>
@@ -120,7 +121,7 @@
         //$(".language-hover").hover(function () {
         //    $(".language-dropdown").show();
         //});*@
-    </script>
+    @*</script>*@
     @*<script>
             $(".language-hover").hover(function () {
                 $(".safezone").show();

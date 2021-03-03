@@ -65,15 +65,17 @@ header {
   padding-left: 20px;
 }
 .maintable thead tr th:nth-child(2) {
-  width: auto;
-  text-align: right;
-  padding-right: 20px;
+    width: auto;
+    text-align: right;
+    /*padding-right: 20px;*/
+    padding-right: 7.5em;
 }
 .maintable thead tr th:nth-child(3) {
     width: 10%;
     text-align: right;
     /*padding-right: 20px;*/
-    padding-right: 6em;
+    /*padding-right: 6em;*/
+    padding-right: 5em;
 }
 
 .maintable tbody tr td:nth-child(1) {
