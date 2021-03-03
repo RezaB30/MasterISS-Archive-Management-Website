@@ -19,14 +19,14 @@ namespace MasterISS_Archive_Management_Website.Controllers
             return View();
         }
 
-        public ActionResult Login()
+        public ActionResult Login(string ReturnUrl)
         {
             ViewBag.LoginPage = "LoginPage";
             return View();
         }
 
         [HttpPost]
-        public ActionResult Login(LoginViewModel login)
+        public ActionResult Login(LoginViewModel login,string ReturnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -45,7 +45,11 @@ namespace MasterISS_Archive_Management_Website.Controllers
                     // valid login
                     else
                     {
-                        return RedirectToAction("Index", "Archive");
+                        if (string.IsNullOrEmpty(ReturnUrl))
+                        {
+                            return RedirectToAction("Index", "Archive");
+                        }
+                        return Redirect(ReturnUrl);
                     }
                 }
                 else

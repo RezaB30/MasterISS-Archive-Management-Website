@@ -145,9 +145,11 @@ header {
     .language-dropdown ul {
         list-style: none;
         /* display: none; */
-        display: flex;
+        /*  display: flex;*/
         clip-path: polygon(0% 125%, 100% 125%, 100% 125%, 0 125%);
         border-bottom: 1px solid var(--main-color);
+        margin-bottom: -3.5em;
+        padding-top: 1.8em;
     }
 
 .dropfirst {
