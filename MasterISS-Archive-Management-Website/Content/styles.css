@@ -411,8 +411,9 @@ header {
     height: 37.7px;
     background-color: var(--white2-color);
     /*margin-top: 60px;*/
-    margin-top: 3em;
-    margin-bottom:1em;
+    /*margin-top: 3em;*/
+    margin-top: 4em;
+    margin-bottom: 1em;
     border-radius: 50px;
     display: flex;
     align-items: center;
@@ -1232,11 +1233,12 @@ footer {
     width: 185px;
     border: none;
     /* top: 9px;*/
-    top: 0.25em;
+    /*top: 0.25em;*/
+    top: 0.35em;
     color: var(--banblack-color);
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
-     font-size: 18px;
+    font-size: 18px;
     /*font-size: 1.3em;*/
     outline: 0;
 }
