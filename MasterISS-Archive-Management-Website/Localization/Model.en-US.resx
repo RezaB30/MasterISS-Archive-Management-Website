@@ -175,7 +175,7 @@
     <value>File is Uploading...</value>
   </data>
   <data name="FileSizeError" xml:space="preserve">
-    <value>You Can't Upload More Than {0} Files MB</value>
+    <value>You Can't Upload Files Larger Than {0}</value>
   </data>
   <data name="FileUploading" xml:space="preserve">
     <value>File Uploading...</value>

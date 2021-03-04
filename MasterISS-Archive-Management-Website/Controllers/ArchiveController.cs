@@ -86,9 +86,9 @@ namespace MasterISS_Archive_Management_Website.Controllers
             {
                 if (filesSize > uploadMaxFileSize)
                 {
-                    var displayMaxFileSize = RezaB.Data.Formating.RateLimitFormatter.ToTrafficMixedResults(((decimal)uploadMaxFileSize) * 1024, true);
+                    var displayMaxFileSize = RezaB.Data.Formating.RateLimitFormatter.ToTrafficMixedResults((decimal)uploadMaxFileSize, true);
 
-                    var displayMaxFileSizemb = $"{displayMaxFileSize.FieldValue} {displayMaxFileSize.RateSuffix}";
+                    var displayMaxFileSizemb = $"{displayMaxFileSize.FieldValue} {displayMaxFileSize.Suffix}";
 
                     //ViewBag.FileSizeError = string.Format(Localization.Model.FileSizeError, displayMaxFileSizemb);
                     TempData["FileSizeError"] = string.Format(Localization.Model.FileSizeError, displayMaxFileSizemb);

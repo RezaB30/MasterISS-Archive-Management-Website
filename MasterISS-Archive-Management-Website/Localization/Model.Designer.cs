@@ -232,7 +232,7 @@ namespace MasterISS_Archive_Management_Website.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En Fazla {0} MB Dosya Yükleyebilirsiniz.
+        ///   Looks up a localized string similar to En Fazla {0} Dosya Yükleyebilirsiniz.
         /// </summary>
         public static string FileSizeError {
             get {

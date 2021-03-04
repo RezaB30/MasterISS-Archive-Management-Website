@@ -175,7 +175,7 @@
     <value>Dosya Yükleniyor...</value>
   </data>
   <data name="FileSizeError" xml:space="preserve">
-    <value>En Fazla {0} MB Dosya Yükleyebilirsiniz</value>
+    <value>En Fazla {0} Dosya Yükleyebilirsiniz</value>
   </data>
   <data name="FileUploading" xml:space="preserve">
     <value>Dosya Yükleniyor...</value>
