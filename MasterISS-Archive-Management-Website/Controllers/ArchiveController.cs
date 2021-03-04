@@ -359,23 +359,21 @@ namespace MasterISS_Archive_Management_Website.Controllers
                                 {
                                     var datetimeForDownloadFile = DateUtilities.ConvertToDateForDownloadFile(doc.CreationDate);
 
-                                    var attachmentTypesList = new LocalizedList<RadiusR.FileManagement.SpecialFiles.ClientAttachmentTypes, RadiusR.Localization.Lists.ClientAttachmentTypes>();
-                                    var attachmentTypeItems = attachmentTypesList.GetList().Select(t => new AttachmentTypesViewModel()
-                                    {
-                                        AttachmentTypeEnumName = t.Value,
-                                        AttachmentTypeEnumNumber = t.Key
-                                    });
+                                    //var attachmentTypesList = new LocalizedList<RadiusR.FileManagement.SpecialFiles.ClientAttachmentTypes, RadiusR.Localization.Lists.ClientAttachmentTypes>();
+                                    //var attachmentTypeItems = attachmentTypesList.GetList().Select(t => new AttachmentTypesViewModel()
+                                    //{
+                                    //    AttachmentTypeEnumName = t.Value,
+                                    //    AttachmentTypeEnumNumber = t.Key
+                                    //});
 
-                                    string docAttachmentName;
+                                    //string docAttachmentName;
                                     string downloadFileName;
-                                    foreach (var item in attachmentTypeItems)
-                                    {
-                                        if (doc.AttachmentType == item.AttachmentTypeEnumNumber)
-                                        {
-                                            docAttachmentName = item.AttachmentTypeEnumName;
-                                            downloadFileName = id + "." + docAttachmentName + "." + datetimeForDownloadFile + "." + doc.FileExtention;
-
-
+                                    //foreach (var item in attachmentTypeItems)
+                                    //{
+                                    //    if (doc.AttachmentType == item.AttachmentTypeEnumNumber)
+                                    //    {
+                                            //docAttachmentName = item.AttachmentTypeEnumName;
+                                            downloadFileName = id + "." + currentResult.Result.FileDetail.AttachmentType + "." + datetimeForDownloadFile + "." + doc.FileExtention;
 
                                             //var newZipEntry = zipArchive.CreateEntry(currentResult.Result.FileDetail.ServerSideName, CompressionLevel.Optimal);
 
@@ -387,8 +385,8 @@ namespace MasterISS_Archive_Management_Website.Controllers
                                                 currentResult.Result.Content.CopyTo(temp);
 
                                             }
-                                        }
-                                    }
+                                    //    }
+                                    //}
                                 }
                                 else
                                 {
