@@ -132,6 +132,9 @@
   <data name="AttachmentType" xml:space="preserve">
     <value>Attachment Type</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>

@@ -1318,3 +1318,92 @@ footer {
     margin-top: 7em;*/
 }
 
+
+.button-back::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 0px 5px -5px var(--dark-color), 0px -2px 5px -7px var(--banblack-color);
+    background-color: var(--dark-color);
+    z-index: -2;
+    transition: var(--sec-time) ease;
+}
+
+.button-back::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-color);
+    transform: scaleY(0);
+    transform-origin: top;
+    opacity: 0.3;
+    transition: var(--sec-time) ease;
+    z-index: -1;
+}
+
+.button-back:hover::before {
+    box-shadow: 0px 5px 10px 0px var(--dark-color), 0px -2px 5px 0px var(--banblack-color);
+    background-color: var(--banblack-color);
+}
+
+.button-back:hover::after {
+    transform: scaleY(1);
+    opacity: 0;
+}
+
+.button-back:hover {
+    box-shadow: 0px 0px 5px var(--dark-color), 0px 0px 30px -10px var(--banblack-color);
+    border: 1px solid var(--main-color);
+    text-shadow: 0px 5px 5px var(--dark-color);
+    color: var(--main-color);
+    /* transform: scale(1.05); */
+}
+
+    .button-back:hover a {
+        color: #f3f3f3;
+    }
+
+.button-back a {
+    text-decoration: none;
+    color: var(--main-color);
+    outline: 0;
+    transition: all var(--sec-time) ease;
+}
+.button-back {
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    background-color: #1a1a1a;
+    border: 1px solid var(--main-color);
+    color: white;
+    padding: 5px 12px;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px var(--dark-color), 0px 0px 30px -10px var(--banblack-color);
+    outline: 0;
+    transform: scale(1);
+    transition: var(--sec-time) ease;
+    text-decoration: none !important;
+    width: 6em;
+    display: flex;
+    justify-content: center;
+}
+
+
+/**/
+.back-button-style {
+    margin-top: 5em;
+    display: flex;
+    justify-content: center;
+    text-decoration: none !important;
+}
+
+.mt-10{
+    margin-top:10em
+}

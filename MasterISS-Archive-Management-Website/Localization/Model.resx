@@ -132,6 +132,9 @@
   <data name="AttachmentType" xml:space="preserve">
     <value>Dosya Türü</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>Geri</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>İptal</value>
   </data>

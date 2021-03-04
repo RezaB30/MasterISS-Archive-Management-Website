@@ -35,6 +35,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
         [HttpPost]
         public ActionResult Manage(long id, UploadFileViewModel uploadFile, int AttachmentType)
         {
+            string SubscriberNo = string.Empty;
             var archiveFile = new MasterISSFileManager();
 
             var archiveFileList = archiveFile.GetClientAttachmentsList(id);
@@ -45,9 +46,27 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
             ViewBag.id = id;
 
+
+
+            using (var db = new RadiusREntities())
+            {
+                var result = db.Subscriptions.Find(id);
+                if (result == null)
+                {
+                    ViewBag.NoSubscriberFound = Localization.Model.NoSubscriberFound;
+                    return View();
+                }
+
+                SubscriberNo = result.SubscriberNo;
+                TempData["SubscriberNo"] = SubscriberNo;
+            }
+
+
             if (uploadFile.Files == null)
             {
                 TempData["NullFilesErrorMessage"] = MasterISS_Archive_Management_Website.Localization.Model.NullFilesErrorMessage;
+                TempData["SubscriberNo"] = SubscriberNo;
+
 
                 return RedirectToAction("Manage", "Archive", new { id = id });
 
@@ -84,6 +103,8 @@ namespace MasterISS_Archive_Management_Website.Controllers
                     //ViewBag.FileCountError = string.Format(Localization.Model.FileCountError, uploadMaxFileCount);
                     TempData["FileCountError"] = string.Format(Localization.Model.FileCountError, uploadMaxFileCount); ;
                     //return View(viewModel);
+                    TempData["SubscriberNo"] = SubscriberNo;
+
                     return RedirectToAction("Manage", "Archive", new { id = id });
                 }
             }
@@ -125,11 +146,17 @@ namespace MasterISS_Archive_Management_Website.Controllers
                     }
                     else
                     {
+                        TempData["SubscriberNo"] = SubscriberNo;
+
                         return RedirectToAction("Manage", "Archive", new { id = id });
                     }
                 }
+                TempData["SubscriberNo"] = SubscriberNo;
+
                 return RedirectToAction("Manage", "Archive", new { id = id });
             }
+            TempData["SubscriberNo"] = SubscriberNo;
+
             return RedirectToAction("Manage", "Archive", new { id = id });
         }
 
@@ -229,6 +256,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
         [HttpGet]
         public ActionResult Manage(long id)
         {
+            var SubscriberNo = string.Empty;
             string hasArchiveFileMessage = string.Empty;
 
             var archiveFile = new MasterISSFileManager();
@@ -236,6 +264,20 @@ namespace MasterISS_Archive_Management_Website.Controllers
             var archiveFileList = archiveFile.GetClientAttachmentsList(id);
 
             var fileException = archiveFileList.InternalException;
+
+            using (var db = new RadiusREntities())
+            {
+                var result = db.Subscriptions.Find(id);
+                if (result == null)
+                {
+                    ViewBag.NoSubscriberFound = Localization.Model.NoSubscriberFound;
+                    return View();
+                }
+
+                SubscriberNo = result.SubscriberNo;
+                TempData["SubscriberNo"] = SubscriberNo;
+            }
+
 
             if (fileException == null)
             {
@@ -268,8 +310,13 @@ namespace MasterISS_Archive_Management_Website.Controllers
                         AttachmentTypeList = attachmentTypeItems.ToList(),
                         FileDetailList = viewResultLists.ToList()
                     };
-                    return View(viewModel);
+
+                    TempData["SubscriberNo"] = SubscriberNo;
+
+
+                return View(viewModel);
                 }
+                TempData["SubscriberNo"] = SubscriberNo;
                 return View();
             }
 
