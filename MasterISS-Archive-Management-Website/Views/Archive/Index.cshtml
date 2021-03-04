@@ -2,8 +2,6 @@
 @model IEnumerable<FileDetailViewModel>
 
 @{
-    @*<script src="~/Scripts/javascript.js"></script>*@
-    @*<script src="~/Scripts/javascriptmain.js"></script>*@
 
     if (ViewBag.id == null)
     {
@@ -23,41 +21,6 @@
         bannerClass = "upbanner";
     }
 }
-<style>
-    .hidden-part {
-        display: none
-    }
-
-    .visible-manage-button {
-        display: none
-    }
-
-    .deletepop {
-        display: none
-    }
-
-    .inputsearch-textbox {
-        display: inline-block;
-        position: absolute;
-        background-color: transparent;
-        padding-left: 20px;
-        width: 185px;
-        border: none;
-        /* top: 9px;*/
-        top: 0.25em;
-        color: var(--banblack-color);
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 300;
-        /* font-size: 18px;*/
-        font-size: 1.3em;
-        outline: 0;
-        
-    }
-
-   /* .manage-button-style {
-        margin-right: 106em
-    }*/
-</style>
 
 @if (ViewBag.id != null)
 {
@@ -94,17 +57,13 @@
             {
                 @Html.TextBox("id", null, new { @class = "inputsearch-textbox " ,@autocomplete="off", @placeholder=MasterISS_Archive_Management_Website.Localization.Model.ArchiveNumber})
 
-                <button class="magnify" type="submit">@*@MasterISS_Archive_Management_Website.Localization.Model.Search*@</button>
+                <button class="magnify" type="submit"></button>
             }
 
         </div>
         <!-- the buldge of search bar -->
         <div class="curve"></div>
     </div>
-    <!-- Subscriber number bar and its link -->
-    @*<a href="  " target="_blank">
-            @ViewBag.SubscriberNo
-        </a>*@
     <div style="color:white; text-align:center; font-size:2em; font-weight:500; margin-top:3em">
         @ViewBag.NoSubscriberFound
 
@@ -113,8 +72,7 @@
     {
         <div class="subscribernum">
             <p>
-                @*@ViewBag.NoSubscriberFound*@
-                @MasterISS_Archive_Management_Website.Localization.Model.SubscriberNo@*:@ViewBag.SubscriberNo*@
+                @MasterISS_Archive_Management_Website.Localization.Model.SubscriberNo
             </p>
             <a target="_blank" href="@MasterISS_Archive_Management_Website.Properties.Settings.Default.MasterISSWebSiteUrl/@ViewBag.id">@ViewBag.SubscriberNo </a>
         </div>
@@ -122,14 +80,9 @@
 
     @if (Model != null)
     {
-        @*<div class="subscribernum subscriberfader">*@
-
-        //main table
-
-        @*<div class="tablediv fadertable">*@
+      
         <div class="tablediv">
             <table class="maintable">
-                @*main table head texts*@
                 <thead>
                     <tr>
                         <th> @Html.DisplayNameFor(model => model.AttachmentType)</th>
@@ -207,67 +160,6 @@
             reg.test(idVal) ? this.value : this.value = this.value.slice(0, -1)
         });
     </script>
- 
-    @*<script>
-        $(".delete-button-submit").click(function () {
-            var button = $(this);
-            var form = button.closest("form.delete-submit");
-            var deletepop = form.find(".deletepop");
-            deletepop.show();
-        });
-    </script>*@
-
-    <script>
-        $(".pop-cancel").click(function () {
-            var button = $(this);
-            var deletepop = button.closest("div.deletepop")
-            deletepop.hide();
-        });
-    </script>
-
-
-    <script>
-        $(".pop-delete").click(function () {
-            var button = $(this);
-            var form = button.closest("form.delete-submit");
-            form.submit();
-        });
-    </script>
-
-    <script>
-        $(".ok").click(function () {
-            var button = $(this);
-            var popup = button.closest("div.deletepop.upload-message");
-            popup.hide();
-        })
-    </script>
-
-
-    @*<script>
-            $(".delete-button-submit").click(function () {
-                var button = $(this);
-                var form = button.closest("form.delete-submit");
-                var deletepop = form.find(".deletepop");
-                deletepop.show();
-            });
-        </script>
-
-        <script>
-            $(".pop-cancel").click(function () {
-                var button = $(this);
-                var deletepop = button.closest("div.deletepop")
-                deletepop.hide();
-            });
-        </script>
-
-
-        <script>
-            $(".pop-delete").click(function () {
-                var button = $(this);
-                var form = button.closest("form.delete-submit");
-                form.submit();
-            });
-        </script>*@
 
 
 }

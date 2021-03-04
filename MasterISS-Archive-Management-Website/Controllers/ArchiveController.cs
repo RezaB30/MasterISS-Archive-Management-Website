@@ -47,8 +47,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
             if (uploadFile.Files == null)
             {
                 TempData["NullFilesErrorMessage"] = MasterISS_Archive_Management_Website.Localization.Model.NullFilesErrorMessage;
-                //ViewBag.NullFilesErrorMessage = MasterISS_Archive_Management_Website.Localization.Model.NullFilesErrorMessage;
-                //return View(viewModel);
+
                 return RedirectToAction("Manage", "Archive", new { id = id });
 
             }
@@ -90,8 +89,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
             else
             {
-                //if (ModelState.IsValid)
-                //{
+
                 foreach (var file in uploadFile.Files)
                 {
                     if (Request.Files.Count > 0)
@@ -110,34 +108,27 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
                         if (result.Result == true)
                         {
-                            //return Json(new { uploadedFiles = result.Result });
                             if (uploadFile.Files.Count() > 1)
                             {
-                                //ViewBag.UploadFileStatus = Localization.Model.UploadFilesStatus;
                                 TempData["UploadFileStatus"] = Localization.Model.UploadFilesStatus;
                             }
                             else
                             {
-                                //ViewBag.UploadFileStatus = Localization.Model.UploadFileStatus;
                                 TempData["UploadFileStatus"] = Localization.Model.UploadFileStatus;
                             }
-                            //return View();
                         }
                         else
                         {
-                            //ViewBag.UploadStatus = Localization.Model.UploadStatus;
                             TempData["UploadStatus"] = Localization.Model.UploadStatus;
                         }
                     }
                     else
-                    {                        //return View(viewModel);
+                    {
                         return RedirectToAction("Manage", "Archive", new { id = id });
                     }
                 }
-                //return View(viewModel);
                 return RedirectToAction("Manage", "Archive", new { id = id });
             }
-            //return View(viewModel);
             return RedirectToAction("Manage", "Archive", new { id = id });
         }
 
@@ -185,21 +176,17 @@ namespace MasterISS_Archive_Management_Website.Controllers
                         ViewBag.SubscriberNo = SubscriberNo;
                         ViewBag.id = id;
                         ViewBag.HasFileList = "Has File List";
-                        //ViewBag.Title = string.Format(Localization.Model.SubscriberArchiveFileDetails, id);
 
                         return View(viewResults);
                     }
                     ViewBag.SubscriberNo = SubscriberNo;
                     ViewBag.id = id;
                     ViewBag.HasArchiveFileMessage = Localization.Model.HasArchiveFileMessage;
-                    //ViewBag.Title = MasterISS_Archive_Management_Website.Localization.Model.HomePage;
 
 
                     return View();
                 }
                 ViewBag.id = id;
-
-                //ViewBag.Title = MasterISS_Archive_Management_Website.Localization.Model.HomePage;
 
                 archiveLogger.Error($":SubscriberId :{id} - {fileException.Message}");
 
@@ -207,7 +194,6 @@ namespace MasterISS_Archive_Management_Website.Controllers
             }
             else
             {
-                //ViewBag.IdValidationMessage = MasterISS_Archive_Management_Website.Localization.Model.ArchiveNoIsRequired;
                 return View();
             }
         }
@@ -230,28 +216,10 @@ namespace MasterISS_Archive_Management_Website.Controllers
             {
                 var subscriptionFileList = archiveFileList.Result;
 
-                //if (subscriptionFileList.Count() != 0)
-                //{
-                //    var viewResults = subscriptionFileList.Select(a => new FileDetailViewModel()
-                //    {
-                //        CreationDate = a.CreationDate,
-                //        FileExtention = a.FileExtention,
-                //        MIMEType = a.MIMEType,
-                //        ServerSideName = a.ServerSideName,
-                //        AttachmentType = (int)a.AttachmentType,
-
-                //    }).OrderByDescending(d => d.CreationDate);
-
-                //ViewBag.id = id;
                 TempData["FileDeleted"] = MasterISS_Archive_Management_Website.Localization.Model.FileDeleted;
                 return RedirectToAction("Index", "Archive", new { id = id });
-                //}
-                //ViewBag.id = id;
-                //ViewBag.HasArchiveFileMessage = Localization.Model.HasArchiveFileMessage;
-                //return RedirectToAction("Index", "Archive");
             }
-            //ViewBag.id = id;
-            //ViewBag.Exception = Localization.Model.Exception;
+
             archiveLogger.Error($":SubscriberId :{id} - {fileException.Message}");
 
             return RedirectToAction("ErrorPage", "Archive");

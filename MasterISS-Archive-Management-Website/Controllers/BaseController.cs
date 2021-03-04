@@ -64,13 +64,11 @@ namespace MasterISS_Archive_Management_Website.Controllers
                     baseLogger.Error(filterContext.Exception);
                 }
             }
-
-
-            //filterContext.Result = new ViewResult
-            //{
-            //    ViewName = "~/Views/Archive/ErrorPage.cshtml",
-            //};
-            //filterContext.ExceptionHandled = true;
+            filterContext.Result = new ViewResult
+            {
+                ViewName = "~/Views/Archive/ErrorPage.cshtml",
+            };
+            filterContext.ExceptionHandled = true;
         }
 
         [AllowAnonymous]

@@ -3,34 +3,19 @@
     ViewBag.Title = MasterISS_Archive_Management_Website.Localization.Model.ErrorPage;
 }
 
-<style>
-    .error-letter {
-        color: white;
-        font-size: 3em;
-        margin-left: 2em;
-        margin-top: 0.7em;
-    }
 
-    .error-icon{
-        width:10em
-    }
+<div class="container">
+    <div class="error-page">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 error-icon">
+                <img class="error-icon" src="~/Content/img/error.png" />
+            </div>
 
-    .error-page {
-       margin-left: 28em;
-       margin-top:7em;
-    }
-</style>
-
-<div class="error-page">
-    <div class="row">
-        <div class="col-lg-4 col-md-4 error-icon">
-            <img class="error-icon" src="~/Content/img/error.png" />
+            <div class="col-lg-8 col-md-8">
+                <label class="error-letter">
+                    @MasterISS_Archive_Management_Website.Localization.Model.ASystemErrorHasOccurred
+                </label>
+            </div>
         </div>
-
-        <div class="col-lg-6 col-md-6">
-            <label class="error-letter">
-                @MasterISS_Archive_Management_Website.Localization.Model.ASystemErrorHasOccurred
-            </label>
-        </div>
-    </div>   
+    </div>
 </div>

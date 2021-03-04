@@ -8,25 +8,11 @@
     <link rel="stylesheet" href="~/Content/stylesmain.css" />
 }
 
-@*<style>
-    .file-area {
-        display: none;
-        padding: 10px;
-    }
-
-    .deletepop {
-        display: none
-    }
-    
-    .center-buttons{
-        text-align:center
-    }
-</style>*@
 <div class="page-container">
 
 
     <div class="archive-number" id="archiveNum">
-        <span> @MasterISS_Archive_Management_Website.Localization.Model.ArchiveNumber  @ViewBag.id</span>
+        <span> @MasterISS_Archive_Management_Website.Localization.Model.ArchiveNumber : @ViewBag.id</span>
     </div>
 
     <div>
@@ -70,23 +56,8 @@
 
                                                 @Html.Hidden("serverSideName", fileItem.ServerSideName)
                                             </div>
-
-                                            @*<div class="deletepop">
-                                                <div class="popup">
-                                                    <h4 class="font-style">@MasterISS_Archive_Management_Website.Localization.Model.AreYouSure</h4>
-
-                                                    <ul>
-                                                        <li><a class="pop-cancel" href="#">@MasterISS_Archive_Management_Website.Localization.Model.Cancel</a></li>
-                                                        <li><a class="pop-delete" href="#">@MasterISS_Archive_Management_Website.Localization.Model.Delete</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="backgrey"></div>
-                                            </div>*@
                                             <a class="deletebutton style delete-button-submit"></a>
 
-                                            @*<a class="deletebutton style delete-button-submit">
-                                              
-                                            </a>*@
                                         }
                                     </td>
 
@@ -187,21 +158,6 @@
         });
     </script>
 
-    <script>
-        $(".pop-delete").click(function () {
-            var button = $(this);
-            var form = button.closest("form.delete-submit");
-            form.submit();
-        });
-    </script>
-
-    <script>
-        $(".ok").click(function () {
-            var button = $(this);
-            var popup = button.closest("div.upload-message-pop");
-            popup.hide();
-        })
-    </script>
     }
 
 

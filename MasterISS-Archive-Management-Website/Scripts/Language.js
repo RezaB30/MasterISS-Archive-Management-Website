@@ -10,10 +10,7 @@
         languageDropDown.addClass('dropfirst');
         languageDropDown.removeClass('dropback');
         safeZone.css("display", "inline");
-        //safeZone.style.display = 'inline';
-        dropHelper.css("display", "inline");
-        //dropHelper.style.display = 'inline';
-        //languageDropDown.style.display = 'flex';
+        dropHelper.css("display", "inline");      
         languageDropDown.css("display", "flex");
 
     }
