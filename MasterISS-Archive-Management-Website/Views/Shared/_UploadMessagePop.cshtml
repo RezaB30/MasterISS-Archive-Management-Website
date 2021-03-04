@@ -1,0 +1,26 @@
+﻿
+@if (TempData["UploadFileStatus"] != null || TempData["FileSizeError"] != null || TempData["UploadStatus"] != null || TempData["FileCountError"] != null || TempData["NullFilesErrorMessage"] != null || TempData["FileDeleted"] != null)
+{
+    <style>
+        .deletepop.upload-message {
+            display: block
+        }
+    </style>
+}
+<div class="deletepop upload-message">
+    <div class="popup">
+        <h4 class="font-style">
+            @TempData["FileSizeError"]
+            @TempData["FileCountError"]
+            @TempData["UploadStatus"]
+            @TempData["UploadFileStatus"]
+            @TempData["NullFilesErrorMessage"]
+            @TempData["FileDeleted"]
+        </h4>
+        <ul>
+            <li style="margin-left: 5em;"><a class="ok" href="#">@MasterISS_Archive_Management_Website.Localization.Model.Okey</a></li>
+
+        </ul>
+    </div>
+    <div class="backgrey"></div>
+</div>

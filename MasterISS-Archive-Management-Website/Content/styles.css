@@ -1205,3 +1205,9 @@ footer {
 .center-buttons {
     text-align: center
 }
+
+.upload-message-pop {
+    position: fixed;
+    z-index: 100;
+    display: none;
+}

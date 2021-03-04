@@ -27,7 +27,6 @@
             display: flex;
             margin-top: -11px;
         }
-           
     </style>
 
 
@@ -40,59 +39,63 @@
         </style>
     }
 
-<header>
+    <header>
 
 
-    <a href="@Url.Action("Index","Archive")"><img class="logo" src="~/Content/images/logo.svg" alt="logo" /></a>
-    <div style="display: flex;justify-content: space-between;align-items: center;">
-        <div class="username"> @User.Identity.Name </div>
-        <nav>
-            @*<li>
-            </li>*@
+        <a href="@Url.Action("Index","Archive")"><img class="logo" src="~/Content/images/logo.svg" alt="logo" /></a>
+        <div style="display: flex;justify-content: space-between;align-items: center;">
+            <div class="username"> @User.Identity.Name </div>
+            <nav>
+                @*<li>
+                    </li>*@
 
-            <div class="nav-drop" style="display: flex;align-items: center;">
-                <ul class="nav__links">
-                    <!-- safe zone for the language dropdown -->
-                    <div class="safezone"></div>
-                    <li @*class="li-style"*@>
-                        <a id="language-drop" class="language-hover" href="#">
-                            @MasterISS_Archive_Management_Website.Localization.Model.Language
-                            <!-- language dropdown menu -->
-                            <div class="dropper"></div>
-                        </a>
-                    </li>
-                  
-                    @if (User.Identity.Name != "")
-                    {
+                <div class="nav-drop" style="display: flex;align-items: center;">
+                    <ul class="nav__links">
+                        <!-- safe zone for the language dropdown -->
+                        <div class="safezone"></div>
                         <li @*class="li-style"*@>
-                            <a class="not-hover" href="@Url.Action("LogOut", "Auth" )">
-                                @MasterISS_Archive_Management_Website.Localization.Model.LogOut
+                            <a id="language-drop" class="language-hover" href="#">
+                                @MasterISS_Archive_Management_Website.Localization.Model.Language
+                                <!-- language dropdown menu -->
+                                <div class="dropper"></div>
                             </a>
                         </li>
-                    }
-                </ul>
-                <div class="language-dropdown">
-                    <ul class="lang-drop" style="display: flex;">
-                        <li>
-                            @Html.LanguageLink("TR", "tr-tr")
-                        </li>
-                        <li>
-                            @Html.LanguageLink("EN", "en-US")
-                        </li>
+
+                        @if (User.Identity.Name != "")
+                        {
+                            <li @*class="li-style"*@>
+                                <a class="not-hover" href="@Url.Action("LogOut", "Auth" )">
+                                    @MasterISS_Archive_Management_Website.Localization.Model.LogOut
+                                </a>
+                            </li>
+                        }
                     </ul>
+                    <div class="language-dropdown">
+                        <ul class="lang-drop" style="display: flex;">
+                            <li>
+                                @Html.LanguageLink("TR", "tr-tr")
+                            </li>
+                            <li>
+                                @Html.LanguageLink("EN", "en-US")
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </div>
-</header>
+            </nav>
+        </div>
+    </header>
 
     <div class="gradient"></div>
     <div class="noise"></div>
 
 
     @*<div class="container body-content">*@
-    @RenderBody()
-    @*@Html.Partial("_DeletePop")*@
+    <div class="render-body-container">
+        @RenderBody()
+        @Html.Partial("_DeletePop")
+        @Html.Partial("_UploadMessagePop")
+    </div>
+
     @*<hr />*@
     <footer>
     </footer>
@@ -105,113 +108,43 @@
     @section script{
     }
 
-    @*@Scripts.Render("~/Scripts/Language.js");*@
-
 
     <script>
         SetLanguage();
     </script>
-    @*<script>
-        $(".not-hover").mouseover(function () {
-            $(".language-dropdown").hide();
+
+    <script>
+        $(".delete-button-submit").click(function () {
+            var button = $(this);
+            var partialPop = button.closest("div.render-body-container");
+            var deletePop = partialPop.find("div.deletepop");
+            deletePop.show();
         });
-
-        $(".not-hover").mouseout(function () {
-            $(".language-dropdown").css("display", "block");
+    </script>
+    <script>
+        $('.pop-cancel').click(function () {
+            var button = $(this);
+            var deletePop = button.closest("div.deletepop");
+            deletePop.hide();
         });
-
-        //$(".language-hover").hover(function () {
-        //    $(".language-dropdown").show();
-        //});*@
-    @*</script>*@
-    @*<script>
-            $(".language-hover").hover(function () {
-                $(".safezone").show();
-                $(".dropper").show();
-
-                var languageHover = $(this);
-                var navDrop = languageHover.closest("div.nav-drop");
-                var languageDropdown = navDrop.find("ul.k");
-                languageDropdown.removeClass("k");
-                languageDropdown.addClass("dropfirst");
-                //k.addClass("dropfirst");
-            });
-        </script>*@
+    </script>
 
 
+    <script>
+        $(".pop-delete").click(function () {
+            var button = $(this);
+            var form = button.closest("form.delete-submit");
+            form.submit();
+        });
+    </script>
 
-    @*<script>
-
-            $(".delete-pop-button").click(function () {
-                //var button = $(this);
-                //var container = button.closest("div.page-container");
-                //var pop = container.find("div.delete-pop-click");
-                $(".delete-pop-click").show();
-
-            });
-        </script>*@
-
-    @*<script>
-            $(".language-hover").mouseover(function () {
-                $(".safezone").show();
-                $(".dropper").show();
-
-                var languageHover = $(this);
-                var navDrop = languageHover.closest("div.nav-drop");
-                var languageDropdown = navDrop.find("ul.lang-drop");
-                languageDropdown.removeClass("lang-drop");
-                languageDropdown.addClass("dropfirst");
-                //k.addClass("dropfirst");
-            });
-
-            $(".language-hover").mouseout(function () {
-                $(".safezone").hide();
-                $(".dropper").hide();
-
-                var languageHover = $(this);
-                var navDrop = languageHover.closest("div.nav-drop");
-                var languageDropdown = navDrop.find("ul.dropfirst");
-                languageDropdown.removeClass("dropfirst");
-                languageDropdown.addClass("lang-drop");
-                //k.addClass("dropfirst");
-            });
-        </script>*@
-
-    @*<script>
-            $(".language-hover").mousemove(function (event) {
-                //var msg = "Handler for .mousemove() called at ";
-                ////msg += event.pageX + ", " + event.pageY;
-                //var k = 20px;
-                //var c=20px
-                var languageHover = $(this);
-                var navDrop = languageHover.closest("div.nav-drop");
-                if (0 < event.pageX < 50 && 0 < event.pageY < 50 ) {
-                    $(".safezone").show();
-                    $(".dropper").show();
-
-                    //var languageHover = $(this);
-                    //var navDrop = languageHover.closest("div.nav-drop");
-                    var languageDropdown = navDrop.find("ul.lang-drop");
-                    languageDropdown.removeClass("lang-drop");
-                    languageDropdown.addClass("dropfirst");
-                }
-                else {
-                    $(".safezone").hide();
-                    $(".dropper").hide();
-
-                    //var languageHover = $(this);
-                    //var navDrop = languageHover.closest("div.nav-drop");
-                    var languageDropdown = navDrop.find("ul.dropfirst");
-                    languageDropdown.removeClass("dropfirst");
-                    languageDropdown.addClass("lang-drop");
-                }
-                //$("#log").append("<div>" + msg + "</div>");
-            });
-        </script>*@
-
-    @*<script>
-            Set();
-        </script>*@
+    <script>
+        $(".ok").click(function () {
+            var button = $(this);
+            var popup = button.closest("div.deletepop.upload-message");
+            popup.hide();
+        })
+    </script>
 
     @RenderSection("script", required: false)
 </body>

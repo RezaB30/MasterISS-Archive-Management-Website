@@ -1,13 +1,33 @@
-﻿@*<div class="delete-pop-click">*@ 
-    <!--<div class="deletepop">
-        <div class="popup">
-            <p>are you sure?</p>
-            <p>you are about to delete this item permanentley</p>
-            <ul>
-                <li><a class="pop-cancel" href="#">Cancel</a></li>
-                <li><a class="pop-delete" href="#">Delete</a></li>
-            </ul>
-        </div>
-        <div class="backgrey"></div>
-    </div>-->
-@*</div>*@
+﻿<div class="deletepop">
+    <div class="popup">
+        <h4 class="font-style">@MasterISS_Archive_Management_Website.Localization.Model.AreYouSure</h4>
+
+        <ul>
+            <li><a class="pop-cancel" href="#">@MasterISS_Archive_Management_Website.Localization.Model.Cancel</a></li>
+            <li><a class="pop-delete" href="#">@MasterISS_Archive_Management_Website.Localization.Model.Delete</a></li>
+        </ul>
+    </div>
+    <div class="backgrey"></div>
+</div>
+
+
+
+
+@*<script>
+        $('.pop-cancel').click(function () {
+            var button = $(this);
+            //var partialPop = button.closest("div.render-body-container");
+            //var deletePop = partialPop.find("div.deletepop");
+            var deletePop = button.closest("div.deletepop");
+            deletePop.hide();
+        });
+</script>
+
+
+<script>
+        $(".pop-delete").click(function () {
+            var button = $(this);
+            var form = button.closest("form.delete-submit");
+            form.submit();
+        });
+</script>*@

@@ -304,6 +304,7 @@
     <Content Include="Settings.config" />
     <Content Include="Views\Archive\Test.cshtml" />
     <Content Include="Views\Shared\_DeletePop.cshtml" />
+    <Content Include="Views\Shared\_UploadMessagePop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
