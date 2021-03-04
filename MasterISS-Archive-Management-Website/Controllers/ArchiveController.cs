@@ -46,8 +46,6 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
             ViewBag.id = id;
 
-
-
             using (var db = new RadiusREntities())
             {
                 var result = db.Subscriptions.Find(id);
@@ -61,15 +59,12 @@ namespace MasterISS_Archive_Management_Website.Controllers
                 TempData["SubscriberNo"] = SubscriberNo;
             }
 
-
             if (uploadFile.Files == null)
             {
                 TempData["NullFilesErrorMessage"] = MasterISS_Archive_Management_Website.Localization.Model.NullFilesErrorMessage;
                 TempData["SubscriberNo"] = SubscriberNo;
 
-
                 return RedirectToAction("Manage", "Archive", new { id = id });
-
             }
 
             long uploadMaxFileSize = CustomerWebsiteSettings.MaxSupportAttachmentSize;//byte
@@ -147,7 +142,6 @@ namespace MasterISS_Archive_Management_Website.Controllers
                     else
                     {
                         TempData["SubscriberNo"] = SubscriberNo;
-
                         return RedirectToAction("Manage", "Archive", new { id = id });
                     }
                 }

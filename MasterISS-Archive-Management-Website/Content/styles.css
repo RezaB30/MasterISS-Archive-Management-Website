@@ -59,6 +59,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 18%;
+    background-color: var(--backgraddark-color);
 }
 
 .nav__links a {
@@ -412,7 +413,10 @@ header {
     background-color: var(--white2-color);
     /*margin-top: 60px;*/
     /*margin-top: 3em;*/
-    margin-top: 4em;
+    /*margin-top: 4em;*/
+    /*margin-top: 2em;*/
+    /*margin-top:5em;*/
+    margin-top: 5.1em;
     margin-bottom: 1em;
     border-radius: 50px;
     display: flex;
@@ -756,7 +760,7 @@ a.downloadbutton {
     outline: 0;
     transform: scale(1);
     transition: var(--sec-time) ease;
-
+    text-decoration: none !important;
     /*margin-right: 2.3em;*/
 }
 
@@ -791,22 +795,26 @@ a.downloadbutton {
     .button1:hover::before {
         box-shadow: 0px 5px 10px 0px var(--dark-color), 0px -2px 5px 0px var(--banblack-color);
         background-color: var(--banblack-color);
+        color: var(--main-color);
     }
 
     .button1:hover::after {
         transform: scaleY(1);
         opacity: 0;
+        color: var(--main-color);
     }
 
     .button1:hover {
         box-shadow: 0px 0px 5px var(--dark-color), 0px 0px 30px -10px var(--banblack-color);
         border: 1px solid var(--main-color);
         text-shadow: 0px 5px 5px var(--dark-color);
+        color: var(--main-color);
         /* transform: scale(1.05); */
     }
 
         .button1:hover a {
             color: #f3f3f3;
+
         }
 
     .button1 a {
@@ -1264,9 +1272,11 @@ footer {
     /*   padding:1em;
         padding-top:2em*/
     color: var(--main-color);
-    font-weight: 800;
-    font-size: 1em
+    /*font-weight: 800;*/
+    font-size: 1.08em;
+    /*font-family: 'Georgia', fantasy;*/
 }
+
 
     .login-content > div {
         margin-top: 1em;
@@ -1296,7 +1306,9 @@ footer {
 }
 
 .mt {
-    margin-top: 1em;
+    margin-top: 3em;
+    /*font-family: 'Arial', sans-serif;*/
+    /*font-family: 'Montserrat', sans-serif;*/
 }
 
 .error-letter {
@@ -1330,6 +1342,7 @@ footer {
     background-color: var(--dark-color);
     z-index: -2;
     transition: var(--sec-time) ease;
+    text-decoration: none !important;
 }
 
 .button-back::after {
@@ -1345,16 +1358,19 @@ footer {
     opacity: 0.3;
     transition: var(--sec-time) ease;
     z-index: -1;
+    text-decoration: none !important;
 }
 
 .button-back:hover::before {
     box-shadow: 0px 5px 10px 0px var(--dark-color), 0px -2px 5px 0px var(--banblack-color);
     background-color: var(--banblack-color);
+    text-decoration: none !important;
 }
 
 .button-back:hover::after {
     transform: scaleY(1);
     opacity: 0;
+    text-decoration: none !important;
 }
 
 .button-back:hover {
@@ -1401,9 +1417,20 @@ footer {
     margin-top: 5em;
     display: flex;
     justify-content: center;
-    text-decoration: none !important;
 }
 
 .mt-10{
     margin-top:10em
+}
+
+.button-center {
+    display: flex;
+    justify-content: center;
+    margin-top: 5em;
+    text-decoration: none !important;
+}
+
+.text-size {
+    font-size: 1.3em;
+    margin-bottom: -2em;
 }

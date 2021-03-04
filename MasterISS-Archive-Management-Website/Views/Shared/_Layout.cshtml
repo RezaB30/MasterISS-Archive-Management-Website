@@ -11,19 +11,19 @@
 </head>
 <body>
 
-    @if (ViewBag.LoginPage != null)
+    @*@if (ViewBag.LoginPage != null)
     {
         <style>
             .login-page {
                 display: none
             }
         </style>
-    }
+    }*@
 
     <header>
 
 
-        <a href="@Url.Action("Index","Archive")"><img class="logo" src="~/Content/images/logo.svg" alt="logo" /></a>
+        <a href="@Url.Action("Index", "Archive")"><img class="logo" src="~/Content/images/logo.svg" alt="logo" /></a>
         <div style="display: flex;justify-content: space-between;align-items: center;">
             <div class="username"> @User.Identity.Name </div>
             <nav>
@@ -42,7 +42,7 @@
                             </a>
                         </li>
 
-                        @if (User.Identity.Name != "")
+                        @if (User.Identity.IsAuthenticated)
                         {
                             <li @*class="li-style"*@>
                                 <a class="not-hover" href="@Url.Action("LogOut", "Auth" )">

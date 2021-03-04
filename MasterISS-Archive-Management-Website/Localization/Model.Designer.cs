@@ -367,7 +367,7 @@ namespace MasterISS_Archive_Management_Website.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Şifre.
+        ///   Looks up a localized string similar to ŞİFRE.
         /// </summary>
         public static string Password {
             get {
@@ -484,7 +484,7 @@ namespace MasterISS_Archive_Management_Website.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kullanıcı Adı.
+        ///   Looks up a localized string similar to KULLANICI ADI.
         /// </summary>
         public static string Username {
             get {

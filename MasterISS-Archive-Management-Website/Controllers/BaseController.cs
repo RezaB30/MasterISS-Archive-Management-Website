@@ -69,6 +69,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
                 ViewName = "~/Views/Archive/ErrorPage.cshtml",
             };
             filterContext.ExceptionHandled = true;
+            baseLogger.Error(filterContext.Exception);
         }
 
         [AllowAnonymous]

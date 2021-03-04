@@ -6,49 +6,7 @@
 }
 <style>
 
-    /*.login-content {
-        padding-top: 5em;
-        max-width: 15em;
-        margin: auto;*/
-        /*background: white;*/
-        /*text-align: center;*/
-        /*   padding:1em;
-        padding-top:2em*/
-        /*color: var(--main-color);
-        font-weight: 800;
-        font-size: 1em
-    }
 
-        .login-content > div {
-            margin-top: 1em;
-        }
-
-    .password {
-        margin-top: 2em;*/
-        /*margin-left:3em*/
-    /*}
-
-    .search {
-        color: black;
-        font-weight: 600;
-        font-size: 0.7em
-    }
-
-    .text-style {
-        text-align: center;
-        color: red;
-        font-size: 1.3em;
-        margin-top: 1em;
-    }
-
-    .text-red {
-        color: red;
-        font-weight: 500;
-    }
-  
-    .mt {
-        margin-top: 1em;
-    }*/
 </style>
 
 
@@ -59,7 +17,7 @@
 
     @using (Html.BeginForm())
     {
-        <div>
+        <div class="text-size">
             @Html.DisplayNameFor(m => m.Username)
         </div>
         <div class="search">
@@ -71,7 +29,7 @@
             @Html.ValidationMessageFor(m => m.Username)
         </div>
 
-        <div class="mt">
+        <div class="mt text-size">
             @Html.DisplayNameFor(m => m.Password)
         </div>
         <div class="search">

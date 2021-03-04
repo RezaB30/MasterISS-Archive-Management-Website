@@ -94,9 +94,13 @@
         if (ViewBag.HasFileList == null)
         {
             <div class="manage-button-area">
-                <button class="button1">
-                    <a href="@Url.Action("Manage", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.Manage</a>
-                </button>
+               
+                <a href="@Url.Action("Manage", "Archive",  new { id= ViewBag.id})">
+                    <button class="button1">
+                        @MasterISS_Archive_Management_Website.Localization.Model.Manage
+                    </button>
+                </a>
+                
             </div>
         }
 
@@ -162,9 +166,18 @@
                     <a href="@Url.Action("DownloadZipFile", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.DownloadAll</a>
                 </button>
 
-                <button class="visible-manage-button button1">
+                @*<button class="visible-manage-button button1">
                     <a href="@Url.Action("Manage", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.Manage</a>
-                </button>}
+                </button>*@
+
+                <a href="@Url.Action("Manage", "Archive",  new { id= ViewBag.id})">
+                    <button class="button1">
+                        @MasterISS_Archive_Management_Website.Localization.Model.Manage
+                    </button>
+                </a>
+
+
+                }
             </div>
         </div>
     </div>

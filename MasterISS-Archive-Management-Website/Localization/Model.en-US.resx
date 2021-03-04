@@ -220,7 +220,7 @@
     <value>Okey</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>Password</value>
+    <value>PASSWORD</value>
   </data>
   <data name="PasswordRequired" xml:space="preserve">
     <value>Password is Required</value>
@@ -259,7 +259,7 @@
     <value>File Didn't Upload</value>
   </data>
   <data name="Username" xml:space="preserve">
-    <value>Username</value>
+    <value>USENAME</value>
   </data>
   <data name="UsernameRequired" xml:space="preserve">
     <value>Username is Required</value>

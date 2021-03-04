@@ -118,11 +118,11 @@
 
     </div>
     @*<div class="tablediv fadertable container">*@
-    <div class="back-button-style">
-        @*<div class="button-back">*@
-
-        @Html.ActionLink(MasterISS_Archive_Management_Website.Localization.Model.Back, "Index", "Archive", new { id = ViewBag.id }, new { @class = "button-back" })
-        @*</div>*@
+    <div class="">
+   
+        <div class="button-center">
+            @Html.ActionLink(MasterISS_Archive_Management_Website.Localization.Model.Back, "Index", "Archive", new { id = ViewContext.RouteData.Values["id"] }, new { @class = "button1" })
+        </div>
     </div>
     @*</div>*@
 </div>
