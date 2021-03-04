@@ -371,7 +371,7 @@ header {
 /* buldge under the search box and its elements */
 .curve {
     height: 52px;
-    width: 257px;
+    width: 260px;
     margin-top: -52px;
     background-color: var(--banblack-color);
     border-radius: 32px;
@@ -1141,7 +1141,8 @@ footer {
     }
 
         footer p:after {
-            left: -7px;
+            /*left: -7px;*/
+            left:-3px;
             justify-content: center;
             display: block;
             position: absolute;

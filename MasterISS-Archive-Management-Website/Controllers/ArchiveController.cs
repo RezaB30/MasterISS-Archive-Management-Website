@@ -44,6 +44,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
             var subscriptionFileList = archiveFileList.Result;
 
             ViewBag.id = id;
+
             if (uploadFile.Files == null)
             {
                 TempData["NullFilesErrorMessage"] = MasterISS_Archive_Management_Website.Localization.Model.NullFilesErrorMessage;
@@ -339,6 +340,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
                     string downloadFileZipName = id + "." + "zip";
 
+
                     var docs = viewResults.ToList();
 
                     var resultStream = new MemoryStream();
@@ -347,17 +349,45 @@ namespace MasterISS_Archive_Management_Website.Controllers
                     {
                         foreach (var doc in docs)
                         {
+                            //var datetimeForDownloadFile = DateUtilities.ConvertToDateForDownloadFile(doc.CreationDate);
+
+                            //string downloadFileName = id + "." +doc.AttachmentType + "." + datetimeForDownloadFile + "." + doc.FileExtention;
 
                             using (var currentResult = archiveFile.GetClientAttachment(id, doc.ServerSideName))
                             {
                                 if (currentResult.InternalException == null)
                                 {
-                                    var newZipEntry = zipArchive.CreateEntry(currentResult.Result.FileDetail.ServerSideName, CompressionLevel.Optimal);
-                                    //var newZipEntry = zipArchive.CreateEntry(CreateArchiveAttachmentName(currentResult.Result.FileDetail), CompressionLevel.Optimal);
+                                    var datetimeForDownloadFile = DateUtilities.ConvertToDateForDownloadFile(doc.CreationDate);
 
-                                    using (var temp = newZipEntry.Open())
+                                    var attachmentTypesList = new LocalizedList<RadiusR.FileManagement.SpecialFiles.ClientAttachmentTypes, RadiusR.Localization.Lists.ClientAttachmentTypes>();
+                                    var attachmentTypeItems = attachmentTypesList.GetList().Select(t => new AttachmentTypesViewModel()
                                     {
-                                        currentResult.Result.Content.CopyTo(temp);
+                                        AttachmentTypeEnumName = t.Value,
+                                        AttachmentTypeEnumNumber = t.Key
+                                    });
+
+                                    string docAttachmentName;
+                                    string downloadFileName;
+                                    foreach (var item in attachmentTypeItems)
+                                    {
+                                        if (doc.AttachmentType == item.AttachmentTypeEnumNumber)
+                                        {
+                                            docAttachmentName = item.AttachmentTypeEnumName;
+                                            downloadFileName = id + "." + docAttachmentName + "." + datetimeForDownloadFile + "." + doc.FileExtention;
+
+
+
+                                            //var newZipEntry = zipArchive.CreateEntry(currentResult.Result.FileDetail.ServerSideName, CompressionLevel.Optimal);
+
+                                            var newZipEntry = zipArchive.CreateEntry(downloadFileName, CompressionLevel.Optimal);
+
+
+                                            using (var temp = newZipEntry.Open())
+                                            {
+                                                currentResult.Result.Content.CopyTo(temp);
+
+                                            }
+                                        }
                                     }
                                 }
                                 else
