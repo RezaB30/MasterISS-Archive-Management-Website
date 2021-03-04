@@ -82,10 +82,11 @@
                                                 </div>
                                                 <div class="backgrey"></div>
                                             </div>*@
+                                            <a class="deletebutton style delete-button-submit"></a>
 
-                                            <a class="deletebutton style delete-button-submit">
+                                            @*<a class="deletebutton style delete-button-submit">
                                               
-                                            </a>
+                                            </a>*@
                                         }
                                     </td>
 
@@ -131,17 +132,6 @@
     <div class="container body-content">
         
     </div>
-    @*@if (TempData["UploadFileStatus"] != null || TempData["FileSizeError"] != null || TempData["UploadStatus"] != null || TempData["FileCountError"] != null || TempData["NullFilesErrorMessage"] != null)
-    {
-        <style>
-            .deletepop.upload-message {
-                display: block
-            }
-        </style>
-    }*@
-
-
- 
 
 </div>
 <footer>
@@ -156,14 +146,7 @@
 
 
     <script>SetupFileUploadAreas();</script>
-    @*</script>*@
-    @*<script>
-            $('.delete-submit').submit(function (e) {
-                if (!confirm('Are You Sure?')) {
-                    e.preventDefault();
-                }
-            });
-        </script>*@
+
     <script>
         $('.clear-button').click(function () {
             var button = $(this);
@@ -203,28 +186,6 @@
             uploadFileArea.show();
         });
     </script>
-
-    @*<script>
-        $(".delete-button-submit").click(function () {
-            var button = $(this);
-            //var form = button.closest("form.delete-submit");
-            //var deletepop = form.find+(".deletepop");
-            //deletepop.show();
-            var partialPop = button.closest("div.render-body-container");
-            var deletePop = partialPop.find("div.deletepop");
-            deletePop.show();
-        });
-    </script>*@
-
-    @*<script>
-        $(".pop-cancel").click(function () {
-            var button = $(this);
-            var partialPop = button.closest("div.render-body-container");
-            var deletePop = partialPop.find("div.deletepop");
-            deletePop.hide();
-        });
-    </script>*@
-
 
     <script>
         $(".pop-delete").click(function () {

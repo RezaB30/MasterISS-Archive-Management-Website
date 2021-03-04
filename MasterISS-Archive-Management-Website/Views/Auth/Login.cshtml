@@ -23,19 +23,33 @@
             margin-top: 1em;
         }
 
-        .password{
-            margin-top:2em;
-            /*margin-left:3em*/
-        }
+    .password {
+        margin-top: 2em;
+        /*margin-left:3em*/
+    }
 
     .search {
         color: black;
         font-weight: 600;
         font-size: 0.7em
     }
- /*   .mr{
+
+    .text-style {
+        text-align: center;
+        color: red;
+        font-size: 1.3em;
+    }
+
+    .text-red {
+        color: red;
+        font-weight: 500;
+    }
+    /*   .mr{
         mar
     }*/
+    .mt {
+        margin-top: 1em;
+    }
 </style>
 
 
@@ -54,9 +68,11 @@
                 @Html.EditorFor(m => m.Username, new { htmlAttributes = new { @class = "inputsearch" } })
             </div>
         </div>
-        @Html.ValidationMessageFor(m => m.Username)
+        <div class="text-red">
+            @Html.ValidationMessageFor(m => m.Username)
+        </div>
 
-        <div>
+        <div class="mt">
             @Html.DisplayNameFor(m => m.Password)
         </div>
         <div class="search">
@@ -64,17 +80,19 @@
                 @Html.PasswordFor(m => m.Password, new { @class = "inputsearch" })
             </div>
         </div>
-        @Html.ValidationMessageFor(m => m.Password)
-        <div class="mr">
+        <div class="text-red">
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
+        <div>
             <button class="button1 password" type="submit">@MasterISS_Archive_Management_Website.Localization.Model.Login</button>
         </div>
 
     }
-    </div>
-    
+</div>
 
 
-    <div>
-        @Html.ValidationMessage("loginFailed")
-    </div>
-   
+
+<div class="text-style">
+    @Html.ValidationMessage("loginFailed")
+</div>
+

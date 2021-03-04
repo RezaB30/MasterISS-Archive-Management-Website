@@ -26,6 +26,7 @@
             margin-top: -0.5em;*/
             display: flex;
             margin-top: -11px;
+            margin-right: 1em;
         }
     </style>
 
@@ -114,27 +115,25 @@
     </script>
 
     <script>
+        //$(".delete-button-submit").click(function () {
         $(".delete-button-submit").click(function () {
             var button = $(this);
             var partialPop = button.closest("div.render-body-container");
-            var deletePop = partialPop.find("div.deletepop");
+            var deletePop = partialPop.find("div.deletepop.form");
             deletePop.show();
-        });
-    </script>
-    <script>
-        $('.pop-cancel').click(function () {
-            var button = $(this);
-            var deletePop = button.closest("div.deletepop");
-            deletePop.hide();
-        });
-    </script>
 
+            $('.pop-cancel').click(function () {
+                var buttoncan = $(this);
+                var deletePop = buttoncan.closest("div.deletepop.form");
+                deletePop.hide();
+            });
 
-    <script>
-        $(".pop-delete").click(function () {
-            var button = $(this);
-            var form = button.closest("form.delete-submit");
-            form.submit();
+            $(".pop-delete").click(function () {
+                //var buttondel = $(this);
+                //var form = buttondel.closest("form.delete-submit");
+                var form = button.closest("form.delete-submit");
+                form.submit();
+            });
         });
     </script>
 

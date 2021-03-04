@@ -161,18 +161,6 @@
                                         @Html.Hidden("serverSideName", item.ServerSideName)
                                     </div>
 
-                                    @*<div class="deletepop">
-                                        <div class="popup">
-
-                                            <h4 class="font-style">@MasterISS_Archive_Management_Website.Localization.Model.AreYouSure</h4>
-                                            <ul>
-                                                <li><a class="pop-cancel" href="#">@MasterISS_Archive_Management_Website.Localization.Model.Cancel</a></li>
-                                                <li><a class="pop-delete" href="#">@MasterISS_Archive_Management_Website.Localization.Model.Delete</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="backgrey"></div>
-                                    </div>*@
-
                                     <a class="deletebutton style delete-button-submit">
 
                                     </a>
@@ -203,29 +191,6 @@
         </div>
     }
 
-    @*@if (TempData["FileDeleted"] != null)
-    {
-        <style>
-            .deletepop.upload-message {
-                display: block
-            }
-        </style>
-    }*@
-
-
-    <!--<div class="deletepop upload-message">
-        <div class="popup">
-            <h4 class="font-style">
-                TempData["FileDeleted"]
-            </h4>
-
-            <ul>-->
-                @*<li><a href="#">Cancel</a></li>*@
-                <!--<li style="margin-left: 5em;"><a class="ok" href="#">MasterISS_Archive_Management_Website.Localization.Model.Okey</a></li>
-            </ul>
-        </div>
-        <div class="backgrey"></div>
-    </div>-->
 
     <div class="gradient"></div>
     <div class="noise"></div>
@@ -234,13 +199,6 @@
 
 @section script{
 
-    @*@Scripts.Render("~/Scripts/javascript.js");*@
-    @*@Scripts.Render("~/Scripts/Language.js");
-
-
-        <script>
-            SetLanguage();
-            </script>*@
     <script>
         $("#id").on("input", function () {
             var id = $(this);
@@ -249,49 +207,15 @@
             reg.test(idVal) ? this.value : this.value = this.value.slice(0, -1)
         });
     </script>
+ 
     @*<script>
-            const languageBut = $('.nav__links a');
-            const languageDropDown = $('.language-dropdown ul');
-            const dropHelper = $('.dropper');
-            const safeZone = $('.safezone');
-
-
-            function dropLan() {
-                languageDropDown.addClass('dropfirst');
-                languageDropDown.removeClass('dropback');
-                safeZone.style.display = 'inline';
-                dropHelper.style.display = 'inline';
-                languageDropDown.style.display = 'flex';
-            }
-            function hideLan() {
-                safeZone.style.display = 'none';
-                dropHelper.style.display = 'none';
-                languageDropDown.removeClass('dropfirst');
-                languageDropDown.addClass('dropback');
-                languageDropDown.style.display = 'flex';
-            }
-
-            languageBut.on('mouseover', dropLan);
-            safeZone.on('mouseover', hideLan);
-
-        </script>*@
-    @*<script>
-            Set();
-
-            $(".language-dropdown").mouseout(function () {
-                var k = $(this);
-                k.hide();
-            });
-        </script>*@
-
-    <script>
         $(".delete-button-submit").click(function () {
             var button = $(this);
             var form = button.closest("form.delete-submit");
             var deletepop = form.find(".deletepop");
             deletepop.show();
         });
-    </script>
+    </script>*@
 
     <script>
         $(".pop-cancel").click(function () {
