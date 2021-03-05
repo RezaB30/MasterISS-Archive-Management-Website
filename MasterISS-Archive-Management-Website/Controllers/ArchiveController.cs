@@ -399,21 +399,8 @@ namespace MasterISS_Archive_Management_Website.Controllers
                                 if (currentResult.InternalException == null)
                                 {
                                     var datetimeForDownloadFile = DateUtilities.ConvertToDateForDownloadFile(doc.CreationDate);
-
-                                    //var attachmentTypesList = new LocalizedList<RadiusR.FileManagement.SpecialFiles.ClientAttachmentTypes, RadiusR.Localization.Lists.ClientAttachmentTypes>();
-                                    //var attachmentTypeItems = attachmentTypesList.GetList().Select(t => new AttachmentTypesViewModel()
-                                    //{
-                                    //    AttachmentTypeEnumName = t.Value,
-                                    //    AttachmentTypeEnumNumber = t.Key
-                                    //});
-
-                                    //string docAttachmentName;
                                     string downloadFileName;
-                                    //foreach (var item in attachmentTypeItems)
-                                    //{
-                                    //    if (doc.AttachmentType == item.AttachmentTypeEnumNumber)
-                                    //    {
-                                    //docAttachmentName = item.AttachmentTypeEnumName;
+                                 
                                     downloadFileName = id + "." + currentResult.Result.FileDetail.AttachmentType + "." + datetimeForDownloadFile + "." + doc.FileExtention;
 
                                     //var newZipEntry = zipArchive.CreateEntry(currentResult.Result.FileDetail.ServerSideName, CompressionLevel.Optimal);
@@ -452,6 +439,23 @@ namespace MasterISS_Archive_Management_Website.Controllers
         {
             return View();
         }
+
+        public ActionResult ViewFile(long id, string FileName)
+        {
+            var fileManager = new MasterISSFileManager();
+            var file = fileManager.GetClientAttachment(id, FileName);
+
+            var datetimeForDownloadFile = DateUtilities.ConvertToDateForDownloadFile(file.Result.FileDetail.CreationDate);
+            string viewFileName = id + "." + file.Result.FileDetail.AttachmentType + "." + datetimeForDownloadFile + "." + file.Result.FileDetail.FileExtention;
+
+            if (file.InternalException != null)
+            {
+                return RedirectToAction("ErrorPage","Archive");
+            }
+
+            return File(file.Result.Content, file.Result.FileDetail.MIMEType);
+        }
+
     }
 }
 

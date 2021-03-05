@@ -139,7 +139,7 @@ header {
     transform: translateX(20px);
     /*  margin-top: 25px;*/
     /*margin-top: 0.5em;*/
-    margin-top:1em;
+    margin-top: 1em;
     z-index: 15;
 }
 
@@ -255,17 +255,13 @@ header {
 .nav__links {
     list-style: none;
 }
-/**/
+    /**/
     .nav__links li {
         display: inline-block;
         padding: 0px 20px;
     }
 
 
-  /*  .nav__links li .li-style {
-        display: inline-block;
-        padding: 0px 20px;
-    }*/
 /* grey banner box in the middle */
 
 
@@ -370,59 +366,7 @@ header {
 /* here should be the code transition for file boxes to set at the same vertical position */
 
 /* buldge under the search box and its elements */
-.curve {
-    height: 52px;
-    width: 260px;
-    margin-top: -52px;
-    background-color: var(--banblack-color);
-    border-radius: 32px;
-}
-    /* left curved line for the buldge using ::before and border */
-    .curve::before {
-        position: absolute;
-        content: '';
-        /*margin-left: -60.3px;*/
-        /*margin-left: -60.3px;*/
-        margin-left: -2.5em;
-        margin-top: 0.4em;
-        border-radius: 100px;
-        border: 12px solid var(--banblack-color);
-        clip-path: polygon(0% 0%, 50% 0%, 80% 0%, 50% 50%);
-        rotate: 45deg;
-        height: 50px;
-        width: 50px;
-    }
-    /* right curved line for the buldge using ::after and border */
-    .curve::after {
-        position: absolute;
-        content: '';
-        margin-left: 247px;
-        margin-top: 8px;
-        border-radius: 100px;
-        border: 12px solid var(--banblack-color);
-        clip-path: polygon(20% 0%, 50% 0%, 100% 0%, 50% 50%);
-        rotate: -45deg;
-        height: 50px;
-        width: 50px;
-    }
-/* main body of the search box include white rounded box and place the input text and search button inside it */
-.search {
-    position: relative;
-    width: 230px;
-    height: 37.7px;
-    background-color: var(--white2-color);
-    /*margin-top: 60px;*/
-    /*margin-top: 3em;*/
-    /*margin-top: 4em;*/
-    /*margin-top: 2em;*/
-    /*margin-top:5em;*/
-    margin-top: 5.1em;
-    margin-bottom: 1em;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-}
-/* input 'archive number' text box */
+
 .inputsearch {
     display: inline-block;
     position: absolute;
@@ -438,11 +382,6 @@ header {
     /* font-size: 18px;*/
     font-size: 1.7em;
     outline: 0;
-
-
-
-
-
 }
 /*  */
 .magnify {
@@ -699,12 +638,15 @@ header {
     .maintable tbody td a.style {
         /*margin: 0 1em 0 0;*/
     }
+
     .maintable tbody td:nth-child(3) /*img*/ {
         text-align: center;
     }
+
     .maintable tbody td:nth-child(4) /*img*/ {
         text-align: center;
-    } 
+    }
+
 a.deletebutton {
     /*transform: translateX(27px);*/
 }
@@ -814,7 +756,6 @@ a.downloadbutton {
 
         .button1:hover a {
             color: #f3f3f3;
-
         }
 
     .button1 a {
@@ -835,7 +776,6 @@ a.downloadbutton {
     /*padding-left: 437px;*/
     /*padding-left: 45.1em;*/
     /*padding-left: 42.7em;*/
-
     padding-left: 43em;
 }
 
@@ -849,9 +789,9 @@ a.downloadbutton {
     }
 
 .deletepop {
-     position: fixed;
+    position: fixed;
     z-index: 100;
-   /* z-index: 0;
+    /* z-index: 0;
     position: relative;*/
 }
 
@@ -867,7 +807,7 @@ a.downloadbutton {
     top: calc(50vh - 72.5px);
     box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.5);
     transition: all var(--sec-time) ease;
-    z-index:200
+    z-index: 200
 }
 
 .popupanim {
@@ -1150,7 +1090,7 @@ footer {
 
         footer p:after {
             /*left: -7px;*/
-            left:-3px;
+            left: -3px;
             justify-content: center;
             display: block;
             position: absolute;
@@ -1174,9 +1114,7 @@ footer {
     left: calc(50% - 200px);
     overflow: hidden;
     display: flex;
-    justify-content: center;
-    /* padding-left: 31.5%;
-    padding-right: 31.5%; */
+    justify-content: center;  
     padding-top: 50px;
     margin-bottom: -25px;
     font-family: 'Montserrat', sans-serif;
@@ -1194,9 +1132,9 @@ footer {
     }
 
 
-.font-style{
-    margin-top:2em;
-    text-align:center
+.font-style {
+    margin-top: 2em;
+    text-align: center
 }
 
 .li-style {
@@ -1287,11 +1225,6 @@ footer {
     /*margin-left:3em*/
 }
 
-.search {
-    color: black;
-    font-weight: 600;
-    font-size: 0.7em
-}
 
 .text-style {
     text-align: center;
@@ -1312,7 +1245,7 @@ footer {
 }
 
 .error-letter {
-     color: white;
+    color: white;
     font-size: 3em;
     /*margin-left: 2em;*/
     margin-top: 0.7em;
@@ -1324,9 +1257,9 @@ footer {
 }
 
 .error-page {
-    text-align:center;
-    margin-top:10em
- /*   margin-left: 28em;
+    text-align: center;
+    margin-top: 10em
+    /*   margin-left: 28em;
     margin-top: 7em;*/
 }
 
@@ -1391,6 +1324,7 @@ footer {
     outline: 0;
     transition: all var(--sec-time) ease;
 }
+
 .button-back {
     position: relative;
     font-family: 'Montserrat', sans-serif;
@@ -1419,8 +1353,8 @@ footer {
     justify-content: center;
 }
 
-.mt-10{
-    margin-top:10em
+.mt-10 {
+    margin-top: 10em
 }
 
 .button-center {
@@ -1434,3 +1368,55 @@ footer {
     font-size: 1.3em;
     margin-bottom: -2em;
 }
+
+
+.search {
+    position: relative;
+    width: 250px;
+    height: 37.7px;
+    background-color: var(--white2-color);
+    margin-top: 41px;
+    margin-bottom: 15px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    color: black;
+    font-weight: 600;
+    font-size: 0.7em;
+}
+
+
+.curve {
+    height: 46px;
+    width: 267px;
+    margin-top: -52px;
+    background-color: var(--banblack-color);
+    border-radius: 35px;
+}
+
+    .curve::before {
+        position: absolute;
+        content: '';
+        margin-left: -37px;
+        margin-top: 7px;
+        border-radius: 100px;
+        border: 12px solid var(--banblack-color);
+        clip-path: polygon(0% 0%, 50% 0%, 80% 0%, 50% 50%);
+        rotate: 45deg;
+        height: 50px;
+        width: 50px;
+    }
+
+    .curve::after {
+        position: absolute;
+        content: '';
+        margin-left: 254px;
+        margin-top: 7px;
+        border-radius: 100px;
+        border: 12px solid var(--banblack-color);
+        clip-path: polygon(20% 0%, 50% 0%, 100% 0%, 50% 50%);
+        rotate: -45deg;
+        height: 50px;
+        width: 50px;
+    }

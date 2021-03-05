@@ -264,6 +264,9 @@
   <data name="UsernameRequired" xml:space="preserve">
     <value>Kullanıcı Adınızı Giriniz</value>
   </data>
+  <data name="View" xml:space="preserve">
+    <value>Göster</value>
+  </data>
   <data name="ZIP" xml:space="preserve">
     <value>ZİP</value>
   </data>

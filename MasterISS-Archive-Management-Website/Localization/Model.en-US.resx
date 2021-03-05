@@ -264,6 +264,9 @@
   <data name="UsernameRequired" xml:space="preserve">
     <value>Username is Required</value>
   </data>
+  <data name="View" xml:space="preserve">
+    <value>View</value>
+  </data>
   <data name="ZIP" xml:space="preserve">
     <value>ZIP</value>
   </data>

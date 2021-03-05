@@ -302,7 +302,6 @@
     <Content Include="Views\Archive\Manage.cshtml" />
     <Content Include="Views\Archive\ErrorPage.cshtml" />
     <Content Include="Settings.config" />
-    <Content Include="Views\Archive\Test.cshtml" />
     <Content Include="Views\Shared\_DeletePop.cshtml" />
     <Content Include="Views\Shared\_UploadMessagePop.cshtml" />
   </ItemGroup>

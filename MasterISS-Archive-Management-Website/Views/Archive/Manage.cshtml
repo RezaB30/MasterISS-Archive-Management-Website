@@ -42,7 +42,7 @@
                     <thead>
                         <tr>
                             <th> @Html.DisplayFor(model => item.AttachmentTypeEnumName)</th>
-                            <th>@MasterISS_Archive_Management_Website.Localization.Model.Download</th>
+                            <th>@MasterISS_Archive_Management_Website.Localization.Model.View</th>
                             <th>@MasterISS_Archive_Management_Website.Localization.Model.Delete</th>
                         </tr>
                     </thead>
@@ -58,7 +58,8 @@
                                         @Html.DisplayFor(model => fileItem.CreationDate)
                                     </td>
                                     <td>
-                                        <a class="downloadbutton" href="@Url.Action("Download", "Archive", new { id = ViewBag.id, FileName = fileItem.ServerSideName })">@*@MasterISS_Archive_Management_Website.Localization.Model.Download*@</a>
+
+                                        <a class="downloadbutton style" href="@Url.Action("ViewFile", "Archive", new { id = ViewBag.id, FileName = fileItem.ServerSideName })"></a>
                                     </td>
 
 
