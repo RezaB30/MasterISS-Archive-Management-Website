@@ -41,6 +41,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
                     {
                         ViewBag.HasNotPermission = MasterISS_Archive_Management_Website.Localization.Model.HasNotPermission;
                         authenticator.SignOut(owinContext);
+                        owinContext.Authentication.SignOut();
                     }
                     // valid login
                     else

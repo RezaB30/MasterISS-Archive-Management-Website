@@ -33,9 +33,14 @@ namespace MasterISS_Archive_Management_Website.App_Start
                 routeValues.Add("lang", routeData.Values["lang"]);
 
                 //Reuse the RetrunUrl
-                Uri uri = new Uri(context.RedirectUri);
-                string returnUrl = HttpUtility.ParseQueryString(uri.Query)[context.Options.ReturnUrlParameter];
-                routeValues.Add(context.Options.ReturnUrlParameter, returnUrl);
+                try
+                {
+                    Uri uri = new Uri(context.RedirectUri);
+                    string returnUrl = HttpUtility.ParseQueryString(uri.Query)[context.Options.ReturnUrlParameter];
+                    routeValues.Add(context.Options.ReturnUrlParameter, returnUrl);
+                }
+                catch { }
+
 
                 //Overwrite the redirection uri
                 context.RedirectUri = url.Action("Login", "Auth", routeValues);
@@ -51,9 +56,9 @@ namespace MasterISS_Archive_Management_Website.App_Start
                 CookieName = "MasterISS Archive",
                 ExpireTimeSpan = Properties.Settings.Default.CookieExpiration,
                 CookieSecure = CookieSecureOption.SameAsRequest,
-               
+
             });
         }
-        
+
     }
 }

@@ -18,7 +18,7 @@ using RezaB.Data.Localization;
 
 namespace MasterISS_Archive_Management_Website.Controllers
 {
-    [Authorize]
+    [AuthorizePermission(Permissions = "Archive Access")]
     public class ArchiveController : BaseController
     {
         Logger archiveLogger = LogManager.GetLogger("archive");
@@ -385,6 +385,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
                     var docs = viewResults.ToList();
 
                     var resultStream = new MemoryStream();
+                    var attachmentTypesList = new LocalizedList<RadiusR.FileManagement.SpecialFiles.ClientAttachmentTypes, RadiusR.Localization.Lists.ClientAttachmentTypes>();
 
                     using (var zipArchive = new ZipArchive(resultStream, ZipArchiveMode.Create, true))
                     {
@@ -400,8 +401,8 @@ namespace MasterISS_Archive_Management_Website.Controllers
                                 {
                                     var datetimeForDownloadFile = DateUtilities.ConvertToDateForDownloadFile(doc.CreationDate);
                                     string downloadFileName;
-                                 
-                                    downloadFileName = id + "." + currentResult.Result.FileDetail.AttachmentType + "." + datetimeForDownloadFile + "." + doc.FileExtention;
+
+                                    downloadFileName = id + "." + attachmentTypesList.GetDisplayText((int)currentResult.Result.FileDetail.AttachmentType) + "." + datetimeForDownloadFile + "." + doc.FileExtention;
 
                                     //var newZipEntry = zipArchive.CreateEntry(currentResult.Result.FileDetail.ServerSideName, CompressionLevel.Optimal);
 
@@ -413,8 +414,6 @@ namespace MasterISS_Archive_Management_Website.Controllers
                                         currentResult.Result.Content.CopyTo(temp);
 
                                     }
-                                    //    }
-                                    //}
                                 }
                                 else
                                 {
@@ -445,12 +444,9 @@ namespace MasterISS_Archive_Management_Website.Controllers
             var fileManager = new MasterISSFileManager();
             var file = fileManager.GetClientAttachment(id, FileName);
 
-            var datetimeForDownloadFile = DateUtilities.ConvertToDateForDownloadFile(file.Result.FileDetail.CreationDate);
-            string viewFileName = id + "." + file.Result.FileDetail.AttachmentType + "." + datetimeForDownloadFile + "." + file.Result.FileDetail.FileExtention;
-
             if (file.InternalException != null)
             {
-                return RedirectToAction("ErrorPage","Archive");
+                return RedirectToAction("ErrorPage", "Archive");
             }
             return File(file.Result.Content, file.Result.FileDetail.MIMEType);
         }
