@@ -452,10 +452,8 @@ namespace MasterISS_Archive_Management_Website.Controllers
             {
                 return RedirectToAction("ErrorPage","Archive");
             }
-
             return File(file.Result.Content, file.Result.FileDetail.MIMEType);
         }
-
     }
 }
 
