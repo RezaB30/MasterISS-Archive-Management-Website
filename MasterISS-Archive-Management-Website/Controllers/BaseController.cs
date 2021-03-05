@@ -85,44 +85,44 @@ namespace MasterISS_Archive_Management_Website.Controllers
             return RedirectToAction(sender, new RouteValueDictionary(responseParams));
         }
 
-        public virtual ActionResult Error(string message, string details)
-        {
-            if (Request.IsAjaxRequest())
-            {
-                return Json(new { Code = 1, Message = message, Details = details }, JsonRequestBehavior.AllowGet);
-            }
-            ViewBag.Message = message;
-            ViewBag.Details = details;
-            return View("ErrorDialogBox");
-        }
+        //public virtual ActionResult Error(string message, string details)
+        //{
+        //    if (Request.IsAjaxRequest())
+        //    {
+        //        return Json(new { Code = 1, Message = message, Details = details }, JsonRequestBehavior.AllowGet);
+        //    }
+        //    ViewBag.Message = message;
+        //    ViewBag.Details = details;
+        //    return View("ErrorDialogBox");
+        //}
 
-        protected void SetupPages<T>(int? page, ref IQueryable<T> viewResults)
-        {
-            var totalCount = viewResults.Count();
-            var pagesCount = (int)Math.Ceiling((float)totalCount / (float)AppSettings.TableRows);
-            ViewBag.PageCount = pagesCount;
-            ViewBag.PageTotalCount = totalCount;
+        //protected void SetupPages<T>(int? page, ref IQueryable<T> viewResults)
+        //{
+        //    var totalCount = viewResults.Count();
+        //    var pagesCount = (int)Math.Ceiling((float)totalCount / (float)AppSettings.TableRows);
+        //    ViewBag.PageCount = pagesCount;
+        //    ViewBag.PageTotalCount = totalCount;
 
-            if (!page.HasValue)
-            {
-                page = 0;
-            }
+        //    if (!page.HasValue)
+        //    {
+        //        page = 0;
+        //    }
 
-            viewResults = viewResults.Skip(page.Value * AppSettings.TableRows).Take(AppSettings.TableRows);
-        }
+        //    viewResults = viewResults.Skip(page.Value * AppSettings.TableRows).Take(AppSettings.TableRows);
+        //}
 
-        protected string ViewToString(string viewName, object model)
-        {
-            ViewData.Model = model;
-            using (var sw = new System.IO.StringWriter())
-            {
-                var viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
-                var viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
-                viewResult.View.Render(viewContext, sw);
-                viewResult.ViewEngine.ReleaseView(ControllerContext, viewResult.View);
-                return sw.GetStringBuilder().ToString();
-            }
-        }
+        //protected string ViewToString(string viewName, object model)
+        //{
+        //    ViewData.Model = model;
+        //    using (var sw = new System.IO.StringWriter())
+        //    {
+        //        var viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+        //        var viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+        //        viewResult.View.Render(viewContext, sw);
+        //        viewResult.ViewEngine.ReleaseView(ControllerContext, viewResult.View);
+        //        return sw.GetStringBuilder().ToString();
+        //    }
+        //}
 
     }
 }

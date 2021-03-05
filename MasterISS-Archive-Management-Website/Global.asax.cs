@@ -16,8 +16,6 @@ namespace MasterISS_Archive_Management_Website
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-
         }
     }
 }

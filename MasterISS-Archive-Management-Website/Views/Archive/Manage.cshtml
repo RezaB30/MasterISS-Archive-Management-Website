@@ -25,7 +25,7 @@
 
             <a target="_blank" href="@MasterISS_Archive_Management_Website.Properties.Settings.Default.MasterISSWebSiteUrl/@ViewBag.id">
                 <div style="color:white">
-                    @TempData["SubscriberNo"] 
+                    @TempData["SubscriberNo"]
                 </div>
             </a>
 
@@ -117,15 +117,12 @@
     <div class="container body-content">
 
     </div>
-    @*<div class="tablediv fadertable container">*@
-    <div class="">
-   
-        <div class="button-center">
-            @Html.ActionLink(MasterISS_Archive_Management_Website.Localization.Model.Back, "Index", "Archive", new { id = ViewContext.RouteData.Values["id"] }, new { @class = "button1" })
-        </div>
+
+    <div class="button-center">
+        @Html.ActionLink(MasterISS_Archive_Management_Website.Localization.Model.Back, "Index", "Archive", new { id = ViewContext.RouteData.Values["id"] }, new { @class = "button1" })
     </div>
-    @*</div>*@
 </div>
+
 
 
 

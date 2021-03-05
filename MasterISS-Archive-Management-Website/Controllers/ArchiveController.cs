@@ -155,7 +155,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index(long? id)
+        public ActionResult Index(long? id = null)
         {
             string SubscriberNo = string.Empty;
             if (id.HasValue)
@@ -308,7 +308,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
                     TempData["SubscriberNo"] = SubscriberNo;
 
 
-                return View(viewModel);
+                    return View(viewModel);
                 }
                 TempData["SubscriberNo"] = SubscriberNo;
                 return View();
@@ -413,19 +413,19 @@ namespace MasterISS_Archive_Management_Website.Controllers
                                     //{
                                     //    if (doc.AttachmentType == item.AttachmentTypeEnumNumber)
                                     //    {
-                                            //docAttachmentName = item.AttachmentTypeEnumName;
-                                            downloadFileName = id + "." + currentResult.Result.FileDetail.AttachmentType + "." + datetimeForDownloadFile + "." + doc.FileExtention;
+                                    //docAttachmentName = item.AttachmentTypeEnumName;
+                                    downloadFileName = id + "." + currentResult.Result.FileDetail.AttachmentType + "." + datetimeForDownloadFile + "." + doc.FileExtention;
 
-                                            //var newZipEntry = zipArchive.CreateEntry(currentResult.Result.FileDetail.ServerSideName, CompressionLevel.Optimal);
+                                    //var newZipEntry = zipArchive.CreateEntry(currentResult.Result.FileDetail.ServerSideName, CompressionLevel.Optimal);
 
-                                            var newZipEntry = zipArchive.CreateEntry(downloadFileName, CompressionLevel.Optimal);
+                                    var newZipEntry = zipArchive.CreateEntry(downloadFileName, CompressionLevel.Optimal);
 
 
-                                            using (var temp = newZipEntry.Open())
-                                            {
-                                                currentResult.Result.Content.CopyTo(temp);
+                                    using (var temp = newZipEntry.Open())
+                                    {
+                                        currentResult.Result.Content.CopyTo(temp);
 
-                                            }
+                                    }
                                     //    }
                                     //}
                                 }
