@@ -407,9 +407,11 @@ header {
         top: 20%;
         border: 2px solid var(--white2-color);
         border-radius: 14px;
-        width: 12px;
-        height: 12px;
-        rotate: 45deg;
+        /*  width: 12px;
+        height: 12px;*/
+        width: 16px;
+        height: 16px;
+        transform: rotate(45deg);
         transition: all var(--sec-time) ease;
     }
 
@@ -422,7 +424,7 @@ header {
         background-color: var(--white2-color);
         width: 8px;
         height: 2.5px;
-        rotate: 45deg;
+        transform: rotate(45deg);
         transition: all var(--sec-time) ease;
     }
 
@@ -436,8 +438,9 @@ header {
 
     .magnify:hover {
         background-color: var(--white2-color);
-        rotate: 90deg;
+        /*transform: rotate(90deg);*/
         transform: scale(1.14);
+        transform: rotate( 90deg );
     }
 
 .fadertable {
