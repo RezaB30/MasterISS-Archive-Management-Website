@@ -94,12 +94,12 @@
         if (ViewBag.HasFileList == null)
         {
             <div class="manage-button-area">
-               
+
                 <a href="@Url.Action("Manage", "Archive",  new { id= ViewBag.id})">
                     <button class="button1">
                         @MasterISS_Archive_Management_Website.Localization.Model.Manage
                     </button>
-                </a>                
+                </a>
             </div>
         }
     }
@@ -154,26 +154,26 @@
     }
 
     @if (ViewBag.HasFileList != null)
-{
-<div class="tablediv">
-    <div class="maintable">
-        <div class="buttons-area">
-            <div class="tablebuttons fadertable">
-                <button class="button1">
-                    <a href="@Url.Action("DownloadZipFile", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.DownloadAll</a>
-                </button>
+    {
+        <div class="tablediv">
+            <div class="maintable">
+                <div class="buttons-area">
+                    <div class="tablebuttons fadertable">
+                        <button class="button1">
+                            <a href="@Url.Action("DownloadZipFile", "Archive",  new { id= ViewBag.id})">@MasterISS_Archive_Management_Website.Localization.Model.DownloadAll</a>
+                        </button>
 
-                <a href="@Url.Action("Manage", "Archive",  new { id= ViewBag.id})">
-                    <button class="button1">
-                        @MasterISS_Archive_Management_Website.Localization.Model.Manage
-                    </button>
-                </a>
-                }
+                        <a href="@Url.Action("Manage", "Archive",  new { id= ViewBag.id})">
+                            <button class="button1">
+                                @MasterISS_Archive_Management_Website.Localization.Model.Manage
+                            </button>
+                        </a>
+
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-}
+    }
 
 
     <div class="gradient"></div>
