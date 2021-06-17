@@ -157,6 +157,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
         [HttpGet]
         public ActionResult Index(long? id = null)
         {
+            long ArchiveNo;
             string SubscriberNo = string.Empty;
             if (id.HasValue)
             {
@@ -164,7 +165,7 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
                 using (var db = new RadiusREntities())
                 {
-                    var result = db.Subscriptions.Find(id);
+                    var result = db.Subscriptions.Where(m => m.SubscriberNo == id.ToString() || m.ID == id).FirstOrDefault();
                     if (result == null)
                     {
                         ViewBag.NoSubscriberFound = Localization.Model.NoSubscriberFound;
@@ -172,10 +173,11 @@ namespace MasterISS_Archive_Management_Website.Controllers
                     }
 
                     SubscriberNo = result.SubscriberNo;
+                    ArchiveNo = result.ID;
                 }
 
                 var archiveFile = new MasterISSFileManager();
-                var archiveFileList = archiveFile.GetClientAttachmentsList(id.Value);
+                var archiveFileList = archiveFile.GetClientAttachmentsList(ArchiveNo);
 
                 var fileException = archiveFileList.InternalException;
 
@@ -196,21 +198,21 @@ namespace MasterISS_Archive_Management_Website.Controllers
                         }).OrderByDescending(d => d.CreationDate);
 
                         ViewBag.SubscriberNo = SubscriberNo;
-                        ViewBag.id = id;
+                        ViewBag.id = ArchiveNo;
                         ViewBag.HasFileList = "Has File List";
 
                         return View(viewResults);
                     }
                     ViewBag.SubscriberNo = SubscriberNo;
-                    ViewBag.id = id;
+                    ViewBag.id = ArchiveNo;
                     ViewBag.HasArchiveFileMessage = Localization.Model.HasArchiveFileMessage;
 
 
                     return View();
                 }
-                ViewBag.id = id;
+                ViewBag.id = ArchiveNo;
 
-                archiveLogger.Error($":SubscriberId :{id} - {fileException.Message}");
+                archiveLogger.Error($":SubscriberId :{ArchiveNo} - {fileException.Message}");
 
                 return RedirectToAction("ErrorPage", "Archive");
             }
@@ -222,15 +224,15 @@ namespace MasterISS_Archive_Management_Website.Controllers
 
 
         [HttpPost]
-        public ActionResult Delete(long id, string serverSideName)
+        public ActionResult Delete(long archiveId, string serverSideName)
         {
             var archiveFile = new MasterISSFileManager();
 
-            var removeArchiveFile = archiveFile.RemoveClientAttachment(id, serverSideName);
+            var removeArchiveFile = archiveFile.RemoveClientAttachment(archiveId, serverSideName);
 
             var exception = removeArchiveFile.InternalException;
 
-            var archiveFileList = archiveFile.GetClientAttachmentsList(id);
+            var archiveFileList = archiveFile.GetClientAttachmentsList(archiveId);
 
             var fileException = archiveFileList.InternalException;
 
@@ -239,10 +241,10 @@ namespace MasterISS_Archive_Management_Website.Controllers
                 var subscriptionFileList = archiveFileList.Result;
 
                 TempData["FileDeleted"] = MasterISS_Archive_Management_Website.Localization.Model.FileDeleted;
-                return RedirectToAction("Index", "Archive", new { id = id });
+                return RedirectToAction("Index", "Archive", new { id = archiveId });
             }
 
-            archiveLogger.Error($":SubscriberId :{id} - {fileException.Message}");
+            archiveLogger.Error($":SubscriberId :{archiveId} - {fileException.Message}");
 
             return RedirectToAction("ErrorPage", "Archive");
         }

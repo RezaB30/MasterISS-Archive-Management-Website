@@ -44,7 +44,7 @@ th {
     color: #1a1a1a;
     /*padding-top: 10px;*/
     animation: drag-area-anim var(--trans-time) ease 1 forwards;
-    width: 62em;
+    width: 72em;
 }
 @keyframes drag-area-anim {
   0% {

@@ -135,7 +135,8 @@
                                 @using (Html.BeginForm("Delete", "Archive", FormMethod.Post, new { @class = "delete-submit deletebutton" }))
                                 {
                                     <div class="hidden-part">
-                                        @Html.TextBox("id")
+                                        @*@Html.TextBox("id")*@
+                                         @Html.Hidden("archiveId",(long)ViewBag.id)
 
                                         @Html.Hidden("serverSideName", item.ServerSideName)
                                     </div>
